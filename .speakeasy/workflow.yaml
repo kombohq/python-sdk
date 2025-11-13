@@ -1,0 +1,24 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    kombo-prepared-spec:
+        inputs:
+            - location: https://api.kombo.dev/internal/sdk.openapi.yaml
+              authHeader: Authorization
+              authSecret: $openapi_doc_auth_token
+        registry:
+            location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api
+targets:
+    kombo-python:
+        target: python
+        source: Kombo API
+        output: python
+        publish:
+            pypi:
+                token: $pypi_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api-python-code-samples
+            labelOverride:
+                fixedValue: Python (SDK)
+            blocking: false
