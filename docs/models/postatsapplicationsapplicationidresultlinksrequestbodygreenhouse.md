@@ -1,0 +1,10 @@
+# PostAtsApplicationsApplicationIDResultLinksRequestBodyGreenhouse
+
+Fields specific to Greenhouse.
+
+
+## Fields
+
+| Field                                                                                                                                                                | Type                                                                                                                                                                 | Required                                                                                                                                                             | Description                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `post_headers`                                                                                                                                                       | [Optional[models.PostAtsApplicationsApplicationIDResultLinksRequestBodyPostHeaders]](../models/postatsapplicationsapplicationidresultlinksrequestbodypostheaders.md) | :heavy_minus_sign:                                                                                                                                                   | Headers we will pass with `POST` requests to Greenhouse.                                                                                                             |

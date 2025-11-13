@@ -1,0 +1,14 @@
+# Schema2Number
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `label`                                                                        | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `required`                                                                     | *bool*                                                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `description`                                                                  | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `unified_key`                                                                  | [OptionalNullable[models.Schema2UnifiedKey2]](../models/schema2unifiedkey2.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `type`                                                                         | *Literal["number"]*                                                            | :heavy_check_mark:                                                             | N/A                                                                            |
+| `min`                                                                          | *OptionalNullable[float]*                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `max`                                                                          | *OptionalNullable[float]*                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |

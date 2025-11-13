@@ -1,0 +1,9 @@
+# PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `id_type`                                                                                                   | *Literal["application_remote_id"]*                                                                          | :heavy_check_mark:                                                                                          | Uses the `/JobApplication` ODATA endpoint to retrieve the relevant application based on the application ID. |
+| `application_remote_id`                                                                                     | *str*                                                                                                       | :heavy_check_mark:                                                                                          | N/A                                                                                                         |

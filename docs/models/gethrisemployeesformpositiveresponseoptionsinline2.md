@@ -1,0 +1,9 @@
+# GetHrisEmployeesFormPositiveResponseOptionsInline2
+
+
+## Fields
+
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `type`                                                                                                             | *Literal["inline"]*                                                                                                | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `entries`                                                                                                          | List[[models.GetHrisEmployeesFormPositiveResponseEntry2](../models/gethrisemployeesformpositiveresponseentry2.md)] | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

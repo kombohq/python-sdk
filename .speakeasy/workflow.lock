@@ -1,0 +1,42 @@
+speakeasyVersion: 1.656.1
+sources:
+    kombo-prepared-spec:
+        sourceNamespace: kombo-api
+        sourceRevisionDigest: sha256:d536aed98f464836e308f6f7fc97739bb70276c5a207a6ae4bc162a526aae094
+        sourceBlobDigest: sha256:2378d2f6779bf58e9d76ea092cd43f4f6aacfc0ef4a73b195b54683f5fb0f57e
+        tags:
+            - latest
+            - speakeasy-sdk-regen-1763041290
+            - 1.0.0
+targets:
+    kombo-python:
+        source: kombo-prepared-spec
+        sourceNamespace: kombo-api
+        sourceRevisionDigest: sha256:d536aed98f464836e308f6f7fc97739bb70276c5a207a6ae4bc162a526aae094
+        sourceBlobDigest: sha256:2378d2f6779bf58e9d76ea092cd43f4f6aacfc0ef4a73b195b54683f5fb0f57e
+        codeSamplesNamespace: kombo-api-python-code-samples
+        codeSamplesRevisionDigest: sha256:3c1be8d8003ae545080f73d3ec1bd38d182e77e211691829b6a10d9ec1d915eb
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        kombo-prepared-spec:
+            inputs:
+                - location: https://api.kombo.dev/internal/sdk.openapi.yaml
+                  authHeader: Authorization
+                  authSecret: $openapi_doc_auth_token
+            registry:
+                location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api
+    targets:
+        kombo-python:
+            target: python
+            source: kombo-prepared-spec
+            publish:
+                pypi:
+                    token: $pypi_token
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api-python-code-samples
+                blocking: false
+            testing:
+                enabled: false

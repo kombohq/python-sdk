@@ -1,0 +1,13 @@
+# Schema2SingleSelect
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `label`                                                                        | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `required`                                                                     | *bool*                                                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `description`                                                                  | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `unified_key`                                                                  | [OptionalNullable[models.Schema2UnifiedKey4]](../models/schema2unifiedkey4.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `type`                                                                         | *Literal["single_select"]*                                                     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `options`                                                                      | [models.Schema2OptionsUnion1](../models/schema2optionsunion1.md)               | :heavy_check_mark:                                                             | N/A                                                                            |

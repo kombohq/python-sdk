@@ -1,0 +1,9 @@
+# GetCheckAPIKeyPositiveResponse
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `status`                                                                                     | *Literal["success"]*                                                                         | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
+| `data`                                                                                       | [models.GetCheckAPIKeyPositiveResponseData](../models/getcheckapikeypositiveresponsedata.md) | :heavy_check_mark:                                                                           | N/A                                                                                          | {<br/>"environment_id": "2Uev1YUTqLFdvMPD3Jtrg2FX",<br/>"customer_id": "2Uev1YUTqLFdvMPD3Jtrg2FX"<br/>} |

@@ -1,0 +1,10 @@
+# DeleteHrisAbsencesAbsenceIDRequestBodyRemoteFields
+
+Additional fields that we will pass through to specific HRIS systems.
+
+
+## Fields
+
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `adpworkforcenow`                                                                                                                            | [Optional[models.DeleteHrisAbsencesAbsenceIDRequestBodyAdpworkforcenow]](../models/deletehrisabsencesabsenceidrequestbodyadpworkforcenow.md) | :heavy_minus_sign:                                                                                                                           | Fields specific to ADP Workforce Now.                                                                                                        |

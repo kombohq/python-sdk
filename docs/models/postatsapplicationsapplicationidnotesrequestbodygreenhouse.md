@@ -1,0 +1,10 @@
+# PostAtsApplicationsApplicationIDNotesRequestBodyGreenhouse
+
+Fields specific to Greenhouse.
+
+
+## Fields
+
+| Field                                                                                                                                                    | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `post_headers`                                                                                                                                           | [Optional[models.PostAtsApplicationsApplicationIDNotesRequestBodyPostHeaders]](../models/postatsapplicationsapplicationidnotesrequestbodypostheaders.md) | :heavy_minus_sign:                                                                                                                                       | Headers we will pass with `POST` requests to Greenhouse.                                                                                                 |

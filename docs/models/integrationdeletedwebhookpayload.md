@@ -1,0 +1,10 @@
+# IntegrationDeletedWebhookPayload
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `id`                                                                                             | *str*                                                                                            | :heavy_check_mark:                                                                               | Unique identifier for this webhook event                                                         |
+| `type`                                                                                           | [models.IntegrationDeletedWebhookPayloadType](../models/integrationdeletedwebhookpayloadtype.md) | :heavy_check_mark:                                                                               | Type of the webhook event                                                                        |
+| `data`                                                                                           | [models.IntegrationDeletedWebhookPayloadData](../models/integrationdeletedwebhookpayloaddata.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

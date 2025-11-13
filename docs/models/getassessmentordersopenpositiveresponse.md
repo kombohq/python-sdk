@@ -1,0 +1,9 @@
+# GetAssessmentOrdersOpenPositiveResponse
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `status`                                                                                                       | *Literal["success"]*                                                                                           | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `data`                                                                                                         | [models.GetAssessmentOrdersOpenPositiveResponseData](../models/getassessmentordersopenpositiveresponsedata.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

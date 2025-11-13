@@ -1,0 +1,12 @@
+# Coverage
+
+This describes the supported models and actions of this tool.
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `read_models`                                                                                                    | List[[models.GetToolsCategoryPositiveResponseReadModel](../models/gettoolscategorypositiveresponsereadmodel.md)] | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `write_actions`                                                                                                  | List[[models.WriteAction](../models/writeaction.md)]                                                             | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `features`                                                                                                       | List[[models.Feature](../models/feature.md)]                                                                     | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

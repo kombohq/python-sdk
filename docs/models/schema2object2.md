@@ -1,0 +1,13 @@
+# Schema2Object2
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `label`                                                                        | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `required`                                                                     | *bool*                                                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `description`                                                                  | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `unified_key`                                                                  | [OptionalNullable[models.Schema2UnifiedKey6]](../models/schema2unifiedkey6.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `type`                                                                         | *Literal["object"]*                                                            | :heavy_check_mark:                                                             | N/A                                                                            |
+| `properties`                                                                   | Dict[str, [models.Schema1Union2](../models/schema1union2.md)]                  | :heavy_check_mark:                                                             | N/A                                                                            |
