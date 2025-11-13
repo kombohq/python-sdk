@@ -16,9 +16,9 @@ jobs:
   publish:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     with:
-      target: kombo-python
       enable_sdk_changelog: true
       node_options: --max-old-space-size=5125
+      target: kombo-python
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       pypi_token: ${{ secrets.PYPI_TOKEN }}
