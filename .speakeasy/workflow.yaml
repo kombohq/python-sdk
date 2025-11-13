@@ -11,8 +11,7 @@ sources:
 targets:
     kombo-python:
         target: python
-        source: Kombo API
-        output: python
+        source: kombo-prepared-spec
         publish:
             pypi:
                 token: $pypi_token
