@@ -1,0 +1,9 @@
+# PostIntegrationsIntegrationIDRelinkRequest
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `integration_id`                                                                                                     | *str*                                                                                                                | :heavy_check_mark:                                                                                                   | POST /integrations/:integration_id/relink Parameter                                                                  |
+| `body`                                                                                                               | [models.PostIntegrationsIntegrationIDRelinkRequestBody](../models/postintegrationsintegrationidrelinkrequestbody.md) | :heavy_check_mark:                                                                                                   | POST /integrations/:integration_id/relink Request body                                                               |

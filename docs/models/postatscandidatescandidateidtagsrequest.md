@@ -1,0 +1,9 @@
+# PostAtsCandidatesCandidateIDTagsRequest
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `candidate_id`                                                                                                 | *str*                                                                                                          | :heavy_check_mark:                                                                                             | The Kombo ID of the candidate you want to add the tag to.                                                      |
+| `body`                                                                                                         | [models.PostAtsCandidatesCandidateIDTagsRequestBody](../models/postatscandidatescandidateidtagsrequestbody.md) | :heavy_check_mark:                                                                                             | POST /ats/candidates/:candidate_id/tags Request body                                                           |

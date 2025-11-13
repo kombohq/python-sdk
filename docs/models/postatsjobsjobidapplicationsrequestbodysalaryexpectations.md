@@ -1,0 +1,11 @@
+# PostAtsJobsJobIDApplicationsRequestBodySalaryExpectations
+
+The salary expectations of the applicant. We will automatically convert the amount to a format that is suitable for the ATS you are using. For example, if you are using monthly salary expectations, we will convert the amount to a yearly salary if the ATS expects yearly salary expectations.
+
+
+## Fields
+
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `period`                                                                                                           | [models.PostAtsJobsJobIDApplicationsRequestBodyPeriod](../models/postatsjobsjobidapplicationsrequestbodyperiod.md) | :heavy_check_mark:                                                                                                 | The period of the salary expectations. Must be one of `MONTH` or `YEAR`.                                           |
+| `amount`                                                                                                           | *float*                                                                                                            | :heavy_check_mark:                                                                                                 | The amount of the salary expectations.                                                                             |

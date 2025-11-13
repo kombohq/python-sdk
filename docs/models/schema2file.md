@@ -1,0 +1,13 @@
+# Schema2File
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `label`                                                                        | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `required`                                                                     | *bool*                                                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `description`                                                                  | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `unified_key`                                                                  | [OptionalNullable[models.Schema2UnifiedKey8]](../models/schema2unifiedkey8.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `type`                                                                         | *Literal["file"]*                                                              | :heavy_check_mark:                                                             | N/A                                                                            |
+| `file_restrictions`                                                            | [models.Schema2FileRestrictions](../models/schema2filerestrictions.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

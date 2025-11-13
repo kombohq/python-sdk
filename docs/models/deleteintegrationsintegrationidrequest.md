@@ -1,0 +1,9 @@
+# DeleteIntegrationsIntegrationIDRequest
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `integration_id`                                                                                             | *str*                                                                                                        | :heavy_check_mark:                                                                                           | DELETE /integrations/:integration_id Parameter                                                               |
+| `body`                                                                                                       | [models.DeleteIntegrationsIntegrationIDRequestBody](../models/deleteintegrationsintegrationidrequestbody.md) | :heavy_check_mark:                                                                                           | DELETE /integrations/:integration_id Request body                                                            |

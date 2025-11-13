@@ -1,0 +1,10 @@
+# PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `id_type`                                                                               | *Literal["candidate_and_job_remote_ids"]*                                               | :heavy_check_mark:                                                                      | Uses the `/candidates/{candidateId}/jobs/{jobId}` endpoint to retrieve the application. |
+| `candidate_remote_id`                                                                   | *str*                                                                                   | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `job_remote_id`                                                                         | *str*                                                                                   | :heavy_check_mark:                                                                      | N/A                                                                                     |

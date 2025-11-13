@@ -1,0 +1,9 @@
+# DeleteHrisAbsencesAbsenceIDRequest
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `absence_id`                                                                                         | *str*                                                                                                | :heavy_check_mark:                                                                                   | The Kombo ID of the absence                                                                          |
+| `body`                                                                                               | [models.DeleteHrisAbsencesAbsenceIDRequestBody](../models/deletehrisabsencesabsenceidrequestbody.md) | :heavy_check_mark:                                                                                   | DELETE /hris/absences/:absence_id Request body                                                       |

@@ -1,0 +1,9 @@
+# PostAtsCandidatesRequestBodyLanguage
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `native`                                                                                                             | *Optional[bool]*                                                                                                     | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
+| `language_ability`                                                                                                   | List[[models.PostAtsCandidatesRequestBodyLanguageAbility](../models/postatscandidatesrequestbodylanguageability.md)] | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

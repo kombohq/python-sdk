@@ -1,0 +1,10 @@
+# PostAtsCandidatesCandidateIDAttachmentsRequestBodyGreenhouse
+
+Fields specific to Greenhouse.
+
+
+## Fields
+
+| Field                                                                                                                                                        | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `post_headers`                                                                                                                                               | [Optional[models.PostAtsCandidatesCandidateIDAttachmentsRequestBodyPostHeaders]](../models/postatscandidatescandidateidattachmentsrequestbodypostheaders.md) | :heavy_minus_sign:                                                                                                                                           | Headers we will pass with `POST` requests to Greenhouse.                                                                                                     |

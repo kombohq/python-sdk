@@ -1,0 +1,12 @@
+# Schema2Checkbox
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `label`                                                                        | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `required`                                                                     | *bool*                                                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `description`                                                                  | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `unified_key`                                                                  | [OptionalNullable[models.Schema2UnifiedKey5]](../models/schema2unifiedkey5.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `type`                                                                         | *Literal["checkbox"]*                                                          | :heavy_check_mark:                                                             | N/A                                                                            |

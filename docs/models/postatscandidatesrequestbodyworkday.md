@@ -1,0 +1,11 @@
+# PostAtsCandidatesRequestBodyWorkday
+
+Fields specific to Workday. The remote fields schema follows the documentation at https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v43.0/Put_Candidate.html. Only defined fields are supported, if you need additional field support please reach out to Kombo support.
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `candidate_data`                                                                                                     | [Optional[models.PostAtsCandidatesRequestBodyCandidateData]](../models/postatscandidatesrequestbodycandidatedata.md) | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
+| `override_source_reference_wid`                                                                                      | *Optional[str]*                                                                                                      | :heavy_minus_sign:                                                                                                   | Used to override the automatic source WID.                                                                           |

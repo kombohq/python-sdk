@@ -1,0 +1,10 @@
+# ConnectionFlowFailedWebhookPayload
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                 | *str*                                                                                                | :heavy_check_mark:                                                                                   | Unique identifier for this webhook event                                                             |
+| `type`                                                                                               | [models.ConnectionFlowFailedWebhookPayloadType](../models/connectionflowfailedwebhookpayloadtype.md) | :heavy_check_mark:                                                                                   | Type of the webhook event                                                                            |
+| `data`                                                                                               | [models.ConnectionFlowFailedWebhookPayloadData](../models/connectionflowfailedwebhookpayloaddata.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

@@ -1,0 +1,12 @@
+# PostAtsJobsJobIDApplicationsRequestBodySourcedBy
+
+Credit the recruiter or team member who sourced this candidate.
+
+While the `source` field tracks the channel/platform (e.g., "Awesome Jobboard"), the `sourced_by` field tracks the individual person responsible for finding the candidate.
+
+
+## Fields
+
+| Field                                                                                                                                                            | Type                                                                                                                                                             | Required                                                                                                                                                         | Description                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `user_id`                                                                                                                                                        | *str*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                               | The Kombo ID or Remote ID of the User. Use the Kombo ID directly, or prefix the remote ID with "remote:" to reference the user by their ID in the remote system. |

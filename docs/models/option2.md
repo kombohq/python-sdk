@@ -1,0 +1,10 @@
+# Option2
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                  | *str*                                                                                                 | :heavy_check_mark:                                                                                    | The Kombo ID of this question option. Use this ID to specify the answer to this question.             |
+| `remote_id`                                                                                           | *OptionalNullable[str]*                                                                               | :heavy_minus_sign:                                                                                    | ID in the connected ATS. This might be null as some systems only use the name to identify the option. |
+| `name`                                                                                                | *str*                                                                                                 | :heavy_check_mark:                                                                                    | Content of the question option.                                                                       |

@@ -1,0 +1,8 @@
+# DeleteHrisAbsencesAbsenceIDRequestBody
+
+
+## Fields
+
+| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `remote_fields`                                                                                                                        | [Optional[models.DeleteHrisAbsencesAbsenceIDRequestBodyRemoteFields]](../models/deletehrisabsencesabsenceidrequestbodyremotefields.md) | :heavy_minus_sign:                                                                                                                     | Additional fields that we will pass through to specific HRIS systems.                                                                  |

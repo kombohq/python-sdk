@@ -1,0 +1,9 @@
+# WebhookIntegrationCreatedWebhookPayloadRequest
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `x_kombo_signature`                                                                                                 | *str*                                                                                                               | :heavy_check_mark:                                                                                                  | HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature. |
+| `body`                                                                                                              | [models.IntegrationCreatedWebhookPayload](../models/integrationcreatedwebhookpayload.md)                            | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
