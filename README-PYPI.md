@@ -1,53 +1,39 @@
-# openapi
+# kombo-python
 
-Developer-friendly & type-safe Python SDK specifically catered to leverage *openapi* API.
+Developer-friendly & type-safe Python SDK for the [Kombo Unified API](https://docs.kombo.dev/introduction).
 
-<div align="left" style="margin-bottom: 0;">
-    <a href="https://www.speakeasy.com/?utm_source=openapi&utm_campaign=python" class="badge-link">
-        <span class="badge-container">
-            <span class="badge-icon-section">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 30 30" fill="none" style="vertical-align: middle;"><title>Speakeasy Logo</title><path fill="currentColor" d="m20.639 27.548-19.17-2.724L0 26.1l20.639 2.931 8.456-7.336-1.468-.208-6.988 6.062Z"></path><path fill="currentColor" d="m20.639 23.1 8.456-7.336-1.468-.207-6.988 6.06-6.84-.972-9.394-1.333-2.936-.417L0 20.169l2.937.416L0 23.132l20.639 2.931 8.456-7.334-1.468-.208-6.986 6.062-9.78-1.39 1.468-1.273 8.31 1.18Z"></path><path fill="currentColor" d="m20.639 18.65-19.17-2.724L0 17.201l20.639 2.931 8.456-7.334-1.468-.208-6.988 6.06Z"></path><path fill="currentColor" d="M27.627 6.658 24.69 9.205 20.64 12.72l-7.923-1.126L1.469 9.996 0 11.271l11.246 1.596-1.467 1.275-8.311-1.181L0 14.235l20.639 2.932 8.456-7.334-2.937-.418 2.937-2.549-1.468-.208Z"></path><path fill="currentColor" d="M29.095 3.902 8.456.971 0 8.305l20.639 2.934 8.456-7.337Z"></path></svg>
-            </span>
-            <span class="badge-text badge-text-section">BUILT BY SPEAKEASY</span>
-        </span>
-    </a>
-    <a href="https://opensource.org/licenses/MIT" class="badge-link">
-        <span class="badge-container blue">
-            <span class="badge-text badge-text-section">LICENSE // MIT</span>
-        </span>
-    </a>
+<div align="left">
+  <a href="https://www.speakeasy.com/?utm_source=kombo-python&utm_campaign=python">
+    <img src="https://custom-icon-badges.demolab.com/badge/-built%20with%20speakeasy-212015?style=flat-square&logoColor=FBE331&logo=speakeasy&labelColor=545454" />
+  </a>
+  <a href="https://pypi.org/project/kombo-python/">
+    <img src="https://img.shields.io/pypi/v/kombo-python?style=flat-square" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
+  </a>
 </div>
 
+<br />
 
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/kombo-ayg/api). Delete this section before > publishing to a package manager.
-
-<!-- Start Summary [summary] -->
-## Summary
-
-
-<!-- End Summary [summary] -->
+> [!WARNING]
+> The Kombo Python SDK is still in beta and is subject to breaking changes.
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [openapi](https://github.com/kombohq/python-sdk/blob/master/#openapi)
+* [kombo-python](https://github.com/kombohq/python-sdk/blob/master/#kombo-python)
   * [SDK Installation](https://github.com/kombohq/python-sdk/blob/master/#sdk-installation)
-  * [IDE Support](https://github.com/kombohq/python-sdk/blob/master/#ide-support)
   * [SDK Example Usage](https://github.com/kombohq/python-sdk/blob/master/#sdk-example-usage)
-  * [Authentication](https://github.com/kombohq/python-sdk/blob/master/#authentication)
+  * [Region Selection](https://github.com/kombohq/python-sdk/blob/master/#region-selection)
   * [Available Resources and Operations](https://github.com/kombohq/python-sdk/blob/master/#available-resources-and-operations)
-  * [Global Parameters](https://github.com/kombohq/python-sdk/blob/master/#global-parameters)
   * [Pagination](https://github.com/kombohq/python-sdk/blob/master/#pagination)
-  * [Retries](https://github.com/kombohq/python-sdk/blob/master/#retries)
   * [Error Handling](https://github.com/kombohq/python-sdk/blob/master/#error-handling)
-  * [Server Selection](https://github.com/kombohq/python-sdk/blob/master/#server-selection)
+  * [Retries](https://github.com/kombohq/python-sdk/blob/master/#retries)
   * [Custom HTTP Client](https://github.com/kombohq/python-sdk/blob/master/#custom-http-client)
   * [Resource Management](https://github.com/kombohq/python-sdk/blob/master/#resource-management)
   * [Debugging](https://github.com/kombohq/python-sdk/blob/master/#debugging)
 * [Development](https://github.com/kombohq/python-sdk/blob/master/#development)
-  * [Maturity](https://github.com/kombohq/python-sdk/blob/master/#maturity)
   * [Contributions](https://github.com/kombohq/python-sdk/blob/master/#contributions)
 
 <!-- End Table of Contents [toc] -->
@@ -67,7 +53,7 @@ The SDK can be installed with *uv*, *pip*, or *poetry* package managers.
 *uv* is a fast Python package installer and resolver, designed as a drop-in replacement for pip and pip-tools. It's recommended for its speed and modern Python tooling capabilities.
 
 ```bash
-uv add kombo-python
+uv add kombo
 ```
 
 ### PIP
@@ -75,7 +61,7 @@ uv add kombo-python
 *PIP* is the default package installer for Python, enabling easy installation and management of packages from PyPI via the command line.
 
 ```bash
-pip install kombo-python
+pip install kombo
 ```
 
 ### Poetry
@@ -83,7 +69,7 @@ pip install kombo-python
 *Poetry* is a modern tool that simplifies dependency management and package publishing by using a single `pyproject.toml` file to handle project metadata and dependencies.
 
 ```bash
-poetry add kombo-python
+poetry add kombo
 ```
 
 ### Shell and script usage with `uv`
@@ -91,7 +77,7 @@ poetry add kombo-python
 You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
 
 ```shell
-uvx --from kombo-python python
+uvx --from kombo python
 ```
 
 It's also possible to write a standalone Python script without needing to set up a whole project like so:
@@ -101,11 +87,11 @@ It's also possible to write a standalone Python script without needing to set up
 # /// script
 # requires-python = ">=3.9"
 # dependencies = [
-#     "kombo-python",
+#     "kombo",
 # ]
 # ///
 
-from kombo_python import SDK
+from kombo import SDK
 
 sdk = SDK(
   # SDK arguments
@@ -118,72 +104,8 @@ Once that is saved to a file, you can run it with `uv run script.py` where
 `script.py` can be replaced with the actual file name.
 <!-- End SDK Installation [installation] -->
 
-<!-- Start IDE Support [idesupport] -->
-## IDE Support
-
-### PyCharm
-
-Generally, the SDK will work well with most IDEs out of the box. However, when using PyCharm, you can enjoy much better integration with Pydantic by installing an additional plugin.
-
-- [PyCharm Pydantic Plugin](https://docs.pydantic.dev/latest/integrations/pycharm/)
-<!-- End IDE Support [idesupport] -->
-
-<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
-### Example
-
-```python
-# Synchronous Example
-from kombo_python import SDK
-
-
-with SDK(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
-
-    res = sdk.general.check_api_key()
-
-    # Handle response
-    print(res)
-```
-
-</br>
-
-The same SDK client can also be used to make asynchronous requests by importing asyncio.
-
-```python
-# Asynchronous Example
-import asyncio
-from kombo_python import SDK
-
-async def main():
-
-    async with SDK(
-        api_key="<YOUR_BEARER_TOKEN_HERE>",
-    ) as sdk:
-
-        res = await sdk.general.check_api_key_async()
-
-        # Handle response
-        print(res)
-
-asyncio.run(main())
-```
-<!-- End SDK Example Usage [usage] -->
-
-<!-- Start Authentication [security] -->
-## Authentication
-
-### Per-Client Security Schemes
-
-This SDK supports the following security scheme globally:
-
-| Name      | Type | Scheme      |
-| --------- | ---- | ----------- |
-| `api_key` | http | HTTP Bearer |
-
-To authenticate with the API the `api_key` parameter must be set when initializing the SDK client instance. For example:
 ```python
 from kombo_python import SDK
 
@@ -196,9 +118,50 @@ with SDK(
 
     # Handle response
     print(res)
+```
+
+### Specifying an integration ID
+
+The majority of Kombo API endpoints are for interacting with a single "integration" (i.e., a single connection to one your customers' systems). For using these, make sure to specify the `integration_id` parameter when initializing the SDK:
+
+```python
+from kombo_python import SDK
+
+
+with SDK(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+) as sdk:
+
+    res = sdk.hris.get_employees()
+
+    # Handle response
+    print(res)
+```
+
+## Region Selection
+
+The Kombo platform is available in two regions: Europe and United States.
+
+By default, the SDK will use the EU region. If you're using the US region (hosted under `api.us.kombo.dev`), make sure to specify the `server` parameter when initializing the SDK.
+
+#### Example
+
+```python
+from kombo_python import SDK
+
+
+with SDK(
+    server="us",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.general.check_api_key()
+
+    # Handle response
+    print(res)
 
 ```
-<!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -281,41 +244,6 @@ with SDK(
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `integration_id` to `"workday:HWUTwvyx2wLoSUHphiWVrp28"` at SDK initialization and then you do not have to pass the same value on calls to operations like `delete_integration`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name           | Type | Description                                      |
-| -------------- | ---- | ------------------------------------------------ |
-| integration_id | str  | ID of the integration you want to interact with. |
-
-### Example
-
-```python
-from kombo_python import SDK
-
-
-with SDK(
-    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
-
-    res = sdk.general.delete_integration(integration_id="<id>", body={})
-
-    # Handle response
-    print(res)
-
-```
-<!-- End Global Parameters [global-parameters] -->
-
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
@@ -325,7 +253,7 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -342,52 +270,10 @@ with SDK(
 ```
 <!-- End Pagination [pagination] -->
 
-<!-- Start Retries [retries] -->
-## Retries
-
-Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
-
-To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
-```python
-from kombo_python import SDK
-from kombo_python.utils import BackoffStrategy, RetryConfig
-
-
-with SDK(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
-
-    res = sdk.general.check_api_key(,
-        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
-
-    # Handle response
-    print(res)
-
-```
-
-If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
-```python
-from kombo_python import SDK
-from kombo_python.utils import BackoffStrategy, RetryConfig
-
-
-with SDK(
-    retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
-
-    res = sdk.general.check_api_key()
-
-    # Handle response
-    print(res)
-
-```
-<!-- End Retries [retries] -->
-
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo_python/errors/sdkerror.py) is the base class for all HTTP error responses. It has the following properties:
+[`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/sdkerror.py) is the base class for all HTTP error responses. It has the following properties:
 
 | Property           | Type             | Description                                                                             |
 | ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
@@ -400,7 +286,7 @@ with SDK(
 
 ### Example
 ```python
-from kombo_python import SDK, errors
+from kombo import SDK, errors
 
 
 with SDK(
@@ -431,7 +317,7 @@ with SDK(
 
 ### Error Classes
 **Primary error:**
-* [`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo_python/errors/sdkerror.py): The base class for HTTP error responses.
+* [`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/sdkerror.py): The base class for HTTP error responses.
 
 <details><summary>Less common errors (8)</summary>
 
@@ -443,37 +329,48 @@ with SDK(
     * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
 
 
-**Inherit from [`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo_python/errors/sdkerror.py)**:
-* [`KomboAtsError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo_python/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 27 of 57 methods.*
-* [`KomboHrisError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo_python/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 57 methods.*
-* [`KomboGeneralError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo_python/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 13 of 57 methods.*
-* [`ResponseValidationError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo_python/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+**Inherit from [`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/sdkerror.py)**:
+* [`KomboAtsError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 27 of 57 methods.*
+* [`KomboHrisError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 57 methods.*
+* [`KomboGeneralError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 13 of 57 methods.*
+* [`ResponseValidationError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
 
 \* Check [the method documentation](https://github.com/kombohq/python-sdk/blob/master/#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
-<!-- Start Server Selection [server] -->
-## Server Selection
+<!-- Start Retries [retries] -->
+## Retries
 
-### Select Server by Name
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-You can override the default server globally by passing a server name to the `server: str` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
-
-| Name | Server                        | Description     |
-| ---- | ----------------------------- | --------------- |
-| `eu` | `https://api.kombo.dev/v1`    | Kombo EU Region |
-| `us` | `https://api.us.kombo.dev/v1` | Kombo US Region |
-
-#### Example
-
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-from kombo_python import SDK
+from kombo import SDK
+from kombo.utils import BackoffStrategy, RetryConfig
 
 
 with SDK(
-    server="eu",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.general.check_api_key(,
+        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
+
+    # Handle response
+    print(res)
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
+```python
+from kombo import SDK
+from kombo.utils import BackoffStrategy, RetryConfig
+
+
+with SDK(
+    retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -483,26 +380,7 @@ with SDK(
     print(res)
 
 ```
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
-```python
-from kombo_python import SDK
-
-
-with SDK(
-    server_url="https://api.kombo.dev/v1",
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
-
-    res = sdk.general.check_api_key()
-
-    # Handle response
-    print(res)
-
-```
-<!-- End Server Selection [server] -->
+<!-- End Retries [retries] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
@@ -513,7 +391,7 @@ This allows you to wrap the client with your own custom logic, such as adding cu
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-from kombo_python import SDK
+from kombo import SDK
 import httpx
 
 http_client = httpx.Client(headers={"x-custom-header": "someValue"})
@@ -522,8 +400,8 @@ s = SDK(client=http_client)
 
 or you could wrap the client with your own custom logic:
 ```python
-from kombo_python import SDK
-from kombo_python.httpclient import AsyncHttpClient
+from kombo import SDK
+from kombo.httpclient import AsyncHttpClient
 import httpx
 
 class CustomClient(AsyncHttpClient):
@@ -593,7 +471,7 @@ The `SDK` class implements the context manager protocol and registers a finalize
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
-from kombo_python import SDK
+from kombo import SDK
 def main():
 
     with SDK(
@@ -619,11 +497,11 @@ You can setup your SDK to emit debug logs for SDK requests and responses.
 
 You can pass your own logger class directly into your SDK.
 ```python
-from kombo_python import SDK
+from kombo import SDK
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-s = SDK(debug_logger=logging.getLogger("kombo_python"))
+s = SDK(debug_logger=logging.getLogger("kombo"))
 ```
 <!-- End Debugging [debug] -->
 
@@ -631,108 +509,16 @@ s = SDK(debug_logger=logging.getLogger("kombo_python"))
 
 # Development
 
-## Maturity
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
-to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
-looking for the latest version.
-
 ## Contributions
 
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=openapi&utm_campaign=python)
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=kombo-python&utm_campaign=python)
 
-<style>
-  :root {
-    --badge-gray-bg: #f3f4f6;
-    --badge-gray-border: #d1d5db;
-    --badge-gray-text: #374151;
-    --badge-blue-bg: #eff6ff;
-    --badge-blue-border: #3b82f6;
-    --badge-blue-text: #3b82f6;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --badge-gray-bg: #374151;
-      --badge-gray-border: #4b5563;
-      --badge-gray-text: #f3f4f6;
-      --badge-blue-bg: #1e3a8a;
-      --badge-blue-border: #3b82f6;
-      --badge-blue-text: #93c5fd;
-    }
-  }
-  
-  h1 {
-    border-bottom: none !important;
-    margin-bottom: 4px;
-    margin-top: 0;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-  }
-  
-  .badge-text {
-    letter-spacing: 1px;
-    font-weight: 300;
-  }
-  
-  .badge-container {
-    display: inline-flex;
-    align-items: center;
-    background: var(--badge-gray-bg);
-    border: 1px solid var(--badge-gray-border);
-    border-radius: 6px;
-    overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-size: 11px;
-    text-decoration: none;
-    vertical-align: middle;
-  }
-
-  .badge-container.blue {
-    background: var(--badge-blue-bg);
-    border-color: var(--badge-blue-border);
-  }
-
-  .badge-icon-section {
-    padding: 4px 8px;
-    border-right: 1px solid var(--badge-gray-border);
-    display: flex;
-    align-items: center;
-  }
-
-  .badge-text-section {
-    padding: 4px 10px;
-    color: var(--badge-gray-text);
-    font-weight: 400;
-  }
-
-  .badge-container.blue .badge-text-section {
-    color: var(--badge-blue-text);
-  }
-  
-  .badge-link {
-    text-decoration: none;
-    margin-left: 8px;
-    display: inline-flex;
-    vertical-align: middle;
-  }
-
-  .badge-link:hover {
-    text-decoration: none;
-  }
-  
-  .badge-link:first-child {
-    margin-left: 0;
-  }
-  
-  .badge-icon-section svg {
-    color: var(--badge-gray-text);
-  }
-
-  .badge-container.blue .badge-icon-section svg {
-    color: var(--badge-blue-text);
-  }
-</style> 
+<!-- No Summary [summary] -->
+<!-- No SDK Example Usage [usage] -->
+<!-- No IDE Support [idesupport] -->
+<!-- No Authentication [security] -->
+<!-- No Global Parameters [global-parameters] -->
+<!-- No Server Selection [server] -->

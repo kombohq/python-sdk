@@ -46,7 +46,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsApplications" method="get" path="/ats/applications" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -111,7 +111,7 @@ Moves an application to a specified stage. Use job-specific stages from GET /job
 
 <!-- UsageSnippet language="python" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -184,7 +184,7 @@ This can, for example, be used to link a candidate back to a test result/assessm
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -257,7 +257,7 @@ Add extra information to an application. This can be any extra text information 
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -307,7 +307,7 @@ Get attachments from an application. If the ATS stores the attachments on the ca
 
 <!-- UsageSnippet language="python" operationID="GetAtsApplicationsApplicationIdAttachments" method="get" path="/ats/applications/{application_id}/attachments" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -371,7 +371,7 @@ Uploads an attachment file for the specified applicant.
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -435,7 +435,7 @@ Rejects an application with a provided reason. Optionally, you can provide a fre
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -481,7 +481,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsCandidates" method="get" path="/ats/candidates" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -606,8 +606,8 @@ Create a new candidate and application for the specified job.
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidates" method="post" path="/ats/candidates" -->
 ```python
-from kombo_python import SDK
-from kombo_python.utils import parse_datetime
+from kombo import SDK
+from kombo.utils import parse_datetime
 
 
 with SDK(
@@ -708,7 +708,7 @@ Get attachments from a candidate, including all attachments of all of their appl
 
 <!-- UsageSnippet language="python" operationID="GetAtsCandidatesCandidateIdAttachments" method="get" path="/ats/candidates/{candidate_id}/attachments" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -773,7 +773,7 @@ Uploads an attachment file for the specified candidate.
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -856,7 +856,7 @@ Add a result link to a candidate.
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -929,7 +929,7 @@ Kombo takes care of creating the tag if required, finding out the right ID, and 
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -990,7 +990,7 @@ This will also succeed if the tag does not exist on the candidate.
 
 <!-- UsageSnippet language="python" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1037,7 +1037,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsTags" method="get" path="/ats/tags" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1097,7 +1097,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsApplicationStages" method="get" path="/ats/application-stages" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1155,7 +1155,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsJobs" method="get" path="/ats/jobs" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1271,8 +1271,8 @@ Visit our in-depth guides to learn more about:
 
 <!-- UsageSnippet language="python" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" -->
 ```python
-from kombo_python import SDK
-from kombo_python.utils import parse_datetime
+from kombo import SDK
+from kombo.utils import parse_datetime
 
 
 with SDK(
@@ -1360,7 +1360,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsUsers" method="get" path="/ats/users" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1411,7 +1411,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsOffers" method="get" path="/ats/offers" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1463,7 +1463,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsRejectionReasons" method="get" path="/ats/rejection-reasons" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1513,7 +1513,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsInterviews" method="get" path="/ats/interviews" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -1580,8 +1580,8 @@ Once imported, Kombo will automatically fetch and update the application's compl
 
 <!-- UsageSnippet language="python" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" -->
 ```python
-from kombo_python import SDK
-from kombo_python.utils import parse_datetime
+from kombo import SDK
+from kombo.utils import parse_datetime
 
 
 with SDK(

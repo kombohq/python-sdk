@@ -148,8 +148,8 @@ wheels = [
 ]
 
 [[package]]
-name = "kombo-python"
-version = "0.0.2"
+name = "kombo"
+version = "0.0.3"
 source = { editable = "." }
 dependencies = [
     { name = "httpcore" },

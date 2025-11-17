@@ -25,7 +25,7 @@ Check whether your API key is working properly.
 
 <!-- UsageSnippet language="python" operationID="GetCheckApiKey" method="get" path="/check-api-key" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -66,7 +66,7 @@ Trigger a sync for a specific integration.
 
 <!-- UsageSnippet language="python" operationID="PostForceSync" method="post" path="/force-sync" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -259,7 +259,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 
 <!-- UsageSnippet language="python" operationID="PostPassthroughToolApi" method="post" path="/passthrough/{tool}/{api}" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -310,7 +310,7 @@ Delete the specified integration.
 
 <!-- UsageSnippet language="python" operationID="DeleteIntegrationsIntegrationId" method="delete" path="/integrations/{integration_id}" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -351,7 +351,7 @@ Get the specified integration with everything you need to display it to your cus
 
 <!-- UsageSnippet language="python" operationID="GetIntegrationsIntegrationId" method="get" path="/integrations/{integration_id}" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -403,7 +403,7 @@ Embed this the same way you would [embed the connect link](/connect/embedded-flo
 
 <!-- UsageSnippet language="python" operationID="PostIntegrationsIntegrationIdRelink" method="post" path="/integrations/{integration_id}/relink" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -447,7 +447,7 @@ Get all fields available on the specified integration.
 
 <!-- UsageSnippet language="python" operationID="GetIntegrationsIntegrationIdIntegrationFields" method="get" path="/integrations/{integration_id}/integration-fields" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -491,7 +491,7 @@ When enabled, the integration field will be passed as part of the `integration_f
 
 <!-- UsageSnippet language="python" operationID="PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldId" method="patch" path="/integrations/{integration_id}/integration-fields/{integration_field_id}" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -534,7 +534,7 @@ Get all custom fields available on the specified integration.
 
 <!-- UsageSnippet language="python" operationID="GetIntegrationsIntegrationIdCustomFields" method="get" path="/integrations/{integration_id}/custom-fields" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -578,7 +578,7 @@ Updates the mapping of a given custom field. If the custom field is already mapp
 
 <!-- UsageSnippet language="python" operationID="PutIntegrationsIntegrationIdCustomFieldsCustomFieldId" method="put" path="/integrations/{integration_id}/custom-fields/{custom_field_id}" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -621,7 +621,7 @@ Get a list of the tools (i.e., integrations) enabled in your environment.
 
 <!-- UsageSnippet language="python" operationID="GetToolsCategory" method="get" path="/tools/{category}" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
