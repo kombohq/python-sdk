@@ -35,7 +35,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployees" method="get" path="/hris/employees" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -167,7 +167,7 @@ Follow our [create employee guide here](/hris/features/create-employee) to learn
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployeesForm" method="get" path="/hris/employees/form" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -231,7 +231,7 @@ Create an employee, based on the form schema.
 
 <!-- UsageSnippet language="python" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -302,7 +302,7 @@ Uploads an document file for the specified employee.
 
 <!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -351,7 +351,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployeeDocumentCategories" method="get" path="/hris/employee-document-categories" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -401,7 +401,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisGroups" method="get" path="/hris/groups" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -453,7 +453,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployments" method="get" path="/hris/employments" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -503,7 +503,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisLocations" method="get" path="/hris/locations" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -554,7 +554,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisAbsenceTypes" method="get" path="/hris/absence-types" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -604,7 +604,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisTimeOffBalances" method="get" path="/hris/time-off-balances" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -655,7 +655,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisAbsences" method="get" path="/hris/absences" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -729,8 +729,8 @@ Check [this page](/hris/features/creating-absences) for a detailed guide.
 
 <!-- UsageSnippet language="python" operationID="PostHrisAbsences" method="post" path="/hris/absences" -->
 ```python
-from openapi import SDK
-from openapi.utils import parse_datetime
+from kombo_python import SDK
+from kombo_python.utils import parse_datetime
 
 
 with SDK(
@@ -795,7 +795,7 @@ Delete this absence.
 
 <!-- UsageSnippet language="python" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -839,7 +839,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisLegalEntities" method="get" path="/hris/legal-entities" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -896,7 +896,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisTimesheets" method="get" path="/hris/timesheets" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -957,7 +957,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviewCycles" method="get" path="/hris/performance-review-cycles" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -1013,7 +1013,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviews" method="get" path="/hris/performance-reviews" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(

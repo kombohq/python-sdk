@@ -1,4 +1,4 @@
-speakeasyVersion: 1.656.1
+speakeasyVersion: 1.658.1
 sources:
     kombo-prepared-spec:
         sourceNamespace: kombo-api
@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:2378d2f6779bf58e9d76ea092cd43f4f6aacfc0ef4a73b195b54683f5fb0f57e
         tags:
             - latest
-            - speakeasy-sdk-regen-1763041290
+            - speakeasy-sdk-regen-1763366752
             - 1.0.0
 targets:
     kombo-python:
@@ -15,7 +15,7 @@ targets:
         sourceRevisionDigest: sha256:d536aed98f464836e308f6f7fc97739bb70276c5a207a6ae4bc162a526aae094
         sourceBlobDigest: sha256:2378d2f6779bf58e9d76ea092cd43f4f6aacfc0ef4a73b195b54683f5fb0f57e
         codeSamplesNamespace: kombo-api-python-code-samples
-        codeSamplesRevisionDigest: sha256:3c1be8d8003ae545080f73d3ec1bd38d182e77e211691829b6a10d9ec1d915eb
+        codeSamplesRevisionDigest: sha256:1c53585312ff80d1f8dcec04738e7d7f6df9a0c420aeafe6f81771cc2310f29b
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
