@@ -34,7 +34,7 @@ Generate a unique link that allows your user to enter the embedded Kombo Connect
 
 <!-- UsageSnippet language="python" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
@@ -94,7 +94,7 @@ into your system.
 
 <!-- UsageSnippet language="python" operationID="GetConnectIntegrationByTokenToken" method="get" path="/connect/integration-by-token/{token}" -->
 ```python
-from openapi import SDK
+from kombo_python import SDK
 
 
 with SDK(
