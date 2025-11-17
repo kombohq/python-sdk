@@ -65,7 +65,7 @@ python:
   moduleName: ""
   outputModelSuffix: output
   packageManager: uv
-  packageName: openapi
+  packageName: kombo-python
   pytestFilterWarnings: []
   pytestTimeout: 0
   responseFormat: flat
