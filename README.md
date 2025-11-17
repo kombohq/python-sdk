@@ -53,7 +53,7 @@ The SDK can be installed with *uv*, *pip*, or *poetry* package managers.
 *uv* is a fast Python package installer and resolver, designed as a drop-in replacement for pip and pip-tools. It's recommended for its speed and modern Python tooling capabilities.
 
 ```bash
-uv add kombo-python
+uv add kombo
 ```
 
 ### PIP
@@ -61,7 +61,7 @@ uv add kombo-python
 *PIP* is the default package installer for Python, enabling easy installation and management of packages from PyPI via the command line.
 
 ```bash
-pip install kombo-python
+pip install kombo
 ```
 
 ### Poetry
@@ -69,7 +69,7 @@ pip install kombo-python
 *Poetry* is a modern tool that simplifies dependency management and package publishing by using a single `pyproject.toml` file to handle project metadata and dependencies.
 
 ```bash
-poetry add kombo-python
+poetry add kombo
 ```
 
 ### Shell and script usage with `uv`
@@ -77,7 +77,7 @@ poetry add kombo-python
 You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
 
 ```shell
-uvx --from kombo-python python
+uvx --from kombo python
 ```
 
 It's also possible to write a standalone Python script without needing to set up a whole project like so:
@@ -87,11 +87,11 @@ It's also possible to write a standalone Python script without needing to set up
 # /// script
 # requires-python = ">=3.9"
 # dependencies = [
-#     "kombo-python",
+#     "kombo",
 # ]
 # ///
 
-from kombo_python import SDK
+from kombo import SDK
 
 sdk = SDK(
   # SDK arguments
@@ -253,7 +253,7 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -273,7 +273,7 @@ with SDK(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`SDKError`](./src/kombo_python/errors/sdkerror.py) is the base class for all HTTP error responses. It has the following properties:
+[`SDKError`](./src/kombo/errors/sdkerror.py) is the base class for all HTTP error responses. It has the following properties:
 
 | Property           | Type             | Description                                                                             |
 | ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
@@ -286,7 +286,7 @@ with SDK(
 
 ### Example
 ```python
-from kombo_python import SDK, errors
+from kombo import SDK, errors
 
 
 with SDK(
@@ -317,7 +317,7 @@ with SDK(
 
 ### Error Classes
 **Primary error:**
-* [`SDKError`](./src/kombo_python/errors/sdkerror.py): The base class for HTTP error responses.
+* [`SDKError`](./src/kombo/errors/sdkerror.py): The base class for HTTP error responses.
 
 <details><summary>Less common errors (8)</summary>
 
@@ -329,11 +329,11 @@ with SDK(
     * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
 
 
-**Inherit from [`SDKError`](./src/kombo_python/errors/sdkerror.py)**:
-* [`KomboAtsError`](./src/kombo_python/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 27 of 57 methods.*
-* [`KomboHrisError`](./src/kombo_python/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 57 methods.*
-* [`KomboGeneralError`](./src/kombo_python/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 13 of 57 methods.*
-* [`ResponseValidationError`](./src/kombo_python/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+**Inherit from [`SDKError`](./src/kombo/errors/sdkerror.py)**:
+* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 27 of 57 methods.*
+* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 57 methods.*
+* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 13 of 57 methods.*
+* [`ResponseValidationError`](./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
 
@@ -347,8 +347,8 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-from kombo_python import SDK
-from kombo_python.utils import BackoffStrategy, RetryConfig
+from kombo import SDK
+from kombo.utils import BackoffStrategy, RetryConfig
 
 
 with SDK(
@@ -365,8 +365,8 @@ with SDK(
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-from kombo_python import SDK
-from kombo_python.utils import BackoffStrategy, RetryConfig
+from kombo import SDK
+from kombo.utils import BackoffStrategy, RetryConfig
 
 
 with SDK(
@@ -391,7 +391,7 @@ This allows you to wrap the client with your own custom logic, such as adding cu
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-from kombo_python import SDK
+from kombo import SDK
 import httpx
 
 http_client = httpx.Client(headers={"x-custom-header": "someValue"})
@@ -400,8 +400,8 @@ s = SDK(client=http_client)
 
 or you could wrap the client with your own custom logic:
 ```python
-from kombo_python import SDK
-from kombo_python.httpclient import AsyncHttpClient
+from kombo import SDK
+from kombo.httpclient import AsyncHttpClient
 import httpx
 
 class CustomClient(AsyncHttpClient):
@@ -471,7 +471,7 @@ The `SDK` class implements the context manager protocol and registers a finalize
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
-from kombo_python import SDK
+from kombo import SDK
 def main():
 
     with SDK(
@@ -497,11 +497,11 @@ You can setup your SDK to emit debug logs for SDK requests and responses.
 
 You can pass your own logger class directly into your SDK.
 ```python
-from kombo_python import SDK
+from kombo import SDK
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-s = SDK(debug_logger=logging.getLogger("kombo_python"))
+s = SDK(debug_logger=logging.getLogger("kombo"))
 ```
 <!-- End Debugging [debug] -->
 

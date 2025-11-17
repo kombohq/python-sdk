@@ -20,7 +20,7 @@ This is mainly intended for debugging. As you always need to submit the full lis
 
 <!-- UsageSnippet language="python" operationID="GetAssessmentPackages" method="get" path="/assessment/packages" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -86,7 +86,7 @@ Packages that have been previously submitted through this endpoint but aren't in
 
 <!-- UsageSnippet language="python" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -140,7 +140,7 @@ Get all open assessment and background check orders of an integration.
 
 <!-- UsageSnippet language="python" operationID="GetAssessmentOrdersOpen" method="get" path="/assessment/orders/open" -->
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -220,8 +220,8 @@ Updates an assessment or a background check order result.
 
 <!-- UsageSnippet language="python" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" -->
 ```python
-from kombo_python import SDK
-from kombo_python.utils import parse_datetime
+from kombo import SDK
+from kombo.utils import parse_datetime
 
 
 with SDK(

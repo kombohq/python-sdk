@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 # Synchronous Example
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -21,7 +21,7 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-from kombo_python import SDK
+from kombo import SDK
 
 async def main():
 
