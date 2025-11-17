@@ -1,0 +1,6 @@
+[tools]
+"aqua:speakeasy-api/speakeasy" = "1"
+
+[tasks."dev"]
+description = "Build the SDK without publishing"
+run = 'OPENAPI_DOC_AUTH_TOKEN="$(doppler secrets get SDK_SPEC_ENDPOINT_TOKEN --project kombo-engine --config dev --plain)" speakeasy run --minimal --skip-upload-spec --skip-versioning --skip-compile --target kombo-python'
