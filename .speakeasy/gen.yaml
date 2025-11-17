@@ -65,7 +65,7 @@ python:
   moduleName: ""
   outputModelSuffix: output
   packageManager: uv
-  packageName: kombo-python
+  packageName: kombo
   pytestFilterWarnings: []
   pytestTimeout: 0
   responseFormat: flat
