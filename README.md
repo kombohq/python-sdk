@@ -107,7 +107,7 @@ Once that is saved to a file, you can run it with `uv run script.py` where
 ## SDK Example Usage
 
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -125,7 +125,7 @@ with SDK(
 The majority of Kombo API endpoints are for interacting with a single "integration" (i.e., a single connection to one your customers' systems). For using these, make sure to specify the `integration_id` parameter when initializing the SDK:
 
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
@@ -148,7 +148,7 @@ By default, the SDK will use the EU region. If you're using the US region (hoste
 #### Example
 
 ```python
-from kombo_python import SDK
+from kombo import SDK
 
 
 with SDK(
