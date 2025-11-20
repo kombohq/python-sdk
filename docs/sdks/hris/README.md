@@ -35,15 +35,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployees" method="get" path="/hris/employees" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_employees(page_size=100, include_deleted=False)
+    res = k_client.hris.get_employees(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -167,15 +167,15 @@ Follow our [create employee guide here](/hris/features/create-employee) to learn
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployeesForm" method="get" path="/hris/employees/form" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_employee_form()
+    res = k_client.hris.get_employee_form()
 
     # Handle response
     print(res)
@@ -231,15 +231,15 @@ Create an employee, based on the form schema.
 
 <!-- UsageSnippet language="python" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.create_employee_with_form(request={
+    res = k_client.hris.create_employee_with_form(request={
         "properties": {
             "firstName": "John",
             "startDate": "2025-01-01T00:00:00Z",
@@ -302,15 +302,15 @@ Uploads an document file for the specified employee.
 
 <!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.add_employee_document(employee_id="GRKdd9dibYKKCrmGRSMJf3wu", category_id="3Cjwu7nA7pH5cX5X1NAPmb7M", document={
+    res = k_client.hris.add_employee_document(employee_id="GRKdd9dibYKKCrmGRSMJf3wu", category_id="3Cjwu7nA7pH5cX5X1NAPmb7M", document={
         "name": "Frank Doe Employment Contract.txt",
         "content_type": "text/plain",
         "data": "SGkgdGhlcmUsIEtvbWJvIGlzIGN1cnJlbnRseSBoaXJpbmcgZW5naW5lZXJzIHRoYXQgbG92ZSB0byB3b3JrIG9uIGRldmVsb3BlciBwcm9kdWN0cy4=",
@@ -351,15 +351,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployeeDocumentCategories" method="get" path="/hris/employee-document-categories" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_employee_document_categories(page_size=100, include_deleted=False)
+    res = k_client.hris.get_employee_document_categories(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -401,15 +401,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisGroups" method="get" path="/hris/groups" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_groups(page_size=100, include_deleted=False)
+    res = k_client.hris.get_groups(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -453,15 +453,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisEmployments" method="get" path="/hris/employments" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_employments(page_size=100, include_deleted=False)
+    res = k_client.hris.get_employments(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -503,15 +503,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisLocations" method="get" path="/hris/locations" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_locations(page_size=100, include_deleted=False)
+    res = k_client.hris.get_locations(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -554,15 +554,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisAbsenceTypes" method="get" path="/hris/absence-types" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_absence_types(page_size=100, include_deleted=False)
+    res = k_client.hris.get_absence_types(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -604,15 +604,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisTimeOffBalances" method="get" path="/hris/time-off-balances" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_time_off_balances(page_size=100, include_deleted=False)
+    res = k_client.hris.get_time_off_balances(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -655,15 +655,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisAbsences" method="get" path="/hris/absences" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_absences(page_size=100, include_deleted=False)
+    res = k_client.hris.get_absences(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -729,16 +729,16 @@ Check [this page](/hris/features/creating-absences) for a detailed guide.
 
 <!-- UsageSnippet language="python" operationID="PostHrisAbsences" method="post" path="/hris/absences" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.utils import parse_datetime
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.create_absence(employee_id="wXJMxwDvPAjrJ4CyqdV9", absence_type_id="3YKtQ7qedsrcCady1jSyAkY1", start_date=parse_datetime("2019-09-17T00:00:00Z"), end_date=parse_datetime("2019-09-21T00:00:00Z"), employee_note="Visiting the aliens", status="REQUESTED", start_half_day=False, end_half_day=False, start_time="08:30:00", end_time="16:00:00")
+    res = k_client.hris.create_absence(employee_id="wXJMxwDvPAjrJ4CyqdV9", absence_type_id="3YKtQ7qedsrcCady1jSyAkY1", start_date=parse_datetime("2019-09-17T00:00:00Z"), end_date=parse_datetime("2019-09-21T00:00:00Z"), employee_note="Visiting the aliens", status="REQUESTED", start_half_day=False, end_half_day=False, start_time="08:30:00", end_time="16:00:00")
 
     # Handle response
     print(res)
@@ -795,15 +795,15 @@ Delete this absence.
 
 <!-- UsageSnippet language="python" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.delete_absence(absence_id="wXJMxwDvPAjrJ4CyqdV9")
+    res = k_client.hris.delete_absence(absence_id="wXJMxwDvPAjrJ4CyqdV9")
 
     # Handle response
     print(res)
@@ -839,15 +839,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisLegalEntities" method="get" path="/hris/legal-entities" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_legal_entities(page_size=100, include_deleted=False)
+    res = k_client.hris.get_legal_entities(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -896,15 +896,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisTimesheets" method="get" path="/hris/timesheets" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_timesheets(page_size=100, include_deleted=False)
+    res = k_client.hris.get_timesheets(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -957,15 +957,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviewCycles" method="get" path="/hris/performance-review-cycles" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_performance_review_cycles(page_size=100, include_deleted=False)
+    res = k_client.hris.get_performance_review_cycles(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1013,15 +1013,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviews" method="get" path="/hris/performance-reviews" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.hris.get_performance_reviews(page_size=100, include_deleted=False)
+    res = k_client.hris.get_performance_reviews(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items

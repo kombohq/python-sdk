@@ -13,16 +13,26 @@ from typing_extensions import Annotated, TypedDict
 class PostHrisEmployeesFormPositiveResponseDataTypedDict(TypedDict):
     id: Nullable[str]
     r"""The Kombo id of the created employee. If null, we only created a pre-hire which shows up in the next sync after a successful onboarding."""
+    remote_id: Nullable[str]
+    r"""The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use `prehire_id` instead."""
+    prehire_id: Nullable[str]
+    r"""The temporary ID returned by the remote system when creating a pre-hire. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
 
 
 class PostHrisEmployeesFormPositiveResponseData(BaseModel):
     id: Nullable[str]
     r"""The Kombo id of the created employee. If null, we only created a pre-hire which shows up in the next sync after a successful onboarding."""
 
+    remote_id: Nullable[str]
+    r"""The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use `prehire_id` instead."""
+
+    prehire_id: Nullable[str]
+    r"""The temporary ID returned by the remote system when creating a pre-hire. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["id"]
+        nullable_fields = ["id", "remote_id", "prehire_id"]
         null_default_fields = []
 
         serialized = handler(self)

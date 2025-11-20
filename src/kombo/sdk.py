@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from kombo.hris import Hris
 
 
-class SDK(BaseSDK):
+class Kombo(BaseSDK):
     general: "General"
     hris: "Hris"
     ats: "Ats"
