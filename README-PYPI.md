@@ -16,8 +16,8 @@ Developer-friendly & type-safe Python SDK for the [Kombo Unified API](https://do
 
 <br />
 
-> [!WARNING]
-> The Kombo Python SDK is still in beta and is subject to breaking changes.
+> [!NOTE]
+> The Kombo Python SDK is **currently in beta**. The core API structure, methods, and input/output objects are considered stable. We may still make minor adjustments such as renames to exported type classes or fixes for code generator oddities, but all changes will be clearly documented in the changelog. We **do not foresee** any blockers for production use.
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
