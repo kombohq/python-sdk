@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 0c8d1667-2710-4860-aee3-7d221dbc0a60
 management:
-  docChecksum: 56a37c99f064e4b29f56f9d2fea39bdf
+  docChecksum: 49de8ed28eca4d8ac2ec7aed2f262494
   docVersion: 1.0.0
   speakeasyVersion: 1.658.2
   generationVersion: 2.755.9
-  releaseVersion: 0.1.0
-  configChecksum: f1e1b7dd433280a325dc2b5ca0eb30d0
+  releaseVersion: 0.1.1
+  configChecksum: 2e80c06deab7ed2e72210986e08a2bd7
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
@@ -1676,6 +1676,8 @@ examples:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
+      requestBody:
+        application/json: {"properties": {"key": 3571.27}}
       responses:
         "200":
           application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "<value>"}]}
@@ -1685,6 +1687,8 @@ examples:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
+      requestBody:
+        application/json: {"properties": {"key": 3571.27}}
       responses:
         default:
           application/json: {"status": "error", "error": {"code": "INTEGRATION.MODEL_NOT_AVAILABLE", "title": "This data model isn't supported for the selected integration.", "message": "The \"employees\" model is not yet available for Greenhouse. Please reach out to Kombo if you need this functionality.", "log_url": "https://app.kombo.dev/my-prod/logs?interactionId=123456"}}
@@ -1692,6 +1696,8 @@ examples:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
+      requestBody:
+        application/json: {"properties": {"key": 3571.27}}
       responses:
         default:
           application/json: {"status": "error", "error": {"code": null, "title": null, "message": "The message is always in the response.", "log_url": null}}
@@ -3515,4 +3521,4 @@ examples:
 examplesVersion: 1.0.2
 releaseNotes: |
   ## Python SDK Changes Detected:
-  * `kombo.hris.create_employee_with_form()`:  `response.data` **Changed**
+  * `kombo.hris.create_employee_with_form()`:  `request` **Changed** **Breaking** :warning:

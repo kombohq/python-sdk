@@ -679,12 +679,9 @@ class Hris(BaseSDK):
     def create_employee_with_form(
         self,
         *,
-        request: Optional[
-            Union[
-                models.PostHrisEmployeesFormRequestBody,
-                models.PostHrisEmployeesFormRequestBodyTypedDict,
-            ]
-        ] = None,
+        properties: Union[
+            Dict[str, models.Schema4], Dict[str, models.Schema4TypedDict]
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -717,7 +714,7 @@ class Hris(BaseSDK):
         }
         ```
 
-        :param request: The request object to send.
+        :param properties:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -733,11 +730,9 @@ class Hris(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, Optional[models.PostHrisEmployeesFormRequestBody]
-            )
-        request = cast(Optional[models.PostHrisEmployeesFormRequestBody], request)
+        request = models.PostHrisEmployeesFormRequestBody(
+            properties=properties,
+        )
 
         req = self._build_request(
             method="POST",
@@ -745,7 +740,7 @@ class Hris(BaseSDK):
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
@@ -756,11 +751,7 @@ class Hris(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.PostHrisEmployeesFormRequestBody],
+                request, False, False, "json", models.PostHrisEmployeesFormRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -800,12 +791,9 @@ class Hris(BaseSDK):
     async def create_employee_with_form_async(
         self,
         *,
-        request: Optional[
-            Union[
-                models.PostHrisEmployeesFormRequestBody,
-                models.PostHrisEmployeesFormRequestBodyTypedDict,
-            ]
-        ] = None,
+        properties: Union[
+            Dict[str, models.Schema4], Dict[str, models.Schema4TypedDict]
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -838,7 +826,7 @@ class Hris(BaseSDK):
         }
         ```
 
-        :param request: The request object to send.
+        :param properties:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -854,11 +842,9 @@ class Hris(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, Optional[models.PostHrisEmployeesFormRequestBody]
-            )
-        request = cast(Optional[models.PostHrisEmployeesFormRequestBody], request)
+        request = models.PostHrisEmployeesFormRequestBody(
+            properties=properties,
+        )
 
         req = self._build_request_async(
             method="POST",
@@ -866,7 +852,7 @@ class Hris(BaseSDK):
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
@@ -877,11 +863,7 @@ class Hris(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.PostHrisEmployeesFormRequestBody],
+                request, False, False, "json", models.PostHrisEmployeesFormRequestBody
             ),
             timeout_ms=timeout_ms,
         )

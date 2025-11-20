@@ -239,17 +239,15 @@ with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as k_client:
 
-    res = k_client.hris.create_employee_with_form(request={
-        "properties": {
-            "firstName": "John",
-            "startDate": "2025-01-01T00:00:00Z",
-            "workLocation": {
-                "site": "8e422bf8cav",
-                "keyNumbers": {
-                    "0": 142,
-                    "1": 525,
-                    "2": 63,
-                },
+    res = k_client.hris.create_employee_with_form(properties={
+        "firstName": "John",
+        "startDate": "2025-01-01T00:00:00Z",
+        "workLocation": {
+            "site": "8e422bf8cav",
+            "keyNumbers": {
+                "0": 142,
+                "1": 525,
+                "2": 63,
             },
         },
     })
@@ -261,10 +259,10 @@ with Kombo(
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [models.PostHrisEmployeesFormRequestBody](../../models/posthrisemployeesformrequestbody.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
-| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `properties`                                                        | Dict[str, [models.Schema4](../../models/schema4.md)]                | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
