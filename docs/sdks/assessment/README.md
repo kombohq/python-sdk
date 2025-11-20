@@ -20,15 +20,15 @@ This is mainly intended for debugging. As you always need to submit the full lis
 
 <!-- UsageSnippet language="python" operationID="GetAssessmentPackages" method="get" path="/assessment/packages" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.assessment.get_packages()
+    res = k_client.assessment.get_packages()
 
     # Handle response
     print(res)
@@ -86,15 +86,15 @@ Packages that have been previously submitted through this endpoint but aren't in
 
 <!-- UsageSnippet language="python" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.assessment.set_packages(packages=[
+    res = k_client.assessment.set_packages(packages=[
         {
             "id": "1001",
             "type": "SKILLS_TEST",
@@ -140,15 +140,15 @@ Get all open assessment and background check orders of an integration.
 
 <!-- UsageSnippet language="python" operationID="GetAssessmentOrdersOpen" method="get" path="/assessment/orders/open" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.assessment.get_open_orders(page_size=100)
+    res = k_client.assessment.get_open_orders(page_size=100)
 
     while res is not None:
         # Handle items
@@ -220,16 +220,16 @@ Updates an assessment or a background check order result.
 
 <!-- UsageSnippet language="python" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.utils import parse_datetime
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.assessment.update_order_result(assessment_order_id="GRKdd9dibYKKCrmGRSMJf3wu", status="COMPLETED", result_url="https://example.com", completed_at=parse_datetime("2023-04-04T00:00:00Z"), score=90, max_score=100, attributes=[
+    res = k_client.assessment.update_order_result(assessment_order_id="GRKdd9dibYKKCrmGRSMJf3wu", status="COMPLETED", result_url="https://example.com", completed_at=parse_datetime("2023-04-04T00:00:00Z"), score=90, max_score=100, attributes=[
         {
             "type": "TEXT",
             "label": "Role fit",

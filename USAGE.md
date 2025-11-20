@@ -1,14 +1,14 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 # Synchronous Example
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.check_api_key()
+    res = k_client.general.check_api_key()
 
     # Handle response
     print(res)
@@ -21,15 +21,15 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-from kombo import SDK
+from kombo import Kombo
 
 async def main():
 
-    async with SDK(
+    async with Kombo(
         api_key="<YOUR_BEARER_TOKEN_HERE>",
-    ) as sdk:
+    ) as k_client:
 
-        res = await sdk.general.check_api_key_async()
+        res = await k_client.general.check_api_key_async()
 
         # Handle response
         print(res)

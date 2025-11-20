@@ -46,15 +46,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsApplications" method="get" path="/ats/applications" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_applications(page_size=100, include_deleted=False)
+    res = k_client.ats.get_applications(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -111,15 +111,15 @@ Moves an application to a specified stage. Use job-specific stages from GET /job
 
 <!-- UsageSnippet language="python" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.move_application_to_stage(application_id="GRKdd9dibYKKCrmGRSMJf3wu", stage_id="3PJ8PZhZZa1eEdd2DtPNtVup")
+    res = k_client.ats.move_application_to_stage(application_id="GRKdd9dibYKKCrmGRSMJf3wu", stage_id="3PJ8PZhZZa1eEdd2DtPNtVup")
 
     # Handle response
     print(res)
@@ -184,15 +184,15 @@ This can, for example, be used to link a candidate back to a test result/assessm
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.add_application_result_link(application_id="8Xi6iZrwusZqJmDGXs49GBmJ", label="Assessment Result", url="https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG", details={
+    res = k_client.ats.add_application_result_link(application_id="8Xi6iZrwusZqJmDGXs49GBmJ", label="Assessment Result", url="https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG", details={
         "custom_field_name_prefix": "Acme:",
         "attributes": [
             {
@@ -257,15 +257,15 @@ Add extra information to an application. This can be any extra text information 
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.add_application_note(application_id="8Xi6iZrwusZqJmDGXs49GBmJ", content="A new message from the candidate is available in YourChat!", content_type="PLAIN_TEXT")
+    res = k_client.ats.add_application_note(application_id="8Xi6iZrwusZqJmDGXs49GBmJ", content="A new message from the candidate is available in YourChat!", content_type="PLAIN_TEXT")
 
     # Handle response
     print(res)
@@ -307,15 +307,15 @@ Get attachments from an application. If the ATS stores the attachments on the ca
 
 <!-- UsageSnippet language="python" operationID="GetAtsApplicationsApplicationIdAttachments" method="get" path="/ats/applications/{application_id}/attachments" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_application_attachments(application_id="8Xi6iZrwusZqJmDGXs49GBmJ")
+    res = k_client.ats.get_application_attachments(application_id="8Xi6iZrwusZqJmDGXs49GBmJ")
 
     # Handle response
     print(res)
@@ -371,15 +371,15 @@ Uploads an attachment file for the specified applicant.
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.add_application_attachment(application_id="GRKdd9dibYKKCrmGRSMJf3wu", attachment={
+    res = k_client.ats.add_application_attachment(application_id="GRKdd9dibYKKCrmGRSMJf3wu", attachment={
         "name": "Frank Doe CV.txt",
         "content_type": "text/plain",
         "data": "SGkgdGhlcmUsIEtvbWJvIGlzIGN1cnJlbnRseSBoaXJpbmcgZW5naW5lZXJzIHRoYXQgbG92ZSB0byB3b3JrIG9uIGRldmVsb3BlciBwcm9kdWN0cy4=",
@@ -435,15 +435,15 @@ Rejects an application with a provided reason. Optionally, you can provide a fre
 
 <!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.reject_application(application_id="GRKdd9dibYKKCrmGRSMJf3wu", rejection_reason_id="3PJ8PZhZZa1eEdd2DtPNtVup", note="Candidate was a great culture fit but didn't bring the hard skills we need.")
+    res = k_client.ats.reject_application(application_id="GRKdd9dibYKKCrmGRSMJf3wu", rejection_reason_id="3PJ8PZhZZa1eEdd2DtPNtVup", note="Candidate was a great culture fit but didn't bring the hard skills we need.")
 
     # Handle response
     print(res)
@@ -481,15 +481,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsCandidates" method="get" path="/ats/candidates" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_candidates(page_size=100, include_deleted=False)
+    res = k_client.ats.get_candidates(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -606,16 +606,16 @@ Create a new candidate and application for the specified job.
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidates" method="post" path="/ats/candidates" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.utils import parse_datetime
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.create_candidate(candidate={
+    res = k_client.ats.create_candidate(candidate={
         "first_name": "Frank",
         "last_name": "Doe",
         "email_address": "frank.doe@example.com",
@@ -708,15 +708,15 @@ Get attachments from a candidate, including all attachments of all of their appl
 
 <!-- UsageSnippet language="python" operationID="GetAtsCandidatesCandidateIdAttachments" method="get" path="/ats/candidates/{candidate_id}/attachments" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_candidate_attachments(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ")
+    res = k_client.ats.get_candidate_attachments(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ")
 
     # Handle response
     print(res)
@@ -773,15 +773,15 @@ Uploads an attachment file for the specified candidate.
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.add_candidate_attachment(candidate_id="GRKdd9dibYKKCrmGRSMJf3wu", attachment={
+    res = k_client.ats.add_candidate_attachment(candidate_id="GRKdd9dibYKKCrmGRSMJf3wu", attachment={
         "name": "Frank Doe CV.txt",
         "content_type": "text/plain",
         "data": "SGkgdGhlcmUsIEtvbWJvIGlzIGN1cnJlbnRseSBoaXJpbmcgZW5naW5lZXJzIHRoYXQgbG92ZSB0byB3b3JrIG9uIGRldmVsb3BlciBwcm9kdWN0cy4=",
@@ -856,15 +856,15 @@ Add a result link to a candidate.
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.add_candidate_result_link(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ", label="Assessment Result", url="https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG", details={
+    res = k_client.ats.add_candidate_result_link(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ", label="Assessment Result", url="https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG", details={
         "custom_field_name_prefix": "Acme:",
         "attributes": [
             {
@@ -929,15 +929,15 @@ Kombo takes care of creating the tag if required, finding out the right ID, and 
 
 <!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.add_candidate_tag(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ", tag={
+    res = k_client.ats.add_candidate_tag(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ", tag={
         "name": "Excellent Fit",
     })
 
@@ -990,15 +990,15 @@ This will also succeed if the tag does not exist on the candidate.
 
 <!-- UsageSnippet language="python" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.remove_candidate_tag(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ", tag={
+    res = k_client.ats.remove_candidate_tag(candidate_id="8Xi6iZrwusZqJmDGXs49GBmJ", tag={
         "name": "Excellent Fit",
     })
 
@@ -1037,15 +1037,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsTags" method="get" path="/ats/tags" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_tags(page_size=100, include_deleted=False)
+    res = k_client.ats.get_tags(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1097,15 +1097,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsApplicationStages" method="get" path="/ats/application-stages" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_application_stages(page_size=100, include_deleted=False)
+    res = k_client.ats.get_application_stages(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1155,15 +1155,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsJobs" method="get" path="/ats/jobs" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_jobs(page_size=100, include_deleted=False)
+    res = k_client.ats.get_jobs(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1271,16 +1271,16 @@ Visit our in-depth guides to learn more about:
 
 <!-- UsageSnippet language="python" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.utils import parse_datetime
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.create_application(job_id="BDpgnpZ148nrGh4mYHNxJBgx", candidate={
+    res = k_client.ats.create_application(job_id="BDpgnpZ148nrGh4mYHNxJBgx", candidate={
         "first_name": "Frank",
         "last_name": "Doe",
         "email_address": "frank.doe@example.com",
@@ -1360,15 +1360,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsUsers" method="get" path="/ats/users" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_users(page_size=100, include_deleted=False)
+    res = k_client.ats.get_users(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1411,15 +1411,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsOffers" method="get" path="/ats/offers" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_offers(page_size=100, include_deleted=False)
+    res = k_client.ats.get_offers(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1463,15 +1463,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsRejectionReasons" method="get" path="/ats/rejection-reasons" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_rejection_reasons(page_size=100, include_deleted=False)
+    res = k_client.ats.get_rejection_reasons(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1513,15 +1513,15 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 <!-- UsageSnippet language="python" operationID="GetAtsInterviews" method="get" path="/ats/interviews" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.get_interviews(page_size=100, include_deleted=False)
+    res = k_client.ats.get_interviews(page_size=100, include_deleted=False)
 
     while res is not None:
         # Handle items
@@ -1580,16 +1580,16 @@ Once imported, Kombo will automatically fetch and update the application's compl
 
 <!-- UsageSnippet language="python" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.utils import parse_datetime
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.ats.import_tracked_application(tracked_at=parse_datetime("2024-04-12T14:33:47Z"), successfactors={
+    res = k_client.ats.import_tracked_application(tracked_at=parse_datetime("2024-04-12T14:33:47Z"), successfactors={
         "id_type": "application_remote_id",
         "application_remote_id": "1224042",
     })
