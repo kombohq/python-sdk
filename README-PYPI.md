@@ -91,9 +91,9 @@ It's also possible to write a standalone Python script without needing to set up
 # ]
 # ///
 
-from kombo import SDK
+from kombo import Kombo
 
-sdk = SDK(
+sdk = Kombo(
   # SDK arguments
 )
 
@@ -253,14 +253,14 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.get_integration_fields(integration_id="<id>", page_size=100)
+    res = k_client.general.get_integration_fields(integration_id="<id>", page_size=100)
 
     while res is not None:
         # Handle items
@@ -286,16 +286,16 @@ with SDK(
 
 ### Example
 ```python
-from kombo import SDK, errors
+from kombo import Kombo, errors
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
     res = None
     try:
 
-        res = sdk.general.check_api_key()
+        res = k_client.general.check_api_key()
 
         # Handle response
         print(res)
@@ -347,15 +347,15 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.utils import BackoffStrategy, RetryConfig
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.check_api_key(,
+    res = k_client.general.check_api_key(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Handle response
@@ -365,16 +365,16 @@ with SDK(
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.utils import BackoffStrategy, RetryConfig
 
 
-with SDK(
+with Kombo(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.check_api_key()
+    res = k_client.general.check_api_key()
 
     # Handle response
     print(res)
@@ -391,16 +391,16 @@ This allows you to wrap the client with your own custom logic, such as adding cu
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-from kombo import SDK
+from kombo import Kombo
 import httpx
 
 http_client = httpx.Client(headers={"x-custom-header": "someValue"})
-s = SDK(client=http_client)
+s = Kombo(client=http_client)
 ```
 
 or you could wrap the client with your own custom logic:
 ```python
-from kombo import SDK
+from kombo import Kombo
 from kombo.httpclient import AsyncHttpClient
 import httpx
 
@@ -459,33 +459,33 @@ class CustomClient(AsyncHttpClient):
             extensions=extensions,
         )
 
-s = SDK(async_client=CustomClient(httpx.AsyncClient()))
+s = Kombo(async_client=CustomClient(httpx.AsyncClient()))
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Resource Management [resource-management] -->
 ## Resource Management
 
-The `SDK` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+The `Kombo` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
 
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
-from kombo import SDK
+from kombo import Kombo
 def main():
 
-    with SDK(
+    with Kombo(
         api_key="<YOUR_BEARER_TOKEN_HERE>",
-    ) as sdk:
+    ) as k_client:
         # Rest of application here...
 
 
 # Or when using async:
 async def amain():
 
-    async with SDK(
+    async with Kombo(
         api_key="<YOUR_BEARER_TOKEN_HERE>",
-    ) as sdk:
+    ) as k_client:
         # Rest of application here...
 ```
 <!-- End Resource Management [resource-management] -->
@@ -497,11 +497,11 @@ You can setup your SDK to emit debug logs for SDK requests and responses.
 
 You can pass your own logger class directly into your SDK.
 ```python
-from kombo import SDK
+from kombo import Kombo
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-s = SDK(debug_logger=logging.getLogger("kombo"))
+s = Kombo(debug_logger=logging.getLogger("kombo"))
 ```
 <!-- End Debugging [debug] -->
 

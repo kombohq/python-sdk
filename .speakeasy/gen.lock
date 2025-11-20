@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 0c8d1667-2710-4860-aee3-7d221dbc0a60
 management:
-  docChecksum: e880ae26f208899297c81ae7f20cb4e4
+  docChecksum: 56a37c99f064e4b29f56f9d2fea39bdf
   docVersion: 1.0.0
-  speakeasyVersion: 1.658.1
-  generationVersion: 2.755.6
-  releaseVersion: 0.0.3
-  configChecksum: a423696e5207ef681fd4eb92e7918a35
+  speakeasyVersion: 1.658.2
+  generationVersion: 2.755.9
+  releaseVersion: 0.0.4
+  configChecksum: 40c83ca29676472ab42b1455f8a16453
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.23.8
+    core: 5.23.9
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
     enumUnions: 0.1.0
@@ -1671,14 +1671,14 @@ examples:
         application/json: {"properties": {"firstName": "John", "startDate": "2025-01-01T00:00:00Z", "workLocation": {"site": "8e422bf8cav", "keyNumbers": {"0": 142, "1": 525, "2": 63}}}}
       responses:
         "200":
-          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg"}, "warnings": [{"message": "This is an example warning!"}]}
+          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "This is an example warning!"}]}
     speakeasy-default-post-hris-employees-form:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg"}, "warnings": [{"message": "<value>"}]}
+          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "<value>"}]}
         default:
           application/json: {"status": "error", "error": {"code": "INTEGRATION.AUTHENTICATION_INVALID", "title": "<value>", "message": "<value>", "log_url": "https://authorized-dandelion.com"}}
     Error Response:
@@ -3513,3 +3513,6 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": null, "title": null, "message": "The message is always in the response.", "log_url": null}}
 examplesVersion: 1.0.2
+releaseNotes: |
+  ## Python SDK Changes Detected:
+  * `kombo.hris.create_employee_with_form()`:  `response.data` **Changed**

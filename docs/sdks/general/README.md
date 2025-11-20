@@ -25,14 +25,14 @@ Check whether your API key is working properly.
 
 <!-- UsageSnippet language="python" operationID="GetCheckApiKey" method="get" path="/check-api-key" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.check_api_key()
+    res = k_client.general.check_api_key()
 
     # Handle response
     print(res)
@@ -66,15 +66,15 @@ Trigger a sync for a specific integration.
 
 <!-- UsageSnippet language="python" operationID="PostForceSync" method="post" path="/force-sync" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.trigger_sync(type_="FULL")
+    res = k_client.general.trigger_sync(type_="FULL")
 
     # Handle response
     print(res)
@@ -140,6 +140,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |UKG Pro|`ukgpro/recruting`|[UKG Pro's Recruiting API](https://developer.ukg.com/hcm/reference/retrieveapplications). We automatically authenticate all requests and use  `https://\{hostname\}/talent/recruiting/v2/\{tenantalias\}/api` as the base URL.|
 |UKG Pro|`ukgpro/default`|[UKG Pro's HRIS API](https://developer.ukg.com/hcm/reference/get_personnel-v1-person-details). We automatically authenticate all requests and use  `https://\{hostname\}` as the base URL.|
 |UKG Ready|`ukgready/api`|UKG Ready [API](https://secure.saashr.com/ta/docs/rest/public/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}` as the base URL.|
+|UKG Ready|`ukgready/api`|UKG Ready [API](https://secure.saashr.com/ta/docs/rest/public/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}` as the base URL.|
 |ADP Workforce Now|`adpworkforcenow/default`|[ADP Workforce Now API v2](https://developers.adp.com/build/api-explorer/hcm-offrg-wfn). We automatically authenticate all requests and use the correct subdomain.|
 |Taleo|`taleo/soap`|[Taleo's API](https://docs.oracle.com/en/cloud/saas/taleo-enterprise/23b/otwsu/c-taleoapi.html). We automatically authenticate all requests and use 'https://\{your-subdomain\}.taleo.net/enterprise/soap' as base URL.|
 |rexx systems|`rexx/default`|Rexx's HRIS export API. There is only one endpoint: `Get /`|
@@ -164,6 +165,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Microsoft Azure AD|`azuread/v1`|[AzureAD's API](https://learn.microsoft.com/en-us/graph/api/resources/identity-network-access-overview?view=graph-rest-1.0). We automatically authenticate all requests.|
 |Google Workspace|`googleworkspace/people`|[Googles's API](https://developers.google.com/people/api/rest). We automatically authenticate all requests and use 'https://people.googleapis.com' as the base URL.|
 |Google Workspace|`googleworkspace/admin`|[Googles's API](https://developers.google.com/admin-sdk/directory/reference/rest). We automatically authenticate all requests and use 'https://admin.googleapis.com' as the base URL.|
+|Nmbrs|`nmbrs/soap`|[Nmbrs SOAP API](https://api.nmbrs.nl/soap/v3/). We automatically authenticate all requests and use `https://api.nmbrs.nl/soap/v3/` as the base URL. Set `data` to your raw XML string (the content that will be placed inside the `\<soap:Body\>` tag). Use `/` as your `path`, as we will always send requests to `https://api.nmbrs.nl/soap/v3/\{service_name\}.asmx`. Set your `method` to `POST`. You need to specify the `api_options` object and set `service_name` to the name of the service you want to call. Available services include `EmployeeService` and `CompanyService`.|
 |Pinpoint|`pinpoint/v1`|Pinpoint's [JSON:API](https://developers.pinpointhq.com/docs). We automatically authenticate all requests using the `X-API-KEY` header and use `https://\{subdomain\}.pinpointhq.com/api/v1` as the base URL.|
 |d.vinci|`dvinci/rest-api`|The [DVinci REST API](https://static.dvinci-easy.com/files/d.vinci%20rest-api.html). All requests are authenticated by Kombo and use `https://\{dvinci_domain\}/restApi/` as the base URL.|
 |d.vinci|`dvinci/apply-api`|The [DVinci Apply API](https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html). All requests are authenticated by Kombo and use `https://\{dvinci_domain\}/p/\{portal_path\}/` as the base URL.|
@@ -259,15 +261,15 @@ To get started, please pick the relevant API (some tools provide multiple to due
 
 <!-- UsageSnippet language="python" operationID="PostPassthroughToolApi" method="post" path="/passthrough/{tool}/{api}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.send_passthrough_request(tool="personio", api="personnel", method="GET", path="/company/employees")
+    res = k_client.general.send_passthrough_request(tool="personio", api="personnel", method="GET", path="/company/employees")
 
     # Handle response
     print(res)
@@ -310,14 +312,14 @@ Delete the specified integration.
 
 <!-- UsageSnippet language="python" operationID="DeleteIntegrationsIntegrationId" method="delete" path="/integrations/{integration_id}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.delete_integration(integration_id="<id>", body={})
+    res = k_client.general.delete_integration(integration_id="<id>", body={})
 
     # Handle response
     print(res)
@@ -351,14 +353,14 @@ Get the specified integration with everything you need to display it to your cus
 
 <!-- UsageSnippet language="python" operationID="GetIntegrationsIntegrationId" method="get" path="/integrations/{integration_id}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.get_integration_details(integration_id="<id>")
+    res = k_client.general.get_integration_details(integration_id="<id>")
 
     # Handle response
     print(res)
@@ -403,14 +405,14 @@ Embed this the same way you would [embed the connect link](/connect/embedded-flo
 
 <!-- UsageSnippet language="python" operationID="PostIntegrationsIntegrationIdRelink" method="post" path="/integrations/{integration_id}/relink" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.create_reconnection_link(integration_id="personio:93fCvorjZ2jas7ZekX1V1n5d", language="en", scope_config_id="9Pv6aCFwNDEzPNmwjSsY9SQx", link_type="EMBEDDED")
+    res = k_client.general.create_reconnection_link(integration_id="personio:93fCvorjZ2jas7ZekX1V1n5d", language="en", scope_config_id="9Pv6aCFwNDEzPNmwjSsY9SQx", link_type="EMBEDDED")
 
     # Handle response
     print(res)
@@ -447,14 +449,14 @@ Get all fields available on the specified integration.
 
 <!-- UsageSnippet language="python" operationID="GetIntegrationsIntegrationIdIntegrationFields" method="get" path="/integrations/{integration_id}/integration-fields" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.get_integration_fields(integration_id="<id>", page_size=100)
+    res = k_client.general.get_integration_fields(integration_id="<id>", page_size=100)
 
     while res is not None:
         # Handle items
@@ -491,14 +493,14 @@ When enabled, the integration field will be passed as part of the `integration_f
 
 <!-- UsageSnippet language="python" operationID="PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldId" method="patch" path="/integrations/{integration_id}/integration-fields/{integration_field_id}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.update_integration_field(integration_id="integration_id", integration_field_id="integration_field_id", enable_passthrough=True)
+    res = k_client.general.update_integration_field(integration_id="integration_id", integration_field_id="integration_field_id", enable_passthrough=True)
 
     # Handle response
     print(res)
@@ -534,14 +536,14 @@ Get all custom fields available on the specified integration.
 
 <!-- UsageSnippet language="python" operationID="GetIntegrationsIntegrationIdCustomFields" method="get" path="/integrations/{integration_id}/custom-fields" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.get_custom_fields(integration_id="<id>", page_size=100)
+    res = k_client.general.get_custom_fields(integration_id="<id>", page_size=100)
 
     while res is not None:
         # Handle items
@@ -578,14 +580,14 @@ Updates the mapping of a given custom field. If the custom field is already mapp
 
 <!-- UsageSnippet language="python" operationID="PutIntegrationsIntegrationIdCustomFieldsCustomFieldId" method="put" path="/integrations/{integration_id}/custom-fields/{custom_field_id}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.update_custom_field_mapping(integration_id="integration_id", custom_field_id="custom_field_id", integration_field_id="integration_field_id")
+    res = k_client.general.update_custom_field_mapping(integration_id="integration_id", custom_field_id="custom_field_id", integration_field_id="integration_field_id")
 
     # Handle response
     print(res)
@@ -621,14 +623,14 @@ Get a list of the tools (i.e., integrations) enabled in your environment.
 
 <!-- UsageSnippet language="python" operationID="GetToolsCategory" method="get" path="/tools/{category}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.general.get_tools(category="ats")
+    res = k_client.general.get_tools(category="ats")
 
     # Handle response
     print(res)

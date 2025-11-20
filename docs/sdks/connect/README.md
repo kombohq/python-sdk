@@ -34,14 +34,14 @@ Generate a unique link that allows your user to enter the embedded Kombo Connect
 
 <!-- UsageSnippet language="python" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.connect.create_connection_link(end_user_email="test@example.com", end_user_organization_name="Test Inc.", end_user_origin_id="123", integration_category="HRIS", integration_tool="personio", language="en", enable_filtering=False, enable_field_mapping=False, link_type="EMBEDDED")
+    res = k_client.connect.create_connection_link(end_user_email="test@example.com", end_user_organization_name="Test Inc.", end_user_origin_id="123", integration_category="HRIS", integration_tool="personio", language="en", enable_filtering=False, enable_field_mapping=False, link_type="EMBEDDED")
 
     # Handle response
     print(res)
@@ -94,14 +94,14 @@ into your system.
 
 <!-- UsageSnippet language="python" operationID="GetConnectIntegrationByTokenToken" method="get" path="/connect/integration-by-token/{token}" -->
 ```python
-from kombo import SDK
+from kombo import Kombo
 
 
-with SDK(
+with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
+) as k_client:
 
-    res = sdk.connect.get_integration_by_token(token="<value>")
+    res = k_client.connect.get_integration_by_token(token="<value>")
 
     # Handle response
     print(res)
