@@ -1,4 +1,4 @@
-# kombo-python
+# Kombo Python SDK
 
 Developer-friendly & type-safe Python SDK for the [Kombo Unified API](https://docs.kombo.dev/introduction).
 
@@ -6,8 +6,8 @@ Developer-friendly & type-safe Python SDK for the [Kombo Unified API](https://do
   <a href="https://www.speakeasy.com/?utm_source=kombo-python&utm_campaign=python">
     <img src="https://custom-icon-badges.demolab.com/badge/-built%20with%20speakeasy-212015?style=flat-square&logoColor=FBE331&logo=speakeasy&labelColor=545454" />
   </a>
-  <a href="https://pypi.org/project/kombo-python/">
-    <img src="https://img.shields.io/pypi/v/kombo-python?style=flat-square" />
+  <a href="https://pypi.org/project/kombo/">
+    <img src="https://img.shields.io/pypi/v/kombo?style=flat-square" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
@@ -22,7 +22,7 @@ Developer-friendly & type-safe Python SDK for the [Kombo Unified API](https://do
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [kombo-python](#kombo-python)
+* [Kombo Python SDK](#kombo-python-sdk)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Region Selection](#region-selection)
