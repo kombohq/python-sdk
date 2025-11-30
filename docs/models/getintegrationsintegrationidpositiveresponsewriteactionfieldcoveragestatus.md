@@ -1,4 +1,4 @@
-# WriteActionCoverageStatus
+# GetIntegrationsIntegrationIDPositiveResponseWriteActionFieldCoverageStatus
 
 The status of a datapoint of an integrated tool:
 

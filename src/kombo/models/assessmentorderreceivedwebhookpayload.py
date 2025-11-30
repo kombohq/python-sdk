@@ -25,14 +25,14 @@ class AssessmentOrderReceivedWebhookPayloadCandidateTypedDict(TypedDict):
 
     email: str
     r"""The candidate's email address."""
+    remote_id: NotRequired[Nullable[str]]
+    r"""The candidate's identifier in the integrated system."""
     first_name: NotRequired[Nullable[str]]
     r"""The candidate's first name."""
     last_name: NotRequired[Nullable[str]]
     r"""The candidate's last name."""
     phone: NotRequired[Nullable[str]]
     r"""The candidate's phone number."""
-    remote_id: NotRequired[Nullable[str]]
-    r"""The candidate's identifier in the integrated system."""
 
 
 class AssessmentOrderReceivedWebhookPayloadCandidate(BaseModel):
@@ -40,6 +40,9 @@ class AssessmentOrderReceivedWebhookPayloadCandidate(BaseModel):
 
     email: str
     r"""The candidate's email address."""
+
+    remote_id: OptionalNullable[str] = UNSET
+    r"""The candidate's identifier in the integrated system."""
 
     first_name: OptionalNullable[str] = UNSET
     r"""The candidate's first name."""
@@ -50,13 +53,10 @@ class AssessmentOrderReceivedWebhookPayloadCandidate(BaseModel):
     phone: OptionalNullable[str] = UNSET
     r"""The candidate's phone number."""
 
-    remote_id: OptionalNullable[str] = UNSET
-    r"""The candidate's identifier in the integrated system."""
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["first_name", "last_name", "phone", "remote_id"]
-        nullable_fields = ["first_name", "last_name", "phone", "remote_id"]
+        optional_fields = ["remote_id", "first_name", "last_name", "phone"]
+        nullable_fields = ["remote_id", "first_name", "last_name", "phone"]
         null_default_fields = []
 
         serialized = handler(self)

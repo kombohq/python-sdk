@@ -1,4 +1,4 @@
-# GetIntegrationsIntegrationIDPositiveResponseFieldCoverageStatus
+# GetIntegrationsIntegrationIDPositiveResponseReadModelCoverageStatus
 
 The status of a datapoint of an integrated tool:
 
