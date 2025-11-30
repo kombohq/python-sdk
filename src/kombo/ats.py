@@ -109,6 +109,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -272,6 +273,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -426,6 +428,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PutAtsApplicationsApplicationIDStageRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -547,6 +550,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PutAtsApplicationsApplicationIDStageRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -704,6 +708,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDResultLinksRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -862,6 +867,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDResultLinksRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -991,6 +997,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDNotesRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1119,6 +1126,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDNotesRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1209,6 +1217,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1300,6 +1309,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1439,6 +1449,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDAttachmentsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1578,6 +1589,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDAttachmentsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1707,6 +1719,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDRejectRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1835,6 +1848,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsApplicationsApplicationIDRejectRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1952,6 +1966,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2098,6 +2113,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2377,6 +2393,7 @@ class Ats(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PostAtsCandidatesRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2624,6 +2641,7 @@ class Ats(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PostAtsCandidatesRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2712,6 +2730,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2800,6 +2819,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2939,6 +2959,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsCandidatesCandidateIDAttachmentsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3078,6 +3099,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsCandidatesCandidateIDAttachmentsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3240,6 +3262,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsCandidatesCandidateIDResultLinksRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3402,6 +3425,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsCandidatesCandidateIDResultLinksRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3532,6 +3556,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsCandidatesCandidateIDTagsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3662,6 +3687,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsCandidatesCandidateIDTagsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3792,6 +3818,7 @@ class Ats(BaseSDK):
                 "json",
                 models.DeleteAtsCandidatesCandidateIDTagsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3922,6 +3949,7 @@ class Ats(BaseSDK):
                 "json",
                 models.DeleteAtsCandidatesCandidateIDTagsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4027,6 +4055,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4157,6 +4186,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4300,6 +4330,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4440,6 +4471,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4608,6 +4640,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4780,6 +4813,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -5066,6 +5100,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsJobsJobIDApplicationsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -5317,6 +5352,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsJobsJobIDApplicationsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -5425,6 +5461,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -5559,6 +5596,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -5693,6 +5731,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -5823,6 +5862,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -5958,6 +5998,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -6090,6 +6131,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -6226,6 +6268,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -6360,6 +6403,7 @@ class Ats(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -6574,6 +6618,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsImportTrackedApplicationRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -6759,6 +6804,7 @@ class Ats(BaseSDK):
                 "json",
                 models.PostAtsImportTrackedApplicationRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 

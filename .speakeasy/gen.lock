@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 0c8d1667-2710-4860-aee3-7d221dbc0a60
 management:
-  docChecksum: 49de8ed28eca4d8ac2ec7aed2f262494
+  docChecksum: 4b99d051623e198b87a8dc30bf7ae83b
   docVersion: 1.0.0
-  speakeasyVersion: 1.660.0
-  generationVersion: 2.760.2
-  releaseVersion: 0.1.2
-  configChecksum: 52f90300d55613abf1a84639d1b35bd7
+  speakeasyVersion: 1.665.0
+  generationVersion: 2.767.2
+  releaseVersion: 0.2.0
+  configChecksum: 403185ef25c0cacd217d0fc24b5a0457
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.23.10
+    core: 5.23.13
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
     enumUnions: 0.1.0
@@ -36,8 +36,8 @@ features:
     openEnums: 1.0.1
     pagination: 3.0.7
     responseFormat: 1.0.1
-    retries: 3.0.2
-    sdkHooks: 1.1.0
+    retries: 3.0.3
+    sdkHooks: 1.2.0
     serverIDs: 3.0.0
     unions: 3.1.0
     webhooks: 2.0.0
@@ -409,24 +409,32 @@ generatedFiles:
   - docs/models/getintegrationsintegrationidintegrationfieldsresponse.md
   - docs/models/getintegrationsintegrationidpositiveresponse.md
   - docs/models/getintegrationsintegrationidpositiveresponsecategory.md
-  - docs/models/getintegrationsintegrationidpositiveresponsecoveragestatus.md
   - docs/models/getintegrationsintegrationidpositiveresponsedata.md
   - docs/models/getintegrationsintegrationidpositiveresponseenduser.md
-  - docs/models/getintegrationsintegrationidpositiveresponsefield.md
-  - docs/models/getintegrationsintegrationidpositiveresponsefieldcoveragestatus.md
   - docs/models/getintegrationsintegrationidpositiveresponsereadmodel.md
+  - docs/models/getintegrationsintegrationidpositiveresponsereadmodelcoveragestatus.md
+  - docs/models/getintegrationsintegrationidpositiveresponsereadmodelfield.md
+  - docs/models/getintegrationsintegrationidpositiveresponsereadmodelfieldcoveragestatus.md
   - docs/models/getintegrationsintegrationidpositiveresponsesetupstatus.md
   - docs/models/getintegrationsintegrationidpositiveresponsestatus.md
   - docs/models/getintegrationsintegrationidpositiveresponsetool.md
+  - docs/models/getintegrationsintegrationidpositiveresponsewriteaction.md
+  - docs/models/getintegrationsintegrationidpositiveresponsewriteactioncoveragestatus.md
+  - docs/models/getintegrationsintegrationidpositiveresponsewriteactionfield.md
+  - docs/models/getintegrationsintegrationidpositiveresponsewriteactionfieldcoveragestatus.md
   - docs/models/getintegrationsintegrationidrequest.md
   - docs/models/gettoolscategoryparametercategory.md
   - docs/models/gettoolscategorypositiveresponse.md
   - docs/models/gettoolscategorypositiveresponsedata.md
-  - docs/models/gettoolscategorypositiveresponsefield.md
-  - docs/models/gettoolscategorypositiveresponsefieldcoveragestatus.md
   - docs/models/gettoolscategorypositiveresponsereadmodel.md
   - docs/models/gettoolscategorypositiveresponsereadmodelcoveragestatus.md
+  - docs/models/gettoolscategorypositiveresponsereadmodelfield.md
+  - docs/models/gettoolscategorypositiveresponsereadmodelfieldcoveragestatus.md
   - docs/models/gettoolscategorypositiveresponsetool.md
+  - docs/models/gettoolscategorypositiveresponsewriteaction.md
+  - docs/models/gettoolscategorypositiveresponsewriteactioncoveragestatus.md
+  - docs/models/gettoolscategorypositiveresponsewriteactionfield.md
+  - docs/models/gettoolscategorypositiveresponsewriteactionfieldcoveragestatus.md
   - docs/models/gettoolscategoryrequest.md
   - docs/models/group.md
   - docs/models/grouptype.md
@@ -640,6 +648,7 @@ generatedFiles:
   - docs/models/postatscandidatesrequestbodypersonio.md
   - docs/models/postatscandidatesrequestbodypiloga.md
   - docs/models/postatscandidatesrequestbodypilogacandidate.md
+  - docs/models/postatscandidatesrequestbodypinpoint.md
   - docs/models/postatscandidatesrequestbodypostheaders.md
   - docs/models/postatscandidatesrequestbodyrecruitee.md
   - docs/models/postatscandidatesrequestbodyrecruiteecandidate.md
@@ -779,6 +788,7 @@ generatedFiles:
   - docs/models/postatsjobsjobidapplicationsrequestbodypersonio.md
   - docs/models/postatsjobsjobidapplicationsrequestbodypiloga.md
   - docs/models/postatsjobsjobidapplicationsrequestbodypilogacandidate.md
+  - docs/models/postatsjobsjobidapplicationsrequestbodypinpoint.md
   - docs/models/postatsjobsjobidapplicationsrequestbodypostheaders.md
   - docs/models/postatsjobsjobidapplicationsrequestbodyrecruitee.md
   - docs/models/postatsjobsjobidapplicationsrequestbodyrecruiteecandidate.md
@@ -851,6 +861,7 @@ generatedFiles:
   - docs/models/postpassthroughtoolapirequest.md
   - docs/models/postpassthroughtoolapirequestbody.md
   - docs/models/preconditionoptions.md
+  - docs/models/prehire.md
   - docs/models/properties.md
   - docs/models/propertiesarray.md
   - docs/models/propertiescheckbox.md
@@ -895,6 +906,7 @@ generatedFiles:
   - docs/models/putintegrationsintegrationidcustomfieldscustomfieldidrequest.md
   - docs/models/putintegrationsintegrationidcustomfieldscustomfieldidrequestbody.md
   - docs/models/qastatus.md
+  - docs/models/readmodelscopeconfigsetting.md
   - docs/models/remoteworkstatus.md
   - docs/models/reviewcycle.md
   - docs/models/reviewee.md
@@ -966,7 +978,6 @@ generatedFiles:
   - docs/models/schema2union2.md
   - docs/models/schema4.md
   - docs/models/scopeconfig.md
-  - docs/models/scopeconfigsetting.md
   - docs/models/score.md
   - docs/models/screeningquestion.md
   - docs/models/security.md
@@ -996,8 +1007,7 @@ generatedFiles:
   - docs/models/webhooksyncfinishedwebhookpayloadrequest.md
   - docs/models/worklocation.md
   - docs/models/worklocationaddress.md
-  - docs/models/writeaction.md
-  - docs/models/writeactioncoveragestatus.md
+  - docs/models/writeactionscopeconfigsetting.md
   - docs/sdks/assessment/README.md
   - docs/sdks/ats/README.md
   - docs/sdks/connect/README.md
@@ -1403,7 +1413,7 @@ examples:
           integration_id: "<id>"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"id": "factorial:8d1hpPsbjxUkoCoa1veLZGe5", "tool": {"id": "factorial", "label": "Factorial", "internal_label": null, "logo_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/logo.svg", "icon_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/icon.svg"}, "category": "HRIS", "status": "ACTIVE", "setup_status": "COMPLETED", "end_user": {"organization_name": "Acme", "creator_email": "example-integration-creator@acme.com", "origin_id": "2DQJAUtSzzzKP9buDTvUvPk3"}, "scope_config": {"id": "B1hu5NGyhdjSq5X3hxEz4bAN", "name": "Anonymous Scopes"}, "created_at": "2022-08-07T14:01:29.196Z", "beta": false, "read_models": [{"id": "hris_employees", "label": "Employees", "is_available": true, "coverage_status": "SUPPORTED", "scope_config_setting": "ENABLED", "opted_out_by_customer": false, "fields": [{"id": "date_of_birth", "is_available": false, "coverage_status": "SUPPORTED", "scope_config_setting": "OPTIONAL", "opted_out_by_customer": true}]}]}}
+          application/json: {"status": "success", "data": {"id": "factorial:8d1hpPsbjxUkoCoa1veLZGe5", "tool": {"id": "factorial", "label": "Factorial", "internal_label": null, "logo_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/logo.svg", "icon_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/icon.svg"}, "category": "HRIS", "status": "ACTIVE", "setup_status": "COMPLETED", "end_user": {"organization_name": "Acme", "creator_email": "example-integration-creator@acme.com", "origin_id": "2DQJAUtSzzzKP9buDTvUvPk3"}, "scope_config": {"id": "B1hu5NGyhdjSq5X3hxEz4bAN", "name": "Anonymous Scopes"}, "created_at": "2022-08-07T14:01:29.196Z", "beta": false, "read_models": [{"id": "hris_employees", "label": "Employees", "is_available": true, "coverage_status": "SUPPORTED", "scope_config_setting": "ENABLED", "opted_out_by_customer": false, "fields": [{"id": "date_of_birth", "is_available": false, "coverage_status": "SUPPORTED", "scope_config_setting": "OPTIONAL", "opted_out_by_customer": true}]}], "write_actions": [{"id": "hris_create_employee", "label": "Create employee", "is_available": true, "coverage_status": "SUPPORTED", "scope_config_setting": "ENABLED", "opted_out_by_customer": false, "fields": [{"id": "first_name", "is_available": true, "coverage_status": "SUPPORTED"}]}]}}
     Error Response:
       parameters:
         path:
@@ -1573,7 +1583,7 @@ examples:
           category: "ats"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"tools": [{"id": "factorial", "label": "Factorial", "internal_label": null, "assets": {"logo_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/logo.svg", "icon_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/icon.svg", "icon_black_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/icon-black.svg"}, "paid_api_details_markdown": null, "fast_track_details_markdown": null, "partner_only_details_markdown": null, "connection_guide_url": "https://help.kombo.dev/hc/en-us/articles/18743884123409-Factorial-HR-How-do-I-link-my-account", "coverage": {"read_models": [{"id": "hris_employees", "label": "Employees", "coverage_status": "SUPPORTED", "fields": [{"id": "date_of_birth", "coverage_status": "SUPPORTED"}]}, {"id": "hris_teams", "label": "Groups", "coverage_status": "UNSUPPORTED", "fields": [{"id": "parent_id", "coverage_status": "UNSUPPORTED"}]}], "write_actions": [{"id": "hris_create_employee", "label": "Create employee", "coverage_status": "SUPPORTED"}], "features": [{"id": "automatic_source_writing", "label": "Automatic Source Writing", "coverage_status": "SUPPORTED"}]}}]}}
+          application/json: {"status": "success", "data": {"tools": [{"id": "factorial", "label": "Factorial", "internal_label": null, "assets": {"logo_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/logo.svg", "icon_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/icon.svg", "icon_black_url": "https://storage.googleapis.com/kombo-assets/integrations/factorial/icon-black.svg"}, "paid_api_details_markdown": null, "fast_track_details_markdown": null, "partner_only_details_markdown": null, "connection_guide_url": "https://help.kombo.dev/hc/en-us/articles/18743884123409-Factorial-HR-How-do-I-link-my-account", "coverage": {"read_models": [{"id": "hris_employees", "label": "Employees", "coverage_status": "SUPPORTED", "fields": [{"id": "date_of_birth", "coverage_status": "SUPPORTED"}]}, {"id": "hris_teams", "label": "Groups", "coverage_status": "UNSUPPORTED", "fields": [{"id": "parent_id", "coverage_status": "UNSUPPORTED"}]}], "write_actions": [{"id": "hris_create_employee", "label": "Create employee", "coverage_status": "SUPPORTED", "fields": [{"id": "first_name", "coverage_status": "SUPPORTED"}]}], "features": [{"id": "automatic_source_writing", "label": "Automatic Source Writing", "coverage_status": "SUPPORTED"}]}}]}}
     Error Response:
       parameters:
         path:
@@ -1671,7 +1681,7 @@ examples:
         application/json: {"properties": {"firstName": "John", "startDate": "2025-01-01T00:00:00Z", "workLocation": {"site": "8e422bf8cav", "keyNumbers": {"0": 142, "1": 525, "2": 63}}}}
       responses:
         "200":
-          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "This is an example warning!"}]}
+          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire": {"remote_id": null}}, "warnings": [{"message": "This is an example warning!"}]}
     speakeasy-default-post-hris-employees-form:
       parameters:
         header:
@@ -1680,7 +1690,7 @@ examples:
         application/json: {"properties": {"key": 3571.27}}
       responses:
         "200":
-          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "<value>"}]}
+          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire": {"remote_id": null}}, "warnings": [{"message": "<value>"}]}
         default:
           application/json: {"status": "error", "error": {"code": "INTEGRATION.AUTHENTICATION_INVALID", "title": "<value>", "message": "<value>", "log_url": "https://authorized-dandelion.com"}}
     Error Response:
@@ -3407,7 +3417,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "<value>", "results": [{"id": "B5KQKhAgTv6ZwzrfAbqbhipd", "package_id": "typescript_test", "candidate": {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "phone": "+1 123 456 7890", "remote_id": "12345"}, "application": {"remote_id": "54321"}, "job": {"remote_id": "67890", "name": "Engineering Manager", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "hiring_team": [{"remote_id": "78901", "email": "jane.doe@gmail.com", "first_name": "Jane", "last_name": "Doe", "hiring_team_roles": ["RECRUITER"]}]}}]}}
+          application/json: {"status": "success", "data": {"next": "<value>", "results": [{"id": "B5KQKhAgTv6ZwzrfAbqbhipd", "package_id": "typescript_test", "candidate": {"remote_id": "12345", "email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "phone": "+1 123 456 7890"}, "application": {"remote_id": "54321"}, "job": {"remote_id": "67890", "name": "Engineering Manager", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "hiring_team": [{"remote_id": "78901", "email": "jane.doe@gmail.com", "first_name": "Jane", "last_name": "Doe", "hiring_team_roles": ["RECRUITER"]}]}}]}}
         default:
           application/json: {"status": "error", "error": {"code": "ATS.JOB_CLOSED", "title": null, "message": "<value>", "log_url": "https://specific-league.net/"}}
     Error Response:
@@ -3519,3 +3529,4 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": null, "title": null, "message": "The message is always in the response.", "log_url": null}}
 examplesVersion: 1.0.2
+releaseNotes: "## Python SDK Changes:\n* `kombo.hris.create_employee_with_form()`:  `response.data` **Changed** **Breaking** :warning:\n* `kombo.general.get_integration_details()`:  `response.data.write_actions` **Added**\n* `kombo.general.get_tools()`:  `response.data.tools.[].coverage.write_actions.[].fields` **Added**\n* `kombo.ats.create_candidate()`: \n  *  `request.remote_fields.pinpoint` **Added**\n* `kombo.ats.create_application()`: \n  *  `request.remote_fields.pinpoint` **Added**\n"

@@ -3,9 +3,9 @@
 from __future__ import annotations
 from datetime import datetime
 from kombo.types import BaseModel, Nullable, UNSET_SENTINEL
-from kombo.utils import validate_const
+from kombo.utils import get_discriminator, validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Discriminator, Tag, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -72,13 +72,19 @@ PostAtsImportTrackedApplicationPositiveResponseErecruiterUnionTypedDict = TypeAl
 )
 
 
-PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion = TypeAliasType(
-    "PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion",
+PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion = Annotated[
     Union[
-        PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds,
-        PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds,
+        Annotated[
+            PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds,
+            Tag("application_and_job_remote_ids"),
+        ],
+        Annotated[
+            PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds,
+            Tag("application_and_candidate_remote_ids"),
+        ],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "id_type", "id_type")),
+]
 
 
 class PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteIDTypedDict(

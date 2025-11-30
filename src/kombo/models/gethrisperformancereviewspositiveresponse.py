@@ -3,9 +3,9 @@
 from __future__ import annotations
 from datetime import datetime
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from kombo.utils import validate_const
+from kombo.utils import get_discriminator, validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Discriminator, Tag, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -136,9 +136,13 @@ SummaryRatingTypedDict = TypeAliasType(
 r"""The summary rating of the performance review."""
 
 
-SummaryRating = TypeAliasType(
-    "SummaryRating", Union[SummaryRatingSingleSelect, SummaryRatingNumeric]
-)
+SummaryRating = Annotated[
+    Union[
+        Annotated[SummaryRatingNumeric, Tag("NUMERIC")],
+        Annotated[SummaryRatingSingleSelect, Tag("SINGLE_SELECT")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 r"""The summary rating of the performance review."""
 
 

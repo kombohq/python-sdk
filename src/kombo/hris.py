@@ -111,6 +111,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -278,6 +279,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -477,6 +479,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -641,6 +644,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -753,6 +757,7 @@ class Hris(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PostHrisEmployeesFormRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -865,6 +870,7 @@ class Hris(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PostHrisEmployeesFormRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -981,6 +987,7 @@ class Hris(BaseSDK):
                 "json",
                 models.PostHrisEmployeesEmployeeIDDocumentsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1097,6 +1104,7 @@ class Hris(BaseSDK):
                 "json",
                 models.PostHrisEmployeesEmployeeIDDocumentsRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1202,6 +1210,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1332,6 +1341,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1475,6 +1485,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1615,6 +1626,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1750,6 +1762,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1880,6 +1893,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2016,6 +2030,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2150,6 +2165,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2284,6 +2300,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2414,6 +2431,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2550,6 +2568,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2684,6 +2703,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2830,6 +2850,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2976,6 +2997,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3160,6 +3182,7 @@ class Hris(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PostHrisAbsencesRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3312,6 +3335,7 @@ class Hris(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PostHrisAbsencesRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3428,6 +3452,7 @@ class Hris(BaseSDK):
                 "json",
                 models.DeleteHrisAbsencesAbsenceIDRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3544,6 +3569,7 @@ class Hris(BaseSDK):
                 "json",
                 models.DeleteHrisAbsencesAbsenceIDRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3652,6 +3678,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3786,6 +3813,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -3941,6 +3969,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4097,6 +4126,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4241,6 +4271,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4377,6 +4408,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4529,6 +4561,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -4679,6 +4712,7 @@ class Hris(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 

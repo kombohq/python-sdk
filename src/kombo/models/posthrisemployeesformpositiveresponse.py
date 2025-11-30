@@ -10,13 +10,57 @@ from typing import List, Literal
 from typing_extensions import Annotated, TypedDict
 
 
+class PrehireTypedDict(TypedDict):
+    r"""An object containing the temporary pre-hire information from the remote system. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
+
+    remote_id: Nullable[str]
+    r"""The temporary ID returned by the remote system when creating a pre-hire."""
+
+
+class Prehire(BaseModel):
+    r"""An object containing the temporary pre-hire information from the remote system. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
+
+    remote_id: Nullable[str]
+    r"""The temporary ID returned by the remote system when creating a pre-hire."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = []
+        nullable_fields = ["remote_id"]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m
+
+
 class PostHrisEmployeesFormPositiveResponseDataTypedDict(TypedDict):
     id: Nullable[str]
     r"""The Kombo id of the created employee. If null, we only created a pre-hire which shows up in the next sync after a successful onboarding."""
     remote_id: Nullable[str]
-    r"""The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use `prehire_id` instead."""
-    prehire_id: Nullable[str]
-    r"""The temporary ID returned by the remote system when creating a pre-hire. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
+    r"""The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use the `prehire` object instead."""
+    prehire: PrehireTypedDict
+    r"""An object containing the temporary pre-hire information from the remote system. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
 
 
 class PostHrisEmployeesFormPositiveResponseData(BaseModel):
@@ -24,15 +68,15 @@ class PostHrisEmployeesFormPositiveResponseData(BaseModel):
     r"""The Kombo id of the created employee. If null, we only created a pre-hire which shows up in the next sync after a successful onboarding."""
 
     remote_id: Nullable[str]
-    r"""The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use `prehire_id` instead."""
+    r"""The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use the `prehire` object instead."""
 
-    prehire_id: Nullable[str]
-    r"""The temporary ID returned by the remote system when creating a pre-hire. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
+    prehire: Prehire
+    r"""An object containing the temporary pre-hire information from the remote system. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["id", "remote_id", "prehire_id"]
+        nullable_fields = ["id", "remote_id"]
         null_default_fields = []
 
         serialized = handler(self)
