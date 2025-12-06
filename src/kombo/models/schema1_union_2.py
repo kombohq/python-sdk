@@ -21,9 +21,9 @@ from .schema1_union_1 import (
     Schema1UnifiedKey7,
 )
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from kombo.utils import validate_const
+from kombo.utils import get_discriminator, validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Discriminator, Tag, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Literal, TYPE_CHECKING, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -48,20 +48,20 @@ Schema1Union2TypedDict = TypeAliasType(
 )
 
 
-Schema1Union2 = TypeAliasType(
-    "Schema1Union2",
+Schema1Union2 = Annotated[
     Union[
-        Schema1Date,
-        Schema1Checkbox,
-        Schema1SingleSelect,
-        Schema1Object,
-        Schema1File,
-        Schema1Number,
-        Schema1Text,
-        Schema1MultiSelect,
-        "Schema1Array2",
+        Annotated[Schema1Text, Tag("text")],
+        Annotated[Schema1Number, Tag("number")],
+        Annotated[Schema1Date, Tag("date")],
+        Annotated[Schema1SingleSelect, Tag("single_select")],
+        Annotated[Schema1MultiSelect, Tag("multi_select")],
+        Annotated[Schema1Checkbox, Tag("checkbox")],
+        Annotated[Schema1Object, Tag("object")],
+        Annotated["Schema1Array2", Tag("array")],
+        Annotated[Schema1File, Tag("file")],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 
 
 class Schema1Array2TypedDict(TypedDict):

@@ -4,9 +4,9 @@ from __future__ import annotations
 from .schema1_union_1 import Schema1Union1, Schema1Union1TypedDict
 from .schema2_union_2 import Schema2Union2, Schema2Union2TypedDict
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from kombo.utils import validate_const
+from kombo.utils import get_discriminator, validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Discriminator, Tag, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -448,13 +448,15 @@ GetHrisEmployeesFormPositiveResponseOptionsUnion2TypedDict = TypeAliasType(
 )
 
 
-GetHrisEmployeesFormPositiveResponseOptionsUnion2 = TypeAliasType(
-    "GetHrisEmployeesFormPositiveResponseOptionsUnion2",
+GetHrisEmployeesFormPositiveResponseOptionsUnion2 = Annotated[
     Union[
-        GetHrisEmployeesFormPositiveResponseOptionsInline2,
-        GetHrisEmployeesFormPositiveResponseOptionsReferenced2,
+        Annotated[GetHrisEmployeesFormPositiveResponseOptionsInline2, Tag("inline")],
+        Annotated[
+            GetHrisEmployeesFormPositiveResponseOptionsReferenced2, Tag("referenced")
+        ],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 
 
 class PropertiesMultiSelectTypedDict(TypedDict):
@@ -609,13 +611,15 @@ GetHrisEmployeesFormPositiveResponseOptionsUnion1TypedDict = TypeAliasType(
 )
 
 
-GetHrisEmployeesFormPositiveResponseOptionsUnion1 = TypeAliasType(
-    "GetHrisEmployeesFormPositiveResponseOptionsUnion1",
+GetHrisEmployeesFormPositiveResponseOptionsUnion1 = Annotated[
     Union[
-        GetHrisEmployeesFormPositiveResponseOptionsInline1,
-        GetHrisEmployeesFormPositiveResponseOptionsReferenced1,
+        Annotated[GetHrisEmployeesFormPositiveResponseOptionsInline1, Tag("inline")],
+        Annotated[
+            GetHrisEmployeesFormPositiveResponseOptionsReferenced1, Tag("referenced")
+        ],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 
 
 class PropertiesSingleSelectTypedDict(TypedDict):
@@ -958,20 +962,20 @@ PropertiesTypedDict = TypeAliasType(
 )
 
 
-Properties = TypeAliasType(
-    "Properties",
+Properties = Annotated[
     Union[
-        PropertiesDate,
-        PropertiesCheckbox,
-        PropertiesSingleSelect,
-        PropertiesObject,
-        PropertiesFile,
-        PropertiesNumber,
-        PropertiesText,
-        PropertiesMultiSelect,
-        PropertiesArray,
+        Annotated[PropertiesText, Tag("text")],
+        Annotated[PropertiesNumber, Tag("number")],
+        Annotated[PropertiesDate, Tag("date")],
+        Annotated[PropertiesSingleSelect, Tag("single_select")],
+        Annotated[PropertiesMultiSelect, Tag("multi_select")],
+        Annotated[PropertiesCheckbox, Tag("checkbox")],
+        Annotated[PropertiesObject, Tag("object")],
+        Annotated[PropertiesArray, Tag("array")],
+        Annotated[PropertiesFile, Tag("file")],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 
 
 class GetHrisEmployeesFormPositiveResponseDataTypedDict(TypedDict):

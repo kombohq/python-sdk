@@ -169,14 +169,14 @@ with SDK(
 <details open>
 <summary>Available methods</summary>
 
-### [assessment](docs/sdks/assessment/README.md)
+### [Assessment](docs/sdks/assessment/README.md)
 
 * [get_packages](docs/sdks/assessment/README.md#get_packages) - Get packages
 * [set_packages](docs/sdks/assessment/README.md#set_packages) - Set packages
 * [get_open_orders](docs/sdks/assessment/README.md#get_open_orders) - Get open orders
 * [update_order_result](docs/sdks/assessment/README.md#update_order_result) - Update order result
 
-### [ats](docs/sdks/ats/README.md)
+### [Ats](docs/sdks/ats/README.md)
 
 * [get_applications](docs/sdks/ats/README.md#get_applications) - Get applications
 * [move_application_to_stage](docs/sdks/ats/README.md#move_application_to_stage) - Move application to stage
@@ -202,12 +202,12 @@ with SDK(
 * [get_interviews](docs/sdks/ats/README.md#get_interviews) - Get interviews
 * [import_tracked_application](docs/sdks/ats/README.md#import_tracked_application) - Import tracked application
 
-### [connect](docs/sdks/connect/README.md)
+### [Connect](docs/sdks/connect/README.md)
 
 * [create_connection_link](docs/sdks/connect/README.md#create_connection_link) - Create connection link
 * [get_integration_by_token](docs/sdks/connect/README.md#get_integration_by_token) - Get integration by token
 
-### [general](docs/sdks/general/README.md)
+### [General](docs/sdks/general/README.md)
 
 * [check_api_key](docs/sdks/general/README.md#check_api_key) - Check API key
 * [trigger_sync](docs/sdks/general/README.md#trigger_sync) - Trigger sync
@@ -221,7 +221,7 @@ with SDK(
 * [update_custom_field_mapping](docs/sdks/general/README.md#update_custom_field_mapping) - Put custom field mappings
 * [get_tools](docs/sdks/general/README.md#get_tools) - Get tools
 
-### [hris](docs/sdks/hris/README.md)
+### [Hris](docs/sdks/hris/README.md)
 
 * [get_employees](docs/sdks/hris/README.md#get_employees) - Get employees
 * [get_employee_form](docs/sdks/hris/README.md#get_employee_form) - Get employee form

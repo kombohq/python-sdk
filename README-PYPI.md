@@ -169,14 +169,14 @@ with SDK(
 <details open>
 <summary>Available methods</summary>
 
-### [assessment](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/assessment/README.md)
+### [Assessment](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/assessment/README.md)
 
 * [get_packages](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/assessment/README.md#get_packages) - Get packages
 * [set_packages](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/assessment/README.md#set_packages) - Set packages
 * [get_open_orders](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/assessment/README.md#get_open_orders) - Get open orders
 * [update_order_result](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/assessment/README.md#update_order_result) - Update order result
 
-### [ats](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md)
+### [Ats](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md)
 
 * [get_applications](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_applications) - Get applications
 * [move_application_to_stage](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#move_application_to_stage) - Move application to stage
@@ -202,12 +202,12 @@ with SDK(
 * [get_interviews](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_interviews) - Get interviews
 * [import_tracked_application](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#import_tracked_application) - Import tracked application
 
-### [connect](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/connect/README.md)
+### [Connect](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/connect/README.md)
 
 * [create_connection_link](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/connect/README.md#create_connection_link) - Create connection link
 * [get_integration_by_token](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/connect/README.md#get_integration_by_token) - Get integration by token
 
-### [general](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md)
+### [General](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md)
 
 * [check_api_key](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#check_api_key) - Check API key
 * [trigger_sync](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#trigger_sync) - Trigger sync
@@ -221,7 +221,7 @@ with SDK(
 * [update_custom_field_mapping](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#update_custom_field_mapping) - Put custom field mappings
 * [get_tools](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#get_tools) - Get tools
 
-### [hris](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md)
+### [Hris](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md)
 
 * [get_employees](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md#get_employees) - Get employees
 * [get_employee_form](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md#get_employee_form) - Get employee form
