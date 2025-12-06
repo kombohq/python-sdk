@@ -189,7 +189,7 @@ class ScopeConfig(BaseModel):
         return m
 
 
-GetIntegrationsIntegrationIDPositiveResponseCoverageStatus = Literal[
+GetIntegrationsIntegrationIDPositiveResponseReadModelCoverageStatus = Literal[
     "SUPPORTED",
     "UNSUPPORTED",
     "NOT_IMPLEMENTED",
@@ -204,7 +204,7 @@ r"""The status of a datapoint of an integrated tool:
 """
 
 
-ScopeConfigSetting = Literal[
+ReadModelScopeConfigSetting = Literal[
     "ENABLED",
     "DISABLED",
     "OPTIONAL",
@@ -212,7 +212,7 @@ ScopeConfigSetting = Literal[
 r"""The setting of the datapoint in the scope config that you configured in the Kombo dashboard."""
 
 
-GetIntegrationsIntegrationIDPositiveResponseFieldCoverageStatus = Literal[
+GetIntegrationsIntegrationIDPositiveResponseReadModelFieldCoverageStatus = Literal[
     "SUPPORTED",
     "UNSUPPORTED",
     "NOT_IMPLEMENTED",
@@ -235,12 +235,14 @@ FieldScopeConfigSetting = Literal[
 r"""The setting of the datapoint in the scope config that you configured in the Kombo dashboard."""
 
 
-class GetIntegrationsIntegrationIDPositiveResponseFieldTypedDict(TypedDict):
+class GetIntegrationsIntegrationIDPositiveResponseReadModelFieldTypedDict(TypedDict):
     id: str
     r"""Key of the field in the API (e.g. first_name)."""
     is_available: bool
     r"""Whether the datapoint is available and enabled and not opted out of."""
-    coverage_status: GetIntegrationsIntegrationIDPositiveResponseFieldCoverageStatus
+    coverage_status: (
+        GetIntegrationsIntegrationIDPositiveResponseReadModelFieldCoverageStatus
+    )
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -254,14 +256,16 @@ class GetIntegrationsIntegrationIDPositiveResponseFieldTypedDict(TypedDict):
     r"""Whether the datapoint is opted out by your customer in the connection flow."""
 
 
-class GetIntegrationsIntegrationIDPositiveResponseField(BaseModel):
+class GetIntegrationsIntegrationIDPositiveResponseReadModelField(BaseModel):
     id: str
     r"""Key of the field in the API (e.g. first_name)."""
 
     is_available: bool
     r"""Whether the datapoint is available and enabled and not opted out of."""
 
-    coverage_status: GetIntegrationsIntegrationIDPositiveResponseFieldCoverageStatus
+    coverage_status: (
+        GetIntegrationsIntegrationIDPositiveResponseReadModelFieldCoverageStatus
+    )
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -284,7 +288,7 @@ class GetIntegrationsIntegrationIDPositiveResponseReadModelTypedDict(TypedDict):
     r"""Label of the model (e.g. Employees)."""
     is_available: bool
     r"""Whether the datapoint is available and enabled and not opted out of."""
-    coverage_status: GetIntegrationsIntegrationIDPositiveResponseCoverageStatus
+    coverage_status: GetIntegrationsIntegrationIDPositiveResponseReadModelCoverageStatus
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -292,11 +296,11 @@ class GetIntegrationsIntegrationIDPositiveResponseReadModelTypedDict(TypedDict):
     - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
     - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
     """
-    scope_config_setting: ScopeConfigSetting
+    scope_config_setting: ReadModelScopeConfigSetting
     r"""The setting of the datapoint in the scope config that you configured in the Kombo dashboard."""
     opted_out_by_customer: bool
     r"""Whether the datapoint is opted out by your customer in the connection flow."""
-    fields: List[GetIntegrationsIntegrationIDPositiveResponseFieldTypedDict]
+    fields: List[GetIntegrationsIntegrationIDPositiveResponseReadModelFieldTypedDict]
 
 
 class GetIntegrationsIntegrationIDPositiveResponseReadModel(BaseModel):
@@ -309,7 +313,7 @@ class GetIntegrationsIntegrationIDPositiveResponseReadModel(BaseModel):
     is_available: bool
     r"""Whether the datapoint is available and enabled and not opted out of."""
 
-    coverage_status: GetIntegrationsIntegrationIDPositiveResponseCoverageStatus
+    coverage_status: GetIntegrationsIntegrationIDPositiveResponseReadModelCoverageStatus
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -318,13 +322,143 @@ class GetIntegrationsIntegrationIDPositiveResponseReadModel(BaseModel):
     - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
     """
 
-    scope_config_setting: ScopeConfigSetting
+    scope_config_setting: ReadModelScopeConfigSetting
     r"""The setting of the datapoint in the scope config that you configured in the Kombo dashboard."""
 
     opted_out_by_customer: bool
     r"""Whether the datapoint is opted out by your customer in the connection flow."""
 
-    fields: List[GetIntegrationsIntegrationIDPositiveResponseField]
+    fields: List[GetIntegrationsIntegrationIDPositiveResponseReadModelField]
+
+
+GetIntegrationsIntegrationIDPositiveResponseWriteActionCoverageStatus = Literal[
+    "SUPPORTED",
+    "UNSUPPORTED",
+    "NOT_IMPLEMENTED",
+    "UNKNOWN",
+]
+r"""The status of a datapoint of an integrated tool:
+
+- `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+- `UNSUPPORTED`: the tool does not support the datapoint.
+- `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+- `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+"""
+
+
+WriteActionScopeConfigSetting = Literal[
+    "ENABLED",
+    "DISABLED",
+    "OPTIONAL",
+]
+r"""The setting of the datapoint in the scope config that you configured in the Kombo dashboard."""
+
+
+GetIntegrationsIntegrationIDPositiveResponseWriteActionFieldCoverageStatus = Literal[
+    "SUPPORTED",
+    "UNSUPPORTED",
+    "NOT_IMPLEMENTED",
+    "UNKNOWN",
+]
+r"""The status of a datapoint of an integrated tool:
+
+- `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+- `UNSUPPORTED`: the tool does not support the datapoint.
+- `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+- `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+"""
+
+
+class GetIntegrationsIntegrationIDPositiveResponseWriteActionFieldTypedDict(TypedDict):
+    id: str
+    r"""Key of the input field (e.g. candidate.first_name)."""
+    is_available: bool
+    r"""Whether the datapoint is available and enabled and not opted out of."""
+    coverage_status: (
+        GetIntegrationsIntegrationIDPositiveResponseWriteActionFieldCoverageStatus
+    )
+    r"""The status of a datapoint of an integrated tool:
+
+    - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+    - `UNSUPPORTED`: the tool does not support the datapoint.
+    - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+    - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+    """
+
+
+class GetIntegrationsIntegrationIDPositiveResponseWriteActionField(BaseModel):
+    id: str
+    r"""Key of the input field (e.g. candidate.first_name)."""
+
+    is_available: bool
+    r"""Whether the datapoint is available and enabled and not opted out of."""
+
+    coverage_status: (
+        GetIntegrationsIntegrationIDPositiveResponseWriteActionFieldCoverageStatus
+    )
+    r"""The status of a datapoint of an integrated tool:
+
+    - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+    - `UNSUPPORTED`: the tool does not support the datapoint.
+    - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+    - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+    """
+
+
+class GetIntegrationsIntegrationIDPositiveResponseWriteActionTypedDict(TypedDict):
+    id: str
+    r"""ID of the action (e.g. ats_create_candidate)."""
+    label: str
+    r"""Label of the action (e.g. Create candidate)."""
+    is_available: bool
+    r"""Whether the datapoint is available and enabled and not opted out of."""
+    coverage_status: (
+        GetIntegrationsIntegrationIDPositiveResponseWriteActionCoverageStatus
+    )
+    r"""The status of a datapoint of an integrated tool:
+
+    - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+    - `UNSUPPORTED`: the tool does not support the datapoint.
+    - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+    - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+    """
+    scope_config_setting: WriteActionScopeConfigSetting
+    r"""The setting of the datapoint in the scope config that you configured in the Kombo dashboard."""
+    opted_out_by_customer: bool
+    r"""Whether the datapoint is opted out by your customer in the connection flow."""
+    fields: List[GetIntegrationsIntegrationIDPositiveResponseWriteActionFieldTypedDict]
+    r"""Field support status for the action. Please note that action fields can't be configured in the scope config or opted out by your customer."""
+
+
+class GetIntegrationsIntegrationIDPositiveResponseWriteAction(BaseModel):
+    id: str
+    r"""ID of the action (e.g. ats_create_candidate)."""
+
+    label: str
+    r"""Label of the action (e.g. Create candidate)."""
+
+    is_available: bool
+    r"""Whether the datapoint is available and enabled and not opted out of."""
+
+    coverage_status: (
+        GetIntegrationsIntegrationIDPositiveResponseWriteActionCoverageStatus
+    )
+    r"""The status of a datapoint of an integrated tool:
+
+    - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+    - `UNSUPPORTED`: the tool does not support the datapoint.
+    - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+    - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+    """
+
+    scope_config_setting: WriteActionScopeConfigSetting
+    r"""The setting of the datapoint in the scope config that you configured in the Kombo dashboard."""
+
+    opted_out_by_customer: bool
+    r"""Whether the datapoint is opted out by your customer in the connection flow."""
+
+    fields: List[GetIntegrationsIntegrationIDPositiveResponseWriteActionField]
+    r"""Field support status for the action. Please note that action fields can't be configured in the scope config or opted out by your customer."""
 
 
 class GetIntegrationsIntegrationIDPositiveResponseDataTypedDict(TypedDict):
@@ -353,6 +487,9 @@ class GetIntegrationsIntegrationIDPositiveResponseDataTypedDict(TypedDict):
     """
     beta: bool
     read_models: List[GetIntegrationsIntegrationIDPositiveResponseReadModelTypedDict]
+    write_actions: List[
+        GetIntegrationsIntegrationIDPositiveResponseWriteActionTypedDict
+    ]
 
 
 class GetIntegrationsIntegrationIDPositiveResponseData(BaseModel):
@@ -390,6 +527,8 @@ class GetIntegrationsIntegrationIDPositiveResponseData(BaseModel):
     beta: bool
 
     read_models: List[GetIntegrationsIntegrationIDPositiveResponseReadModel]
+
+    write_actions: List[GetIntegrationsIntegrationIDPositiveResponseWriteAction]
 
 
 class GetIntegrationsIntegrationIDPositiveResponseTypedDict(TypedDict):

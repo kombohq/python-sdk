@@ -3,8 +3,9 @@
 from __future__ import annotations
 from datetime import datetime
 from kombo.types import BaseModel
-from kombo.utils import validate_const
+from kombo.utils import get_discriminator, validate_const
 import pydantic
+from pydantic import Discriminator, Tag
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -83,7 +84,13 @@ AttributeTypedDict = TypeAliasType(
 )
 
 
-Attribute = TypeAliasType("Attribute", Union[AttributeText, AttributeSubResult])
+Attribute = Annotated[
+    Union[
+        Annotated[AttributeText, Tag("TEXT")],
+        Annotated[AttributeSubResult, Tag("SUB_RESULT")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 
 
 class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyAttachmentTypedDict(

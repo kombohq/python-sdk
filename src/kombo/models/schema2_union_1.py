@@ -3,9 +3,9 @@
 from __future__ import annotations
 from .schema1 import Schema1, Schema1TypedDict
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from kombo.utils import validate_const
+from kombo.utils import get_discriminator, validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Discriminator, Tag, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -497,9 +497,13 @@ Schema2OptionsUnion1TypedDict = TypeAliasType(
 )
 
 
-Schema2OptionsUnion1 = TypeAliasType(
-    "Schema2OptionsUnion1", Union[Schema2OptionsInline1, Schema2OptionsReferenced1]
-)
+Schema2OptionsUnion1 = Annotated[
+    Union[
+        Annotated[Schema2OptionsInline1, Tag("inline")],
+        Annotated[Schema2OptionsReferenced1, Tag("referenced")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 
 
 class Schema2SingleSelectTypedDict(TypedDict):
@@ -619,9 +623,13 @@ Schema2OptionsUnion2TypedDict = TypeAliasType(
 )
 
 
-Schema2OptionsUnion2 = TypeAliasType(
-    "Schema2OptionsUnion2", Union[Schema2OptionsInline2, Schema2OptionsReferenced2]
-)
+Schema2OptionsUnion2 = Annotated[
+    Union[
+        Annotated[Schema2OptionsInline2, Tag("inline")],
+        Annotated[Schema2OptionsReferenced2, Tag("referenced")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
 
 
 class Schema2MultiSelectTypedDict(TypedDict):
@@ -923,17 +931,17 @@ Schema2Union1TypedDict = TypeAliasType(
 )
 
 
-Schema2Union1 = TypeAliasType(
-    "Schema2Union1",
+Schema2Union1 = Annotated[
     Union[
-        Schema2Date,
-        Schema2Checkbox,
-        Schema2SingleSelect,
-        Schema2Object1,
-        Schema2File,
-        Schema2Number,
-        Schema2Text,
-        Schema2MultiSelect,
-        "Schema2Array1",
+        Annotated[Schema2Text, Tag("text")],
+        Annotated[Schema2Number, Tag("number")],
+        Annotated[Schema2Date, Tag("date")],
+        Annotated[Schema2SingleSelect, Tag("single_select")],
+        Annotated[Schema2MultiSelect, Tag("multi_select")],
+        Annotated[Schema2Checkbox, Tag("checkbox")],
+        Annotated[Schema2Object1, Tag("object")],
+        Annotated["Schema2Array1", Tag("array")],
+        Annotated[Schema2File, Tag("file")],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]
