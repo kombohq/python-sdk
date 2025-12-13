@@ -1,5 +1,4 @@
 # Ats
-(*ats*)
 
 ## Overview
 
