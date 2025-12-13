@@ -1425,6 +1425,20 @@ class PostAtsCandidatesRequestBodyPiloga(BaseModel):
     r"""Additional candidate fields for P&I Loga that will be mapped to the application form."""
 
 
+class PostAtsCandidatesRequestBodyPinpointTypedDict(TypedDict):
+    r"""Fields specific to Pinpoint."""
+
+    candidate: NotRequired[Dict[str, Any]]
+    r"""Fields that we will pass through to Pinpoint's `Candidate` object."""
+
+
+class PostAtsCandidatesRequestBodyPinpoint(BaseModel):
+    r"""Fields specific to Pinpoint."""
+
+    candidate: Optional[Dict[str, Any]] = None
+    r"""Fields that we will pass through to Pinpoint's `Candidate` object."""
+
+
 class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
@@ -1467,6 +1481,8 @@ class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to Abacus Umantis."""
     piloga: NotRequired[PostAtsCandidatesRequestBodyPilogaTypedDict]
     r"""Fields specific to P&I Loga."""
+    pinpoint: NotRequired[PostAtsCandidatesRequestBodyPinpointTypedDict]
+    r"""Fields specific to Pinpoint."""
 
 
 class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
@@ -1530,6 +1546,9 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
 
     piloga: Optional[PostAtsCandidatesRequestBodyPiloga] = None
     r"""Fields specific to P&I Loga."""
+
+    pinpoint: Optional[PostAtsCandidatesRequestBodyPinpoint] = None
+    r"""Fields specific to Pinpoint."""
 
 
 class PostAtsCandidatesRequestBodyTypedDict(TypedDict):

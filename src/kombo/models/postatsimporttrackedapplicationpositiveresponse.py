@@ -5,7 +5,7 @@ from datetime import datetime
 from kombo.types import BaseModel, Nullable, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Field, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -72,13 +72,13 @@ PostAtsImportTrackedApplicationPositiveResponseErecruiterUnionTypedDict = TypeAl
 )
 
 
-PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion = TypeAliasType(
-    "PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion",
+PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion = Annotated[
     Union[
         PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds,
         PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds,
     ],
-)
+    Field(discriminator="ID_TYPE"),
+]
 
 
 class PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteIDTypedDict(

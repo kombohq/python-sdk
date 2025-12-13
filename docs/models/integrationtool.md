@@ -101,6 +101,7 @@ Pre-define a tool this integration link can be used for.
 | `DAYFORCE`                | dayforce                  |
 | `HANSALOG`                | hansalog                  |
 | `LATTICE`                 | lattice                   |
+| `HOORAYHR`                | hoorayhr                  |
 | `TRINET`                  | trinet                    |
 | `PAYLOCITY`               | paylocity                 |
 | `PAYCOR`                  | paycor                    |
@@ -111,6 +112,7 @@ Pre-define a tool this integration link can be used for.
 | `AVATURE`                 | avature                   |
 | `APPLOI`                  | apploi                    |
 | `PHENOM`                  | phenom                    |
+| `PARADOX`                 | paradox                   |
 | `RIPPLING`                | rippling                  |
 | `SAPLING`                 | sapling                   |
 | `HEYRECRUIT`              | heyrecruit                |
@@ -151,12 +153,14 @@ Pre-define a tool this integration link can be used for.
 | `COVETO`                  | coveto                    |
 | `PEOPLEFIRST`             | peoplefirst               |
 | `SDWORX`                  | sdworx                    |
+| `ITRENT`                  | itrent                    |
 | `CRELATE`                 | crelate                   |
 | `ABSENCEIO`               | absenceio                 |
 | `MANATAL`                 | manatal                   |
 | `AVIONTE`                 | avionte                   |
 | `A3INNUVANOMINA`          | a3innuvanomina            |
 | `MHMHR`                   | mhmhr                     |
+| `ASYMBL`                  | asymbl                    |
 | `SCIM`                    | scim                      |
 | `SOFTGARDENPARTNER`       | softgardenpartner         |
 | `DATEVHR`                 | datevhr                   |

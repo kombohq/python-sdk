@@ -5,7 +5,7 @@ from datetime import datetime
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Field, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -136,9 +136,9 @@ SummaryRatingTypedDict = TypeAliasType(
 r"""The summary rating of the performance review."""
 
 
-SummaryRating = TypeAliasType(
-    "SummaryRating", Union[SummaryRatingSingleSelect, SummaryRatingNumeric]
-)
+SummaryRating = Annotated[
+    Union[SummaryRatingNumeric, SummaryRatingSingleSelect], Field(discriminator="TYPE")
+]
 r"""The summary rating of the performance review."""
 
 
