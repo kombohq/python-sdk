@@ -31,5 +31,5 @@ class TestKomboATSJobsAPI:
 
         # Verify and snapshot the request details
         request = ctx.get_last_request()
-        assert request.path == snapshot("/v1/ats/jobs?include_deleted=false&page_size=100")
+        assert request.path == snapshot('/v1/ats/jobs?page_size=100&include_deleted=false')
 

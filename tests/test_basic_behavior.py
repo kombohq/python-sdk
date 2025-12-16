@@ -108,7 +108,7 @@ class TestBasicSDKBehavior:
         # Verify and snapshot the request details
         request = ctx.get_last_request()
         assert request.path == snapshot(
-            "/v1/ats/jobs?ids=CPDifhHr7izJhKHmGPkXqknC%2CJ7znt8TJRiwPVA7paC2iCh8u&statuses=OPEN%2CCLOSED&include_deleted=false&page_size=100"
+            '/v1/ats/jobs?page_size=100&include_deleted=false&ids=CPDifhHr7izJhKHmGPkXqknC%2CJ7znt8TJRiwPVA7paC2iCh8u&statuses=OPEN%2CCLOSED'
         )
 
     def test_should_correctly_encode_boolean_query_parameters(self):

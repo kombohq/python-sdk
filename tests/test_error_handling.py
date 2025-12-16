@@ -247,7 +247,7 @@ class TestErrorHandling:
                 error = exc_info.value
                 assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
-                    'Unexpected Status or Content-Type: Status 500 Content-Type "". Body: 500 Internal Server Error'
+                    'Unexpected response received: Status 500 Content-Type "". Body: 500 Internal Server Error'
                 )
 
             def test_handles_plain_text_502_bad_gateway_error(self):
@@ -274,7 +274,7 @@ class TestErrorHandling:
                 error = exc_info.value
                 assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
-                    'Unexpected Status or Content-Type: Status 502 Content-Type text/plain. Body: 502 Bad Gateway'
+                    'Unexpected response received: Status 502 Content-Type text/plain. Body: 502 Bad Gateway'
                 )
 
             def test_handles_html_error_page_from_nginx(self):
@@ -312,15 +312,16 @@ class TestErrorHandling:
                 error = exc_info.value
                 assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
-                    'Unexpected Status or Content-Type: Status 503 Content-Type ""\n'
-                    "Body: <!DOCTYPE html>\n"
-                    "<html>\n"
-                    "<head><title>503 Service Temporarily Unavailable</title></head>\n"
-                    "<body>\n"
-                    "<center><h1>503 Service Temporarily Unavailable</h1></center>\n"
-                    "<hr><center>nginx/1.18.0</center>\n"
-                    "</body>\n"
-                    "</html>"
+                    """\
+Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
+<html>
+<head><title>503 Service Temporarily Unavailable</title></head>
+<body>
+<center><h1>503 Service Temporarily Unavailable</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>\
+"""
                 )
 
             def test_handles_empty_response_body_with_error_status_code(self):
@@ -341,7 +342,7 @@ class TestErrorHandling:
 
                 error = exc_info.value
                 assert isinstance(error, SDKDefaultError)
-                assert str(error) == snapshot('Unexpected Status or Content-Type: Status 500 Content-Type "". Body: ""')
+                assert str(error) == snapshot('Unexpected response received: Status 500 Content-Type "". Body: ""')
 
             def test_handles_unexpected_content_type_header(self):
                 """Test handling of unexpected Content-Type header."""
@@ -368,7 +369,7 @@ class TestErrorHandling:
                 error = exc_info.value
                 assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
-                    'Unexpected Status or Content-Type: Status 500 Content-Type text/xml. Body: Server error occurred'
+                    'Unexpected response received: Status 500 Content-Type text/xml. Body: Server error occurred'
                 )
 
         def test_handles_unexpected_json_structure_in_error_response(self):
