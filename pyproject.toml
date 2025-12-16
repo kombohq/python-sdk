@@ -1,6 +1,6 @@
 [project]
 name = "kombo"
-version = "0.1.2"
+version = "0.2.0"
 description = "The official Python SDK for the Kombo Unified API"
 authors = [{ name = "Kombo Technologies GmbH" },]
 readme = "README-PYPI.md"

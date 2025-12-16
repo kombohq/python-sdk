@@ -15,6 +15,7 @@ IntegrationCreatedWebhookPayloadCategory = Literal[
     "HRIS",
     "ATS",
     "ASSESSMENT",
+    "LMS",
 ]
 r"""The category of the integration."""
 

@@ -15,8 +15,9 @@ ConnectionFlowFailedWebhookPayloadIntegrationCategory = Literal[
     "HRIS",
     "ATS",
     "ASSESSMENT",
+    "LMS",
 ]
-r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
 
 class ConnectionFlowFailedWebhookPayloadEndUserTypedDict(TypedDict):
@@ -77,7 +78,7 @@ class ConnectionFlowFailedWebhookPayloadDataTypedDict(TypedDict):
     integration_tool: str
     r"""The name of the integrated tool (e.g., \"personio\", \"greenhouse\")."""
     integration_category: ConnectionFlowFailedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
     end_user: ConnectionFlowFailedWebhookPayloadEndUserTypedDict
     r"""Information about the end user who created the integration."""
     log_url: str
@@ -89,7 +90,7 @@ class ConnectionFlowFailedWebhookPayloadData(BaseModel):
     r"""The name of the integrated tool (e.g., \"personio\", \"greenhouse\")."""
 
     integration_category: ConnectionFlowFailedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
     end_user: ConnectionFlowFailedWebhookPayloadEndUser
     r"""Information about the end user who created the integration."""

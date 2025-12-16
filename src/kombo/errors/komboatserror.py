@@ -11,7 +11,6 @@ from typing import Optional
 
 class KomboAtsErrorData(BaseModel):
     status: models_komboatserror.KomboAtsErrorStatus
-
     error: models_komboatserror.KomboAtsErrorError
     r"""Error details with structured code for programmatic handling."""
 

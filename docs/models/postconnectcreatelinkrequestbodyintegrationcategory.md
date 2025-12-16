@@ -10,3 +10,4 @@ Category of the integration you want your customer to create.
 | `HRIS`       | HRIS         |
 | `ATS`        | ATS          |
 | `ASSESSMENT` | ASSESSMENT   |
+| `LMS`        | LMS          |

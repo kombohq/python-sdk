@@ -16,8 +16,9 @@ SyncFinishedWebhookPayloadIntegrationCategory = Literal[
     "HRIS",
     "ATS",
     "ASSESSMENT",
+    "LMS",
 ]
-r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
 
 class SyncFinishedWebhookPayloadEndUserTypedDict(TypedDict):
@@ -90,7 +91,7 @@ class SyncFinishedWebhookPayloadDataTypedDict(TypedDict):
     integration_tool: str
     r"""The name of the integrated tool (e.g., \"personio\", \"greenhouse\")."""
     integration_category: SyncFinishedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
     end_user: SyncFinishedWebhookPayloadEndUserTypedDict
     r"""Information about the end user who created the integration."""
     log_url: str
@@ -120,7 +121,7 @@ class SyncFinishedWebhookPayloadData(BaseModel):
     r"""The name of the integrated tool (e.g., \"personio\", \"greenhouse\")."""
 
     integration_category: SyncFinishedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
     end_user: SyncFinishedWebhookPayloadEndUser
     r"""Information about the end user who created the integration."""

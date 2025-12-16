@@ -8,4 +8,5 @@ GetToolsCategoryParameterCategory = Literal[
     "hris",
     "ats",
     "assessment",
+    "lms",
 ]

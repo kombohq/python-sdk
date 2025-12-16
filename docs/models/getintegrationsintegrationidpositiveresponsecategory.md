@@ -8,3 +8,4 @@
 | `HRIS`       | HRIS         |
 | `ATS`        | ATS          |
 | `ASSESSMENT` | ASSESSMENT   |
+| `LMS`        | LMS          |

@@ -11,7 +11,6 @@ from typing import Optional
 
 class KomboHrisErrorData(BaseModel):
     status: models_kombohriserror.KomboHrisErrorStatus
-
     error: models_kombohriserror.KomboHrisErrorError
     r"""Error details with structured code for programmatic handling."""
 

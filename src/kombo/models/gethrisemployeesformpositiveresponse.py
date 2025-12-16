@@ -6,7 +6,7 @@ from .schema2_union_2 import Schema2Union2, Schema2Union2TypedDict
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Field, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -448,13 +448,13 @@ GetHrisEmployeesFormPositiveResponseOptionsUnion2TypedDict = TypeAliasType(
 )
 
 
-GetHrisEmployeesFormPositiveResponseOptionsUnion2 = TypeAliasType(
-    "GetHrisEmployeesFormPositiveResponseOptionsUnion2",
+GetHrisEmployeesFormPositiveResponseOptionsUnion2 = Annotated[
     Union[
         GetHrisEmployeesFormPositiveResponseOptionsInline2,
         GetHrisEmployeesFormPositiveResponseOptionsReferenced2,
     ],
-)
+    Field(discriminator="TYPE"),
+]
 
 
 class PropertiesMultiSelectTypedDict(TypedDict):
@@ -609,13 +609,13 @@ GetHrisEmployeesFormPositiveResponseOptionsUnion1TypedDict = TypeAliasType(
 )
 
 
-GetHrisEmployeesFormPositiveResponseOptionsUnion1 = TypeAliasType(
-    "GetHrisEmployeesFormPositiveResponseOptionsUnion1",
+GetHrisEmployeesFormPositiveResponseOptionsUnion1 = Annotated[
     Union[
         GetHrisEmployeesFormPositiveResponseOptionsInline1,
         GetHrisEmployeesFormPositiveResponseOptionsReferenced1,
     ],
-)
+    Field(discriminator="TYPE"),
+]
 
 
 class PropertiesSingleSelectTypedDict(TypedDict):
@@ -958,20 +958,20 @@ PropertiesTypedDict = TypeAliasType(
 )
 
 
-Properties = TypeAliasType(
-    "Properties",
+Properties = Annotated[
     Union[
-        PropertiesDate,
-        PropertiesCheckbox,
-        PropertiesSingleSelect,
-        PropertiesObject,
-        PropertiesFile,
-        PropertiesNumber,
         PropertiesText,
+        PropertiesNumber,
+        PropertiesDate,
+        PropertiesSingleSelect,
         PropertiesMultiSelect,
+        PropertiesCheckbox,
+        PropertiesObject,
         PropertiesArray,
+        PropertiesFile,
     ],
-)
+    Field(discriminator="TYPE"),
+]
 
 
 class GetHrisEmployeesFormPositiveResponseDataTypedDict(TypedDict):

@@ -65,6 +65,7 @@ class Assessment(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -154,6 +155,7 @@ class Assessment(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -271,6 +273,7 @@ class Assessment(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PutAssessmentPackagesRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -388,6 +391,7 @@ class Assessment(BaseSDK):
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.PutAssessmentPackagesRequestBody
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -475,6 +479,7 @@ class Assessment(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -583,6 +588,7 @@ class Assessment(BaseSDK):
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -796,6 +802,7 @@ class Assessment(BaseSDK):
                 "json",
                 models.PutAssessmentOrdersAssessmentOrderIDResultRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -986,6 +993,7 @@ class Assessment(BaseSDK):
                 "json",
                 models.PutAssessmentOrdersAssessmentOrderIDResultRequestBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 

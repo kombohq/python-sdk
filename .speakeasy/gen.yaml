@@ -22,12 +22,13 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: body
+  persistentEdits: {}
   tests:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
 python:
-  version: 0.1.2
+  version: 0.2.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -40,6 +41,7 @@ python:
     - Kombo Technologies GmbH
   baseErrorName: SDKError
   clientServerStatusCodesAsErrors: true
+  constFieldCasing: upper
   defaultErrorName: SDKDefaultError
   description: The official Python SDK for the Kombo Unified API
   enableCustomCodeRegions: false
@@ -58,15 +60,18 @@ python:
       operations: ""
       shared: ""
       webhooks: ""
+  inferUnionDiscriminators: true
   inputModelSuffix: input
   legacyPyright: false
   license: ""
   maxMethodParams: 999
   methodArguments: infer-optional-args
   moduleName: ""
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageManager: uv
   packageName: kombo
+  preApplyUnionDiscriminators: false
   pytestFilterWarnings: []
   pytestTimeout: 0
   responseFormat: flat

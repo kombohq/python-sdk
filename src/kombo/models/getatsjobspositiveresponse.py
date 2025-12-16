@@ -12,7 +12,7 @@ from kombo.types import (
 )
 from kombo.utils import validate_const, validate_open_enum
 import pydantic
-from pydantic import model_serializer
+from pydantic import Field, model_serializer
 from pydantic.functional_validators import AfterValidator, PlainValidator
 from typing import Any, Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -616,20 +616,20 @@ FormatTypedDict = TypeAliasType(
 )
 
 
-Format = TypeAliasType(
-    "Format",
+Format = Annotated[
     Union[
-        FormatBoolean,
-        FormatDate,
-        FormatInformation,
-        FormatMultiSelect,
-        FormatUnknown,
         FormatText,
+        FormatNumber,
         FormatFile,
         FormatSingleSelect,
-        FormatNumber,
+        FormatBoolean,
+        FormatDate,
+        FormatMultiSelect,
+        FormatInformation,
+        FormatUnknown,
     ],
-)
+    Field(discriminator="TYPE"),
+]
 
 
 GetAtsJobsPositiveResponseCategory = Literal[
