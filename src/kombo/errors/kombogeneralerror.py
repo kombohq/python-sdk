@@ -11,7 +11,6 @@ from typing import Optional
 
 class KomboGeneralErrorData(BaseModel):
     status: models_kombogeneralerror.KomboGeneralErrorStatus
-
     error: models_kombogeneralerror.KomboGeneralErrorError
     r"""Error details with structured code for programmatic handling."""
 

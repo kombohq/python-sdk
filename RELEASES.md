@@ -59,3 +59,13 @@ Based on:
 - [python v0.1.2] .
 ### Releases
 - [PyPI v0.1.2] https://pypi.org/project/kombo/0.1.2 - .
+
+## 2025-12-16 15:18:57
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.677.0 (2.785.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.2.0] .
+### Releases
+- [PyPI v0.2.0] https://pypi.org/project/kombo/0.2.0 - .

@@ -1,5 +1,4 @@
 # General
-(*general*)
 
 ## Overview
 
@@ -197,10 +196,12 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |JobDiva|`jobdiva/api`|We automatically authenticate all requests and use `https://api.jobdiva.com` as the base URL.|
 |Visma Peple|`peple/hrm`|[Visma Payroll Reporting API](https://api.analytics1.hrm.visma.net/docs/openapi.html). We automatically authenticate all requests using the client credentials and use 'https://api.analytics1.hrm.visma.net' as the base URL.|
 |Visma YouServe|`youserve/learning`|Visma YouServe [Learning API](https://youserve-domain-api.github.io/SwaggerUI/learning.html). We automatically authenticate all requests using OAuth 2.0 with the provided credentials and use `https://api.youserve.nl/learning/v1.0` as the base URL.|
+|Eightfold|`eightfold/api`|Eightfold's [API](https://apidocs.eightfold.ai/). We automatically authenticate all requests and use  `https://apiv2.\{region\}/api/v2/core/` as the base URL.|
 |Dayforce|`dayforce/V1`|[Dayforce's API](https://developers.dayforce.com/Build/Home.aspx). We automatically authenticate all requests and use `\{\{baseUrl\}\}/Api/\{\{clientNamespace\}\}/V1` as the base URL|
 |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
 |Lattice|`lattice/passthrough`|Lattice's [API](https://developers.lattice.com/v2/docs/base-url-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
 |Lattice|`lattice/talent`|Lattice's [Talent API](https://developers.lattice.com/docs/introduction-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
+|HoorayHR|`hoorayhr/api`|[HoorayHR API](https://api.hoorayhr.io/documentation/). We automatically authenticate all requests and use `https://api.hoorayhr.io` as the base URL.|
 |Paylocity|`paylocity/default`|[Paylocity's Weblink API](https://developer.paylocity.com/integrations/reference/authentication-weblink). We automatically authenticate all requests and use 'https://\{api|dc1demogw\}.paylocity.com/' as the base URL.|
 |Paylocity|`paylocity/next-gen`|[Paylocity's NextGen API](https://developer.paylocity.com/integrations/reference/authentication). We automatically authenticate all requests and use 'https://dc1prodgwext.paylocity.com/' as the base URL.|
 |Paycor|`paycor/v1`|[Paycors's v1 API](https://developers.paycor.com/explore#section/Getting-Started). We automatically authenticate all requests and use 'https://apis.paycor.com'.|
@@ -210,6 +211,8 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Avature|`avature/custom-api`|Avatures's Custom API. Call `Get /openapi` to retrieve the specific custom API schema. We automatically authenticate all requests and use the instance specific custom API URL as the base URL.|
 |Apploi|`apploi/rest-api`|The [Apploi API](https://integrate.apploi.com/). We automatically authenticate all requests and use `https://partners.apploi.com/` as the base URL.|
 |Phenom|`phenom/rest-api`|The [Phenom API](https://developer.phenom.com/). We automatically authenticate all requests and use `https://api-stg.phenompro.com` as the base URL.|
+|Paradox|`paradox/v1public`|We use `\{api_url\}/api/v1/public` as the base URL. Find the official docs [here](https://paradox.readme.io/).|
+|Paradox|`paradox/v1`|We use `\{api_url\}/api/v1` as the base URL. Find the official docs [here](https://paradox.readme.io/).|
 |Rippling|`rippling/api`|Rippling's [API](https://developer.rippling.com/documentation). We automatically authenticate all requests and use `https://api.rippling.com/platform/api` or`https://rest.ripplingapis.com` as the base URL.|
 |Heyrecruit|`heyrecruit/v2`|[Heyrecruit's v2 API](https://documenter.getpostman.com/view/23241256/2s9YysBLcf#47e271ac-47c8-4c75-9cc6-b8c506e9dad6). We automatically authenticate all requests using the client ID and secret and use `https://app.heyrecruit.de/api/v2` as the base URL.|
 |PeopleHR|`peoplehr/default`|[PeopleHR's API](https://apidocs.peoplehr.com/#). We automatically authenticate all request ans use 'https://api.peoplehr.net' as the base URL.|
@@ -218,6 +221,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |BITE|`bite/v1`|[Bite's v1 API](https://api.b-ite.io/docs/#/). We automatically authenticate all requests and use 'https://api.b-ite.io/v1' as base URL.|
 |Zelt|`zelt/partner`|Zelt's [Partner API](https://go.zelt.app/apiv2/swagger). We automatically authenticate all requests using the connected OAuth credentials and use `https://go.zelt.app/apiv2/partner` as the base URL.|
 |Planday|`planday/api`|Planday's [HR API v1.0](https://openapi.planday.com/api/hr?version=v1.0). We automatically authenticate all requests and use `https://openapi.planday.com` as the base URL.|
+|BoondManager|`boondmanager/api`|BoondManager [REST API](https://ui.boondmanager.com/administrator/developer/apisandbox). We automatically authenticate all requests and use `https://ui.boondmanager.com/api` as the base URL.|
 |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
 |Silae|`silae/rest`|[Silae's REST API](https://silae-api.document360.io/docs). We automatically authenticate all requests and use 'https://payroll-api.silae.fr/payroll' as the base URL.|
 |Mysolution|`mysolution/default`|[Mysolution's API](https://swagger.mysolution.nl/). We automatically authenticate all requests and use the customer's domain as base URL.|
@@ -244,6 +248,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Manatal|`manatal/career-page`|Manatal's Career Page API. We use `https://api.manatal.com/open/v3/career-page/\{client_slug\}` as the base URL.|
 |Avionté|`avionte/front-office-v1`|Avionte's API. We automatically authenticate all requests and use `https://api.avionte.com/front-office/v1` as the base URL. Documentation for the BOLD Front Office API: https://developer.avionte.com/reference/get-all-talent-tags|
 |a3innuva Nómina|`a3innuvanomina/laboral`|a3innuva Nómina API [docs](https://a3developers.wolterskluwer.es/). Requests are automatically authenticated using OAuth access tokens (refreshed when needed). Base URL: `https://a3api.wolterskluwer.es/Laboral/api`.|
+|Asymbl|`asymbl/v63`|We use `https://\{customerDomainName\}` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
 |DATEV|`datevhr/hr-exports`|DATEV's [hr-exports](https://developer.datev.de/en/product-detail/hr-exports/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exports.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
 |DATEV|`datevhr/hr:payrollreports`|DATEV's [hr:payrollreports](https://developer.datev.de/en/product-detail/hr-payrollreports/2.0.0/overview) API. We automatically authenticate all requests and use `https://hr-payrollreports.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
 |DATEV|`datevhr/eau`|DATEV's [eau](https://developer.datev.de/en/product-detail/eau-api/1.0.0/overview) API. We automatically authenticate all requests and use `https://eau.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|

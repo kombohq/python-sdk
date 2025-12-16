@@ -14,8 +14,9 @@ DataChangedWebhookPayloadIntegrationCategory = Literal[
     "HRIS",
     "ATS",
     "ASSESSMENT",
+    "LMS",
 ]
-r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
 
 Name = Literal[
@@ -42,12 +43,19 @@ Name = Literal[
     "ats_interviews",
     "ats_offers",
     "ats_rejection_reasons",
+    "lms_users",
+    "lms_course_providers",
+    "lms_courses",
+    "lms_course_progressions",
+    "lms_course_revisions",
+    "lms_skills",
     "hris_join_employees_teams",
     "ats_join_candidates_tags",
     "ats_join_jobs_application_stages",
     "ats_join_jobs_screening_questions",
     "ats_join_jobs_users",
     "ats_join_interviews_users",
+    "lms_join_revisions_skills",
 ]
 r"""The name of the Kombo model or connection that changed."""
 
@@ -72,7 +80,7 @@ class DataChangedWebhookPayloadDataTypedDict(TypedDict):
     integration_tool: str
     r"""The name of the integrated tool (e.g., \"personio\", \"greenhouse\")."""
     integration_category: DataChangedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
     changed_models: List[ChangedModelTypedDict]
     r"""List of data models and connections for which one or more records were created, updated, or deleted."""
 
@@ -85,7 +93,7 @@ class DataChangedWebhookPayloadData(BaseModel):
     r"""The name of the integrated tool (e.g., \"personio\", \"greenhouse\")."""
 
     integration_category: DataChangedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
     changed_models: List[ChangedModel]
     r"""List of data models and connections for which one or more records were created, updated, or deleted."""

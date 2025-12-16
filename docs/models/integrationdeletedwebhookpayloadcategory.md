@@ -10,3 +10,4 @@ The category of the integration.
 | `HRIS`       | HRIS         |
 | `ATS`        | ATS          |
 | `ASSESSMENT` | ASSESSMENT   |
+| `LMS`        | LMS          |

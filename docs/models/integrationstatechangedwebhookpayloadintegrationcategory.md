@@ -1,6 +1,6 @@
 # IntegrationStateChangedWebhookPayloadIntegrationCategory
 
-The category of the integration (HRIS, ATS, or ASSESSMENT).
+The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
 
 
 ## Values
@@ -10,3 +10,4 @@ The category of the integration (HRIS, ATS, or ASSESSMENT).
 | `HRIS`       | HRIS         |
 | `ATS`        | ATS          |
 | `ASSESSMENT` | ASSESSMENT   |
+| `LMS`        | LMS          |

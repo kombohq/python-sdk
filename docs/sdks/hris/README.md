@@ -1,5 +1,4 @@
 # Hris
-(*hris*)
 
 ## Overview
 

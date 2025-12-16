@@ -39,7 +39,7 @@ r"""The status of a datapoint of an integrated tool:
 """
 
 
-GetToolsCategoryPositiveResponseFieldCoverageStatus = Literal[
+GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus = Literal[
     "SUPPORTED",
     "UNSUPPORTED",
     "NOT_IMPLEMENTED",
@@ -54,10 +54,10 @@ r"""The status of a datapoint of an integrated tool:
 """
 
 
-class GetToolsCategoryPositiveResponseFieldTypedDict(TypedDict):
+class GetToolsCategoryPositiveResponseReadModelFieldTypedDict(TypedDict):
     id: str
     r"""Key of the field in the model (e.g. first_name)."""
-    coverage_status: GetToolsCategoryPositiveResponseFieldCoverageStatus
+    coverage_status: GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -67,11 +67,11 @@ class GetToolsCategoryPositiveResponseFieldTypedDict(TypedDict):
     """
 
 
-class GetToolsCategoryPositiveResponseField(BaseModel):
+class GetToolsCategoryPositiveResponseReadModelField(BaseModel):
     id: str
     r"""Key of the field in the model (e.g. first_name)."""
 
-    coverage_status: GetToolsCategoryPositiveResponseFieldCoverageStatus
+    coverage_status: GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -96,7 +96,7 @@ class GetToolsCategoryPositiveResponseReadModelTypedDict(TypedDict):
     - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
     - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
     """
-    fields: List[GetToolsCategoryPositiveResponseFieldTypedDict]
+    fields: List[GetToolsCategoryPositiveResponseReadModelFieldTypedDict]
 
 
 class GetToolsCategoryPositiveResponseReadModel(BaseModel):
@@ -117,10 +117,10 @@ class GetToolsCategoryPositiveResponseReadModel(BaseModel):
     - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
     """
 
-    fields: List[GetToolsCategoryPositiveResponseField]
+    fields: List[GetToolsCategoryPositiveResponseReadModelField]
 
 
-WriteActionCoverageStatus = Literal[
+GetToolsCategoryPositiveResponseWriteActionCoverageStatus = Literal[
     "SUPPORTED",
     "UNSUPPORTED",
     "NOT_IMPLEMENTED",
@@ -135,12 +135,25 @@ r"""The status of a datapoint of an integrated tool:
 """
 
 
-class WriteActionTypedDict(TypedDict):
-    r"""List of supported write actions for this tool."""
+GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus = Literal[
+    "SUPPORTED",
+    "UNSUPPORTED",
+    "NOT_IMPLEMENTED",
+    "UNKNOWN",
+]
+r"""The status of a datapoint of an integrated tool:
 
+- `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+- `UNSUPPORTED`: the tool does not support the datapoint.
+- `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+- `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+"""
+
+
+class GetToolsCategoryPositiveResponseWriteActionFieldTypedDict(TypedDict):
     id: str
-    label: str
-    coverage_status: WriteActionCoverageStatus
+    r"""Key of the input field (e.g. `candidate.first_name`)."""
+    coverage_status: GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -150,14 +163,11 @@ class WriteActionTypedDict(TypedDict):
     """
 
 
-class WriteAction(BaseModel):
-    r"""List of supported write actions for this tool."""
-
+class GetToolsCategoryPositiveResponseWriteActionField(BaseModel):
     id: str
+    r"""Key of the input field (e.g. `candidate.first_name`)."""
 
-    label: str
-
-    coverage_status: WriteActionCoverageStatus
+    coverage_status: GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus
     r"""The status of a datapoint of an integrated tool:
 
     - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
@@ -165,6 +175,41 @@ class WriteAction(BaseModel):
     - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
     - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
     """
+
+
+class GetToolsCategoryPositiveResponseWriteActionTypedDict(TypedDict):
+    r"""List of supported write actions for this tool."""
+
+    id: str
+    label: str
+    coverage_status: GetToolsCategoryPositiveResponseWriteActionCoverageStatus
+    r"""The status of a datapoint of an integrated tool:
+
+    - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+    - `UNSUPPORTED`: the tool does not support the datapoint.
+    - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+    - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+    """
+    fields: List[GetToolsCategoryPositiveResponseWriteActionFieldTypedDict]
+
+
+class GetToolsCategoryPositiveResponseWriteAction(BaseModel):
+    r"""List of supported write actions for this tool."""
+
+    id: str
+
+    label: str
+
+    coverage_status: GetToolsCategoryPositiveResponseWriteActionCoverageStatus
+    r"""The status of a datapoint of an integrated tool:
+
+    - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+    - `UNSUPPORTED`: the tool does not support the datapoint.
+    - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+    - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+    """
+
+    fields: List[GetToolsCategoryPositiveResponseWriteActionField]
 
 
 FeatureCoverageStatus = Literal[
@@ -214,7 +259,7 @@ class CoverageTypedDict(TypedDict):
     r"""This describes the supported models and actions of this tool."""
 
     read_models: List[GetToolsCategoryPositiveResponseReadModelTypedDict]
-    write_actions: List[WriteActionTypedDict]
+    write_actions: List[GetToolsCategoryPositiveResponseWriteActionTypedDict]
     features: List[FeatureTypedDict]
 
 
@@ -223,7 +268,7 @@ class Coverage(BaseModel):
 
     read_models: List[GetToolsCategoryPositiveResponseReadModel]
 
-    write_actions: List[WriteAction]
+    write_actions: List[GetToolsCategoryPositiveResponseWriteAction]
 
     features: List[Feature]
 

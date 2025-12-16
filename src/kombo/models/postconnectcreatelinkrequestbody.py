@@ -11,6 +11,7 @@ PostConnectCreateLinkRequestBodyIntegrationCategory = Literal[
     "HRIS",
     "ATS",
     "ASSESSMENT",
+    "LMS",
 ]
 r"""Category of the integration you want your customer to create."""
 
@@ -110,6 +111,7 @@ IntegrationTool = Literal[
     "dayforce",
     "hansalog",
     "lattice",
+    "hoorayhr",
     "trinet",
     "paylocity",
     "paycor",
@@ -120,6 +122,7 @@ IntegrationTool = Literal[
     "avature",
     "apploi",
     "phenom",
+    "paradox",
     "rippling",
     "sapling",
     "heyrecruit",
@@ -160,12 +163,14 @@ IntegrationTool = Literal[
     "coveto",
     "peoplefirst",
     "sdworx",
+    "itrent",
     "crelate",
     "absenceio",
     "manatal",
     "avionte",
     "a3innuvanomina",
     "mhmhr",
+    "asymbl",
     "scim",
     "softgardenpartner",
     "datevhr",

@@ -31,6 +31,7 @@ KomboHrisErrorCode = Literal[
     "REMOTE.RATE_LIMIT_EXCEEDED",
     "REMOTE.INPUT_INVALID",
     "REMOTE.UNKNOWN_HTTP_ERROR",
+    "HRIS.EMPLOYEE_ALREADY_EXISTS",
 ]
 r"""Some errors include an error code that can be used to identify their cause. See the [Error Handling Docs](https://docs.kombo.dev/guides/errors) for more information. For your error handling logic please use the error `code` instead of other properties (e.g. message, http status code, ...)."""
 

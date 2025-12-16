@@ -16,8 +16,9 @@ IntegrationStateChangedWebhookPayloadIntegrationCategory = Literal[
     "HRIS",
     "ATS",
     "ASSESSMENT",
+    "LMS",
 ]
-r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
 
 class IntegrationStateChangedWebhookPayloadEndUserTypedDict(TypedDict):
@@ -96,7 +97,7 @@ class IntegrationStateChangedWebhookPayloadDataTypedDict(TypedDict):
     integration_id: str
     r"""The unique identifier of the integration."""
     integration_category: IntegrationStateChangedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
     end_user: IntegrationStateChangedWebhookPayloadEndUserTypedDict
     r"""Information about the end user who created the integration."""
     qa_status: QaStatus
@@ -115,7 +116,7 @@ class IntegrationStateChangedWebhookPayloadData(BaseModel):
     r"""The unique identifier of the integration."""
 
     integration_category: IntegrationStateChangedWebhookPayloadIntegrationCategory
-    r"""The category of the integration (HRIS, ATS, or ASSESSMENT)."""
+    r"""The category of the integration (HRIS, ATS, ASSESSMENT, or LMS)."""
 
     end_user: IntegrationStateChangedWebhookPayloadEndUser
     r"""Information about the end user who created the integration."""

@@ -5,7 +5,7 @@ from .schema1 import Schema1, Schema1TypedDict
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
-from pydantic import model_serializer
+from pydantic import Field, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -497,9 +497,9 @@ Schema2OptionsUnion1TypedDict = TypeAliasType(
 )
 
 
-Schema2OptionsUnion1 = TypeAliasType(
-    "Schema2OptionsUnion1", Union[Schema2OptionsInline1, Schema2OptionsReferenced1]
-)
+Schema2OptionsUnion1 = Annotated[
+    Union[Schema2OptionsInline1, Schema2OptionsReferenced1], Field(discriminator="TYPE")
+]
 
 
 class Schema2SingleSelectTypedDict(TypedDict):
@@ -619,9 +619,9 @@ Schema2OptionsUnion2TypedDict = TypeAliasType(
 )
 
 
-Schema2OptionsUnion2 = TypeAliasType(
-    "Schema2OptionsUnion2", Union[Schema2OptionsInline2, Schema2OptionsReferenced2]
-)
+Schema2OptionsUnion2 = Annotated[
+    Union[Schema2OptionsInline2, Schema2OptionsReferenced2], Field(discriminator="TYPE")
+]
 
 
 class Schema2MultiSelectTypedDict(TypedDict):
@@ -923,17 +923,17 @@ Schema2Union1TypedDict = TypeAliasType(
 )
 
 
-Schema2Union1 = TypeAliasType(
-    "Schema2Union1",
+Schema2Union1 = Annotated[
     Union[
-        Schema2Date,
-        Schema2Checkbox,
-        Schema2SingleSelect,
-        Schema2Object1,
-        Schema2File,
-        Schema2Number,
         Schema2Text,
+        Schema2Number,
+        Schema2Date,
+        Schema2SingleSelect,
         Schema2MultiSelect,
+        Schema2Checkbox,
+        Schema2Object1,
         "Schema2Array1",
+        Schema2File,
     ],
-)
+    Field(discriminator="TYPE"),
+]
