@@ -2,9 +2,15 @@
 
 from typing import Optional, Dict, Any, List
 import json
+import re
+import pytest
 import respx
 import httpx
 from kombo import Kombo
+
+
+# Sentinel value to distinguish between "not provided" and "explicitly None"
+_UNSET = object()
 
 
 class CapturedRequest:
@@ -17,33 +23,41 @@ class CapturedRequest:
         self.body = body
 
 
-class TestContext:  # noqa: D101
+class MockContext:
     """Test context for mocking HTTP requests and capturing request details."""
 
-    def __init__(self, api_key: Optional[str] = None, integration_id: Optional[str] = None):
+    def __init__(self, api_key: Optional[str] = None, integration_id: Any = _UNSET):
         """
         Initialize test context.
 
         :param api_key: API key to use (defaults to "test-api-key")
-        :param integration_id: Integration ID to use (defaults to "test-integration-id" if not explicitly None)
+        :param integration_id: Integration ID to use. Defaults to "test-integration-id" if not provided.
+                               Pass None explicitly to omit the integration_id from SDK initialization.
         """
         self._api_key = api_key or "test-api-key"
-        # If integration_id is explicitly None, don't pass it; otherwise use default
-        self._integration_id = integration_id if integration_id is not None else "test-integration-id"
+        
+        # Determine integration_id value
+        if integration_id is _UNSET:
+            # Not provided, use default
+            id_to_use = "test-integration-id"
+        else:
+            # Use provided value (could be None, a string, etc.)
+            id_to_use = integration_id
+        
+        self._integration_id = id_to_use
         self._captured_requests: List[CapturedRequest] = []
         
         # Initialize SDK
-        if integration_id is None:
+        if id_to_use is None:
             self.kombo = Kombo(api_key=self._api_key)
         else:
-            self.kombo = Kombo(api_key=self._api_key, integration_id=self._integration_id)
+            self.kombo = Kombo(api_key=self._api_key, integration_id=id_to_use)
 
     def mock_endpoint(
         self,
         method: str,
         path: str,
         response: Dict[str, Any],
-        delay_response_ms: Optional[int] = None,
     ) -> None:
         """
         Mock an HTTP endpoint.
@@ -51,7 +65,6 @@ class TestContext:  # noqa: D101
         :param method: HTTP method (GET, POST, PUT, DELETE, PATCH)
         :param path: URL path (e.g., "/v1/ats/jobs")
         :param response: Response dict with 'body', optional 'statusCode', and optional 'headers'
-        :param delay_response_ms: Optional delay in milliseconds before responding
         """
         status_code = response.get("statusCode", 200)
         body = response.get("body")
@@ -123,7 +136,6 @@ class TestContext:  # noqa: D101
         base_url = f"https://api.kombo.dev{path}"
         if method == "GET":
             # Match the base path, allowing any query parameters
-            import re
             route = respx.request(
                 method=method,
                 url__regex=re.compile(f"^{re.escape(base_url)}(\\?.*)?$"),
@@ -134,16 +146,7 @@ class TestContext:  # noqa: D101
                 url=base_url,
             )
 
-        # Handle delay if specified
-        if delay_response_ms is not None:
-            def delayed_response(request: httpx.Request) -> httpx.Response:
-                import time
-                # Sleep to simulate delay - this will cause timeout if timeout_ms < delay_response_ms
-                time.sleep(delay_response_ms / 1000.0)
-                return create_response(request)
-            route.mock(side_effect=delayed_response)
-        else:
-            route.mock(side_effect=create_response)
+        route.mock(side_effect=create_response)
 
     def get_requests(self) -> List[CapturedRequest]:
         """Get all captured requests."""
@@ -161,10 +164,6 @@ class TestContext:  # noqa: D101
         respx.stop()
         respx.clear()
         respx.start()  # Restart respx so new mocks can be registered
-
-
-# Pytest fixtures
-import pytest
 
 
 @pytest.fixture(autouse=True)

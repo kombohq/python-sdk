@@ -2,7 +2,7 @@
 
 import pytest
 from inline_snapshot import snapshot
-from tests.conftest import TestContext
+from tests.conftest import MockContext
 
 
 class TestBasicSDKBehavior:
@@ -10,7 +10,7 @@ class TestBasicSDKBehavior:
 
     def test_should_include_api_key_in_authorization_header(self):
         """Test that API key is included in Authorization header."""
-        ctx = TestContext(api_key="my-custom-api-key")
+        ctx = MockContext(api_key="my-custom-api-key")
 
         ctx.mock_endpoint(
             method="GET",
@@ -32,7 +32,7 @@ class TestBasicSDKBehavior:
 
     def test_should_include_integration_id_in_x_integration_id_header_when_specified(self):
         """Test that X-Integration-Id header is included when specified."""
-        ctx = TestContext(
+        ctx = MockContext(
             api_key="test-key",
             integration_id="my-integration-123",
         )
@@ -57,7 +57,7 @@ class TestBasicSDKBehavior:
 
     def test_should_not_include_x_integration_id_header_when_not_provided(self):
         """Test that X-Integration-Id header is not included when not provided."""
-        ctx = TestContext(
+        ctx = MockContext(
             api_key="test-key",
             integration_id=None,
         )
@@ -83,7 +83,7 @@ class TestBasicSDKBehavior:
 
     def test_should_correctly_encode_comma_separated_query_parameters(self):
         """Test that comma-separated query parameters are correctly encoded."""
-        ctx = TestContext()
+        ctx = MockContext()
 
         ctx.mock_endpoint(
             method="GET",
@@ -100,10 +100,12 @@ class TestBasicSDKBehavior:
         )
 
         # Make the API call
-        _jobs = ctx.kombo.ats.get_jobs(
+        jobs = ctx.kombo.ats.get_jobs(
             statuses=["OPEN", "CLOSED"],
             ids=["CPDifhHr7izJhKHmGPkXqknC", "J7znt8TJRiwPVA7paC2iCh8u"],
         )
+        if jobs is not None:
+            _ = jobs.next()  # Consume first page
 
         # Verify and snapshot the request details
         request = ctx.get_last_request()
@@ -113,7 +115,7 @@ class TestBasicSDKBehavior:
 
     def test_should_correctly_encode_boolean_query_parameters(self):
         """Test that boolean query parameters are correctly encoded."""
-        ctx = TestContext()
+        ctx = MockContext()
 
         ctx.mock_endpoint(
             method="GET",

@@ -1,7 +1,7 @@
 """Tests for Kombo ATS Jobs API."""
 
 from inline_snapshot import snapshot
-from tests.conftest import TestContext
+from tests.conftest import MockContext
 
 
 class TestKomboATSJobsAPI:
@@ -9,7 +9,7 @@ class TestKomboATSJobsAPI:
 
     def test_should_make_correct_http_request_for_get_jobs(self):
         """Test that getJobs makes correct HTTP request."""
-        ctx = TestContext()
+        ctx = MockContext()
 
         # Mock the API endpoint
         ctx.mock_endpoint(
@@ -27,7 +27,9 @@ class TestKomboATSJobsAPI:
         )
 
         # Make the API call
-        _jobs = ctx.kombo.ats.get_jobs()
+        jobs = ctx.kombo.ats.get_jobs()
+        if jobs is not None:
+            _ = jobs.next()  # Consume first page
 
         # Verify and snapshot the request details
         request = ctx.get_last_request()

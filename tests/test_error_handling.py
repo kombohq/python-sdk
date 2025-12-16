@@ -2,7 +2,7 @@
 
 import pytest
 from inline_snapshot import snapshot
-from tests.conftest import TestContext
+from tests.conftest import MockContext
 from kombo.errors import (
     KomboAtsError,
     KomboHrisError,
@@ -20,7 +20,7 @@ class TestErrorHandling:
 
         def test_returns_kombo_ats_error_for_platform_rate_limit_errors(self):
             """Test that KomboAtsError is returned for platform rate limit errors."""
-            ctx = TestContext()
+            ctx = MockContext()
 
             ctx.mock_endpoint(
                 method="GET",
@@ -56,7 +56,7 @@ class TestErrorHandling:
 
         def test_returns_kombo_ats_error_for_ats_specific_job_closed_errors(self):
             """Test that KomboAtsError is returned for ATS-specific job closed errors."""
-            ctx = TestContext()
+            ctx = MockContext()
 
             ctx.mock_endpoint(
                 method="POST",
@@ -104,7 +104,7 @@ class TestErrorHandling:
 
         def test_returns_kombo_hris_error_for_integration_permission_errors(self):
             """Test that KomboHrisError is returned for integration permission errors."""
-            ctx = TestContext()
+            ctx = MockContext()
 
             ctx.mock_endpoint(
                 method="GET",
@@ -147,7 +147,7 @@ class TestErrorHandling:
 
         def test_returns_kombo_ats_error_for_platform_input_validation_errors(self):
             """Test that KomboAtsError is returned for platform input validation errors."""
-            ctx = TestContext()
+            ctx = MockContext()
 
             ctx.mock_endpoint(
                 method="GET",
@@ -187,7 +187,7 @@ class TestErrorHandling:
 
         def test_returns_kombo_general_error_for_authentication_errors(self):
             """Test that KomboGeneralError is returned for authentication errors."""
-            ctx = TestContext()
+            ctx = MockContext()
 
             ctx.mock_endpoint(
                 method="GET",
@@ -228,7 +228,7 @@ class TestErrorHandling:
 
             def test_handles_plain_text_500_error_from_load_balancer(self):
                 """Test handling of plain text 500 error from load balancer."""
-                ctx = TestContext()
+                ctx = MockContext()
 
                 ctx.mock_endpoint(
                     method="GET",
@@ -252,7 +252,7 @@ class TestErrorHandling:
 
             def test_handles_plain_text_502_bad_gateway_error(self):
                 """Test handling of plain text 502 bad gateway error."""
-                ctx = TestContext()
+                ctx = MockContext()
 
                 ctx.mock_endpoint(
                     method="GET",
@@ -279,7 +279,7 @@ class TestErrorHandling:
 
             def test_handles_html_error_page_from_nginx(self):
                 """Test handling of HTML error page from nginx."""
-                ctx = TestContext()
+                ctx = MockContext()
 
                 html_error_page = """<!DOCTYPE html>
 <html>
@@ -326,7 +326,7 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
 
             def test_handles_empty_response_body_with_error_status_code(self):
                 """Test handling of empty response body with error status code."""
-                ctx = TestContext()
+                ctx = MockContext()
 
                 ctx.mock_endpoint(
                     method="GET",
@@ -346,7 +346,7 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
 
             def test_handles_unexpected_content_type_header(self):
                 """Test handling of unexpected Content-Type header."""
-                ctx = TestContext()
+                ctx = MockContext()
 
                 # Response with unexpected Content-Type
                 ctx.mock_endpoint(
@@ -374,7 +374,7 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
 
         def test_handles_unexpected_json_structure_in_error_response(self):
             """Test handling of unexpected JSON structure in error response (ResponseValidationError)."""
-            ctx = TestContext()
+            ctx = MockContext()
 
             # Valid JSON but unexpected structure (not matching Kombo error format)
             unexpected_json = {
@@ -402,40 +402,4 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
             assert isinstance(error, ResponseValidationError)
             assert "Response validation failed" in str(error)
 
-    class TestHTTPClientErrors:
-        """Test HTTP client error handling."""
-
-        @pytest.mark.skip(
-            reason="respx doesn't properly simulate HTTP timeouts - delay happens but httpx timeout doesn't trigger with mocked responses"
-        )
-        def test_handles_request_timeout(self):
-            """Test handling of request timeout."""
-            ctx = TestContext()
-
-            # Mock endpoint but delay the connection to exceed SDK timeout
-            ctx.mock_endpoint(
-                method="GET",
-                path="/v1/ats/jobs",
-                response={
-                    "statusCode": 200,
-                    "body": {
-                        "status": "success",
-                        "data": {"results": [], "next": None},
-                    },
-                },
-                delay_response_ms=500,
-            )
-
-            # Use a short timeout for this test
-            with pytest.raises(Exception) as exc_info:
-                jobs = ctx.kombo.ats.get_jobs(timeout_ms=100)
-                if jobs is not None:
-                    _ = jobs.next()  # Consume first page
-
-            # The exact error type may vary (could be httpx.TimeoutException or similar)
-            # but it should be some kind of timeout error
-            # In Python, httpx raises TimeoutException, but the SDK might wrap it
-            error = exc_info.value
-            error_str = str(error).lower()
-            assert "timeout" in error_str or "timed out" in error_str
 
