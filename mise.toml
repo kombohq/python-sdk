@@ -1,5 +1,6 @@
 [tools]
 "aqua:speakeasy-api/speakeasy" = "1"
+uv = "0.9.5"
 
 [tasks."dev"]
 description = "Build the SDK without publishing"
