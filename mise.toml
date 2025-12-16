@@ -1,5 +1,5 @@
 [tools]
-python = "3.12"
+python = "3.9"
 "aqua:speakeasy-api/speakeasy" = "1"
 uv = "0.9.5"
 
