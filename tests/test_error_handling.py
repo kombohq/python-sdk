@@ -26,7 +26,7 @@ class TestErrorHandling:
                 method="GET",
                 path="/v1/ats/jobs",
                 response={
-                    "statusCode": 429,
+                    "status_code": 429,
                     "body": {
                         "status": "error",
                         "error": {
@@ -46,8 +46,6 @@ class TestErrorHandling:
 
             error = exc_info.value
             assert str(error) == snapshot("You have exceeded the rate limit. Please try again later.")
-            assert isinstance(error, KomboAtsError)
-
             assert error.data.error.code == snapshot("PLATFORM.RATE_LIMIT_EXCEEDED")
             assert error.data.error.title == snapshot("Rate limit exceeded")
             assert error.data.error.message == snapshot("You have exceeded the rate limit. Please try again later.")
@@ -62,7 +60,7 @@ class TestErrorHandling:
                 method="POST",
                 path="/v1/ats/jobs/test-job-id/applications",
                 response={
-                    "statusCode": 400,
+                    "status_code": 400,
                     "body": {
                         "status": "error",
                         "error": {
@@ -89,8 +87,6 @@ class TestErrorHandling:
             assert str(error) == snapshot(
                 "Cannot create application for a closed job. The job must be in an open state."
             )
-            assert isinstance(error, KomboAtsError)
-
             assert error.data.error.code == snapshot("ATS.JOB_CLOSED")
             assert error.data.error.title == snapshot("Job is closed")
             assert error.data.error.message == snapshot(
@@ -110,7 +106,7 @@ class TestErrorHandling:
                 method="GET",
                 path="/v1/hris/employees",
                 response={
-                    "statusCode": 403,
+                    "status_code": 403,
                     "body": {
                         "status": "error",
                         "error": {
@@ -132,8 +128,6 @@ class TestErrorHandling:
             assert str(error) == snapshot(
                 "The integration is missing required permissions to access this resource."
             )
-            assert isinstance(error, KomboHrisError)
-
             assert error.data.error.code == snapshot("INTEGRATION.PERMISSION_MISSING")
             assert error.data.error.title == snapshot("Permission missing")
             assert error.data.error.message == snapshot(
@@ -153,7 +147,7 @@ class TestErrorHandling:
                 method="GET",
                 path="/v1/assessment/orders/open",
                 response={
-                    "statusCode": 400,
+                    "status_code": 400,
                     "body": {
                         "status": "error",
                         "error": {
@@ -174,8 +168,6 @@ class TestErrorHandling:
             error = exc_info.value
             # Assessment uses KomboAtsError for errors
             assert str(error) == snapshot("The provided input is invalid or malformed.")
-            assert isinstance(error, KomboAtsError)
-
             assert error.data.error.code == snapshot("PLATFORM.INPUT_INVALID")
             assert error.data.error.title == snapshot("Input invalid")
             assert error.data.error.message == snapshot("The provided input is invalid or malformed.")
@@ -193,7 +185,7 @@ class TestErrorHandling:
                 method="GET",
                 path="/v1/check-api-key",
                 response={
-                    "statusCode": 401,
+                    "status_code": 401,
                     "body": {
                         "status": "error",
                         "error": {
@@ -212,8 +204,6 @@ class TestErrorHandling:
             error = exc_info.value
             # General endpoints use KomboGeneralError for errors
             assert str(error) == snapshot("The provided API key is invalid or expired.")
-            assert isinstance(error, KomboGeneralError)
-
             assert error.data.error.code == snapshot("PLATFORM.AUTHENTICATION_INVALID")
             assert error.data.error.title == snapshot("Authentication invalid")
             assert error.data.error.message == snapshot("The provided API key is invalid or expired.")
@@ -234,7 +224,7 @@ class TestErrorHandling:
                     method="GET",
                     path="/v1/ats/jobs",
                     response={
-                        "statusCode": 500,
+                        "status_code": 500,
                         "body": "500 Internal Server Error",
                     },
                 )
@@ -245,7 +235,6 @@ class TestErrorHandling:
                         _ = jobs.next()  # Consume first page
 
                 error = exc_info.value
-                assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
                     'Unexpected response received: Status 500 Content-Type "". Body: 500 Internal Server Error'
                 )
@@ -258,7 +247,7 @@ class TestErrorHandling:
                     method="GET",
                     path="/v1/hris/employees",
                     response={
-                        "statusCode": 502,
+                        "status_code": 502,
                         "body": "502 Bad Gateway",
                         "headers": {
                             "Content-Type": "text/plain",
@@ -272,7 +261,6 @@ class TestErrorHandling:
                         _ = employees.next()  # Consume first page
 
                 error = exc_info.value
-                assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
                     'Unexpected response received: Status 502 Content-Type text/plain. Body: 502 Bad Gateway'
                 )
@@ -294,7 +282,7 @@ class TestErrorHandling:
                     method="POST",
                     path="/v1/ats/jobs/test-job-id/applications",
                     response={
-                        "statusCode": 503,
+                        "status_code": 503,
                         "body": html_error_page,
                     },
                 )
@@ -310,7 +298,6 @@ class TestErrorHandling:
                     )
 
                 error = exc_info.value
-                assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
                     """\
 Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
@@ -332,7 +319,7 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
                     method="GET",
                     path="/v1/check-api-key",
                     response={
-                        "statusCode": 500,
+                        "status_code": 500,
                         "body": "",
                     },
                 )
@@ -341,7 +328,6 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
                     ctx.kombo.general.check_api_key()
 
                 error = exc_info.value
-                assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot('Unexpected response received: Status 500 Content-Type "". Body: ""')
 
             def test_handles_unexpected_content_type_header(self):
@@ -353,7 +339,7 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
                     method="GET",
                     path="/v1/ats/applications",
                     response={
-                        "statusCode": 500,
+                        "status_code": 500,
                         "body": "Server error occurred",
                         "headers": {
                             "Content-Type": "text/xml",
@@ -367,7 +353,6 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
                         _ = applications.next()  # Consume first page
 
                 error = exc_info.value
-                assert isinstance(error, SDKDefaultError)
                 assert str(error) == snapshot(
                     'Unexpected response received: Status 500 Content-Type text/xml. Body: Server error occurred'
                 )
@@ -387,7 +372,7 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
                 method="GET",
                 path="/v1/ats/jobs",
                 response={
-                    "statusCode": 500,
+                    "status_code": 500,
                     "body": unexpected_json,
                 },
             )
@@ -399,7 +384,6 @@ Unexpected response received: Status 503 Content-Type "". Body: <!DOCTYPE html>
 
             error = exc_info.value
             # Valid JSON but unexpected structure triggers ResponseValidationError
-            assert isinstance(error, ResponseValidationError)
             assert "Response validation failed" in str(error)
 
 

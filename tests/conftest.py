@@ -63,9 +63,9 @@ class MockContext:
 
         :param method: HTTP method (GET, POST, PUT, DELETE, PATCH)
         :param path: URL path (e.g., "/v1/ats/jobs")
-        :param response: Response dict with 'body', optional 'statusCode', and optional 'headers'
+        :param response: Response dict with 'body', optional 'status_code', and optional 'headers'
         """
-        status_code = response.get("statusCode", 200)
+        status_code = response.get("status_code", 200)
         body = response.get("body")
         response_headers = response.get("headers", {})
 

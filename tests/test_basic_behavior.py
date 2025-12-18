@@ -1,6 +1,5 @@
 """Tests for basic SDK behavior."""
 
-import pytest
 from inline_snapshot import snapshot
 from tests.conftest import MockContext
 
@@ -156,4 +155,61 @@ class TestBasicSDKBehavior:
 
         request_without_deleted = ctx.get_last_request()
         assert "include_deleted=false" in request_without_deleted.path
+
+    def test_should_correctly_serialize_post_request_body(self):
+        """Test that POST request bodies are correctly serialized."""
+        ctx = MockContext()
+
+        ctx.mock_endpoint(
+            method="POST",
+            path="/v1/ats/jobs/test-job-id/applications",
+            response={
+                "body": {
+                    "status": "success",
+                    "data": {
+                        "id": "app-123",
+                        "remote_id": "remote-app-123",
+                        "outcome": "PENDING",
+                        "rejection_reason_name": None,
+                        "rejected_at": None,
+                        "current_stage_id": "stage-1",
+                        "job_id": "test-job-id",
+                        "candidate_id": "candidate-456",
+                        "custom_fields": {},
+                        "remote_url": "https://example.com/application/123",
+                        "changed_at": "2024-01-01T00:00:00Z",
+                        "remote_deleted_at": None,
+                        "remote_created_at": "2024-01-01T00:00:00Z",
+                        "remote_updated_at": "2024-01-01T00:00:00Z",
+                        "current_stage": None,
+                        "job": None,
+                        "candidate": None,
+                    },
+                    "warnings": [],
+                },
+            },
+        )
+
+        # Make the API call
+        ctx.kombo.ats.create_application(
+            job_id="test-job-id",
+            candidate={
+                "first_name": "Jane",
+                "last_name": "Smith",
+                "email_address": "jane.smith@example.com",
+            },
+        )
+
+        # Verify request body is correctly serialized
+        request = ctx.get_last_request()
+        assert request.method == "POST"
+        assert request.body == snapshot(
+            {
+                "candidate": {
+                    "first_name": "Jane",
+                    "last_name": "Smith",
+                    "email_address": "jane.smith@example.com",
+                }
+            }
+        )
 
