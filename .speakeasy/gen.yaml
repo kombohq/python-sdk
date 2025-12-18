@@ -30,7 +30,10 @@ generation:
 python:
   version: 0.2.1
   additionalDependencies:
-    dev: {}
+    dev:
+      pytest: ">=8.0.0"
+      respx: ">=0.21.0"
+      inline-snapshot: ">=0.13.0"
     main: {}
   allowedRedefinedBuiltins:
     - id
