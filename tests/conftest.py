@@ -90,12 +90,7 @@ class MockContext:
             # Read body for non-GET requests
             request_body = None
             if request.method != "GET" and request.content:
-                try:
-                    # Try to parse as JSON first
-                    request_body = json.loads(request.content.decode())
-                except (json.JSONDecodeError, UnicodeDecodeError):
-                    # Fall back to raw string if not valid JSON
-                    request_body = request.content.decode()
+                request_body = json.loads(request.content.decode())
 
             captured = CapturedRequest(
                 method=request.method,
