@@ -44,7 +44,6 @@ class MockContext:
             # Use provided value (could be None, a string, etc.)
             id_to_use = integration_id
         
-        self._integration_id = id_to_use
         self._captured_requests: List[CapturedRequest] = []
         
         # Initialize SDK
@@ -90,31 +89,13 @@ class MockContext:
             
             # Read body for non-GET requests
             request_body = None
-            if request.method != "GET":
+            if request.method != "GET" and request.content:
                 try:
-                    # Try to get content from request
-                    if hasattr(request, "_content"):
-                        body_bytes = request._content
-                    elif hasattr(request, "content"):
-                        body_bytes = request.content
-                    else:
-                        # Try reading from stream
-                        body_bytes = request.read()
-                    
-                    if body_bytes:
-                        try:
-                            if isinstance(body_bytes, bytes):
-                                request_body = json.loads(body_bytes.decode())
-                            else:
-                                request_body = json.loads(body_bytes)
-                        except (json.JSONDecodeError, UnicodeDecodeError, TypeError):
-                            if isinstance(body_bytes, bytes):
-                                request_body = body_bytes.decode()
-                            else:
-                                request_body = body_bytes
-                except Exception:
-                    # If we can't read the body, that's okay
-                    pass
+                    # Try to parse as JSON first
+                    request_body = json.loads(request.content.decode())
+                except (json.JSONDecodeError, UnicodeDecodeError):
+                    # Fall back to raw string if not valid JSON
+                    request_body = request.content.decode()
 
             captured = CapturedRequest(
                 method=request.method,
@@ -159,11 +140,13 @@ class MockContext:
         return self._captured_requests[-1]
 
     def clear(self) -> None:
-        """Clear captured requests and reset mocks."""
+        """Clear captured requests and reset mocks.
+        
+        Note: respx is managed by the reset_respx fixture, but we need to
+        clear registered routes between calls within the same test.
+        """
         self._captured_requests.clear()
-        respx.stop()
         respx.clear()
-        respx.start()  # Restart respx so new mocks can be registered
 
 
 @pytest.fixture(autouse=True)

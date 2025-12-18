@@ -8,7 +8,7 @@ class TestKomboATSJobsAPI:
     """Test Kombo ATS Jobs API."""
 
     def test_should_make_correct_http_request_for_get_jobs(self):
-        """Test that getJobs makes correct HTTP request."""
+        """Test that get_jobs makes correct HTTP request."""
         ctx = MockContext()
 
         # Mock the API endpoint
