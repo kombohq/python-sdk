@@ -507,7 +507,7 @@ class Assessment(BaseSDK):
         def next_func() -> Optional[models.GetAssessmentOrdersOpenResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -619,7 +619,7 @@ class Assessment(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
