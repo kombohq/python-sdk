@@ -1,6 +1,16 @@
 [tools]
+python = "3.9"
 "aqua:speakeasy-api/speakeasy" = "1"
+uv = "0.9.5"
 
 [tasks."dev"]
 description = "Build the SDK without publishing"
 run = 'OPENAPI_DOC_AUTH_TOKEN="$(doppler secrets get SDK_SPEC_ENDPOINT_TOKEN --project kombo-engine --config dev --plain)" speakeasy run --minimal --skip-upload-spec --skip-versioning --skip-compile --target kombo-python'
+
+[tasks."test"]
+description = "Run tests"
+run = "uv run pytest tests/ -v"
+
+[tasks."test:update"]
+description = "Run tests and update inline snapshots"
+run = "uv run pytest tests/ --inline-snapshot=fix -v"
