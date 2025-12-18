@@ -139,7 +139,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisEmployeesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -310,7 +310,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -1238,7 +1238,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisEmployeeDocumentCategoriesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -1374,7 +1374,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -1513,7 +1513,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisGroupsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -1657,7 +1657,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -1790,7 +1790,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisEmploymentsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -1924,7 +1924,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -2058,7 +2058,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisLocationsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -2196,7 +2196,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -2328,7 +2328,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisAbsenceTypesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -2462,7 +2462,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -2596,7 +2596,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisTimeOffBalancesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -2734,7 +2734,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -2878,7 +2878,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisAbsencesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -3028,7 +3028,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -3706,7 +3706,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisLegalEntitiesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -3844,7 +3844,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -3997,7 +3997,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisTimesheetsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -4157,7 +4157,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -4299,7 +4299,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisPerformanceReviewCyclesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -4441,7 +4441,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -4589,7 +4589,7 @@ class Hris(BaseSDK):
         def next_func() -> Optional[models.GetHrisPerformanceReviewsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -4745,7 +4745,7 @@ class Hris(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()

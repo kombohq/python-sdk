@@ -137,7 +137,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsApplicationsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -304,7 +304,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -1994,7 +1994,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsCandidatesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -2144,7 +2144,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -4083,7 +4083,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsTagsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -4217,7 +4217,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -4358,7 +4358,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsApplicationStagesResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -4502,7 +4502,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -4668,7 +4668,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsJobsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -4844,7 +4844,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -5489,7 +5489,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsUsersResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -5627,7 +5627,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -5759,7 +5759,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsOffersResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -5893,7 +5893,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -6026,7 +6026,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsRejectionReasonsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -6162,7 +6162,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()
@@ -6296,7 +6296,7 @@ class Ats(BaseSDK):
         def next_func() -> Optional[models.GetAtsInterviewsResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return None
@@ -6434,7 +6434,7 @@ class Ats(BaseSDK):
             async def empty_result():
                 return None
 
-            next_cursor = JSONPath("$.next").parse(body)
+            next_cursor = JSONPath("$.data.next").parse(body)
 
             if len(next_cursor) == 0:
                 return empty_result()

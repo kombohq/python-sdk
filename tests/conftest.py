@@ -1,6 +1,7 @@
 """Test fixtures and helpers for Kombo SDK tests."""
 
 from typing import Optional, Dict, Any, List
+from collections import defaultdict, deque
 import json
 import re
 import pytest
@@ -45,6 +46,10 @@ class MockContext:
             id_to_use = integration_id
         
         self._captured_requests: List[CapturedRequest] = []
+        # Queue of responses for each (method, path) combination
+        self._response_queues: Dict[tuple, deque] = defaultdict(deque)
+        # Track if we've already set up the route for a given (method, path_pattern)
+        self._registered_routes: set = set()
         
         # Initialize SDK
         if id_to_use is None:
@@ -65,24 +70,48 @@ class MockContext:
         :param path: URL path (e.g., "/v1/ats/jobs")
         :param response: Response dict with 'body', optional 'status_code', and optional 'headers'
         """
-        status_code = response.get("status_code", 200)
-        body = response.get("body")
-        response_headers = response.get("headers", {})
+        base_url = f"https://api.kombo.dev{path}"
+        route_key = (method, base_url)
+        
+        # Add response to the queue for this endpoint
+        self._response_queues[route_key].append(response)
+        
+        # Only register the route once per (method, path) combination
+        if route_key in self._registered_routes:
+            return
+            
+        self._registered_routes.add(route_key)
 
-        # Set up Content-Type header for JSON responses if not provided
-        if isinstance(body, dict) and "Content-Type" not in response_headers:
-            response_headers = {**response_headers, "Content-Type": "application/json"}
-
-        # Prepare response content
-        if isinstance(body, (dict, list)):
-            content = json.dumps(body).encode()
-        elif isinstance(body, str):
-            content = body.encode()
-        else:
-            content = b""
-
-        # Create response function that captures request
+        # Create response function that uses the queue
         def create_response(request: httpx.Request) -> httpx.Response:
+            # Get the next response from the queue for this endpoint
+            response_queue = self._response_queues[route_key]
+            
+            if not response_queue:
+                raise RuntimeError(
+                    f"No more mocked responses available for {method} {path}. "
+                    f"Did you mock enough responses for all the requests?"
+                )
+            
+            # Pop the first response from the queue (FIFO)
+            current_response = response_queue.popleft()
+            
+            status_code = current_response.get("status_code", 200)
+            body = current_response.get("body")
+            response_headers = current_response.get("headers", {})
+
+            # Set up Content-Type header for JSON responses if not provided
+            if isinstance(body, dict) and "Content-Type" not in response_headers:
+                response_headers = {**response_headers, "Content-Type": "application/json"}
+
+            # Prepare response content
+            if isinstance(body, (dict, list)):
+                content = json.dumps(body).encode()
+            elif isinstance(body, str):
+                content = body.encode()
+            else:
+                content = b""
+            
             # Capture request details
             query_string = request.url.query.decode() if request.url.query else ""
             full_path = request.url.path + (f"?{query_string}" if query_string else "")
@@ -114,7 +143,6 @@ class MockContext:
         # Create the mock route
         # For GET requests, match any query parameters using regex
         # For other methods, match exact path
-        base_url = f"https://api.kombo.dev{path}"
         if method == "GET":
             # Match the base path, allowing any query parameters
             route = respx.request(
@@ -146,6 +174,8 @@ class MockContext:
         clear registered routes between calls within the same test.
         """
         self._captured_requests.clear()
+        self._response_queues.clear()
+        self._registered_routes.clear()
         respx.clear()
 
 

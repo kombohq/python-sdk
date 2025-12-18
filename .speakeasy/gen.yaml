@@ -28,7 +28,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 python:
-  version: 0.2.0
+  version: 0.2.1
   additionalDependencies:
     dev:
       pytest: ">=8.0.0"

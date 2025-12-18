@@ -58,6 +58,7 @@ class PostAtsCandidatesRequestBodyLocationTypedDict(TypedDict):
     r"""The uppercase two-letter ISO country (e.g., `DE`). For systems that use codes in formats other than `ISO 3166-1 alpha-2`, Kombo transforms the ISO Codes to the appropriate value."""
     city: NotRequired[str]
     state: NotRequired[str]
+    street_1: NotRequired[str]
     zip_code: NotRequired[str]
 
 
@@ -70,6 +71,8 @@ class PostAtsCandidatesRequestBodyLocation(BaseModel):
     city: Optional[str] = None
 
     state: Optional[str] = None
+
+    street_1: Optional[str] = None
 
     zip_code: Optional[str] = None
 
