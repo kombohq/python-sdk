@@ -28,12 +28,12 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 python:
-  version: 0.2.1
+  version: 0.2.2
   additionalDependencies:
     dev:
-      pytest: ">=8.0.0"
-      respx: ">=0.21.0"
-      inline-snapshot: ">=0.13.0"
+      inline-snapshot: '>=0.13.0'
+      pytest: '>=8.0.0'
+      respx: '>=0.21.0'
     main: {}
   allowedRedefinedBuiltins:
     - id

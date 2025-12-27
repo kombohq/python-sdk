@@ -88,6 +88,7 @@ Pre-define a tool this integration link can be used for.
 | `GUSTO`                   | gusto                     |
 | `BREATHEHR`               | breathehr                 |
 | `CATALYSTONE`             | catalystone               |
+| `CEIPAL`                  | ceipal                    |
 | `MIRUS`                   | mirus                     |
 | `ALEXISHR`                | alexishr                  |
 | `SIMPLOYER`               | simployer                 |
