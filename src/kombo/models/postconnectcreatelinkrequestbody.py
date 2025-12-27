@@ -98,6 +98,7 @@ IntegrationTool = Literal[
     "gusto",
     "breathehr",
     "catalystone",
+    "ceipal",
     "mirus",
     "alexishr",
     "simployer",
