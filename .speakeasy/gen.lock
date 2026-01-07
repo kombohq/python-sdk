@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.682.0
   generationVersion: 2.791.1
-  releaseVersion: 0.2.2
-  configChecksum: a6fb534bec9e6ead109db63b8217f791
+  releaseVersion: 0.2.3
+  configChecksum: 1187f3055b7e75da4cf8e1bc3b7b0423
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
 persistentEdits:
-  generation_id: 8b4ab0b4-8422-4606-becc-4cf47a408383
-  pristine_commit_hash: 1b6618ec43d7795e11e01da1ca97b2aec4895c9d
-  pristine_tree_hash: 969f042d9ffa724dd1cdaaee23101512dc0e59fd
+  generation_id: b2f8393a-de65-46e5-a044-57a7523272a2
+  pristine_commit_hash: c983a0595910ddf5ba359182726ef29fd6b68130
+  pristine_tree_hash: 1c996a1a6ba57641ec015999e42ce73555e94dcf
 features:
   python:
     additionalDependencies: 1.0.0
@@ -3960,8 +3960,8 @@ trackedFiles:
     pristine_git_object: 000d9930f874a1b01cda74f245fc00e1b6eae49e
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:c80a4bc8b5e9dc95ba2e312186b09d0e843691f2
-    pristine_git_object: 78a497fb8183e27b1a419cf16e3f2ba3e34a7688
+    last_write_checksum: sha1:f2e75a89f17075b7aa8136148b2a5cd3a7884608
+    pristine_git_object: c158ed59cb25f38fa6a4636f8e10e5c6affb0ad3
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:b6ad6f0515a952d7cb052befddb6a117d4f627d8
@@ -3988,8 +3988,8 @@ trackedFiles:
     pristine_git_object: e589e541e5fc70d336de44780721f301d754ed72
   src/kombo/_version.py:
     id: 45cf440ad1df
-    last_write_checksum: sha1:f41b5a3fa061861e9f0605cce1b02a1587a75f69
-    pristine_git_object: ddabec5e5b81c57880a92a6566d03334db6ef708
+    last_write_checksum: sha1:60aa12bf89a08213d494010752059417618279d8
+    pristine_git_object: ed8c398266d1a35fc4ed3d6e1a24aa4f081f278e
   src/kombo/assessment.py:
     id: aec6e8a7589f
     last_write_checksum: sha1:1406e437a55541ba21ab8a76696b092238678670
@@ -7192,7 +7192,6 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": null, "title": null, "message": "The message is always in the response.", "log_url": null}}
 examplesVersion: 1.0.2
-releaseNotes: "## Python SDK Changes:\n* `kombo.hris.get_employees()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_employee_document_categories()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_groups()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_employments()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_locations()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_absence_types()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_time_off_balances()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_absences()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_legal_entities()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_timesheets()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_performance_review_cycles()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.hris.get_performance_reviews()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.get_applications()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.reject_application()`: \n  *  `request.remote_fields.teamtailor` **Added**\n* `kombo.ats.get_candidates()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.create_candidate()`: \n  *  `request.remote_fields.covetorest` **Added**\n* `kombo.ats.get_tags()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.get_application_stages()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.get_jobs()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.create_application()`: \n  *  `request.remote_fields.covetorest` **Added**\n* `kombo.ats.get_users()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.get_offers()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.get_rejection_reasons()`:  `request.ignore_unsupported_filters` **Added**\n* `kombo.ats.get_interviews()`:  `request.ignore_unsupported_filters` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json
