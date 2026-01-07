@@ -18,6 +18,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         outcomes: Optional[List[str]] = None,
@@ -51,6 +52,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param outcomes: Filter by a comma-separated list of `PENDING`, `HIRED`, `DECLINED`
@@ -84,6 +86,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             outcomes=outcomes,
@@ -151,6 +154,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 outcomes=outcomes,
@@ -182,6 +186,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         outcomes: Optional[List[str]] = None,
@@ -215,6 +220,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param outcomes: Filter by a comma-separated list of `PENDING`, `HIRED`, `DECLINED`
@@ -248,6 +254,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             outcomes=outcomes,
@@ -318,6 +325,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 outcomes=outcomes,
@@ -1891,6 +1899,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         email: Optional[str] = None,
@@ -1916,6 +1925,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param email: Filter the candidates based on an email address. When set, returns only the candidates where the given `email` is in `email_addresses`. This filter is case-insensitive.
@@ -1942,6 +1952,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             email=email,
@@ -2008,6 +2019,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 email=email,
@@ -2038,6 +2050,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         email: Optional[str] = None,
@@ -2063,6 +2076,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param email: Filter the candidates based on an email address. When set, returns only the candidates where the given `email` is in `email_addresses`. This filter is case-insensitive.
@@ -2089,6 +2103,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             email=email,
@@ -2158,6 +2173,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 email=email,
@@ -3992,6 +4008,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -4013,6 +4030,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -4035,6 +4053,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -4097,6 +4116,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -4123,6 +4143,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -4144,6 +4165,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -4166,6 +4188,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -4231,6 +4254,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -4257,6 +4281,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -4288,6 +4313,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -4310,6 +4336,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -4372,6 +4399,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -4398,6 +4426,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -4429,6 +4458,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -4451,6 +4481,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -4516,6 +4547,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -4542,6 +4574,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         job_codes: Optional[List[str]] = None,
@@ -4578,6 +4611,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param job_codes: Filter by a comma-separated list of job codes.
@@ -4613,6 +4647,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             job_codes=job_codes,
@@ -4682,6 +4717,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 job_codes=job_codes,
@@ -4715,6 +4751,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         job_codes: Optional[List[str]] = None,
@@ -4751,6 +4788,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param job_codes: Filter by a comma-separated list of job codes.
@@ -4786,6 +4824,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             job_codes=job_codes,
@@ -4858,6 +4897,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 job_codes=job_codes,
@@ -5395,6 +5435,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         emails: Optional[List[str]] = None,
@@ -5417,6 +5458,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param emails: Filter by a comma-separated list of emails. We will only return users who have _any_ of the emails. The format of the emails is case-insensitive.
@@ -5440,6 +5482,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             emails=emails,
@@ -5503,6 +5546,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 emails=emails,
@@ -5530,6 +5574,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         emails: Optional[List[str]] = None,
@@ -5552,6 +5597,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param emails: Filter by a comma-separated list of emails. We will only return users who have _any_ of the emails. The format of the emails is case-insensitive.
@@ -5575,6 +5621,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             emails=emails,
@@ -5641,6 +5688,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 emails=emails,
@@ -5668,6 +5716,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -5689,6 +5738,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -5711,6 +5761,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -5773,6 +5824,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -5799,6 +5851,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -5820,6 +5873,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -5842,6 +5896,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -5907,6 +5962,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -5933,6 +5989,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -5956,6 +6013,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -5978,6 +6036,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -6040,6 +6099,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -6066,6 +6126,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -6089,6 +6150,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param retries: Override the default retry configuration for this method
@@ -6111,6 +6173,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
         )
@@ -6176,6 +6239,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
@@ -6202,6 +6266,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         job_ids: Optional[List[str]] = None,
@@ -6224,6 +6289,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param job_ids: Filter by a comma-separated list of job IDs. We will only return interviews for applications associated with any of these jobs.
@@ -6247,6 +6313,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             job_ids=job_ids,
@@ -6310,6 +6377,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 job_ids=job_ids,
@@ -6337,6 +6405,7 @@ class Ats(BaseSDK):
         page_size: Optional[int] = 100,
         updated_after: Optional[datetime] = None,
         include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
         ids: Optional[List[str]] = None,
         remote_ids: Optional[List[str]] = None,
         job_ids: Optional[List[str]] = None,
@@ -6359,6 +6428,7 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
         :param remote_ids: Filter by a comma-separated list of remote IDs.
         :param job_ids: Filter by a comma-separated list of job IDs. We will only return interviews for applications associated with any of these jobs.
@@ -6382,6 +6452,7 @@ class Ats(BaseSDK):
             page_size=page_size,
             updated_after=updated_after,
             include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
             ids=ids,
             remote_ids=remote_ids,
             job_ids=job_ids,
@@ -6448,6 +6519,7 @@ class Ats(BaseSDK):
                 page_size=page_size,
                 updated_after=updated_after,
                 include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
                 ids=ids,
                 remote_ids=remote_ids,
                 job_ids=job_ids,
