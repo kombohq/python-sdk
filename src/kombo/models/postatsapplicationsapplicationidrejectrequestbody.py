@@ -72,6 +72,20 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyGreenhouse(BaseModel):
     r"""Headers we will pass with `POST` requests to Greenhouse."""
 
 
+class PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailorTypedDict(TypedDict):
+    r"""Fields specific to Teamtailor."""
+
+    user_id: NotRequired[str]
+    r"""The remote ID of the user that will be displayed in the UI as the one that performed the action. If not provided, the first admin user will be used."""
+
+
+class PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailor(BaseModel):
+    r"""Fields specific to Teamtailor."""
+
+    user_id: Optional[str] = None
+    r"""The remote ID of the user that will be displayed in the UI as the one that performed the action. If not provided, the first admin user will be used."""
+
+
 class PostAtsApplicationsApplicationIDRejectRequestBodyWorkableTypedDict(TypedDict):
     r"""Workable specific remote fields for ATS actions."""
 
@@ -93,6 +107,10 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFieldsTypedDict(Typ
         PostAtsApplicationsApplicationIDRejectRequestBodyGreenhouseTypedDict
     ]
     r"""Fields specific to Greenhouse."""
+    teamtailor: NotRequired[
+        PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailorTypedDict
+    ]
+    r"""Fields specific to Teamtailor."""
     workable: NotRequired[
         PostAtsApplicationsApplicationIDRejectRequestBodyWorkableTypedDict
     ]
@@ -106,6 +124,11 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFields(BaseModel):
         PostAtsApplicationsApplicationIDRejectRequestBodyGreenhouse
     ] = None
     r"""Fields specific to Greenhouse."""
+
+    teamtailor: Optional[
+        PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailor
+    ] = None
+    r"""Fields specific to Teamtailor."""
 
     workable: Optional[PostAtsApplicationsApplicationIDRejectRequestBodyWorkable] = None
     r"""Workable specific remote fields for ATS actions."""
