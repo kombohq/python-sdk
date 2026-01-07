@@ -1,6 +1,6 @@
 [project]
 name = "kombo"
-version = "0.2.2"
+version = "0.2.1"
 description = "The official Python SDK for the Kombo Unified API"
 authors = [{ name = "Kombo Technologies GmbH" },]
 readme = "README-PYPI.md"
@@ -15,12 +15,12 @@ urls.repository = "https://github.com/kombohq/python-sdk.git"
 
 [dependency-groups]
 dev = [
-    "inline-snapshot >=0.13.0",
     "mypy ==1.15.0",
     "pylint ==3.2.3",
     "pyright ==1.1.398",
     "pytest >=8.0.0",
     "respx >=0.21.0",
+    "inline-snapshot >=0.13.0",
 ]
 
 [tool.setuptools.packages.find]

@@ -1321,38 +1321,6 @@ class PostAtsJobsJobIDApplicationsRequestBodyPinpoint(BaseModel):
     r"""Fields that we will pass through to Pinpoint's `Candidate` object."""
 
 
-class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidateTypedDict(TypedDict):
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-    mandant: NotRequired[float]
-    r"""The mandant field for the candidate in Coveto."""
-
-
-class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidate(BaseModel):
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-    mandant: Optional[float] = None
-    r"""The mandant field for the candidate in Coveto."""
-
-
-class PostAtsJobsJobIDApplicationsRequestBodyCovetorestTypedDict(TypedDict):
-    r"""Fields specific to Coveto REST."""
-
-    candidate: NotRequired[
-        PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidateTypedDict
-    ]
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-
-class PostAtsJobsJobIDApplicationsRequestBodyCovetorest(BaseModel):
-    r"""Fields specific to Coveto REST."""
-
-    candidate: Optional[PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidate] = (
-        None
-    )
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-
 class PostAtsJobsJobIDApplicationsRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
@@ -1405,8 +1373,6 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to P&I Loga."""
     pinpoint: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyPinpointTypedDict]
     r"""Fields specific to Pinpoint."""
-    covetorest: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyCovetorestTypedDict]
-    r"""Fields specific to Coveto REST."""
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
@@ -1477,9 +1443,6 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
 
     pinpoint: Optional[PostAtsJobsJobIDApplicationsRequestBodyPinpoint] = None
     r"""Fields specific to Pinpoint."""
-
-    covetorest: Optional[PostAtsJobsJobIDApplicationsRequestBodyCovetorest] = None
-    r"""Fields specific to Coveto REST."""
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyAnswerTypedDict(TypedDict):

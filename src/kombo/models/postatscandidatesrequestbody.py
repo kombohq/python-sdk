@@ -1442,34 +1442,6 @@ class PostAtsCandidatesRequestBodyPinpoint(BaseModel):
     r"""Fields that we will pass through to Pinpoint's `Candidate` object."""
 
 
-class PostAtsCandidatesRequestBodyCovetorestCandidateTypedDict(TypedDict):
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-    mandant: NotRequired[float]
-    r"""The mandant field for the candidate in Coveto."""
-
-
-class PostAtsCandidatesRequestBodyCovetorestCandidate(BaseModel):
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-    mandant: Optional[float] = None
-    r"""The mandant field for the candidate in Coveto."""
-
-
-class PostAtsCandidatesRequestBodyCovetorestTypedDict(TypedDict):
-    r"""Fields specific to Coveto REST."""
-
-    candidate: NotRequired[PostAtsCandidatesRequestBodyCovetorestCandidateTypedDict]
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-
-class PostAtsCandidatesRequestBodyCovetorest(BaseModel):
-    r"""Fields specific to Coveto REST."""
-
-    candidate: Optional[PostAtsCandidatesRequestBodyCovetorestCandidate] = None
-    r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
-
-
 class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
@@ -1514,8 +1486,6 @@ class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to P&I Loga."""
     pinpoint: NotRequired[PostAtsCandidatesRequestBodyPinpointTypedDict]
     r"""Fields specific to Pinpoint."""
-    covetorest: NotRequired[PostAtsCandidatesRequestBodyCovetorestTypedDict]
-    r"""Fields specific to Coveto REST."""
 
 
 class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
@@ -1582,9 +1552,6 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
 
     pinpoint: Optional[PostAtsCandidatesRequestBodyPinpoint] = None
     r"""Fields specific to Pinpoint."""
-
-    covetorest: Optional[PostAtsCandidatesRequestBodyCovetorest] = None
-    r"""Fields specific to Coveto REST."""
 
 
 class PostAtsCandidatesRequestBodyTypedDict(TypedDict):

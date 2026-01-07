@@ -41,8 +41,6 @@ class GetAtsOffersRequestTypedDict(TypedDict):
     """
     include_deleted: NotRequired[bool]
     r"""By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too."""
-    ignore_unsupported_filters: NotRequired[str]
-    r"""When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results."""
     ids: NotRequired[List[str]]
     r"""Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`."""
     remote_ids: NotRequired[List[str]]
@@ -78,12 +76,6 @@ class GetAtsOffersRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = False
     r"""By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too."""
-
-    ignore_unsupported_filters: Annotated[
-        Optional[str],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = None
-    r"""When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results."""
 
     ids: Annotated[
         Optional[List[str]],
