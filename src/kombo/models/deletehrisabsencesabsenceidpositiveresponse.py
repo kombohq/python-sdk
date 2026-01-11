@@ -10,10 +10,10 @@ from kombo.types import (
     UNSET_SENTINEL,
     UnrecognizedStr,
 )
-from kombo.utils import validate_const, validate_open_enum
+from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator, PlainValidator
+from pydantic.functional_validators import AfterValidator
 from typing import Any, List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -126,10 +126,7 @@ class DeleteHrisAbsencesAbsenceIDPositiveResponseData(BaseModel):
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
 
-    status: Annotated[
-        OptionalNullable[DeleteHrisAbsencesAbsenceIDPositiveResponseStatus],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    status: OptionalNullable[DeleteHrisAbsencesAbsenceIDPositiveResponseStatus] = UNSET
     r"""The absence’s current status. In rare cases where we can’t find a clear mapping, the original string is passed through."""
 
     @model_serializer(mode="wrap")

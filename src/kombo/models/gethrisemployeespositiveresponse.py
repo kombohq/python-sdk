@@ -10,10 +10,10 @@ from kombo.types import (
     UNSET_SENTINEL,
     UnrecognizedStr,
 )
-from kombo.utils import validate_const, validate_open_enum
+from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator, PlainValidator
+from pydantic.functional_validators import AfterValidator
 from typing import Any, Dict, List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -437,28 +437,21 @@ class Employment(BaseModel):
     custom_fields: Nullable[Dict[str, Any]]
     r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
-    pay_period: Annotated[
-        OptionalNullable[GetHrisEmployeesPositiveResponsePayPeriod],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    pay_period: OptionalNullable[GetHrisEmployeesPositiveResponsePayPeriod] = UNSET
     r"""The time interval which the `pay_rate` is describing.
 
     A `pay_rate` value of `12000` with a `pay_period` of `YEAR` would indicate that the employee receives 12000 over the course of a year. In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    pay_frequency: Annotated[
-        OptionalNullable[GetHrisEmployeesPositiveResponsePayFrequency],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    pay_frequency: OptionalNullable[GetHrisEmployeesPositiveResponsePayFrequency] = (
+        UNSET
+    )
     r"""The time interval at which the employee receives payment.
 
     A `pay_rate` of `12000`, with a `pay_period` of `YEAR`, and a `pay_frequency` of `MONTHLY` would indicate that the employee is paid 1000 every month. In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    employment_type: Annotated[
-        OptionalNullable[EmploymentEmploymentType],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    employment_type: OptionalNullable[EmploymentEmploymentType] = UNSET
     r"""The employee’s current employment type:
 
     - `FULL_TIME`: the employee is actively employed
@@ -696,10 +689,7 @@ class Manager(BaseModel):
     work_email: OptionalNullable[str] = UNSET
     r"""The employee’s work email address. If the email address is invalid, we will set this to `null`."""
 
-    employment_status: Annotated[
-        OptionalNullable[ManagerEmploymentStatus],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    employment_status: OptionalNullable[ManagerEmploymentStatus] = UNSET
     r"""The employee’s current employment status:
 
     - `ACTIVE`: the employee is **actively employed**
@@ -1316,25 +1306,16 @@ class GetHrisEmployeesPositiveResponseResult(BaseModel):
     personal_email: OptionalNullable[str] = UNSET
     r"""The employee’s personal email address. If the email address is invalid, we will set this to `null`."""
 
-    gender: Annotated[
-        OptionalNullable[GetHrisEmployeesPositiveResponseGender],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    gender: OptionalNullable[GetHrisEmployeesPositiveResponseGender] = UNSET
     r"""The employee’s gender."""
 
-    ethnicity: Annotated[
-        OptionalNullable[Ethnicity], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    ethnicity: OptionalNullable[Ethnicity] = UNSET
     r"""The employee’s ethnicity. In rare cases where we can’t find a clear mapping, the original string is passed through."""
 
-    marital_status: Annotated[
-        OptionalNullable[MaritalStatus], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    marital_status: OptionalNullable[MaritalStatus] = UNSET
     r"""The employee’s current marital status. In rare cases where we can’t find a clear mapping, the original string is passed through."""
 
-    employment_status: Annotated[
-        OptionalNullable[EmploymentStatus], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    employment_status: OptionalNullable[EmploymentStatus] = UNSET
     r"""The employee’s current employment status:
 
     - `ACTIVE`: the employee is **actively employed**
@@ -1345,9 +1326,8 @@ class GetHrisEmployeesPositiveResponseResult(BaseModel):
     In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    employment_type: Annotated[
-        OptionalNullable[GetHrisEmployeesPositiveResponseEmploymentType],
-        PlainValidator(validate_open_enum(False)),
+    employment_type: OptionalNullable[
+        GetHrisEmployeesPositiveResponseEmploymentType
     ] = UNSET
     r"""The employee’s current employment type:
 

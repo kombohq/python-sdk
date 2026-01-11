@@ -99,6 +99,7 @@ Pre-define a tool this integration link can be used for.
 | `ASYMBL`                  | asymbl                    |
 | `BREEZYHR`                | breezyhr                  |
 | `FLATCHR`                 | flatchr                   |
+| `DAYFORCE`                | dayforce                  |
 | `APPLICANTSTACK`          | applicantstack            |
 | `REACHMEE`                | reachmee                  |
 | `TALENTADORE`             | talentadore               |
@@ -140,7 +141,6 @@ Pre-define a tool this integration link can be used for.
 | `SIMPLOYER`               | simployer                 |
 | `PEPLE`                   | peple                     |
 | `YOUSERVE`                | youserve                  |
-| `DAYFORCE`                | dayforce                  |
 | `HANSALOG`                | hansalog                  |
 | `LATTICE`                 | lattice                   |
 | `HOORAYHR`                | hoorayhr                  |
