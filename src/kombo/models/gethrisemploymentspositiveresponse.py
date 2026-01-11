@@ -10,10 +10,10 @@ from kombo.types import (
     UNSET_SENTINEL,
     UnrecognizedStr,
 )
-from kombo.utils import validate_const, validate_open_enum
+from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator, PlainValidator
+from pydantic.functional_validators import AfterValidator
 from typing import Any, Dict, List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -158,27 +158,22 @@ class GetHrisEmploymentsPositiveResponseResult(BaseModel):
     custom_fields: Nullable[Dict[str, Any]]
     r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
-    pay_period: Annotated[
-        OptionalNullable[GetHrisEmploymentsPositiveResponsePayPeriod],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    pay_period: OptionalNullable[GetHrisEmploymentsPositiveResponsePayPeriod] = UNSET
     r"""The time interval which the `pay_rate` is describing.
 
     A `pay_rate` value of `12000` with a `pay_period` of `YEAR` would indicate that the employee receives 12000 over the course of a year. In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    pay_frequency: Annotated[
-        OptionalNullable[GetHrisEmploymentsPositiveResponsePayFrequency],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    pay_frequency: OptionalNullable[GetHrisEmploymentsPositiveResponsePayFrequency] = (
+        UNSET
+    )
     r"""The time interval at which the employee receives payment.
 
     A `pay_rate` of `12000`, with a `pay_period` of `YEAR`, and a `pay_frequency` of `MONTHLY` would indicate that the employee is paid 1000 every month. In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    employment_type: Annotated[
-        OptionalNullable[GetHrisEmploymentsPositiveResponseEmploymentType],
-        PlainValidator(validate_open_enum(False)),
+    employment_type: OptionalNullable[
+        GetHrisEmploymentsPositiveResponseEmploymentType
     ] = UNSET
     r"""The employee’s current employment type:
 

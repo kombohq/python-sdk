@@ -10,10 +10,10 @@ from kombo.types import (
     UNSET_SENTINEL,
     UnrecognizedStr,
 )
-from kombo.utils import validate_const, validate_open_enum
+from kombo.utils import validate_const
 import pydantic
 from pydantic import Field, model_serializer
-from pydantic.functional_validators import AfterValidator, PlainValidator
+from pydantic.functional_validators import AfterValidator
 from typing import Any, Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
@@ -1107,16 +1107,10 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
     hiring_team: List[GetAtsJobsPositiveResponseHiringTeam]
     r"""The hiring team allows you to sync users into your system who can access the job and its applications."""
 
-    employment_type: Annotated[
-        OptionalNullable[GetAtsJobsPositiveResponseEmploymentType],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    employment_type: OptionalNullable[GetAtsJobsPositiveResponseEmploymentType] = UNSET
     r"""The type of employment contract. In rare cases where can't find a clear mapping, the original string is passed through."""
 
-    status: Annotated[
-        OptionalNullable[GetAtsJobsPositiveResponseStatus],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    status: OptionalNullable[GetAtsJobsPositiveResponseStatus] = UNSET
     r"""The job's current status.
 
     *Note: For any checks (e.g., \"can we publish this job?\"), always evaluate both `status` and `visibility`. For example, a job can be `status=OPEN` with `visibility=INTERNAL`, meaning only existing employees can apply.*
@@ -1124,9 +1118,7 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
     In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    visibility: Annotated[
-        OptionalNullable[Visibility], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    visibility: OptionalNullable[Visibility] = UNSET
     r"""Describes the visibility of the job:
 
     - `PUBLIC`: visible to everyone, published on a job board
@@ -1139,14 +1131,10 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
     In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    remote_work_status: Annotated[
-        OptionalNullable[RemoteWorkStatus], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    remote_work_status: OptionalNullable[RemoteWorkStatus] = UNSET
     r"""Defines if the job supports remote work and if so, to what extent."""
 
-    salary_period: Annotated[
-        OptionalNullable[SalaryPeriod], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    salary_period: OptionalNullable[SalaryPeriod] = UNSET
     r"""The period of time over which the salary amount is paid (not equal to the pay frequency). In rare cases where we can’t find a clear mapping, the original string is passed through."""
 
     location: OptionalNullable[GetAtsJobsPositiveResponseLocation] = UNSET
