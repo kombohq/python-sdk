@@ -1994,6 +1994,20 @@ if TYPE_CHECKING:
         PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBody,
         PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBodyTypedDict,
     )
+    from .putintegrationsintegrationidenabledop import (
+        PutIntegrationsIntegrationIDEnabledRequest,
+        PutIntegrationsIntegrationIDEnabledRequestTypedDict,
+    )
+    from .putintegrationsintegrationidenabledpositiveresponse import (
+        PutIntegrationsIntegrationIDEnabledPositiveResponse,
+        PutIntegrationsIntegrationIDEnabledPositiveResponseData,
+        PutIntegrationsIntegrationIDEnabledPositiveResponseDataTypedDict,
+        PutIntegrationsIntegrationIDEnabledPositiveResponseTypedDict,
+    )
+    from .putintegrationsintegrationidenabledrequestbody import (
+        PutIntegrationsIntegrationIDEnabledRequestBody,
+        PutIntegrationsIntegrationIDEnabledRequestBodyTypedDict,
+    )
     from .schema1 import Schema1, Schema1TypedDict
     from .schema1_union_1 import (
         Schema1Array1,
@@ -3690,6 +3704,14 @@ __all__ = [
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBody",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBodyTypedDict",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestTypedDict",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseData",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseDataTypedDict",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseTypedDict",
+    "PutIntegrationsIntegrationIDEnabledRequest",
+    "PutIntegrationsIntegrationIDEnabledRequestBody",
+    "PutIntegrationsIntegrationIDEnabledRequestBodyTypedDict",
+    "PutIntegrationsIntegrationIDEnabledRequestTypedDict",
     "QaStatus",
     "ReadModelScopeConfigSetting",
     "RemoteWorkStatus",
@@ -5503,6 +5525,14 @@ _dynamic_imports: dict[str, str] = {
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDPositiveResponseTypedDict": ".putintegrationsintegrationidcustomfieldscustomfieldidpositiveresponse",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBody": ".putintegrationsintegrationidcustomfieldscustomfieldidrequestbody",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBodyTypedDict": ".putintegrationsintegrationidcustomfieldscustomfieldidrequestbody",
+    "PutIntegrationsIntegrationIDEnabledRequest": ".putintegrationsintegrationidenabledop",
+    "PutIntegrationsIntegrationIDEnabledRequestTypedDict": ".putintegrationsintegrationidenabledop",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponse": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseData": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseDataTypedDict": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseTypedDict": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledRequestBody": ".putintegrationsintegrationidenabledrequestbody",
+    "PutIntegrationsIntegrationIDEnabledRequestBodyTypedDict": ".putintegrationsintegrationidenabledrequestbody",
     "Schema1": ".schema1",
     "Schema1TypedDict": ".schema1",
     "Schema1Array1": ".schema1_union_1",
