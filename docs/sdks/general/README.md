@@ -9,6 +9,7 @@
 * [send_passthrough_request](#send_passthrough_request) - Send passthrough request
 * [delete_integration](#delete_integration) - Delete integration
 * [get_integration_details](#get_integration_details) - Get integration details
+* [set_integration_enabled](#set_integration_enabled) - Set integration enabled
 * [create_reconnection_link](#create_reconnection_link) - Create reconnection link
 * [get_integration_fields](#get_integration_fields) - Get integration fields
 * [update_integration_field](#update_integration_field) - Updates an integration fields passthrough setting
@@ -110,6 +111,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 
 |Integration|`{tool}/{api}`|Description|
 |---|---|---|
+|360Learning|`360learning/v2`|360Learning [API v2](https://360learning.readme.io/docs). We automatically handle authentication and use `https://app.360learning.com/api/v2/` as the base URL.|
 |a3innuva Nómina|`a3innuvanomina/laboral`|a3innuva Nómina API [docs](https://a3developers.wolterskluwer.es/). Requests are automatically authenticated using OAuth access tokens (refreshed when needed). Base URL: `https://a3api.wolterskluwer.es/Laboral/api`.|
 |Abacus Umantis|`abacusumantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
 |Abacus|`abacus/api`|Abacus [REST API](https://apihub.abacus.ch/). We automatically authenticate all requests and use `https://\{\{abacusUrl\}\}/api/entity/v1/mandants/\{\{mandantId\}\}` as the base URL.|
@@ -120,7 +122,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |ApplicantStack|`applicantstack/api`|ApplicantStack's [API](https://helpas.payrollservers.info/s/article/API-Integration-Guide). We automatically authenticate all requests and use `https://\{subdomain\}.applicantstack.com/api/` as the base URL.|
 |Apploi|`apploi/rest-api`|The [Apploi API](https://integrate.apploi.com/). We automatically authenticate all requests and use `https://partners.apploi.com/` as the base URL.|
 |Ashby|`ashby/v1`|Ashby's [V1 API](https://developers.ashbyhq.com/reference/introduction). We automatically authenticate all requests with the provided credentials and use `https://api.ashbyhq.com` as the base URL. Please note that Ashby uses an RPC-style API. Please check [the Ashby API documentation](https://developers.ashbyhq.com/reference/introduction) for details on how to use it.|
-|Asymbl|`asymbl/v63`|We use `https://\{customerDomainName\}` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
+|Asymbl|`asymbl/v63`|We use `https://\{subdomain\}.my.salesforce.com` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
 |Avature|`avature/custom-api`|Avatures's Custom API. Call `Get /openapi` to retrieve the specific custom API schema. We automatically authenticate all requests and use the instance specific custom API URL as the base URL.|
 |Avionté|`avionte/front-office-v1`|Avionte's API. We automatically authenticate all requests and use `https://api.avionte.com/front-office/v1` as the base URL. Documentation for the BOLD Front Office API: https://developer.avionte.com/reference/get-all-talent-tags|
 |BambooHR|`bamboohr/v1`|BambooHR's [API](https://documentation.bamboohr.com/reference/get-employee). We automatically authenticate all requests using the customer credentials `https://api.bamboohr.com/api/gateway.php/\{subdomain\}/v1` as the base URL.|
@@ -163,7 +165,8 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Google Workspace|`googleworkspace/admin`|[Googles's API](https://developers.google.com/admin-sdk/directory/reference/rest). We automatically authenticate all requests and use 'https://admin.googleapis.com' as the base URL.|
 |Google Workspace|`googleworkspace/people`|[Googles's API](https://developers.google.com/people/api/rest). We automatically authenticate all requests and use 'https://people.googleapis.com' as the base URL.|
 |Greenhouse Job Board|`greenhousejobboard/boards-api`|[Greenhouse Job Board API](https://developers.greenhouse.io/job-board). We automatically authenticate all requests and use 'https://boards-api.greenhouse.io/v1/boards/\{job_board_token\}' as the base URL. Optionally, you can provide a custom job_board_token to use a different job board.|
-|Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
+|Greenhouse|`greenhouse/harvest-v2`|Greenhouse [Harvest API v2](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v2` as the base URL.|
+|Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API v1](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
 |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
 |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
 |Haufe Umantis|`umantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
@@ -386,6 +389,51 @@ with Kombo(
 ### Response
 
 **[models.GetIntegrationsIntegrationIDPositiveResponse](../../models/getintegrationsintegrationidpositiveresponse.md)**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboGeneralError | default                  | application/json         |
+| errors.SDKDefaultError   | 4XX, 5XX                 | \*/\*                    |
+
+## set_integration_enabled
+
+Enable or disable the specified integration. When disabling, all currently running syncs will be cancelled.
+
+All authentication credentials and configuration are preserved. Syncs can be resumed by re-enabling the integration.
+
+You may use this to, for example, pause syncing for customers that are temporarily not using the integration.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="PutIntegrationsIntegrationIdEnabled" method="put" path="/integrations/{integration_id}/enabled" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.general.set_integration_enabled(integration_id="<id>", value=False)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `integration_id`                                                                       | *str*                                                                                  | :heavy_check_mark:                                                                     | PUT /integrations/:integration_id/enabled Parameter                                    |
+| `value`                                                                                | *bool*                                                                                 | :heavy_check_mark:                                                                     | The desired state of the integration (e.g., `true` for enabled, `false` for disabled). |
+| `retries`                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                       | :heavy_minus_sign:                                                                     | Configuration to override the default retry behavior of the client.                    |
+
+### Response
+
+**[models.PutIntegrationsIntegrationIDEnabledPositiveResponse](../../models/putintegrationsintegrationidenabledpositiveresponse.md)**
 
 ### Errors
 

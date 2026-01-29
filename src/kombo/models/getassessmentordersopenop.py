@@ -5,9 +5,10 @@ from .getassessmentordersopenpositiveresponse import (
     GetAssessmentOrdersOpenPositiveResponse,
     GetAssessmentOrdersOpenPositiveResponseTypedDict,
 )
-from kombo.types import BaseModel
+from kombo.types import BaseModel, UNSET_SENTINEL
 from kombo.utils import FieldMetadata, HeaderMetadata, QueryParamMetadata
 import pydantic
+from pydantic import model_serializer
 from typing import Awaitable, Callable, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -24,6 +25,22 @@ class GetAssessmentOrdersOpenGlobals(BaseModel):
         FieldMetadata(header=HeaderMetadata(style="simple", explode=False)),
     ] = None
     r"""ID of the integration you want to interact with."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["integration_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class GetAssessmentOrdersOpenRequestTypedDict(TypedDict):
@@ -45,6 +62,22 @@ class GetAssessmentOrdersOpenRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = 100
     r"""The number of results to return per page. Maximum is 250."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["cursor", "page_size"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class GetAssessmentOrdersOpenResponseTypedDict(TypedDict):
