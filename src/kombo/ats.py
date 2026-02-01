@@ -5013,6 +5013,8 @@ class Ats(BaseSDK):
         \"availability_date\": \"2021-01-01\",
         \"location\": {
         \"city\": \"New York\",
+        \"zip_code\": \"10016\",
+        \"state\": \"NY\",
         \"country\": \"US\"
         }
         },
@@ -5265,6 +5267,8 @@ class Ats(BaseSDK):
         \"availability_date\": \"2021-01-01\",
         \"location\": {
         \"city\": \"New York\",
+        \"zip_code\": \"10016\",
+        \"state\": \"NY\",
         \"country\": \"US\"
         }
         },
