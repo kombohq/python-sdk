@@ -29,9 +29,43 @@ Generate a unique link that allows your user to enter the embedded Kombo Connect
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" -->
+<!-- UsageSnippet language="python" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.connect.create_connection_link(end_user_email="Abraham55@gmail.com", end_user_organization_name="<value>", integration_category="HRIS", language="en", enable_filtering=False, enable_field_mapping=False, link_type="EMBEDDED")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.connect.create_connection_link(end_user_email="Abraham55@gmail.com", end_user_organization_name="<value>", integration_category="HRIS", language="en", enable_filtering=False, enable_field_mapping=False, link_type="EMBEDDED")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -91,7 +125,7 @@ into your system.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetConnectIntegrationByTokenToken" method="get" path="/connect/integration-by-token/{token}" -->
+<!-- UsageSnippet language="python" operationID="GetConnectIntegrationByTokenToken" method="get" path="/connect/integration-by-token/{token}" example="example1" -->
 ```python
 from kombo import Kombo
 
