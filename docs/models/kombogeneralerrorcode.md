@@ -13,3 +13,4 @@ Some errors include an error code that can be used to identify their cause. See 
 | `PLATFORM_UNKNOWN_ERROR`          | PLATFORM.UNKNOWN_ERROR            |
 | `PLATFORM_IP_NOT_WHITELISTED`     | PLATFORM.IP_NOT_WHITELISTED       |
 | `PLATFORM_AUTHENTICATION_INVALID` | PLATFORM.AUTHENTICATION_INVALID   |
+| `PLATFORM_TASK_TIMED_OUT`         | PLATFORM.TASK_TIMED_OUT           |

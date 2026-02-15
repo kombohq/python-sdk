@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 from datetime import datetime
-from kombo.types import BaseModel
+from kombo.types import BaseModel, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
-from pydantic import Field
+from pydantic import Field, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -141,6 +141,22 @@ class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyAttachment(BaseModel)
     **Note:** You must provide either this or `data_url`. We recommend `data_url` over `data` for most cases.
     """
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["content_type", "data_url", "data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PutAssessmentOrdersAssessmentOrderIDResultRequestBodySmartrecruitersTypedDict(
     TypedDict
@@ -152,6 +168,22 @@ class PutAssessmentOrdersAssessmentOrderIDResultRequestBodySmartrecruitersTypedD
 class PutAssessmentOrdersAssessmentOrderIDResultRequestBodySmartrecruiters(BaseModel):
     score_label: Annotated[Optional[str], pydantic.Field(alias="scoreLabel")] = None
     r"""Value that we will pass through to SmartRecruiters' `scoreLabel` field."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["scoreLabel"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRemoteFieldsTypedDict(
@@ -170,6 +202,22 @@ class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRemoteFields(BaseMode
     smartrecruiters: Optional[
         PutAssessmentOrdersAssessmentOrderIDResultRequestBodySmartrecruiters
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["smartrecruiters"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyTypedDict(TypedDict):
@@ -237,3 +285,42 @@ class PutAssessmentOrdersAssessmentOrderIDResultRequestBody(BaseModel):
         PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRemoteFields
     ] = None
     r"""Additional fields that we will pass through to specific ATS systems."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "completed_at",
+                "score",
+                "max_score",
+                "attributes",
+                "attachments",
+                "remote_fields",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+try:
+    AttributeSubResult.model_rebuild()
+except NameError:
+    pass
+try:
+    AttributeText.model_rebuild()
+except NameError:
+    pass
+try:
+    PutAssessmentOrdersAssessmentOrderIDResultRequestBodySmartrecruiters.model_rebuild()
+except NameError:
+    pass

@@ -25,6 +25,22 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyTeamtailor(BaseModel):
     user_id: Optional[str] = None
     r"""ID of the user that created the note. Defaults to the first admin user found."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["user_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDNotesRequestBodyPostHeadersTypedDict(TypedDict):
     r"""Headers we will pass with `POST` requests to Greenhouse."""
@@ -43,31 +59,26 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyPostHeaders(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["On-Behalf-Of"]
-        nullable_fields = ["On-Behalf-Of"]
-        null_default_fields = []
-
+        optional_fields = set(["On-Behalf-Of"])
+        nullable_fields = set(["On-Behalf-Of"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -89,6 +100,22 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyGreenhouse(BaseModel):
     ] = None
     r"""Headers we will pass with `POST` requests to Greenhouse."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["post_headers"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDNotesRequestBodyRecruiteeTypedDict(TypedDict):
     r"""Recruitee specific remote fields for the note."""
@@ -108,6 +135,22 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRecruitee(BaseModel):
     is_json: Optional[bool] = None
     r"""Whether the note is in a stringified JSON format. If true, content should contain a valid JSON as per the [Recruitee API documentation](https://docs.recruitee.com/reference/candidatesidnotes) (body_json field). If false we add the note as a plain text."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["visibility", "is_json"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDNotesRequestBodyBullhornTypedDict(TypedDict):
     r"""Bullhorn specific remote fields for the note."""
@@ -122,6 +165,22 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyBullhorn(BaseModel):
     action: Optional[str] = None
     r"""The action (or type) associated with a Note. You can find all available note actions in a Bullhorn instance under System Settings > commentActionList. The default action is `Note`."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["action"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDNotesRequestBodyWorkableTypedDict(TypedDict):
     r"""Workable specific remote fields for ATS actions."""
@@ -135,6 +194,22 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyWorkable(BaseModel):
 
     on_behalf_of_user_remote_id: Optional[str] = None
     r"""The remote ID of the user that will be displayed in the UI as the one that performed the action."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["on_behalf_of_user_remote_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFieldsTypedDict(TypedDict):
@@ -186,6 +261,24 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
     workable: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyWorkable] = None
     r"""Workable specific remote fields for ATS actions."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["teamtailor", "greenhouse", "recruitee", "bullhorn", "workable"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDNotesRequestBodyTypedDict(TypedDict):
     content: str
@@ -209,3 +302,25 @@ class PostAtsApplicationsApplicationIDNotesRequestBody(BaseModel):
         PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields
     ] = None
     r"""Tool specific remote fields for the note."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["remote_fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+try:
+    PostAtsApplicationsApplicationIDNotesRequestBodyPostHeaders.model_rebuild()
+except NameError:
+    pass

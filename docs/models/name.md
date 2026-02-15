@@ -32,10 +32,10 @@ The name of the Kombo model or connection that changed.
 | `ATS_REJECTION_REASONS`             | ats_rejection_reasons               |
 | `LMS_USERS`                         | lms_users                           |
 | `LMS_COURSE_PROVIDERS`              | lms_course_providers                |
-| `LMS_COURSES`                       | lms_courses                         |
-| `LMS_COURSE_PROGRESSIONS`           | lms_course_progressions             |
-| `LMS_COURSE_REVISIONS`              | lms_course_revisions                |
 | `LMS_SKILLS`                        | lms_skills                          |
+| `LMS_COURSES`                       | lms_courses                         |
+| `LMS_COURSE_REVISIONS`              | lms_course_revisions                |
+| `LMS_COURSE_PROGRESSIONS`           | lms_course_progressions             |
 | `HRIS_JOIN_EMPLOYEES_TEAMS`         | hris_join_employees_teams           |
 | `ATS_JOIN_CANDIDATES_TAGS`          | ats_join_candidates_tags            |
 | `ATS_JOIN_JOBS_APPLICATION_STAGES`  | ats_join_jobs_application_stages    |

@@ -85,7 +85,7 @@ It's also possible to write a standalone Python script without needing to set up
 ```python
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.9"
+# requires-python = ">=3.10"
 # dependencies = [
 #     "kombo",
 # ]
@@ -214,6 +214,7 @@ with SDK(
 * [send_passthrough_request](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#send_passthrough_request) - Send passthrough request
 * [delete_integration](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#delete_integration) - Delete integration
 * [get_integration_details](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#get_integration_details) - Get integration details
+* [set_integration_enabled](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#set_integration_enabled) - Set integration enabled
 * [create_reconnection_link](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#create_reconnection_link) - Create reconnection link
 * [get_integration_fields](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#get_integration_fields) - Get integration fields
 * [update_integration_field](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/general/README.md#update_integration_field) - Updates an integration fields passthrough setting
@@ -330,9 +331,9 @@ with Kombo(
 
 
 **Inherit from [`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/sdkerror.py)**:
-* [`KomboAtsError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 27 of 57 methods.*
-* [`KomboHrisError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 57 methods.*
-* [`KomboGeneralError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 13 of 57 methods.*
+* [`KomboAtsError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 27 of 58 methods.*
+* [`KomboHrisError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 58 methods.*
+* [`KomboGeneralError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 14 of 58 methods.*
 * [`ResponseValidationError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
