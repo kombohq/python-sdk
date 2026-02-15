@@ -48,3 +48,9 @@ class PostForceSyncPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    PostForceSyncPositiveResponse.model_rebuild()
+except NameError:
+    pass

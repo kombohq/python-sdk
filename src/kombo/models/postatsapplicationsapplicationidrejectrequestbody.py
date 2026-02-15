@@ -25,31 +25,26 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyPostHeaders(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["On-Behalf-Of"]
-        nullable_fields = ["On-Behalf-Of"]
-        null_default_fields = []
-
+        optional_fields = set(["On-Behalf-Of"])
+        nullable_fields = set(["On-Behalf-Of"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -71,6 +66,22 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyGreenhouse(BaseModel):
     ] = None
     r"""Headers we will pass with `POST` requests to Greenhouse."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["post_headers"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailorTypedDict(TypedDict):
     r"""Fields specific to Teamtailor."""
@@ -85,6 +96,22 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailor(BaseModel):
     user_id: Optional[str] = None
     r"""The remote ID of the user that will be displayed in the UI as the one that performed the action. If not provided, the first admin user will be used."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["user_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDRejectRequestBodyWorkableTypedDict(TypedDict):
     r"""Workable specific remote fields for ATS actions."""
@@ -98,6 +125,22 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyWorkable(BaseModel):
 
     on_behalf_of_user_remote_id: Optional[str] = None
     r"""The remote ID of the user that will be displayed in the UI as the one that performed the action."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["on_behalf_of_user_remote_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFieldsTypedDict(TypedDict):
@@ -133,6 +176,22 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFields(BaseModel):
     workable: Optional[PostAtsApplicationsApplicationIDRejectRequestBodyWorkable] = None
     r"""Workable specific remote fields for ATS actions."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["greenhouse", "teamtailor", "workable"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsApplicationsApplicationIDRejectRequestBodyTypedDict(TypedDict):
     rejection_reason_id: str
@@ -156,3 +215,25 @@ class PostAtsApplicationsApplicationIDRejectRequestBody(BaseModel):
         PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFields
     ] = None
     r"""Additional fields that we will pass through to specific ATS systems."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["note", "remote_fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+try:
+    PostAtsApplicationsApplicationIDRejectRequestBodyPostHeaders.model_rebuild()
+except NameError:
+    pass
