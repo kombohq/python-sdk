@@ -43,7 +43,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsApplications" method="get" path="/ats/applications" -->
+<!-- UsageSnippet language="python" operationID="GetAtsApplications" method="get" path="/ats/applications" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -107,9 +107,45 @@ Moves an application to a specified stage. Use job-specific stages from GET /job
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" -->
+<!-- UsageSnippet language="python" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.move_application_to_stage(application_id="<id>", stage_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.move_application_to_stage(application_id="<id>", stage_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -180,9 +216,45 @@ This can, for example, be used to link a candidate back to a test result/assessm
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" -->
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_application_result_link(application_id="<id>", label="<value>", url="https://dapper-grandson.com/")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_application_result_link(application_id="<id>", label="<value>", url="https://dapper-grandson.com/")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -253,9 +325,45 @@ Add extra information to an application. This can be any extra text information 
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" -->
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_application_note(application_id="<id>", content="<value>", content_type="PLAIN_TEXT")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_application_note(application_id="<id>", content="<value>", content_type="PLAIN_TEXT")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -305,7 +413,7 @@ Get attachments from an application. If the ATS stores the attachments on the ca
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsApplicationsApplicationIdAttachments" method="get" path="/ats/applications/{application_id}/attachments" -->
+<!-- UsageSnippet language="python" operationID="GetAtsApplicationsApplicationIdAttachments" method="get" path="/ats/applications/{application_id}/attachments" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -367,9 +475,51 @@ Uploads an attachment file for the specified applicant.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" -->
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_application_attachment(application_id="<id>", attachment={
+        "name": "<value>",
+        "type": "CV",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_application_attachment(application_id="<id>", attachment={
+        "name": "<value>",
+        "type": "CV",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -431,9 +581,45 @@ Rejects an application with a provided reason. Optionally, you can provide a fre
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" -->
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.reject_application(application_id="<id>", rejection_reason_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.reject_application(application_id="<id>", rejection_reason_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -479,7 +665,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsCandidates" method="get" path="/ats/candidates" -->
+<!-- UsageSnippet language="python" operationID="GetAtsCandidates" method="get" path="/ats/candidates" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -603,9 +789,67 @@ Create a new candidate and application for the specified job.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsCandidates" method="post" path="/ats/candidates" -->
+<!-- UsageSnippet language="python" operationID="PostAtsCandidates" method="post" path="/ats/candidates" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.create_candidate(candidate={
+        "first_name": "Crystal",
+        "last_name": "Prohaska",
+        "email_address": "Adelia.Littel99@yahoo.com",
+    }, application={
+        "job_id": "<id>",
+    }, screening_question_answers=[
+        {
+            "question_id": "D8yPrjXXvA2XeBksTmrVvKSn",
+            "answer": "Yes",
+        },
+    ])
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidates" method="post" path="/ats/candidates" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.create_candidate(candidate={
+        "first_name": "Crystal",
+        "last_name": "Prohaska",
+        "email_address": "Adelia.Littel99@yahoo.com",
+    }, application={
+        "job_id": "<id>",
+    }, screening_question_answers=[
+        {
+            "question_id": "D8yPrjXXvA2XeBksTmrVvKSn",
+            "answer": "Yes",
+        },
+    ])
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidates" method="post" path="/ats/candidates" example="example1" -->
 ```python
 from kombo import Kombo
 from kombo.utils import parse_datetime
@@ -707,7 +951,7 @@ Get attachments from a candidate, including all attachments of all of their appl
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsCandidatesCandidateIdAttachments" method="get" path="/ats/candidates/{candidate_id}/attachments" -->
+<!-- UsageSnippet language="python" operationID="GetAtsCandidatesCandidateIdAttachments" method="get" path="/ats/candidates/{candidate_id}/attachments" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -770,9 +1014,51 @@ Uploads an attachment file for the specified candidate.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" -->
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_candidate_attachment(candidate_id="<id>", attachment={
+        "name": "<value>",
+        "type": "COVER_LETTER",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_candidate_attachment(candidate_id="<id>", attachment={
+        "name": "<value>",
+        "type": "COVER_LETTER",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -853,9 +1139,45 @@ Add a result link to a candidate.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" -->
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_candidate_result_link(candidate_id="<id>", label="<value>", url="https://thrifty-cellar.net")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_candidate_result_link(candidate_id="<id>", label="<value>", url="https://thrifty-cellar.net")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -926,9 +1248,49 @@ Kombo takes care of creating the tag if required, finding out the right ID, and 
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" -->
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_candidate_tag(candidate_id="<id>", tag={
+        "name": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.add_candidate_tag(candidate_id="<id>", tag={
+        "name": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -987,9 +1349,49 @@ This will also succeed if the tag does not exist on the candidate.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" -->
+<!-- UsageSnippet language="python" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.remove_candidate_tag(candidate_id="<id>", tag={
+        "name": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.remove_candidate_tag(candidate_id="<id>", tag={
+        "name": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1036,7 +1438,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsTags" method="get" path="/ats/tags" -->
+<!-- UsageSnippet language="python" operationID="GetAtsTags" method="get" path="/ats/tags" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1097,7 +1499,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsApplicationStages" method="get" path="/ats/application-stages" -->
+<!-- UsageSnippet language="python" operationID="GetAtsApplicationStages" method="get" path="/ats/application-stages" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1156,7 +1558,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsJobs" method="get" path="/ats/jobs" -->
+<!-- UsageSnippet language="python" operationID="GetAtsJobs" method="get" path="/ats/jobs" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1241,6 +1643,8 @@ Visit our in-depth guides to learn more about:
     "availability_date": "2021-01-01",
     "location": {
       "city": "New York",
+      "zip_code": "10016",
+      "state": "NY",
       "country": "US"
     }
   },
@@ -1271,9 +1675,63 @@ Visit our in-depth guides to learn more about:
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" -->
+<!-- UsageSnippet language="python" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.create_application(job_id="<id>", candidate={
+        "first_name": "Jayda",
+        "last_name": "Rogahn",
+        "email_address": "Rowena74@hotmail.com",
+    }, screening_question_answers=[
+        {
+            "question_id": "D8yPrjXXvA2XeBksTmrVvKSn",
+            "answer": "Yes",
+        },
+    ])
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.create_application(job_id="<id>", candidate={
+        "first_name": "Jayda",
+        "last_name": "Rogahn",
+        "email_address": "Rowena74@hotmail.com",
+    }, screening_question_answers=[
+        {
+            "question_id": "D8yPrjXXvA2XeBksTmrVvKSn",
+            "answer": "Yes",
+        },
+    ])
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" example="example1" -->
 ```python
 from kombo import Kombo
 from kombo.utils import parse_datetime
@@ -1294,6 +1752,8 @@ with Kombo(
         "location": {
             "city": "New York",
             "country": "US",
+            "state": "NY",
+            "zip_code": "10016",
         },
         "gender": "MALE",
         "availability_date": parse_datetime("2021-01-01T00:00:00Z"),
@@ -1362,7 +1822,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsUsers" method="get" path="/ats/users" -->
+<!-- UsageSnippet language="python" operationID="GetAtsUsers" method="get" path="/ats/users" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1414,7 +1874,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsOffers" method="get" path="/ats/offers" -->
+<!-- UsageSnippet language="python" operationID="GetAtsOffers" method="get" path="/ats/offers" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1467,7 +1927,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsRejectionReasons" method="get" path="/ats/rejection-reasons" -->
+<!-- UsageSnippet language="python" operationID="GetAtsRejectionReasons" method="get" path="/ats/rejection-reasons" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1518,7 +1978,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAtsInterviews" method="get" path="/ats/interviews" -->
+<!-- UsageSnippet language="python" operationID="GetAtsInterviews" method="get" path="/ats/interviews" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1584,9 +2044,47 @@ Once imported, Kombo will automatically fetch and update the application's compl
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" -->
+<!-- UsageSnippet language="python" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" example="Error Response" -->
+```python
+from kombo import Kombo
+from kombo.utils import parse_datetime
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.import_tracked_application(tracked_at=parse_datetime("2024-07-27T05:49:24.648Z"))
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+from kombo.utils import parse_datetime
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.ats.import_tracked_application(tracked_at=parse_datetime("2024-07-27T05:49:24.648Z"))
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" example="example1" -->
 ```python
 from kombo import Kombo
 from kombo.utils import parse_datetime

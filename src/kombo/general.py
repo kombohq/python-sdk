@@ -383,6 +383,7 @@ class General(BaseSDK):
 
         |Integration|`{tool}/{api}`|Description|
         |---|---|---|
+        |360Learning|`360learning/v2`|360Learning [API v2](https://360learning.readme.io/docs). We automatically handle authentication and use `https://app.360learning.com/api/v2/` as the base URL.|
         |a3innuva Nómina|`a3innuvanomina/laboral`|a3innuva Nómina API [docs](https://a3developers.wolterskluwer.es/). Requests are automatically authenticated using OAuth access tokens (refreshed when needed). Base URL: `https://a3api.wolterskluwer.es/Laboral/api`.|
         |Abacus Umantis|`abacusumantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
         |Abacus|`abacus/api`|Abacus [REST API](https://apihub.abacus.ch/). We automatically authenticate all requests and use `https://\{\{abacusUrl\}\}/api/entity/v1/mandants/\{\{mandantId\}\}` as the base URL.|
@@ -393,7 +394,7 @@ class General(BaseSDK):
         |ApplicantStack|`applicantstack/api`|ApplicantStack's [API](https://helpas.payrollservers.info/s/article/API-Integration-Guide). We automatically authenticate all requests and use `https://\{subdomain\}.applicantstack.com/api/` as the base URL.|
         |Apploi|`apploi/rest-api`|The [Apploi API](https://integrate.apploi.com/). We automatically authenticate all requests and use `https://partners.apploi.com/` as the base URL.|
         |Ashby|`ashby/v1`|Ashby's [V1 API](https://developers.ashbyhq.com/reference/introduction). We automatically authenticate all requests with the provided credentials and use `https://api.ashbyhq.com` as the base URL. Please note that Ashby uses an RPC-style API. Please check [the Ashby API documentation](https://developers.ashbyhq.com/reference/introduction) for details on how to use it.|
-        |Asymbl|`asymbl/v63`|We use `https://\{customerDomainName\}` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
+        |Asymbl|`asymbl/v63`|We use `https://\{subdomain\}.my.salesforce.com` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
         |Avature|`avature/custom-api`|Avatures's Custom API. Call `Get /openapi` to retrieve the specific custom API schema. We automatically authenticate all requests and use the instance specific custom API URL as the base URL.|
         |Avionté|`avionte/front-office-v1`|Avionte's API. We automatically authenticate all requests and use `https://api.avionte.com/front-office/v1` as the base URL. Documentation for the BOLD Front Office API: https://developer.avionte.com/reference/get-all-talent-tags|
         |BambooHR|`bamboohr/v1`|BambooHR's [API](https://documentation.bamboohr.com/reference/get-employee). We automatically authenticate all requests using the customer credentials `https://api.bamboohr.com/api/gateway.php/\{subdomain\}/v1` as the base URL.|
@@ -401,6 +402,7 @@ class General(BaseSDK):
         |BoondManager|`boondmanager/api`|BoondManager [REST API](https://ui.boondmanager.com/administrator/developer/apisandbox). We automatically authenticate all requests and use `https://ui.boondmanager.com/api` as the base URL.|
         |Breezy HR|`breezyhr/v3`|[BreezyHR's v3 API](https://developer.breezy.hr/reference/overview). We automatically authenticate all requests and use \"https://api.breezy.hr/v3/\" as the base URL.|
         |Bullhorn|`bullhorn/default`|[Bullhorn's API](https://bullhorn.github.io/rest-api-docs/index.html). We automatically use the right `https://rest.bullhornstaffing.com/rest-services/\{corpToken\}` base URL.|
+        |Carerix|`carerix/api`|Carerix [REST API](https://docs.carerix.io/rest/introduction). We automatically authenticate all requests and use `https://api.carerix.com` as the base URL. Please note that Carerix uses XML for request and response bodies.|
         |CEGID TalentSoft Customer|`talentsoftcustomer/v1`|Cegid Talentsoft Recruiting FrontOffice API: [API Documentation](https://developers.cegid.com/api-details#api=cegid-talentsoft-recruiting-frontoffice) We automatically authenticate all requests and use `https://\{customer_subdomain\}.talent-soft.com/api/v1` as the base URL.|
         |CEGID TalentSoft FrontOffice|`talentsoft/v2`|Cegid Talentsoft Recruiting FrontOffice [API](https://developers.cegid.com/api-details). We automatically authenticate all requests using the provided credentials and use `https://\{domain\}/api/v2` as the base URL.|
         |Ceipal|`ceipal/v1`|We use `https://api.ceipal.com/v1` as the base URL. Find the official docs [here](https://developer.ceipal.com/ceipal-ats-version-one/ceipal-ats-v1-api-reference).|
@@ -436,7 +438,8 @@ class General(BaseSDK):
         |Google Workspace|`googleworkspace/admin`|[Googles's API](https://developers.google.com/admin-sdk/directory/reference/rest). We automatically authenticate all requests and use 'https://admin.googleapis.com' as the base URL.|
         |Google Workspace|`googleworkspace/people`|[Googles's API](https://developers.google.com/people/api/rest). We automatically authenticate all requests and use 'https://people.googleapis.com' as the base URL.|
         |Greenhouse Job Board|`greenhousejobboard/boards-api`|[Greenhouse Job Board API](https://developers.greenhouse.io/job-board). We automatically authenticate all requests and use 'https://boards-api.greenhouse.io/v1/boards/\{job_board_token\}' as the base URL. Optionally, you can provide a custom job_board_token to use a different job board.|
-        |Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
+        |Greenhouse|`greenhouse/harvest-v2`|Greenhouse [Harvest API v2](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v2` as the base URL.|
+        |Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API v1](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
         |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
         |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
         |Haufe Umantis|`umantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
@@ -456,16 +459,20 @@ class General(BaseSDK):
         |JazzHR|`jazzhr/v1`|[JazzHR's v1 API](https://www.resumatorapi.com/v1/#!`).We automatically authenticate all requests and use \"https://api.resumatorapi.com/v1/\" as the base URL.|
         |JobDiva|`jobdiva/api`|We automatically authenticate all requests and use `https://api.jobdiva.com` as the base URL.|
         |Jobvite|`jobvite/api`|We automatically authenticate all requests and use 'https://api.jobvite.com/api/v2' as the base URL.|
+        |Jobvite|`jobvite/v2`|We use `https://api.jobvite.com/api/v2` as the base URL. Find the official docs [here](https://help.jobvite.com/hc/en-us/articles/8870636608925-Jobvite-API).|
         |Jobylon|`jobylon/feed`|The [Jobylon Feed API](https://developer.jobylon.com/feed-api/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/feeds/\{job_hash\}` as the base URL.|
         |Jobylon|`jobylon/push`|The [Jobylon Push API](https://developer.jobylon.com/push-api-and-webhooks/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/p1` as the base URL.|
         |JOIN|`join/v2`|Join's [V2 API](https://docs.join.com/reference/getting-started). We automatically authenticate all requests and use `https://api.join.com/v2` as the base URL.|
         |Kenjo|`kenjo/api`|Kenjo's [API](https://kenjo.readme.io/reference/generate-the-api-key). We automatically authenticate all requests using the API key and use `https://api.kenjo.io/` as the base URL.|
+        |Lattice Talent|`latticetalent/talent`|Lattice's [Talent API](https://developers.lattice.com/reference/introduction). We automatically authenticate all requests using API key credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/passthrough`|Lattice's [API](https://developers.lattice.com/v2/docs/base-url-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/talent`|Lattice's [Talent API](https://developers.lattice.com/docs/introduction-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
         |Laura|`laura/api`|We automatically authenticate all requests and use `https://\{subdomain\}.rekrytointi.com/api/v1.2` as the base URL.|
         |Leapsome|`leapsome/scim`|Leapsome [SCIM API](https://api.leapsome.com/scim/v1/api-docs/). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.leapsome.com/scim/v1` as the base URL.|
         |Leapsome|`leapsome/v1`|Leapsome [API](https://api.leapsome.com/v1/api-docs/). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.leapsome.com/v1` as the base URL.|
         |Lever|`lever/v1`|[Lever's v1 API](https://hire.lever.co/developer/documentation). We automatically authenticate all requests using the partner credentials which have been configured in the Lever tool settings (this uses Kombo's partner credentials by default).|
+        |LinkedIn Learning|`linkedinlearning/v2`|LinkedIn Learning [API v2](https://learn.microsoft.com/en-us/linkedin/learning/). We automatically handle authentication and use `https://api.linkedin.com` as the base URL.|
+        |Loxo|`loxo/v1`|[Loxo's API](https://loxo.readme.io/reference/loxo-api). We automatically authenticate all requests and use 'https://app.loxo.co/api/\{agency_slug\}' as base URL.|
         |Lucca|`lucca/api`|[Luccas's API](https://developers.lucca.fr/api-reference/legacy/introduction). We automatically authenticate all requests and use 'https://\{account\}.\{ilucca|ilucca-demo\}.\{region\}/' as the base URL.|
         |Manatal|`manatal/career-page`|Manatal's Career Page API. We use `https://api.manatal.com/open/v3/career-page/\{client_slug\}` as the base URL.|
         |Manatal|`manatal/open-api-v3`|[Manatal's Open API v3](https://developers.manatal.com/reference/getting-started). We automatically authenticate all requests and use `https://api.manatal.com/open/v3` as the base URL.|
@@ -474,6 +481,7 @@ class General(BaseSDK):
         |Microsoft Entra ID|`entraid/v1`|[AzureAD's API](https://learn.microsoft.com/en-us/graph/api/resources/identity-network-access-overview?view=graph-rest-1.0). We automatically authenticate all requests.|
         |Mysolution|`mysolution/default`|[Mysolution's API](https://swagger.mysolution.nl/). We automatically authenticate all requests and use the customer's domain as base URL.|
         |Nmbrs|`nmbrs/soap`|[Nmbrs SOAP API](https://api.nmbrs.nl/soap/v3/). We automatically authenticate all requests and use `https://api.nmbrs.nl/soap/v3/` as the base URL. Set `data` to your raw XML string (the content that will be placed inside the `\<soap:Body\>` tag). Use `/` as your `path`, as we will always send requests to `https://api.nmbrs.nl/soap/v3/\{service_name\}.asmx`. Set your `method` to `POST`. You need to specify the `api_options` object and set `service_name` to the name of the service you want to call. Available services include `EmployeeService` and `CompanyService`.|
+        |Odoo|`odoo/json2`|Odoo's [JSON-2 API](https://www.odoo.com/documentation/19.0/developer/reference/external_api.html). We automatically authenticate all requests and use `https://\{domain\}.odoo.com/json/2` as the base URL. Odoo JSON-2 requests are always `POST` requests and use paths like `/\{model\}/\{method\}` (e.g. `/res.partner/search_read`).|
         |Okta|`okta/v1`|[Okta's API](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/ApiServiceIntegrations/). We automatically authenticate all request ans use 'https://\<your-okta-domain\>/api/v1' as the base URL.|
         |Onlyfy|`onlyfy/v1`|Onlyfy's [Public v1 REST API](https://onlyfy.io/doc/v1#section/Introduction). We automatically authenticate all requests using the `apikey` header and use `https://api.prescreenapp.io/v1` as the base URL.|
         |Oracle HCM|`oraclehcm/api`|Oracle HCM Cloud [REST API](https://docs.oracle.com/en/cloud/saas/human-resources/24d/farws/index.html). We automatically authenticate all requests and use `https://\{domain\}/` as the base URL, where domain is your Oracle Cloud domain.|
@@ -515,6 +523,7 @@ class General(BaseSDK):
         |Softgarden|`softgarden/apply-api`|[Softgarden's Apply API](https://dev.softgarden.de/apply-api/). We automatically authenticate all requests and use 'https://jobdb.softgarden.de/jobdb/public' as base URL.|
         |Softgarden|`softgarden/frontend-v3`|[Softgarden's Frontend API v3](https://dev.softgarden.de/frontend-v3/. We automatically authenticate all requests and use 'https://api.softgarden.io/api/rest' as base URL.|
         |Spark Hire Recruit|`comeet/api`|[Spark Hire Recruit's API.](https://developers.comeet.com/reference/recruiting-api-overview)We automatically authenticate all requests and use `https://api.comeet.com` as the base URL.|
+        |Spott|`spott/protected`|The [Spott API](https://docs.gospott.com). We automatically authenticate all requests and use `https://api.gospott.com` as the base URL.|
         |Sympa|`sympa/api`|Sympa's [API](https://documenter.getpostman.com/view/33639379/2sA3kXG1vX#intro). We automatically authenticate all requests and use `https://api.sympahr.net/api/` as the base URL.|
         |Taleez|`taleez/0`|[Taleez's API](https://api.taleez.com/swagger-ui/index.html). We automatically authenticate all requests and use `https://api.taleez.com/0` as the base URL.|
         |Talention|`talention/v1`|Talention's API. We automatically authenticate all requests and use `https://\{api_domain\}/tms/\{account_id\}/external/api/1.0` as the base URL. Documentation is provided privately by Talention. Contact Kombo support for assistance with specific endpoints.|
@@ -522,6 +531,7 @@ class General(BaseSDK):
         |Teamtailor Job Boards|`teamtailorjobboards/direct-apply`|Teamtailor's [Job Board Direct Apply API](https://partner.teamtailor.com/job_boards/direct_apply/#direct-apply). We automatically authenticate all requests and use `https://5qbn6o9x4h.execute-api.eu-west-1.amazonaws.com/production` as the base URL. All requests are automatically signed with HMAC-SHA256 signature.|
         |Teamtailor|`teamtailor/v1`|We use `https://api.teamtailor.com/v1` as the base URL. Find the official docs [here](https://docs.teamtailor.com/).|
         |TRAFFIT|`traffit/v2`|Traffit's [v2 API](https://api.traffit.com). We authenticate all requests with the Traffit API key and use the base URL `https://yourdomain.traffit.com/api/integration/v2`.|
+        |Udemy Business|`udemy/learning`|Udemy Business REST API. We automatically handle authentication and use `https://\{account_name\}.udemy.com/api-2.0/organizations/\{account_id\}/` as the base URL.|
         |UKG Pro|`ukgpro/default`|[UKG Pro's HRIS API](https://developer.ukg.com/hcm/reference/get_personnel-v1-person-details). We automatically authenticate all requests and use  `https://\{hostname\}` as the base URL.|
         |UKG Pro|`ukgpro/recruting`|[UKG Pro's Recruiting API](https://developer.ukg.com/hcm/reference/retrieveapplications). We automatically authenticate all requests and use  `https://\{hostname\}/talent/recruiting/v2/\{tenantalias\}/api` as the base URL.|
         |UKG Ready|`ukgready/api`|UKG Ready [API](https://secure.saashr.com/ta/docs/rest/public/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}` as the base URL.|
@@ -677,6 +687,7 @@ class General(BaseSDK):
 
         |Integration|`{tool}/{api}`|Description|
         |---|---|---|
+        |360Learning|`360learning/v2`|360Learning [API v2](https://360learning.readme.io/docs). We automatically handle authentication and use `https://app.360learning.com/api/v2/` as the base URL.|
         |a3innuva Nómina|`a3innuvanomina/laboral`|a3innuva Nómina API [docs](https://a3developers.wolterskluwer.es/). Requests are automatically authenticated using OAuth access tokens (refreshed when needed). Base URL: `https://a3api.wolterskluwer.es/Laboral/api`.|
         |Abacus Umantis|`abacusumantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
         |Abacus|`abacus/api`|Abacus [REST API](https://apihub.abacus.ch/). We automatically authenticate all requests and use `https://\{\{abacusUrl\}\}/api/entity/v1/mandants/\{\{mandantId\}\}` as the base URL.|
@@ -687,7 +698,7 @@ class General(BaseSDK):
         |ApplicantStack|`applicantstack/api`|ApplicantStack's [API](https://helpas.payrollservers.info/s/article/API-Integration-Guide). We automatically authenticate all requests and use `https://\{subdomain\}.applicantstack.com/api/` as the base URL.|
         |Apploi|`apploi/rest-api`|The [Apploi API](https://integrate.apploi.com/). We automatically authenticate all requests and use `https://partners.apploi.com/` as the base URL.|
         |Ashby|`ashby/v1`|Ashby's [V1 API](https://developers.ashbyhq.com/reference/introduction). We automatically authenticate all requests with the provided credentials and use `https://api.ashbyhq.com` as the base URL. Please note that Ashby uses an RPC-style API. Please check [the Ashby API documentation](https://developers.ashbyhq.com/reference/introduction) for details on how to use it.|
-        |Asymbl|`asymbl/v63`|We use `https://\{customerDomainName\}` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
+        |Asymbl|`asymbl/v63`|We use `https://\{subdomain\}.my.salesforce.com` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
         |Avature|`avature/custom-api`|Avatures's Custom API. Call `Get /openapi` to retrieve the specific custom API schema. We automatically authenticate all requests and use the instance specific custom API URL as the base URL.|
         |Avionté|`avionte/front-office-v1`|Avionte's API. We automatically authenticate all requests and use `https://api.avionte.com/front-office/v1` as the base URL. Documentation for the BOLD Front Office API: https://developer.avionte.com/reference/get-all-talent-tags|
         |BambooHR|`bamboohr/v1`|BambooHR's [API](https://documentation.bamboohr.com/reference/get-employee). We automatically authenticate all requests using the customer credentials `https://api.bamboohr.com/api/gateway.php/\{subdomain\}/v1` as the base URL.|
@@ -695,6 +706,7 @@ class General(BaseSDK):
         |BoondManager|`boondmanager/api`|BoondManager [REST API](https://ui.boondmanager.com/administrator/developer/apisandbox). We automatically authenticate all requests and use `https://ui.boondmanager.com/api` as the base URL.|
         |Breezy HR|`breezyhr/v3`|[BreezyHR's v3 API](https://developer.breezy.hr/reference/overview). We automatically authenticate all requests and use \"https://api.breezy.hr/v3/\" as the base URL.|
         |Bullhorn|`bullhorn/default`|[Bullhorn's API](https://bullhorn.github.io/rest-api-docs/index.html). We automatically use the right `https://rest.bullhornstaffing.com/rest-services/\{corpToken\}` base URL.|
+        |Carerix|`carerix/api`|Carerix [REST API](https://docs.carerix.io/rest/introduction). We automatically authenticate all requests and use `https://api.carerix.com` as the base URL. Please note that Carerix uses XML for request and response bodies.|
         |CEGID TalentSoft Customer|`talentsoftcustomer/v1`|Cegid Talentsoft Recruiting FrontOffice API: [API Documentation](https://developers.cegid.com/api-details#api=cegid-talentsoft-recruiting-frontoffice) We automatically authenticate all requests and use `https://\{customer_subdomain\}.talent-soft.com/api/v1` as the base URL.|
         |CEGID TalentSoft FrontOffice|`talentsoft/v2`|Cegid Talentsoft Recruiting FrontOffice [API](https://developers.cegid.com/api-details). We automatically authenticate all requests using the provided credentials and use `https://\{domain\}/api/v2` as the base URL.|
         |Ceipal|`ceipal/v1`|We use `https://api.ceipal.com/v1` as the base URL. Find the official docs [here](https://developer.ceipal.com/ceipal-ats-version-one/ceipal-ats-v1-api-reference).|
@@ -730,7 +742,8 @@ class General(BaseSDK):
         |Google Workspace|`googleworkspace/admin`|[Googles's API](https://developers.google.com/admin-sdk/directory/reference/rest). We automatically authenticate all requests and use 'https://admin.googleapis.com' as the base URL.|
         |Google Workspace|`googleworkspace/people`|[Googles's API](https://developers.google.com/people/api/rest). We automatically authenticate all requests and use 'https://people.googleapis.com' as the base URL.|
         |Greenhouse Job Board|`greenhousejobboard/boards-api`|[Greenhouse Job Board API](https://developers.greenhouse.io/job-board). We automatically authenticate all requests and use 'https://boards-api.greenhouse.io/v1/boards/\{job_board_token\}' as the base URL. Optionally, you can provide a custom job_board_token to use a different job board.|
-        |Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
+        |Greenhouse|`greenhouse/harvest-v2`|Greenhouse [Harvest API v2](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v2` as the base URL.|
+        |Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API v1](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
         |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
         |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
         |Haufe Umantis|`umantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
@@ -750,16 +763,20 @@ class General(BaseSDK):
         |JazzHR|`jazzhr/v1`|[JazzHR's v1 API](https://www.resumatorapi.com/v1/#!`).We automatically authenticate all requests and use \"https://api.resumatorapi.com/v1/\" as the base URL.|
         |JobDiva|`jobdiva/api`|We automatically authenticate all requests and use `https://api.jobdiva.com` as the base URL.|
         |Jobvite|`jobvite/api`|We automatically authenticate all requests and use 'https://api.jobvite.com/api/v2' as the base URL.|
+        |Jobvite|`jobvite/v2`|We use `https://api.jobvite.com/api/v2` as the base URL. Find the official docs [here](https://help.jobvite.com/hc/en-us/articles/8870636608925-Jobvite-API).|
         |Jobylon|`jobylon/feed`|The [Jobylon Feed API](https://developer.jobylon.com/feed-api/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/feeds/\{job_hash\}` as the base URL.|
         |Jobylon|`jobylon/push`|The [Jobylon Push API](https://developer.jobylon.com/push-api-and-webhooks/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/p1` as the base URL.|
         |JOIN|`join/v2`|Join's [V2 API](https://docs.join.com/reference/getting-started). We automatically authenticate all requests and use `https://api.join.com/v2` as the base URL.|
         |Kenjo|`kenjo/api`|Kenjo's [API](https://kenjo.readme.io/reference/generate-the-api-key). We automatically authenticate all requests using the API key and use `https://api.kenjo.io/` as the base URL.|
+        |Lattice Talent|`latticetalent/talent`|Lattice's [Talent API](https://developers.lattice.com/reference/introduction). We automatically authenticate all requests using API key credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/passthrough`|Lattice's [API](https://developers.lattice.com/v2/docs/base-url-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/talent`|Lattice's [Talent API](https://developers.lattice.com/docs/introduction-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
         |Laura|`laura/api`|We automatically authenticate all requests and use `https://\{subdomain\}.rekrytointi.com/api/v1.2` as the base URL.|
         |Leapsome|`leapsome/scim`|Leapsome [SCIM API](https://api.leapsome.com/scim/v1/api-docs/). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.leapsome.com/scim/v1` as the base URL.|
         |Leapsome|`leapsome/v1`|Leapsome [API](https://api.leapsome.com/v1/api-docs/). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.leapsome.com/v1` as the base URL.|
         |Lever|`lever/v1`|[Lever's v1 API](https://hire.lever.co/developer/documentation). We automatically authenticate all requests using the partner credentials which have been configured in the Lever tool settings (this uses Kombo's partner credentials by default).|
+        |LinkedIn Learning|`linkedinlearning/v2`|LinkedIn Learning [API v2](https://learn.microsoft.com/en-us/linkedin/learning/). We automatically handle authentication and use `https://api.linkedin.com` as the base URL.|
+        |Loxo|`loxo/v1`|[Loxo's API](https://loxo.readme.io/reference/loxo-api). We automatically authenticate all requests and use 'https://app.loxo.co/api/\{agency_slug\}' as base URL.|
         |Lucca|`lucca/api`|[Luccas's API](https://developers.lucca.fr/api-reference/legacy/introduction). We automatically authenticate all requests and use 'https://\{account\}.\{ilucca|ilucca-demo\}.\{region\}/' as the base URL.|
         |Manatal|`manatal/career-page`|Manatal's Career Page API. We use `https://api.manatal.com/open/v3/career-page/\{client_slug\}` as the base URL.|
         |Manatal|`manatal/open-api-v3`|[Manatal's Open API v3](https://developers.manatal.com/reference/getting-started). We automatically authenticate all requests and use `https://api.manatal.com/open/v3` as the base URL.|
@@ -768,6 +785,7 @@ class General(BaseSDK):
         |Microsoft Entra ID|`entraid/v1`|[AzureAD's API](https://learn.microsoft.com/en-us/graph/api/resources/identity-network-access-overview?view=graph-rest-1.0). We automatically authenticate all requests.|
         |Mysolution|`mysolution/default`|[Mysolution's API](https://swagger.mysolution.nl/). We automatically authenticate all requests and use the customer's domain as base URL.|
         |Nmbrs|`nmbrs/soap`|[Nmbrs SOAP API](https://api.nmbrs.nl/soap/v3/). We automatically authenticate all requests and use `https://api.nmbrs.nl/soap/v3/` as the base URL. Set `data` to your raw XML string (the content that will be placed inside the `\<soap:Body\>` tag). Use `/` as your `path`, as we will always send requests to `https://api.nmbrs.nl/soap/v3/\{service_name\}.asmx`. Set your `method` to `POST`. You need to specify the `api_options` object and set `service_name` to the name of the service you want to call. Available services include `EmployeeService` and `CompanyService`.|
+        |Odoo|`odoo/json2`|Odoo's [JSON-2 API](https://www.odoo.com/documentation/19.0/developer/reference/external_api.html). We automatically authenticate all requests and use `https://\{domain\}.odoo.com/json/2` as the base URL. Odoo JSON-2 requests are always `POST` requests and use paths like `/\{model\}/\{method\}` (e.g. `/res.partner/search_read`).|
         |Okta|`okta/v1`|[Okta's API](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/ApiServiceIntegrations/). We automatically authenticate all request ans use 'https://\<your-okta-domain\>/api/v1' as the base URL.|
         |Onlyfy|`onlyfy/v1`|Onlyfy's [Public v1 REST API](https://onlyfy.io/doc/v1#section/Introduction). We automatically authenticate all requests using the `apikey` header and use `https://api.prescreenapp.io/v1` as the base URL.|
         |Oracle HCM|`oraclehcm/api`|Oracle HCM Cloud [REST API](https://docs.oracle.com/en/cloud/saas/human-resources/24d/farws/index.html). We automatically authenticate all requests and use `https://\{domain\}/` as the base URL, where domain is your Oracle Cloud domain.|
@@ -809,6 +827,7 @@ class General(BaseSDK):
         |Softgarden|`softgarden/apply-api`|[Softgarden's Apply API](https://dev.softgarden.de/apply-api/). We automatically authenticate all requests and use 'https://jobdb.softgarden.de/jobdb/public' as base URL.|
         |Softgarden|`softgarden/frontend-v3`|[Softgarden's Frontend API v3](https://dev.softgarden.de/frontend-v3/. We automatically authenticate all requests and use 'https://api.softgarden.io/api/rest' as base URL.|
         |Spark Hire Recruit|`comeet/api`|[Spark Hire Recruit's API.](https://developers.comeet.com/reference/recruiting-api-overview)We automatically authenticate all requests and use `https://api.comeet.com` as the base URL.|
+        |Spott|`spott/protected`|The [Spott API](https://docs.gospott.com). We automatically authenticate all requests and use `https://api.gospott.com` as the base URL.|
         |Sympa|`sympa/api`|Sympa's [API](https://documenter.getpostman.com/view/33639379/2sA3kXG1vX#intro). We automatically authenticate all requests and use `https://api.sympahr.net/api/` as the base URL.|
         |Taleez|`taleez/0`|[Taleez's API](https://api.taleez.com/swagger-ui/index.html). We automatically authenticate all requests and use `https://api.taleez.com/0` as the base URL.|
         |Talention|`talention/v1`|Talention's API. We automatically authenticate all requests and use `https://\{api_domain\}/tms/\{account_id\}/external/api/1.0` as the base URL. Documentation is provided privately by Talention. Contact Kombo support for assistance with specific endpoints.|
@@ -816,6 +835,7 @@ class General(BaseSDK):
         |Teamtailor Job Boards|`teamtailorjobboards/direct-apply`|Teamtailor's [Job Board Direct Apply API](https://partner.teamtailor.com/job_boards/direct_apply/#direct-apply). We automatically authenticate all requests and use `https://5qbn6o9x4h.execute-api.eu-west-1.amazonaws.com/production` as the base URL. All requests are automatically signed with HMAC-SHA256 signature.|
         |Teamtailor|`teamtailor/v1`|We use `https://api.teamtailor.com/v1` as the base URL. Find the official docs [here](https://docs.teamtailor.com/).|
         |TRAFFIT|`traffit/v2`|Traffit's [v2 API](https://api.traffit.com). We authenticate all requests with the Traffit API key and use the base URL `https://yourdomain.traffit.com/api/integration/v2`.|
+        |Udemy Business|`udemy/learning`|Udemy Business REST API. We automatically handle authentication and use `https://\{account_name\}.udemy.com/api-2.0/organizations/\{account_id\}/` as the base URL.|
         |UKG Pro|`ukgpro/default`|[UKG Pro's HRIS API](https://developer.ukg.com/hcm/reference/get_personnel-v1-person-details). We automatically authenticate all requests and use  `https://\{hostname\}` as the base URL.|
         |UKG Pro|`ukgpro/recruting`|[UKG Pro's Recruiting API](https://developer.ukg.com/hcm/reference/retrieveapplications). We automatically authenticate all requests and use  `https://\{hostname\}/talent/recruiting/v2/\{tenantalias\}/api` as the base URL.|
         |UKG Ready|`ukgready/api`|UKG Ready [API](https://secure.saashr.com/ta/docs/rest/public/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}` as the base URL.|
@@ -1295,6 +1315,206 @@ class General(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(
                 models.GetIntegrationsIntegrationIDPositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.KomboGeneralErrorData, http_res
+            )
+            raise errors.KomboGeneralError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    def set_integration_enabled(
+        self,
+        *,
+        integration_id: str,
+        value: bool,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.PutIntegrationsIntegrationIDEnabledPositiveResponse:
+        r"""Set integration enabled
+
+        Enable or disable the specified integration. When disabling, all currently running syncs will be cancelled.
+
+        All authentication credentials and configuration are preserved. Syncs can be resumed by re-enabling the integration.
+
+        You may use this to, for example, pause syncing for customers that are temporarily not using the integration.
+
+        :param integration_id: PUT /integrations/:integration_id/enabled Parameter
+        :param value: The desired state of the integration (e.g., `true` for enabled, `false` for disabled).
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PutIntegrationsIntegrationIDEnabledRequest(
+            integration_id=integration_id,
+            body=models.PutIntegrationsIntegrationIDEnabledRequestBody(
+                value=value,
+            ),
+        )
+
+        req = self._build_request(
+            method="PUT",
+            path="/integrations/{integration_id}/enabled",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.PutIntegrationsIntegrationIDEnabledRequestBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="PutIntegrationsIntegrationIdEnabled",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["default"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.PutIntegrationsIntegrationIDEnabledPositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.KomboGeneralErrorData, http_res
+            )
+            raise errors.KomboGeneralError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    async def set_integration_enabled_async(
+        self,
+        *,
+        integration_id: str,
+        value: bool,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.PutIntegrationsIntegrationIDEnabledPositiveResponse:
+        r"""Set integration enabled
+
+        Enable or disable the specified integration. When disabling, all currently running syncs will be cancelled.
+
+        All authentication credentials and configuration are preserved. Syncs can be resumed by re-enabling the integration.
+
+        You may use this to, for example, pause syncing for customers that are temporarily not using the integration.
+
+        :param integration_id: PUT /integrations/:integration_id/enabled Parameter
+        :param value: The desired state of the integration (e.g., `true` for enabled, `false` for disabled).
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PutIntegrationsIntegrationIDEnabledRequest(
+            integration_id=integration_id,
+            body=models.PutIntegrationsIntegrationIDEnabledRequestBody(
+                value=value,
+            ),
+        )
+
+        req = self._build_request_async(
+            method="PUT",
+            path="/integrations/{integration_id}/enabled",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.PutIntegrationsIntegrationIDEnabledRequestBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="PutIntegrationsIntegrationIdEnabled",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["default"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.PutIntegrationsIntegrationIDEnabledPositiveResponse, http_res
             )
         if utils.match_response(http_res, "default", "application/json"):
             response_data = unmarshal_json_response(

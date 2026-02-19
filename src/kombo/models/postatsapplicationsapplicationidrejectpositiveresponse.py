@@ -44,3 +44,9 @@ class PostAtsApplicationsApplicationIDRejectPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    PostAtsApplicationsApplicationIDRejectPositiveResponse.model_rebuild()
+except NameError:
+    pass

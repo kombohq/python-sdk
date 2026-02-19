@@ -32,7 +32,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisEmployees" method="get" path="/hris/employees" -->
+<!-- UsageSnippet language="python" operationID="GetHrisEmployees" method="get" path="/hris/employees" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -165,7 +165,7 @@ Follow our [create employee guide here](/hris/features/create-employee) to learn
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisEmployeesForm" method="get" path="/hris/employees/form" -->
+<!-- UsageSnippet language="python" operationID="GetHrisEmployeesForm" method="get" path="/hris/employees/form" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -227,9 +227,49 @@ Create an employee, based on the form schema.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" -->
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.create_employee_with_form(properties={
+        "key": 3571.27,
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.create_employee_with_form(properties={
+        "key": 3571.27,
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -296,9 +336,49 @@ Uploads an document file for the specified employee.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" -->
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.add_employee_document(employee_id="<id>", category_id="<id>", document={
+        "name": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.add_employee_document(employee_id="<id>", category_id="<id>", document={
+        "name": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -347,7 +427,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisEmployeeDocumentCategories" method="get" path="/hris/employee-document-categories" -->
+<!-- UsageSnippet language="python" operationID="GetHrisEmployeeDocumentCategories" method="get" path="/hris/employee-document-categories" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -398,7 +478,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisGroups" method="get" path="/hris/groups" -->
+<!-- UsageSnippet language="python" operationID="GetHrisGroups" method="get" path="/hris/groups" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -451,7 +531,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisEmployments" method="get" path="/hris/employments" -->
+<!-- UsageSnippet language="python" operationID="GetHrisEmployments" method="get" path="/hris/employments" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -502,7 +582,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisLocations" method="get" path="/hris/locations" -->
+<!-- UsageSnippet language="python" operationID="GetHrisLocations" method="get" path="/hris/locations" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -554,7 +634,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisAbsenceTypes" method="get" path="/hris/absence-types" -->
+<!-- UsageSnippet language="python" operationID="GetHrisAbsenceTypes" method="get" path="/hris/absence-types" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -605,7 +685,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisTimeOffBalances" method="get" path="/hris/time-off-balances" -->
+<!-- UsageSnippet language="python" operationID="GetHrisTimeOffBalances" method="get" path="/hris/time-off-balances" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -657,7 +737,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisAbsences" method="get" path="/hris/absences" -->
+<!-- UsageSnippet language="python" operationID="GetHrisAbsences" method="get" path="/hris/absences" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -730,9 +810,47 @@ Check [this page](/hris/features/creating-absences) for a detailed guide.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PostHrisAbsences" method="post" path="/hris/absences" -->
+<!-- UsageSnippet language="python" operationID="PostHrisAbsences" method="post" path="/hris/absences" example="Error Response" -->
+```python
+from kombo import Kombo
+from kombo.utils import parse_datetime
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.create_absence(employee_id="<id>", absence_type_id="<id>", start_date=parse_datetime("2023-09-09T17:57:22.170Z"), end_date=parse_datetime("2024-03-21T09:03:29.368Z"), employee_note="<value>", status="REQUESTED", start_half_day=False, end_half_day=False)
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostHrisAbsences" method="post" path="/hris/absences" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+from kombo.utils import parse_datetime
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.create_absence(employee_id="<id>", absence_type_id="<id>", start_date=parse_datetime("2023-09-09T17:57:22.170Z"), end_date=parse_datetime("2024-03-21T09:03:29.368Z"), employee_note="<value>", status="REQUESTED", start_half_day=False, end_half_day=False)
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostHrisAbsences" method="post" path="/hris/absences" example="example1" -->
 ```python
 from kombo import Kombo
 from kombo.utils import parse_datetime
@@ -796,9 +914,45 @@ Delete this absence.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" -->
+<!-- UsageSnippet language="python" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.delete_absence(absence_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.delete_absence(absence_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -842,7 +996,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisLegalEntities" method="get" path="/hris/legal-entities" -->
+<!-- UsageSnippet language="python" operationID="GetHrisLegalEntities" method="get" path="/hris/legal-entities" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -900,7 +1054,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisTimesheets" method="get" path="/hris/timesheets" -->
+<!-- UsageSnippet language="python" operationID="GetHrisTimesheets" method="get" path="/hris/timesheets" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -962,7 +1116,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviewCycles" method="get" path="/hris/performance-review-cycles" -->
+<!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviewCycles" method="get" path="/hris/performance-review-cycles" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -1019,7 +1173,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviews" method="get" path="/hris/performance-reviews" -->
+<!-- UsageSnippet language="python" operationID="GetHrisPerformanceReviews" method="get" path="/hris/performance-reviews" example="example1" -->
 ```python
 from kombo import Kombo
 

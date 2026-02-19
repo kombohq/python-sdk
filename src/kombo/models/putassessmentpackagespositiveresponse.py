@@ -42,3 +42,9 @@ class PutAssessmentPackagesPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    PutAssessmentPackagesPositiveResponse.model_rebuild()
+except NameError:
+    pass

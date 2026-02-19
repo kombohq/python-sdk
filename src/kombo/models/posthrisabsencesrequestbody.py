@@ -40,6 +40,22 @@ class PostHrisAbsencesRequestBodyAdpworkforcenow(BaseModel):
     paid_leave: Optional[bool] = None
     r"""Whether the absence is paid or not."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["employment_id", "paid_leave"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostHrisAbsencesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific HRIS systems."""
@@ -53,6 +69,22 @@ class PostHrisAbsencesRequestBodyRemoteFields(BaseModel):
 
     adpworkforcenow: Optional[PostHrisAbsencesRequestBodyAdpworkforcenow] = None
     r"""Fields specific to ADP Workforce Now."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["adpworkforcenow"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostHrisAbsencesRequestBodyTypedDict(TypedDict):
@@ -134,39 +166,36 @@ class PostHrisAbsencesRequestBody(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "status",
-            "start_half_day",
-            "end_half_day",
-            "amount",
-            "unit",
-            "start_time",
-            "end_time",
-            "remote_fields",
-        ]
-        nullable_fields = ["employee_note"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "status",
+                "start_half_day",
+                "end_half_day",
+                "amount",
+                "unit",
+                "start_time",
+                "end_time",
+                "remote_fields",
+            ]
+        )
+        nullable_fields = set(["employee_note"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
