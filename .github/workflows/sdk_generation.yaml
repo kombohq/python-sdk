@@ -1,5 +1,6 @@
 name: SDK Generation
 
+# We're using custom app authentication below, so we need no permissions.
 permissions: {}
 
 on:
@@ -18,11 +19,6 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    outputs:
-      python_regenerated: ${{ steps.run-workflow.outputs.python_regenerated }}
-      python_directory: ${{ steps.run-workflow.outputs.python_directory }}
-      commit_hash: ${{ steps.run-workflow.outputs.commit_hash }}
-      publish_python: ${{ steps.run-workflow.outputs.publish_python }}
     steps:
       - name: Generate token
         id: app-token
@@ -31,32 +27,24 @@ jobs:
           app-id: ${{ secrets.SDK_GENERATOR_GITHUB_APP_ID }}
           private-key: ${{ secrets.SDK_GENERATOR_GITHUB_APP_PRIVATE_KEY }}
 
-      - name: Verify token was generated
-        run: |
-          if [ -z "${{ steps.app-token.outputs.token }}" ]; then
-            echo "Error: Token was not generated"
-            exit 1
-          else
-            echo "Token generated successfully"
-          fi
-
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Checkout sdk-generation-action repository
-        uses: actions/checkout@v4
-        with:
-          repository: speakeasy-api/sdk-generation-action
-          ref: 788702f013dcd7b0716076b1ce4e5f19be009521
-          path: _speakeasy
-          token: ${{ steps.app-token.outputs.token }}
-
+      # We're using the "Kombo SDK Generator" GitHub App because this way, the
+      # created PRs can trigger other workflows (specifically the test suite we
+      # always want to run).
+      #
+      # See GitHub docs on limitation:
+      # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow-from-a-workflow
+      #
+      # See config of the app:
+      # https://github.com/organizations/kombohq/settings/apps/kombo-sdk-generator
       - name: Run Generation Workflow
         id: run-workflow
-        uses: ./_speakeasy
+        uses: speakeasy-api/sdk-generation-action@v15
         with:
           speakeasy_version: latest
           github_access_token: ${{ steps.app-token.outputs.token }}
@@ -70,7 +58,7 @@ jobs:
 
       - name: Log Generation Output
         if: always()
-        uses: ./_speakeasy
+        uses: speakeasy-api/sdk-generation-action@v15
         with:
           speakeasy_version: latest
           github_access_token: ${{ steps.app-token.outputs.token }}
@@ -79,5 +67,5 @@ jobs:
         env:
           GH_ACTION_RESULT: ${{ job.status }}
           RESOLVED_SPEAKEASY_VERSION: ${{ steps.run-workflow.outputs.resolved_speakeasy_version }}
-          GH_ACTION_VERSION: 788702f013dcd7b0716076b1ce4e5f19be009521
+          GH_ACTION_VERSION: v15
           GH_ACTION_STEP: ${{ github.job }}
