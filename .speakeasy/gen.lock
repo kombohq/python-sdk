@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.723.0
   generationVersion: 2.835.2
-  releaseVersion: 0.3.0
-  configChecksum: 9f9e8d3d423353e66be7143683d51fa8
+  releaseVersion: 1.0.0
+  configChecksum: ceeda9feabaad09d2492fbe29beef2a5
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
 persistentEdits:
-  generation_id: d0b270a4-1920-471d-bdee-e3902ef71659
-  pristine_commit_hash: 58bc39ba0fa6170f71813478d9f0f7001e9336b4
-  pristine_tree_hash: 2541bcc840e032e0cc8839693bd0c287dd5d634b
+  generation_id: 8b8ddb3a-c4e8-40b7-8b79-7c73dbbea3d0
+  pristine_commit_hash: c915d0df8b71f76ebb22f8c2c5d16377c0890cb8
+  pristine_tree_hash: 9911bdcb1a6dd652bdb017bd15f49b3d1e8c2000
 features:
   python:
     additionalDependencies: 1.0.0
@@ -3988,8 +3988,8 @@ trackedFiles:
     pristine_git_object: f456032107a9387ba6c98afd1c981df2f4b3d636
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:093e6a8b902f39ac106a9569c55ea1a46fb35245
-    pristine_git_object: 685880ef87a8e851d4279465d98d2a9f0645dfac
+    last_write_checksum: sha1:f8a6cad7ddef8ef5a4306fe0f17f9823d63abcca
+    pristine_git_object: 4bf531359f7197f2b4598c4310c3ab7435de6a1b
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:b6ad6f0515a952d7cb052befddb6a117d4f627d8
@@ -4016,8 +4016,8 @@ trackedFiles:
     pristine_git_object: e589e541e5fc70d336de44780721f301d754ed72
   src/kombo/_version.py:
     id: 45cf440ad1df
-    last_write_checksum: sha1:edbda37f8026706e2cd8160b3135a697e5d05a6a
-    pristine_git_object: 6b38675d09e9dfd6d01ca96b007dcf552b616651
+    last_write_checksum: sha1:495a7e0f68906c423c6128b17db27650369b3705
+    pristine_git_object: 2a9eb3d616a1aff05d65ef2e1b4e72d69d65cc93
   src/kombo/assessment.py:
     id: aec6e8a7589f
     last_write_checksum: sha1:1406e437a55541ba21ab8a76696b092238678670
@@ -7288,7 +7288,6 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": "PLATFORM.RATE_LIMIT_EXCEEDED", "title": "<value>", "message": "<value>", "log_url": "https://enchanting-barracks.biz/"}}
 examplesVersion: 1.0.2
-releaseNotes: "## Python SDK Changes:\n* `kombo.general.check_api_key()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.trigger_sync()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.send_passthrough_request()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.delete_integration()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.get_integration_details()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.create_reconnection_link()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.get_integration_fields()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.update_integration_field()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.get_custom_fields()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.update_custom_field_mapping()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.get_tools()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_employees()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_employee_form()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.create_employee_with_form()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.add_employee_document()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_employee_document_categories()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_groups()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_employments()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_locations()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_absence_types()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_time_off_balances()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_absences()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.create_absence()`: \n  *  `request.remote_fields.a3innuvanomina` **Added**\n  *  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.delete_absence()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_legal_entities()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_timesheets()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_performance_review_cycles()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_performance_reviews()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_applications()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.move_application_to_stage()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.add_application_result_link()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.add_application_note()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_application_attachments()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.add_application_attachment()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.reject_application()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_candidates()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.create_candidate()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_candidate_attachments()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.add_candidate_attachment()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.add_candidate_result_link()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.add_candidate_tag()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.remove_candidate_tag()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_tags()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_application_stages()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_jobs()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.create_application()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_users()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_offers()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_rejection_reasons()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.get_interviews()`: \n  *  `response.data.results[].video_conferencing_url` **Added**\n  *  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.ats.import_tracked_application()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.assessment.get_packages()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.assessment.set_packages()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.assessment.get_open_orders()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.assessment.update_order_result()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.connect.create_connection_link()`: \n  *  `request.integration_tool` **Changed**\n  *  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.connect.get_integration_by_token()`:  `error.code.enum(platform.task_timed_out)` **Added** (Breaking ⚠️)\n* `kombo.general.set_integration_enabled()`: **Added**\n"
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json
