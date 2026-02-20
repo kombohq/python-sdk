@@ -46,3 +46,9 @@ class PostAtsCandidatesCandidateIDResultLinksPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    PostAtsCandidatesCandidateIDResultLinksPositiveResponse.model_rebuild()
+except NameError:
+    pass

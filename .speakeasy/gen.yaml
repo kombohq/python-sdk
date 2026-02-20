@@ -13,6 +13,8 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
     sharedErrorComponentsApr2025: true
+    sharedNestedComponentsJan2026: false
+    nameOverrideFeb2026: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
@@ -22,13 +24,14 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: body
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
 python:
-  version: 0.2.3
+  version: 0.3.0
   additionalDependencies:
     dev:
       inline-snapshot: '>=0.13.0'
@@ -51,10 +54,13 @@ python:
   enumFormat: union
   fixFlags:
     asyncPaginationSep2025: true
+    conflictResistantModelImportsFeb2026: false
     responseRequiredSep2024: true
   flattenGlobalSecurity: true
   flattenRequests: true
   flatteningOrder: parameters-first
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   imports:
     option: openapi
     paths:
@@ -80,3 +86,4 @@ python:
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
+  useAsyncHooks: false

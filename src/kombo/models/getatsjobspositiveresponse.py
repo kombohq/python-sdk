@@ -10,10 +10,10 @@ from kombo.types import (
     UNSET_SENTINEL,
     UnrecognizedStr,
 )
-from kombo.utils import validate_const, validate_open_enum
+from kombo.utils import validate_const
 import pydantic
 from pydantic import Field, model_serializer
-from pydantic.functional_validators import AfterValidator, PlainValidator
+from pydantic.functional_validators import AfterValidator
 from typing import Any, Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
@@ -113,47 +113,30 @@ class GetAtsJobsPositiveResponseLocation(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "city",
-            "country",
-            "raw",
-            "state",
-            "street_1",
-            "street_2",
-            "zip_code",
-        ]
-        nullable_fields = [
-            "city",
-            "country",
-            "raw",
-            "state",
-            "street_1",
-            "street_2",
-            "zip_code",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(
+            ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
+        )
+        nullable_fields = set(
+            ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
+        )
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -184,31 +167,26 @@ class Stage(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["index"]
-        nullable_fields = ["remote_id", "name", "index"]
-        null_default_fields = []
-
+        optional_fields = set(["index"])
+        nullable_fields = set(["remote_id", "name", "index"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -229,6 +207,22 @@ class FormatUnknown(BaseModel):
         pydantic.Field(alias="type"),
     ] = "UNKNOWN"
     r"""When we're not able to map a specific question type yet, we will return this type. Every `UNKNOWN` question will also be parsed and unified by us at some point."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["raw_question"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class FormatInformationTypedDict(TypedDict):
@@ -267,31 +261,26 @@ class Option2(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["remote_id"]
-        nullable_fields = ["remote_id"]
-        null_default_fields = []
-
+        optional_fields = set(["remote_id"])
+        nullable_fields = set(["remote_id"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -361,31 +350,26 @@ class Option1(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["remote_id"]
-        nullable_fields = ["remote_id"]
-        null_default_fields = []
-
+        optional_fields = set(["remote_id"])
+        nullable_fields = set(["remote_id"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -410,31 +394,26 @@ class FormatSingleSelect(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["display_type"]
-        nullable_fields = ["display_type"]
-        null_default_fields = []
-
+        optional_fields = set(["display_type"])
+        nullable_fields = set(["display_type"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -457,31 +436,26 @@ class FormatFile(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["accepted_mime_types", "max_file_size_bytes"]
-        nullable_fields = ["accepted_mime_types", "max_file_size_bytes"]
-        null_default_fields = []
-
+        optional_fields = set(["accepted_mime_types", "max_file_size_bytes"])
+        nullable_fields = set(["accepted_mime_types", "max_file_size_bytes"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -513,31 +487,26 @@ class FormatNumber(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["display_type", "max", "min"]
-        nullable_fields = ["display_type", "max", "min"]
-        null_default_fields = []
-
+        optional_fields = set(["display_type", "max", "min"])
+        nullable_fields = set(["display_type", "max", "min"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -571,31 +540,26 @@ class FormatText(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["display_type", "max_length"]
-        nullable_fields = ["display_type", "max_length"]
-        null_default_fields = []
-
+        optional_fields = set(["display_type", "max_length"])
+        nullable_fields = set(["display_type", "max_length"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -697,46 +661,40 @@ class ScreeningQuestion(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "format",
-            "index",
-            "precondition_question_id",
-            "precondition_options",
-        ]
-        nullable_fields = [
-            "remote_id",
-            "title",
-            "description",
-            "format",
-            "category",
-            "index",
-            "required",
-            "precondition_question_id",
-            "precondition_options",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(
+            ["format", "index", "precondition_question_id", "precondition_options"]
+        )
+        nullable_fields = set(
+            [
+                "remote_id",
+                "title",
+                "description",
+                "format",
+                "category",
+                "index",
+                "required",
+                "precondition_question_id",
+                "precondition_options",
+            ]
+        )
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -795,37 +753,14 @@ class JobPosting(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = [
-            "remote_id",
-            "title",
-            "description_html",
-            "status",
-            "visibility",
-            "url",
-        ]
-        null_default_fields = []
-
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
+            if val != UNSET_SENTINEL:
                 m[k] = val
 
         return m
@@ -873,31 +808,26 @@ class GetAtsJobsPositiveResponseHiringTeam(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["email"]
-        nullable_fields = ["remote_id", "first_name", "last_name", "email"]
-        null_default_fields = []
-
+        optional_fields = set(["email"])
+        nullable_fields = set(["remote_id", "first_name", "last_name", "email"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -1107,16 +1037,10 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
     hiring_team: List[GetAtsJobsPositiveResponseHiringTeam]
     r"""The hiring team allows you to sync users into your system who can access the job and its applications."""
 
-    employment_type: Annotated[
-        OptionalNullable[GetAtsJobsPositiveResponseEmploymentType],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    employment_type: OptionalNullable[GetAtsJobsPositiveResponseEmploymentType] = UNSET
     r"""The type of employment contract. In rare cases where can't find a clear mapping, the original string is passed through."""
 
-    status: Annotated[
-        OptionalNullable[GetAtsJobsPositiveResponseStatus],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    status: OptionalNullable[GetAtsJobsPositiveResponseStatus] = UNSET
     r"""The job's current status.
 
     *Note: For any checks (e.g., \"can we publish this job?\"), always evaluate both `status` and `visibility`. For example, a job can be `status=OPEN` with `visibility=INTERNAL`, meaning only existing employees can apply.*
@@ -1124,9 +1048,7 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
     In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    visibility: Annotated[
-        OptionalNullable[Visibility], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    visibility: OptionalNullable[Visibility] = UNSET
     r"""Describes the visibility of the job:
 
     - `PUBLIC`: visible to everyone, published on a job board
@@ -1139,14 +1061,10 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
     In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    remote_work_status: Annotated[
-        OptionalNullable[RemoteWorkStatus], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    remote_work_status: OptionalNullable[RemoteWorkStatus] = UNSET
     r"""Defines if the job supports remote work and if so, to what extent."""
 
-    salary_period: Annotated[
-        OptionalNullable[SalaryPeriod], PlainValidator(validate_open_enum(False))
-    ] = UNSET
+    salary_period: OptionalNullable[SalaryPeriod] = UNSET
     r"""The period of time over which the salary amount is paid (not equal to the pay frequency). In rare cases where we can’t find a clear mapping, the original string is passed through."""
 
     location: OptionalNullable[GetAtsJobsPositiveResponseLocation] = UNSET
@@ -1154,66 +1072,65 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "employment_type",
-            "status",
-            "visibility",
-            "remote_work_status",
-            "salary_period",
-            "location",
-        ]
-        nullable_fields = [
-            "name",
-            "job_code",
-            "description",
-            "confidential",
-            "weekly_hours",
-            "employment_type",
-            "status",
-            "visibility",
-            "category",
-            "department",
-            "post_url",
-            "experience_level",
-            "remote_work_status",
-            "salary_amount",
-            "salary_amount_from",
-            "salary_amount_to",
-            "salary_currency",
-            "salary_period",
-            "location",
-            "custom_fields",
-            "remote_url",
-            "opened_at",
-            "closed_at",
-            "remote_created_at",
-            "remote_updated_at",
-            "contact_id",
-            "remote_deleted_at",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "employment_type",
+                "status",
+                "visibility",
+                "remote_work_status",
+                "salary_period",
+                "location",
+            ]
+        )
+        nullable_fields = set(
+            [
+                "name",
+                "job_code",
+                "description",
+                "confidential",
+                "weekly_hours",
+                "employment_type",
+                "status",
+                "visibility",
+                "category",
+                "department",
+                "post_url",
+                "experience_level",
+                "remote_work_status",
+                "salary_amount",
+                "salary_amount_from",
+                "salary_amount_to",
+                "salary_currency",
+                "salary_period",
+                "location",
+                "custom_fields",
+                "remote_url",
+                "opened_at",
+                "closed_at",
+                "remote_created_at",
+                "remote_updated_at",
+                "contact_id",
+                "remote_deleted_at",
+            ]
+        )
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -1232,30 +1149,14 @@ class GetAtsJobsPositiveResponseData(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = ["next"]
-        null_default_fields = []
-
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
+            if val != UNSET_SENTINEL:
                 m[k] = val
 
         return m
@@ -1273,3 +1174,49 @@ class GetAtsJobsPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    FormatUnknown.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatInformation.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatMultiSelect.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatDate.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatBoolean.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatSingleSelect.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatFile.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatNumber.model_rebuild()
+except NameError:
+    pass
+try:
+    FormatText.model_rebuild()
+except NameError:
+    pass
+try:
+    ScreeningQuestion.model_rebuild()
+except NameError:
+    pass
+try:
+    GetAtsJobsPositiveResponse.model_rebuild()
+except NameError:
+    pass

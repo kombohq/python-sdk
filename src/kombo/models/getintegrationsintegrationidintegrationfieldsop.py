@@ -5,8 +5,9 @@ from .getintegrationsintegrationidintegrationfieldspositiveresponse import (
     GetIntegrationsIntegrationIDIntegrationFieldsPositiveResponse,
     GetIntegrationsIntegrationIDIntegrationFieldsPositiveResponseTypedDict,
 )
-from kombo.types import BaseModel
+from kombo.types import BaseModel, UNSET_SENTINEL
 from kombo.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
+from pydantic import model_serializer
 from typing import Awaitable, Callable, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -37,6 +38,22 @@ class GetIntegrationsIntegrationIDIntegrationFieldsRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = 100
     r"""The number of results to return per page. Maximum is 2000."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["cursor", "page_size"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class GetIntegrationsIntegrationIDIntegrationFieldsResponseTypedDict(TypedDict):
