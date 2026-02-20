@@ -10,10 +10,10 @@ from kombo.types import (
     UNSET_SENTINEL,
     UnrecognizedStr,
 )
-from kombo.utils import validate_const, validate_open_enum
+from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator, PlainValidator
+from pydantic.functional_validators import AfterValidator
 from typing import Any, List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -98,36 +98,14 @@ class GetHrisAbsencesPositiveResponseType(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = [
-            "name",
-            "unit",
-            "half_days_supported",
-            "exact_times_supported",
-            "remote_deleted_at",
-        ]
-        null_default_fields = []
-
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
+            if val != UNSET_SENTINEL:
                 m[k] = val
 
         return m
@@ -225,54 +203,48 @@ class GetHrisAbsencesPositiveResponseResult(BaseModel):
 
     type: Nullable[GetHrisAbsencesPositiveResponseType]
 
-    status: Annotated[
-        OptionalNullable[GetHrisAbsencesPositiveResponseStatus],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    status: OptionalNullable[GetHrisAbsencesPositiveResponseStatus] = UNSET
     r"""The absence’s current status. In rare cases where we can’t find a clear mapping, the original string is passed through."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["status"]
-        nullable_fields = [
-            "remote_id",
-            "start_date",
-            "end_date",
-            "start_half_day",
-            "end_half_day",
-            "start_time",
-            "end_time",
-            "amount",
-            "unit",
-            "status",
-            "employee_note",
-            "type_id",
-            "remote_deleted_at",
-            "type",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(["status"])
+        nullable_fields = set(
+            [
+                "remote_id",
+                "start_date",
+                "end_date",
+                "start_half_day",
+                "end_half_day",
+                "start_time",
+                "end_time",
+                "amount",
+                "unit",
+                "status",
+                "employee_note",
+                "type_id",
+                "remote_deleted_at",
+                "type",
+            ]
+        )
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -291,30 +263,14 @@ class GetHrisAbsencesPositiveResponseData(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = ["next"]
-        null_default_fields = []
-
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
+            if val != UNSET_SENTINEL:
                 m[k] = val
 
         return m
@@ -332,3 +288,9 @@ class GetHrisAbsencesPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    GetHrisAbsencesPositiveResponse.model_rebuild()
+except NameError:
+    pass

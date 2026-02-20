@@ -1,0 +1,9 @@
+# PutIntegrationsIntegrationIDEnabledRequest
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `integration_id`                                                                                                     | *str*                                                                                                                | :heavy_check_mark:                                                                                                   | PUT /integrations/:integration_id/enabled Parameter                                                                  |
+| `body`                                                                                                               | [models.PutIntegrationsIntegrationIDEnabledRequestBody](../models/putintegrationsintegrationidenabledrequestbody.md) | :heavy_check_mark:                                                                                                   | PUT /integrations/:integration_id/enabled Request body                                                               |

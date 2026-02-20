@@ -3,10 +3,10 @@
 import importlib.metadata
 
 __title__: str = "kombo"
-__version__: str = "0.2.3"
+__version__: str = "0.3.0"
 __openapi_doc_version__: str = "1.0.0"
-__gen_version__: str = "2.791.1"
-__user_agent__: str = "speakeasy-sdk/python 0.2.3 2.791.1 1.0.0 kombo"
+__gen_version__: str = "2.835.2"
+__user_agent__: str = "speakeasy-sdk/python 0.3.0 2.835.2 1.0.0 kombo"
 
 try:
     if __package__ is not None:
