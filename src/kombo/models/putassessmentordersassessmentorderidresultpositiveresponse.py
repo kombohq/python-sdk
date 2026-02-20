@@ -48,3 +48,9 @@ class PutAssessmentOrdersAssessmentOrderIDResultPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    PutAssessmentOrdersAssessmentOrderIDResultPositiveResponse.model_rebuild()
+except NameError:
+    pass

@@ -29,3 +29,9 @@ class GetCheckAPIKeyPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    GetCheckAPIKeyPositiveResponse.model_rebuild()
+except NameError:
+    pass

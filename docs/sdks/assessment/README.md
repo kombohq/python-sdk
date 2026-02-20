@@ -17,7 +17,7 @@ This is mainly intended for debugging. As you always need to submit the full lis
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAssessmentPackages" method="get" path="/assessment/packages" -->
+<!-- UsageSnippet language="python" operationID="GetAssessmentPackages" method="get" path="/assessment/packages" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -81,9 +81,45 @@ Packages that have been previously submitted through this endpoint but aren't in
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" -->
+<!-- UsageSnippet language="python" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.assessment.set_packages(packages=[])
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.assessment.set_packages(packages=[])
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" example="example1" -->
 ```python
 from kombo import Kombo
 
@@ -215,9 +251,45 @@ Updates an assessment or a background check order result.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="python" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" -->
+<!-- UsageSnippet language="python" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.assessment.update_order_result(assessment_order_id="<id>", status="CANCELLED", result_url="https://sour-best-seller.net")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.assessment.update_order_result(assessment_order_id="<id>", status="CANCELLED", result_url="https://sour-best-seller.net")
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" example="example1" -->
 ```python
 from kombo import Kombo
 from kombo.utils import parse_datetime

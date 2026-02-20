@@ -10,10 +10,10 @@ from kombo.types import (
     UNSET_SENTINEL,
     UnrecognizedStr,
 )
-from kombo.utils import validate_const, validate_open_enum
+from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator, PlainValidator
+from pydantic.functional_validators import AfterValidator
 from typing import Any, Dict, List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -158,27 +158,22 @@ class GetHrisEmploymentsPositiveResponseResult(BaseModel):
     custom_fields: Nullable[Dict[str, Any]]
     r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
-    pay_period: Annotated[
-        OptionalNullable[GetHrisEmploymentsPositiveResponsePayPeriod],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    pay_period: OptionalNullable[GetHrisEmploymentsPositiveResponsePayPeriod] = UNSET
     r"""The time interval which the `pay_rate` is describing.
 
     A `pay_rate` value of `12000` with a `pay_period` of `YEAR` would indicate that the employee receives 12000 over the course of a year. In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    pay_frequency: Annotated[
-        OptionalNullable[GetHrisEmploymentsPositiveResponsePayFrequency],
-        PlainValidator(validate_open_enum(False)),
-    ] = UNSET
+    pay_frequency: OptionalNullable[GetHrisEmploymentsPositiveResponsePayFrequency] = (
+        UNSET
+    )
     r"""The time interval at which the employee receives payment.
 
     A `pay_rate` of `12000`, with a `pay_period` of `YEAR`, and a `pay_frequency` of `MONTHLY` would indicate that the employee is paid 1000 every month. In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    employment_type: Annotated[
-        OptionalNullable[GetHrisEmploymentsPositiveResponseEmploymentType],
-        PlainValidator(validate_open_enum(False)),
+    employment_type: OptionalNullable[
+        GetHrisEmploymentsPositiveResponseEmploymentType
     ] = UNSET
     r"""The employee’s current employment type:
 
@@ -196,42 +191,39 @@ class GetHrisEmploymentsPositiveResponseResult(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["pay_period", "pay_frequency", "employment_type"]
-        nullable_fields = [
-            "remote_id",
-            "job_title",
-            "pay_rate",
-            "pay_period",
-            "pay_frequency",
-            "employment_type",
-            "pay_currency",
-            "effective_date",
-            "remote_deleted_at",
-            "custom_fields",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(["pay_period", "pay_frequency", "employment_type"])
+        nullable_fields = set(
+            [
+                "remote_id",
+                "job_title",
+                "pay_rate",
+                "pay_period",
+                "pay_frequency",
+                "employment_type",
+                "pay_currency",
+                "effective_date",
+                "remote_deleted_at",
+                "custom_fields",
+            ]
+        )
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -250,30 +242,14 @@ class GetHrisEmploymentsPositiveResponseData(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = ["next"]
-        null_default_fields = []
-
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
+            if val != UNSET_SENTINEL:
                 m[k] = val
 
         return m
@@ -291,3 +267,9 @@ class GetHrisEmploymentsPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    GetHrisEmploymentsPositiveResponse.model_rebuild()
+except NameError:
+    pass

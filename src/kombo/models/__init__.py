@@ -66,10 +66,9 @@ from .schema2_union_2 import (
     Schema2Union2,
     Schema2Union2TypedDict,
 )
-from typing import TYPE_CHECKING
-from importlib import import_module
-import builtins
-import sys
+from typing import Any, TYPE_CHECKING
+
+from kombo.utils.dynamic_imports import lazy_getattr, lazy_dir
 
 if TYPE_CHECKING:
     from .assessmentorderreceivedwebhookpayload import (
@@ -1038,6 +1037,7 @@ if TYPE_CHECKING:
         IntegrationStateChangedWebhookPayloadEndUser,
         IntegrationStateChangedWebhookPayloadEndUserTypedDict,
         IntegrationStateChangedWebhookPayloadIntegrationCategory,
+        IntegrationStateChangedWebhookPayloadSetupStatus,
         IntegrationStateChangedWebhookPayloadType,
         IntegrationStateChangedWebhookPayloadTypedDict,
         QaStatus,
@@ -1808,6 +1808,9 @@ if TYPE_CHECKING:
         PostHrisAbsencesPositiveResponseWarningTypedDict,
     )
     from .posthrisabsencesrequestbody import (
+        A3innuvanomina,
+        A3innuvanominaTypedDict,
+        BenefitTypeID,
         PostHrisAbsencesRequestBody,
         PostHrisAbsencesRequestBodyAdpworkforcenow,
         PostHrisAbsencesRequestBodyAdpworkforcenowTypedDict,
@@ -1994,6 +1997,20 @@ if TYPE_CHECKING:
         PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBody,
         PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBodyTypedDict,
     )
+    from .putintegrationsintegrationidenabledop import (
+        PutIntegrationsIntegrationIDEnabledRequest,
+        PutIntegrationsIntegrationIDEnabledRequestTypedDict,
+    )
+    from .putintegrationsintegrationidenabledpositiveresponse import (
+        PutIntegrationsIntegrationIDEnabledPositiveResponse,
+        PutIntegrationsIntegrationIDEnabledPositiveResponseData,
+        PutIntegrationsIntegrationIDEnabledPositiveResponseDataTypedDict,
+        PutIntegrationsIntegrationIDEnabledPositiveResponseTypedDict,
+    )
+    from .putintegrationsintegrationidenabledrequestbody import (
+        PutIntegrationsIntegrationIDEnabledRequestBody,
+        PutIntegrationsIntegrationIDEnabledRequestBodyTypedDict,
+    )
     from .schema1 import Schema1, Schema1TypedDict
     from .schema1_union_1 import (
         Schema1Array1,
@@ -2090,7 +2107,8 @@ if TYPE_CHECKING:
     from .webhooksyncfinishedwebhookpayloadop import (
         WebhookSyncFinishedWebhookPayloadRequest,
         WebhookSyncFinishedWebhookPayloadRequestTypedDict,
-    )  # Pydantic models with forward references
+    )
+    from . import internal  # Pydantic models with forward references
 Schema2Array1.model_rebuild()
 Schema2Array2.model_rebuild()
 Schema2Object2.model_rebuild()
@@ -2098,6 +2116,8 @@ Schema1Array2.model_rebuild()
 
 
 __all__ = [
+    "A3innuvanomina",
+    "A3innuvanominaTypedDict",
     "AssessmentOrderReceivedWebhookPayload",
     "AssessmentOrderReceivedWebhookPayloadApplication",
     "AssessmentOrderReceivedWebhookPayloadApplicationTypedDict",
@@ -2126,6 +2146,7 @@ __all__ = [
     "AttributeTypedDict",
     "BankAccount",
     "BankAccountTypedDict",
+    "BenefitTypeID",
     "Break",
     "BreakTypedDict",
     "ChangedModel",
@@ -2847,6 +2868,7 @@ __all__ = [
     "IntegrationStateChangedWebhookPayloadEndUser",
     "IntegrationStateChangedWebhookPayloadEndUserTypedDict",
     "IntegrationStateChangedWebhookPayloadIntegrationCategory",
+    "IntegrationStateChangedWebhookPayloadSetupStatus",
     "IntegrationStateChangedWebhookPayloadType",
     "IntegrationStateChangedWebhookPayloadTypedDict",
     "IntegrationTool",
@@ -3690,6 +3712,14 @@ __all__ = [
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBody",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBodyTypedDict",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestTypedDict",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseData",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseDataTypedDict",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseTypedDict",
+    "PutIntegrationsIntegrationIDEnabledRequest",
+    "PutIntegrationsIntegrationIDEnabledRequestBody",
+    "PutIntegrationsIntegrationIDEnabledRequestBodyTypedDict",
+    "PutIntegrationsIntegrationIDEnabledRequestTypedDict",
     "QaStatus",
     "ReadModelScopeConfigSetting",
     "RemoteWorkStatus",
@@ -4681,6 +4711,7 @@ _dynamic_imports: dict[str, str] = {
     "IntegrationStateChangedWebhookPayloadEndUser": ".integrationstatechangedwebhookpayload",
     "IntegrationStateChangedWebhookPayloadEndUserTypedDict": ".integrationstatechangedwebhookpayload",
     "IntegrationStateChangedWebhookPayloadIntegrationCategory": ".integrationstatechangedwebhookpayload",
+    "IntegrationStateChangedWebhookPayloadSetupStatus": ".integrationstatechangedwebhookpayload",
     "IntegrationStateChangedWebhookPayloadType": ".integrationstatechangedwebhookpayload",
     "IntegrationStateChangedWebhookPayloadTypedDict": ".integrationstatechangedwebhookpayload",
     "QaStatus": ".integrationstatechangedwebhookpayload",
@@ -5366,6 +5397,9 @@ _dynamic_imports: dict[str, str] = {
     "PostHrisAbsencesPositiveResponseUnit": ".posthrisabsencespositiveresponse",
     "PostHrisAbsencesPositiveResponseWarning": ".posthrisabsencespositiveresponse",
     "PostHrisAbsencesPositiveResponseWarningTypedDict": ".posthrisabsencespositiveresponse",
+    "A3innuvanomina": ".posthrisabsencesrequestbody",
+    "A3innuvanominaTypedDict": ".posthrisabsencesrequestbody",
+    "BenefitTypeID": ".posthrisabsencesrequestbody",
     "PostHrisAbsencesRequestBody": ".posthrisabsencesrequestbody",
     "PostHrisAbsencesRequestBodyAdpworkforcenow": ".posthrisabsencesrequestbody",
     "PostHrisAbsencesRequestBodyAdpworkforcenowTypedDict": ".posthrisabsencesrequestbody",
@@ -5503,6 +5537,14 @@ _dynamic_imports: dict[str, str] = {
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDPositiveResponseTypedDict": ".putintegrationsintegrationidcustomfieldscustomfieldidpositiveresponse",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBody": ".putintegrationsintegrationidcustomfieldscustomfieldidrequestbody",
     "PutIntegrationsIntegrationIDCustomFieldsCustomFieldIDRequestBodyTypedDict": ".putintegrationsintegrationidcustomfieldscustomfieldidrequestbody",
+    "PutIntegrationsIntegrationIDEnabledRequest": ".putintegrationsintegrationidenabledop",
+    "PutIntegrationsIntegrationIDEnabledRequestTypedDict": ".putintegrationsintegrationidenabledop",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponse": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseData": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseDataTypedDict": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledPositiveResponseTypedDict": ".putintegrationsintegrationidenabledpositiveresponse",
+    "PutIntegrationsIntegrationIDEnabledRequestBody": ".putintegrationsintegrationidenabledrequestbody",
+    "PutIntegrationsIntegrationIDEnabledRequestBodyTypedDict": ".putintegrationsintegrationidenabledrequestbody",
     "Schema1": ".schema1",
     "Schema1TypedDict": ".schema1",
     "Schema1Array1": ".schema1_union_1",
@@ -5585,40 +5627,17 @@ _dynamic_imports: dict[str, str] = {
     "WebhookSyncFinishedWebhookPayloadRequestTypedDict": ".webhooksyncfinishedwebhookpayloadop",
 }
 
-
-def dynamic_import(modname, retries=3):
-    for attempt in range(retries):
-        try:
-            return import_module(modname, __package__)
-        except KeyError:
-            # Clear any half-initialized module and retry
-            sys.modules.pop(modname, None)
-            if attempt == retries - 1:
-                break
-    raise KeyError(f"Failed to import module '{modname}' after {retries} attempts")
+_sub_packages = ["internal"]
 
 
-def __getattr__(attr_name: str) -> object:
-    module_name = _dynamic_imports.get(attr_name)
-    if module_name is None:
-        raise AttributeError(
-            f"No {attr_name} found in _dynamic_imports for module name -> {__name__} "
-        )
-
-    try:
-        module = dynamic_import(module_name)
-        result = getattr(module, attr_name)
-        return result
-    except ImportError as e:
-        raise ImportError(
-            f"Failed to import {attr_name} from {module_name}: {e}"
-        ) from e
-    except AttributeError as e:
-        raise AttributeError(
-            f"Failed to get {attr_name} from {module_name}: {e}"
-        ) from e
+def __getattr__(attr_name: str) -> Any:
+    return lazy_getattr(
+        attr_name,
+        package=__package__,
+        dynamic_imports=_dynamic_imports,
+        sub_packages=_sub_packages,
+    )
 
 
 def __dir__():
-    lazy_attrs = builtins.list(_dynamic_imports.keys())
-    return builtins.sorted(lazy_attrs)
+    return lazy_dir(dynamic_imports=_dynamic_imports, sub_packages=_sub_packages)

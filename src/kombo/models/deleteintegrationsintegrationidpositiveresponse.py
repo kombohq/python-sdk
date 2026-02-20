@@ -29,3 +29,9 @@ class DeleteIntegrationsIntegrationIDPositiveResponse(BaseModel):
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
         pydantic.Field(alias="status"),
     ] = "success"
+
+
+try:
+    DeleteIntegrationsIntegrationIDPositiveResponse.model_rebuild()
+except NameError:
+    pass

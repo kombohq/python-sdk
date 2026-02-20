@@ -76,6 +76,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyLocation(BaseModel):
 
     zip_code: Optional[str] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["city", "state", "street_1", "zip_code"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 PostAtsJobsJobIDApplicationsRequestBodyGender = Literal[
     "MALE",
@@ -204,6 +220,35 @@ class PostAtsJobsJobIDApplicationsRequestBodyCandidate(BaseModel):
     )
     r"""A list of social media links of the candidate. The links must be valid URLs."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "additional_email_addresses",
+                "company",
+                "title",
+                "phone_number",
+                "additional_phone_numbers",
+                "location",
+                "gender",
+                "availability_date",
+                "salary_expectations",
+                "social_links",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 PostAtsJobsJobIDApplicationsRequestBodyAttachmentType = Literal[
     "CV",
@@ -268,6 +313,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyAttachment(BaseModel):
     **Note:** You must provide either this or `data_url`. We recommend `data_url` over `data` for most cases.
     """
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["content_type", "data_url", "data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 @deprecated(
     "warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
@@ -303,6 +364,22 @@ class PostAtsJobsJobIDApplicationsRequestBodySource(BaseModel):
     unified_key: Optional[str] = None
 
     id: Optional[str] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["name", "unified_key", "id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodySourcedByTypedDict(TypedDict):
@@ -347,6 +424,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyGdprConsent(BaseModel):
     given: Optional[bool] = None
     r"""Whether the candidate has given consent."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["expires_at", "given"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodySuccessfactorsTypedDict(TypedDict):
     r"""Fields specific to SAP SuccessFactors."""
@@ -384,36 +477,33 @@ class PostAtsJobsJobIDApplicationsRequestBodySuccessfactors(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "Candidate",
-            "JobApplication",
-            "copyJobApplicationAttachments",
-            "update_existing_candidate",
-        ]
-        nullable_fields = ["update_existing_candidate"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "Candidate",
+                "JobApplication",
+                "copyJobApplicationAttachments",
+                "update_existing_candidate",
+            ]
+        )
+        nullable_fields = set(["update_existing_candidate"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -430,6 +520,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyPersonio(BaseModel):
 
     application: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Personio's `application` object."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyTalentsoftTypedDict(TypedDict):
@@ -450,6 +556,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyTalentsoft(BaseModel):
     application: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to TalentSoft's `application` object."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["applicant", "application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyTeamtailorApplicationTypedDict(TypedDict):
     attributes: NotRequired[Dict[str, Any]]
@@ -459,6 +581,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyTeamtailorApplicationTypedDict(Type
 class PostAtsJobsJobIDApplicationsRequestBodyTeamtailorApplication(BaseModel):
     attributes: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Teamtailor's attributes section `Job application` object."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["attributes"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyTeamtailorTypedDict(TypedDict):
@@ -476,6 +614,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyTeamtailor(BaseModel):
     application: Optional[
         PostAtsJobsJobIDApplicationsRequestBodyTeamtailorApplication
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate", "application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyPostHeadersTypedDict(TypedDict):
@@ -495,31 +649,26 @@ class PostAtsJobsJobIDApplicationsRequestBodyPostHeaders(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["On-Behalf-Of"]
-        nullable_fields = ["On-Behalf-Of"]
-        null_default_fields = []
-
+        optional_fields = set(["On-Behalf-Of"])
+        nullable_fields = set(["On-Behalf-Of"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -539,6 +688,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyGreenhouse(BaseModel):
     post_headers: Optional[PostAtsJobsJobIDApplicationsRequestBodyPostHeaders] = None
     r"""Headers we will pass with `POST` requests to Greenhouse."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["post_headers"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyLeverTypedDict(TypedDict):
     r"""Fields specific to Lever."""
@@ -553,6 +718,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyLever(BaseModel):
     candidate: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Lever's `Candidate` object. Note: make sure to submit the keys and values in the correct form data format."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyWorkableTypedDict(TypedDict):
     r"""Workable specific remote fields for ATS actions."""
@@ -566,6 +747,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyWorkable(BaseModel):
 
     on_behalf_of_user_remote_id: Optional[str] = None
     r"""The remote ID of the user that will be displayed in the UI as the one that performed the action."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["on_behalf_of_user_remote_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodySocialSuffixReferenceTypedDict(TypedDict):
@@ -601,6 +798,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyNameDetailData(BaseModel):
     ] = None
     r"""The WID of the social suffix reference for the candidate"""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Middle_Name", "Social_Suffix_Reference"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyLanguageReferenceTypedDict(TypedDict):
     r"""Used to set the candidate's primary language"""
@@ -625,6 +838,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyGlobalPersonalInformationData(BaseM
         None
     )
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Date_of_Birth"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyJobAppliedToDataTypedDict(TypedDict):
     global_personal_information_data: NotRequired[
@@ -637,6 +866,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyJobAppliedToData(BaseModel):
         Optional[PostAtsJobsJobIDApplicationsRequestBodyGlobalPersonalInformationData],
         pydantic.Field(alias="Global_Personal_Information_Data"),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Global_Personal_Information_Data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyFieldOfStudyReferenceTypedDict(TypedDict):
@@ -693,6 +938,31 @@ class PostAtsJobsJobIDApplicationsRequestBodyEducationDatum(BaseModel):
         None
     )
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "School_Name",
+                "First_Year_Attended",
+                "Last_Year_Attended",
+                "Field_of_Study_Reference",
+                "Degree_Reference",
+                "Grade_Average",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodySkillDatumTypedDict(TypedDict):
     skill_name: NotRequired[str]
@@ -700,6 +970,22 @@ class PostAtsJobsJobIDApplicationsRequestBodySkillDatumTypedDict(TypedDict):
 
 class PostAtsJobsJobIDApplicationsRequestBodySkillDatum(BaseModel):
     skill_name: Annotated[Optional[str], pydantic.Field(alias="Skill_Name")] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Skill_Name"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyLanguageDatumLanguageReferenceTypedDict(
@@ -710,6 +996,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyLanguageDatumLanguageReferenceTyped
 
 class PostAtsJobsJobIDApplicationsRequestBodyLanguageDatumLanguageReference(BaseModel):
     wid: Annotated[Optional[str], pydantic.Field(alias="WID")] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["WID"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyLanguageProficiencyReferenceTypedDict(
@@ -752,6 +1054,24 @@ class PostAtsJobsJobIDApplicationsRequestBodyLanguageAbilityData(BaseModel):
         pydantic.Field(alias="Language_Ability_Type_Reference"),
     ] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["Language_Proficiency_Reference", "Language_Ability_Type_Reference"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyLanguageAbilityTypedDict(TypedDict):
     language_ability_data: NotRequired[
@@ -764,6 +1084,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyLanguageAbility(BaseModel):
         Optional[PostAtsJobsJobIDApplicationsRequestBodyLanguageAbilityData],
         pydantic.Field(alias="Language_Ability_Data"),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Language_Ability_Data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyLanguageTypedDict(TypedDict):
@@ -780,6 +1116,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyLanguage(BaseModel):
     ]
 
     native: Annotated[Optional[bool], pydantic.Field(alias="Native")] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Native"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyLanguageDatumTypedDict(TypedDict):
@@ -799,6 +1151,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyLanguageDatum(BaseModel):
         Optional[PostAtsJobsJobIDApplicationsRequestBodyLanguage],
         pydantic.Field(alias="Language"),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Language_Reference", "Language"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyExperienceDatumTypedDict(TypedDict):
@@ -840,6 +1208,24 @@ class PostAtsJobsJobIDApplicationsRequestBodyExperienceDatum(BaseModel):
 
     description: Annotated[Optional[str], pydantic.Field(alias="Description")] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["Location", "End_Date", "Currently_Work_Here", "Description"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyResumeDataTypedDict(TypedDict):
     education_data: NotRequired[
@@ -877,6 +1263,24 @@ class PostAtsJobsJobIDApplicationsRequestBodyResumeData(BaseModel):
         pydantic.Field(alias="Experience_Data"),
     ] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["Education_Data", "Skill_Data", "Language_Data", "Experience_Data"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyJobApplicationDataTypedDict(TypedDict):
     job_applied_to_data: NotRequired[
@@ -895,6 +1299,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyJobApplicationData(BaseModel):
         Optional[PostAtsJobsJobIDApplicationsRequestBodyResumeData],
         pydantic.Field(alias="Resume_Data"),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Job_Applied_To_Data", "Resume_Data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyCountryRegionReferenceTypedDict(TypedDict):
@@ -948,6 +1368,30 @@ class PostAtsJobsJobIDApplicationsRequestBodyLocationData(BaseModel):
         pydantic.Field(alias="Country_City_Reference"),
     ] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "Address_Line_1",
+                "Address_Line_2",
+                "Region_Subdivision_1",
+                "Country_Region_Reference",
+                "Country_City_Reference",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyContactDataTypedDict(TypedDict):
     location_data: NotRequired[
@@ -960,6 +1404,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyContactData(BaseModel):
         Optional[PostAtsJobsJobIDApplicationsRequestBodyLocationData],
         pydantic.Field(alias="Location_Data"),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Location_Data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyWorkerReferenceTypedDict(TypedDict):
@@ -975,6 +1435,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyWorkerReference(BaseModel):
     wid: Annotated[Optional[str], pydantic.Field(alias="WID")] = None
 
     employee_id: Annotated[Optional[str], pydantic.Field(alias="Employee_ID")] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["WID", "Employee_ID"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyCandidateDataTypedDict(TypedDict):
@@ -1025,6 +1501,30 @@ class PostAtsJobsJobIDApplicationsRequestBodyCandidateData(BaseModel):
     ] = None
     r"""Reference to the Worker (employee) to link the candidate to. Provide either WID or Employee_ID."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "Name_Detail_Data",
+                "Language_Reference",
+                "Job_Application_Data",
+                "Contact_Data",
+                "Worker_Reference",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyWorkdayTypedDict(TypedDict):
     r"""Fields specific to Workday. The remote fields schema follows the documentation at https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v43.0/Put_Candidate.html. Only defined fields are supported, if you need additional field support please reach out to Kombo support."""
@@ -1049,6 +1549,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyWorkday(BaseModel):
     ] = None
     r"""Used to override the automatic source WID."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Candidate_Data", "Override_Source_Reference_WID"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyZohorecruitTypedDict(TypedDict):
     r"""Fields specific to Zoho Recruit."""
@@ -1062,6 +1578,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyZohorecruit(BaseModel):
 
     candidate: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Zoho Recruit's `Candidate` object."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyBullhornTypedDict(TypedDict):
@@ -1081,6 +1613,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyBullhorn(BaseModel):
 
     job_submission: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Bullhorn's `JobSubmission` object."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate", "job_submission"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodySmartrecruitersTypedDict(TypedDict):
@@ -1116,6 +1664,24 @@ class PostAtsJobsJobIDApplicationsRequestBodySmartrecruiters(BaseModel):
     candidate: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to the SmartRecruiters's `Candidate` object. This API is used: https://developers.smartrecruiters.com/reference/createcandidate-1"""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["candidate_with_questions", "candidate_without_questions", "candidate"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyTalentadoreTypedDict(TypedDict):
     r"""Fields specific to Talentadore."""
@@ -1129,6 +1695,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyTalentadore(BaseModel):
 
     applications: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to the Talentadore's when creating applications."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["applications"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyGuidecomTypedDict(TypedDict):
@@ -1144,6 +1726,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyGuidecom(BaseModel):
     candidate: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to GuideCom's `Candidate` object."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyDvinciTypedDict(TypedDict):
     r"""Fields specific to d.vinci."""
@@ -1157,6 +1755,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyDvinci(BaseModel):
 
     application: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to d.vinci's application object. This API is used: https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html#jobs__id__applyApi_post"""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyHrworksTypedDict(TypedDict):
@@ -1174,6 +1788,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyHrworks(BaseModel):
     ] = None
     r"""Fields that we will pass through to HRWorks's `Job Application` object. This API is used: https://developers.hrworks.de/docs/hrworks-api-v2/53021f035f62d-post-job-applications"""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["jobApplication"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyJobylonApplicationTypedDict(TypedDict):
     r"""Fields that we will pass through to Jobylon's create application [endpoint](https://developer.jobylon.com/push-api-and-webhooks#-xL0v)'s request body."""
@@ -1187,6 +1817,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyJobylonApplication(BaseModel):
 
     message: Optional[str] = None
     r"""The `message` field of Jobylon's create application endpoint's request body."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["message"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyJobylonTypedDict(TypedDict):
@@ -1206,6 +1852,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyJobylon(BaseModel):
     )
     r"""Fields that we will pass through to Jobylon's create application [endpoint](https://developer.jobylon.com/push-api-and-webhooks#-xL0v)'s request body."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyStepTypedDict(TypedDict):
     id: int
@@ -1224,6 +1886,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyWorkflowTypedDict(TypedDict):
 class PostAtsJobsJobIDApplicationsRequestBodyWorkflow(BaseModel):
     step: Optional[PostAtsJobsJobIDApplicationsRequestBodyStep] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["step"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyAvatureTypedDict(TypedDict):
     r"""Fields specific to Avature."""
@@ -1236,6 +1914,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyAvature(BaseModel):
 
     workflow: Optional[PostAtsJobsJobIDApplicationsRequestBodyWorkflow] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["workflow"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyRecruiteeCandidateTypedDict(TypedDict):
     cover_letter_text: NotRequired[str]
@@ -1245,6 +1939,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyRecruiteeCandidateTypedDict(TypedDi
 class PostAtsJobsJobIDApplicationsRequestBodyRecruiteeCandidate(BaseModel):
     cover_letter_text: Optional[str] = None
     r"""The cover letter text as a string. This will be visible on the main candidate page. Can be provided together with the `cover_letter` attachment, which will end up in a separate `file` section."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["cover_letter_text"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyRecruiteeTypedDict(TypedDict):
@@ -1262,6 +1972,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyRecruitee(BaseModel):
         None
     )
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyUmantisTypedDict(TypedDict):
     r"""Fields specific to Abacus Umantis."""
@@ -1276,6 +2002,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyUmantis(BaseModel):
     person: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Abacus Umantis's \"Create a person\" endpoint's `attributes` when creating a candidate."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["person"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyPilogaCandidateTypedDict(TypedDict):
     r"""Additional candidate fields for P&I Loga that will be mapped to the application form."""
@@ -1289,6 +2031,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyPilogaCandidate(BaseModel):
 
     street: Optional[str] = None
     r"""The street address of the candidate."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["street"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyPilogaTypedDict(TypedDict):
@@ -1306,6 +2064,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyPiloga(BaseModel):
     candidate: Optional[PostAtsJobsJobIDApplicationsRequestBodyPilogaCandidate] = None
     r"""Additional candidate fields for P&I Loga that will be mapped to the application form."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyPinpointTypedDict(TypedDict):
     r"""Fields specific to Pinpoint."""
@@ -1320,6 +2094,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyPinpoint(BaseModel):
     candidate: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Pinpoint's `Candidate` object."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidateTypedDict(TypedDict):
     r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
@@ -1333,6 +2123,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidate(BaseModel):
 
     mandant: Optional[float] = None
     r"""The mandant field for the candidate in Coveto."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["mandant"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyCovetorestTypedDict(TypedDict):
@@ -1351,6 +2157,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyCovetorest(BaseModel):
         None
     )
     r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyRemoteFieldsTypedDict(TypedDict):
@@ -1481,6 +2303,47 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
     covetorest: Optional[PostAtsJobsJobIDApplicationsRequestBodyCovetorest] = None
     r"""Fields specific to Coveto REST."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "successfactors",
+                "personio",
+                "talentsoft",
+                "teamtailor",
+                "greenhouse",
+                "lever",
+                "workable",
+                "workday",
+                "zohorecruit",
+                "bullhorn",
+                "smartrecruiters",
+                "talentadore",
+                "guidecom",
+                "dvinci",
+                "hrworks",
+                "jobylon",
+                "avature",
+                "recruitee",
+                "umantis",
+                "piloga",
+                "pinpoint",
+                "covetorest",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PostAtsJobsJobIDApplicationsRequestBodyAnswerTypedDict(TypedDict):
     r"""Answer to a `FILE` question."""
@@ -1535,6 +2398,22 @@ class PostAtsJobsJobIDApplicationsRequestBodyAnswer(BaseModel):
 
     **Note:** You must provide either this or `data_url`. We recommend `data_url` over `data` for most cases.
     """
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["content_type", "data_url", "data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 PostAtsJobsJobIDApplicationsRequestBodyAnswerUnionTypedDict = TypeAliasType(
@@ -1722,3 +2601,147 @@ class PostAtsJobsJobIDApplicationsRequestBody(BaseModel):
 
     The available questions for a job can be retrieved from the get jobs endpoint. The answers will be validated based on the format of the questions. Make sure to follow this schema to avoid errors.
     """
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "stage_id",
+                "attachments",
+                "source",
+                "sourced_by",
+                "gdpr_consent",
+                "remote_fields",
+                "screening_question_answers",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+try:
+    PostAtsJobsJobIDApplicationsRequestBodySuccessfactors.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyPostHeaders.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodySocialSuffixReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyNameDetailData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguageReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyGlobalPersonalInformationData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyJobAppliedToData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyFieldOfStudyReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyDegreeReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyEducationDatum.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodySkillDatum.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguageDatumLanguageReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguageProficiencyReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguageAbilityTypeReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguageAbilityData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguageAbility.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguage.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLanguageDatum.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyExperienceDatum.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyResumeData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyJobApplicationData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyCountryRegionReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyCountryCityReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyLocationData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyContactData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyWorkerReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyCandidateData.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyWorkday.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyHrworks.model_rebuild()
+except NameError:
+    pass
