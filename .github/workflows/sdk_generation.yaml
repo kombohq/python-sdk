@@ -1,10 +1,9 @@
 name: SDK Generation
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
-"on":
+
+# We're using custom app authentication below, so we need no permissions.
+permissions: {}
+
+on:
   workflow_dispatch:
     inputs:
       force:
@@ -12,20 +11,61 @@ permissions:
         type: boolean
         default: false
       set_version:
-        description: optionally set a specific SDK version
+        description: Optionally set a specific SDK version
         type: string
   schedule:
     - cron: 0 0 * * *
+
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
-    with:
-      force: ${{ github.event.inputs.force }}
-      mode: pr
-      set_version: ${{ github.event.inputs.set_version }}
-      target: kombo-python
-    secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
-      pypi_token: ${{ secrets.PYPI_TOKEN }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.SDK_GENERATOR_GITHUB_APP_ID }}
+          private-key: ${{ secrets.SDK_GENERATOR_GITHUB_APP_PRIVATE_KEY }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      # We're using the "Kombo SDK Generator" GitHub App because this way, the
+      # created PRs can trigger other workflows (specifically the test suite we
+      # always want to run).
+      #
+      # See GitHub docs on limitation:
+      # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow-from-a-workflow
+      #
+      # See config of the app:
+      # https://github.com/organizations/kombohq/settings/apps/kombo-sdk-generator
+      - name: Run Generation Workflow
+        id: run-workflow
+        uses: speakeasy-api/sdk-generation-action@v15
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ steps.app-token.outputs.token }}
+          mode: pr
+          force: ${{ github.event.inputs.force }}
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
+          target: kombo-python
+          enable_sdk_changelog: true
+          set_version: ${{ github.event.inputs.set_version }}
+
+      - name: Log Generation Output
+        if: always()
+        uses: speakeasy-api/sdk-generation-action@v15
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ steps.app-token.outputs.token }}
+          action: log-result
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+        env:
+          GH_ACTION_RESULT: ${{ job.status }}
+          RESOLVED_SPEAKEASY_VERSION: ${{ steps.run-workflow.outputs.resolved_speakeasy_version }}
+          GH_ACTION_VERSION: v15
+          GH_ACTION_STEP: ${{ github.job }}
