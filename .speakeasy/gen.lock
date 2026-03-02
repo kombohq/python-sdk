@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 0c8d1667-2710-4860-aee3-7d221dbc0a60
 management:
-  docChecksum: 1a5ccdbcfe223bcdfb2e76cc1c64228f
+  docChecksum: 9ef589ab170e7ff846fc34daaebb3b79
   docVersion: 1.0.0
-  speakeasyVersion: 1.730.1
-  generationVersion: 2.844.3
-  releaseVersion: 1.0.1
-  configChecksum: e243330fcbdc6c9ec6bb7aa890009489
+  speakeasyVersion: 1.736.3
+  generationVersion: 2.845.15
+  releaseVersion: 1.0.2
+  configChecksum: 8204a893cd4eb501e48ad7a51ea0fece
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
 persistentEdits:
-  generation_id: d8093f2c-e333-41aa-a4ad-5c78a32dc3c0
-  pristine_commit_hash: ca4c085af742540b88a68566f750d503b0f81b5a
-  pristine_tree_hash: ba40e1c2ac1b12bd55ccffcdd81c7db45f4649c9
+  generation_id: 7b0c330b-cc1e-40c2-9bea-65183226a7e6
+  pristine_commit_hash: cf0d5ed35aedd92e1e5a01faf890c2b68db42eb9
+  pristine_tree_hash: cd825c3d990c07ffd7527749011d62cdb19680da
 features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.7
-    core: 6.0.12
+    core: 6.0.15
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
     enumUnions: 0.1.0
@@ -29,7 +29,7 @@ features:
     globalSecurity: 3.0.5
     globalSecurityCallbacks: 1.0.0
     globalSecurityFlattening: 1.0.0
-    globalServerURLs: 3.2.0
+    globalServerURLs: 3.2.1
     globals: 3.0.0
     groups: 3.0.1
     hiddenGlobals: 1.0.0
@@ -3426,10 +3426,14 @@ trackedFiles:
     id: 088b7bb3a1ed
     last_write_checksum: sha1:5e21ad86af7f599d244871a023f60d2b1f4a6d6c
     pristine_git_object: bc87fa338693aafbccf75b5f336c10155762c79e
+  docs/models/putassessmentordersassessmentorderidresultrequestbodyrecruitee.md:
+    id: 0586f5da0d08
+    last_write_checksum: sha1:77b01f4911c4c792d006593b4aef7c7a034a98d4
+    pristine_git_object: 390541cb4ed8eb384d6bfc785c8e3eb08c8d21d6
   docs/models/putassessmentordersassessmentorderidresultrequestbodyremotefields.md:
     id: 51f8810695e9
-    last_write_checksum: sha1:8e5198dcd8cafe8cfa84520b481840a1c59bb575
-    pristine_git_object: 103e9d29d92ff55b42a30907b3eb173ad8cbee15
+    last_write_checksum: sha1:d55b284a8bccf9a10578c75dbf96c24573414e08
+    pristine_git_object: 39f32cb7718874b6e463664dda47b5857df6d68b
   docs/models/putassessmentordersassessmentorderidresultrequestbodysmartrecruiters.md:
     id: b2889dbfc3b9
     last_write_checksum: sha1:5022128de544dd45593ca0c88d09533b1657c46c
@@ -3972,8 +3976,8 @@ trackedFiles:
     pristine_git_object: cb268794ca5a2389305a908323d1585a0c88d9c4
   docs/sdks/general/README.md:
     id: ce0ada6fa2e1
-    last_write_checksum: sha1:210bf6d6b54745f948d1a686d0044bc6a4b84eb0
-    pristine_git_object: 2590c40df846d9af1fa3cbf73565e929c12b78d6
+    last_write_checksum: sha1:fcc0a8a3b7f4a0f3f0ff4761ade15aa2bbad5884
+    pristine_git_object: 04d4cf3631100a8405ba76e81378c5e1fc45318e
   docs/sdks/hris/README.md:
     id: 0baa868a038c
     last_write_checksum: sha1:c16c5df676d2c0189ba8c89bca6d34c8d63f1e45
@@ -3988,8 +3992,8 @@ trackedFiles:
     pristine_git_object: f456032107a9387ba6c98afd1c981df2f4b3d636
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:d3ec919fa8ea7f317d5faff4689af474b39ee544
-    pristine_git_object: bd82fac2d92853afda8279d6306d3235a40b3868
+    last_write_checksum: sha1:50325473031e488d55a5dd9cea397f90ef731c07
+    pristine_git_object: 4590179ed7bbea40d27b2f6d72d022293c16be76
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:b6ad6f0515a952d7cb052befddb6a117d4f627d8
@@ -4016,8 +4020,8 @@ trackedFiles:
     pristine_git_object: e589e541e5fc70d336de44780721f301d754ed72
   src/kombo/_version.py:
     id: 45cf440ad1df
-    last_write_checksum: sha1:bdee453890f69531dbf58485e1abb586eefca526
-    pristine_git_object: 55f0c9e94e76a0e46aa16378b6e376f27b8e2df5
+    last_write_checksum: sha1:edd95a3459f3c31b847f04bddab6bdfee926a83f
+    pristine_git_object: 69a13569510e0c1f70bfcf91748c5514a99ba9e0
   src/kombo/assessment.py:
     id: aec6e8a7589f
     last_write_checksum: sha1:1406e437a55541ba21ab8a76696b092238678670
@@ -4068,8 +4072,8 @@ trackedFiles:
     pristine_git_object: 16ac2977e80b6eabe4020aa8a21dd28e83032f9a
   src/kombo/general.py:
     id: 107ecb9f3651
-    last_write_checksum: sha1:de8d80deac60a51e550164ae859910c927a12e2c
-    pristine_git_object: 1e0b8142dd56c826d9c8effb2f58bf1047e17605
+    last_write_checksum: sha1:311a77a3017195032641f641489eeda812810ba1
+    pristine_git_object: 3235cf8252ee511a047d508fc7eb35cbde5bdaf6
   src/kombo/hris.py:
     id: 9ba1b37ab10a
     last_write_checksum: sha1:02e56fc1424f2c437b285c6eff92c05a5f58d100
@@ -4080,8 +4084,8 @@ trackedFiles:
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/kombo/models/__init__.py:
     id: 45e6e8c7f07f
-    last_write_checksum: sha1:01d01490e3655af2ffe2b669814d2ebff9bef9cb
-    pristine_git_object: 20734a3e9b18f9a38df12b2eb808d585eef6c5be
+    last_write_checksum: sha1:936427616f8ed24a91654ea971e98e9b0b7ef67d
+    pristine_git_object: f5666af4cfe5f4bc23abbc1d90afe98b10418fd6
   src/kombo/models/assessmentorderreceivedwebhookpayload.py:
     id: 532c2db2ee93
     last_write_checksum: sha1:d33dfff9c40d2ac57c9d7afb30f9f580d47be9c2
@@ -4644,8 +4648,8 @@ trackedFiles:
     pristine_git_object: b34ea0de9602c887e0e0354fe501e917e9ac179e
   src/kombo/models/putassessmentordersassessmentorderidresultrequestbody.py:
     id: 9752de46be3c
-    last_write_checksum: sha1:1a756e66731d8c94526696c30df775eaafa2adb5
-    pristine_git_object: 493dffd9630183c840377e56ee9fb03f4050c823
+    last_write_checksum: sha1:72bae59cbbab278654dd397a711d8a7ae91455f9
+    pristine_git_object: 53081adbcdfa6af73d643e4deab5ec564745150d
   src/kombo/models/putassessmentpackagesop.py:
     id: b33421f2efc8
     last_write_checksum: sha1:2adaf7aa1eac694e57806832a00db85af1f90c25
@@ -4764,8 +4768,8 @@ trackedFiles:
     pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
   src/kombo/sdk.py:
     id: 61eb4ad101f4
-    last_write_checksum: sha1:f9797ef6641b609f3da6afb27516edaa302d97b5
-    pristine_git_object: cdb3567d46506c2af99a47f021c50e4e6bacd0d5
+    last_write_checksum: sha1:83e87de73b08416505e843d98f77e5848d058e1d
+    pristine_git_object: 9da32100c844175714bde23b6c2c3022e45671b9
   src/kombo/sdkconfiguration.py:
     id: f9376e99ec00
     last_write_checksum: sha1:645b3d5c2cf5cfbd62a1ef07973a46e76f9d5ae9
@@ -7288,6 +7292,7 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": "PLATFORM.RATE_LIMIT_EXCEEDED", "title": "<value>", "message": "<value>", "log_url": "https://enchanting-barracks.biz/"}}
 examplesVersion: 1.0.2
+releaseNotes: "## Python SDK Changes:\n* `kombo.assessment.update_order_result()`: \n  *  `request.remote_fields.recruitee` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json
