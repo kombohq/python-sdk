@@ -2,11 +2,16 @@
 
 The current state of the integration.
 
+## Example Usage
+
+```python
+from kombo.models import State
+value: State = "ACTIVE"
+```
+
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `ACTIVE`   | ACTIVE     |
-| `INVALID`  | INVALID    |
-| `INACTIVE` | INACTIVE   |
+- `"ACTIVE"`
+- `"INVALID"`
+- `"INACTIVE"`

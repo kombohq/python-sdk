@@ -1,9 +1,17 @@
 # AssessmentOrderReceivedWebhookPayloadHiringTeamRole
 
+## Example Usage
+
+```python
+from kombo.models import AssessmentOrderReceivedWebhookPayloadHiringTeamRole
+value: AssessmentOrderReceivedWebhookPayloadHiringTeamRole = "RECRUITER"
+```
+
 
 ## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `RECRUITER`      | RECRUITER        |
-| `HIRING_MANAGER` | HIRING_MANAGER   |
+- `"RECRUITER"`
+- `"HIRING_MANAGER"`
+- `"COORDINATOR"`
+- `"SOURCER"`
+- `"INTERVIEWER"`

@@ -12,6 +12,7 @@ KomboAtsErrorStatus = Literal["error",]
 
 KomboAtsErrorCode = Literal[
     "PLATFORM.RATE_LIMIT_EXCEEDED",
+    "PLATFORM.CONCURRENCY_LIMIT_EXCEEDED",
     "PLATFORM.INTEGRATION_NOT_FOUND",
     "PLATFORM.INPUT_INVALID",
     "PLATFORM.UNKNOWN_ERROR",
@@ -73,7 +74,7 @@ class KomboAtsErrorError(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 m[k] = val

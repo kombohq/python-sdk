@@ -2,10 +2,15 @@
 
 The time-unit of the absence.
 
+## Example Usage
+
+```python
+from kombo.models import GetHrisTimeOffBalancesPositiveResponseUnit
+value: GetHrisTimeOffBalancesPositiveResponseUnit = "HOURS"
+```
+
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `HOURS` | HOURS   |
-| `DAYS`  | DAYS    |
+- `"HOURS"`
+- `"DAYS"`

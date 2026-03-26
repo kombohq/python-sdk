@@ -4,8 +4,52 @@ from __future__ import annotations
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import Optional
+from typing import Literal, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
+
+
+StepType = Literal[
+    "Next_Step_Reference",
+    "Disposition_Step_Reference",
+]
+r"""The type of step reference to use. Use \"Next_Step_Reference\" for regular stage moves and \"Disposition_Step_Reference\" for conclusion/disposition stages (e.g., rejected, declined). Defaults to \"Next_Step_Reference\"."""
+
+
+class PutAtsApplicationsApplicationIDStageRequestBodyWorkdayTypedDict(TypedDict):
+    r"""Fields specific to Workday."""
+
+    workflow_step_id: NotRequired[str]
+    r"""The Workflow_Step_ID to pass directly to the Move_Candidate request. When provided, the automatic workflow step matching logic is skipped."""
+    step_type: NotRequired[StepType]
+    r"""The type of step reference to use. Use \"Next_Step_Reference\" for regular stage moves and \"Disposition_Step_Reference\" for conclusion/disposition stages (e.g., rejected, declined). Defaults to \"Next_Step_Reference\"."""
+
+
+class PutAtsApplicationsApplicationIDStageRequestBodyWorkday(BaseModel):
+    r"""Fields specific to Workday."""
+
+    workflow_step_id: Annotated[
+        Optional[str], pydantic.Field(alias="Workflow_Step_ID")
+    ] = None
+    r"""The Workflow_Step_ID to pass directly to the Move_Candidate request. When provided, the automatic workflow step matching logic is skipped."""
+
+    step_type: Annotated[Optional[StepType], pydantic.Field(alias="Step_Type")] = None
+    r"""The type of step reference to use. Use \"Next_Step_Reference\" for regular stage moves and \"Disposition_Step_Reference\" for conclusion/disposition stages (e.g., rejected, declined). Defaults to \"Next_Step_Reference\"."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Workflow_Step_ID", "Step_Type"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PutAtsApplicationsApplicationIDStageRequestBodyPostHeadersTypedDict(TypedDict):
@@ -32,7 +76,7 @@ class PutAtsApplicationsApplicationIDStageRequestBodyPostHeaders(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -74,7 +118,7 @@ class PutAtsApplicationsApplicationIDStageRequestBodyGreenhouse(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -104,7 +148,7 @@ class PutAtsApplicationsApplicationIDStageRequestBodyWorkable(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -116,6 +160,10 @@ class PutAtsApplicationsApplicationIDStageRequestBodyWorkable(BaseModel):
 class PutAtsApplicationsApplicationIDStageRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
+    workday: NotRequired[
+        PutAtsApplicationsApplicationIDStageRequestBodyWorkdayTypedDict
+    ]
+    r"""Fields specific to Workday."""
     greenhouse: NotRequired[
         PutAtsApplicationsApplicationIDStageRequestBodyGreenhouseTypedDict
     ]
@@ -129,6 +177,9 @@ class PutAtsApplicationsApplicationIDStageRequestBodyRemoteFieldsTypedDict(Typed
 class PutAtsApplicationsApplicationIDStageRequestBodyRemoteFields(BaseModel):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
+    workday: Optional[PutAtsApplicationsApplicationIDStageRequestBodyWorkday] = None
+    r"""Fields specific to Workday."""
+
     greenhouse: Optional[PutAtsApplicationsApplicationIDStageRequestBodyGreenhouse] = (
         None
     )
@@ -139,13 +190,13 @@ class PutAtsApplicationsApplicationIDStageRequestBodyRemoteFields(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["greenhouse", "workable"])
+        optional_fields = set(["workday", "greenhouse", "workable"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -180,7 +231,7 @@ class PutAtsApplicationsApplicationIDStageRequestBody(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -189,6 +240,10 @@ class PutAtsApplicationsApplicationIDStageRequestBody(BaseModel):
         return m
 
 
+try:
+    PutAtsApplicationsApplicationIDStageRequestBodyWorkday.model_rebuild()
+except NameError:
+    pass
 try:
     PutAtsApplicationsApplicationIDStageRequestBodyPostHeaders.model_rebuild()
 except NameError:

@@ -7,12 +7,17 @@ The status of a datapoint of an integrated tool:
 - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
 - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
 
+## Example Usage
+
+```python
+from kombo.models import GetIntegrationsIntegrationIDPositiveResponseWriteActionCoverageStatus
+value: GetIntegrationsIntegrationIDPositiveResponseWriteActionCoverageStatus = "SUPPORTED"
+```
+
 
 ## Values
 
-| Name              | Value             |
-| ----------------- | ----------------- |
-| `SUPPORTED`       | SUPPORTED         |
-| `UNSUPPORTED`     | UNSUPPORTED       |
-| `NOT_IMPLEMENTED` | NOT_IMPLEMENTED   |
-| `UNKNOWN`         | UNKNOWN           |
+- `"SUPPORTED"`
+- `"UNSUPPORTED"`
+- `"NOT_IMPLEMENTED"`
+- `"UNKNOWN"`

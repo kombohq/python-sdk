@@ -1,11 +1,16 @@
 # GetToolsCategoryParameterCategory
 
+## Example Usage
+
+```python
+from kombo.models import GetToolsCategoryParameterCategory
+value: GetToolsCategoryParameterCategory = "hris"
+```
+
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `HRIS`       | hris         |
-| `ATS`        | ats          |
-| `ASSESSMENT` | assessment   |
-| `LMS`        | lms          |
+- `"hris"`
+- `"ats"`
+- `"assessment"`
+- `"lms"`

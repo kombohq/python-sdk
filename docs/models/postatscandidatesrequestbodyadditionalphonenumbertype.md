@@ -1,10 +1,15 @@
 # PostAtsCandidatesRequestBodyAdditionalPhoneNumberType
 
+## Example Usage
+
+```python
+from kombo.models import PostAtsCandidatesRequestBodyAdditionalPhoneNumberType
+value: PostAtsCandidatesRequestBodyAdditionalPhoneNumberType = "PERSONAL"
+```
+
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `PERSONAL` | PERSONAL   |
-| `WORK`     | WORK       |
-| `OTHER`    | OTHER      |
+- `"PERSONAL"`
+- `"WORK"`
+- `"OTHER"`

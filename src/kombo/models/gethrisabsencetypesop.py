@@ -35,7 +35,7 @@ class GetHrisAbsenceTypesGlobals(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -55,6 +55,8 @@ class GetHrisAbsenceTypesRequestTypedDict(TypedDict):
     If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+    For this endpoint, only changes to the returned record itself are considered.
     """
     include_deleted: NotRequired[bool]
     r"""By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too."""
@@ -88,6 +90,8 @@ class GetHrisAbsenceTypesRequest(BaseModel):
     If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+    For this endpoint, only changes to the returned record itself are considered.
     """
 
     include_deleted: Annotated[
@@ -132,7 +136,7 @@ class GetHrisAbsenceTypesRequest(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

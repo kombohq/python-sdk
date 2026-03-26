@@ -35,7 +35,7 @@ class GetAtsUsersGlobals(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -55,6 +55,11 @@ class GetAtsUsersRequestTypedDict(TypedDict):
     If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+    For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+
+    - ✓ `system_role_assignment`
+    - ✓ `role`
     """
     include_deleted: NotRequired[bool]
     r"""By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too."""
@@ -90,6 +95,11 @@ class GetAtsUsersRequest(BaseModel):
     If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+    For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+
+    - ✓ `system_role_assignment`
+    - ✓ `role`
     """
 
     include_deleted: Annotated[
@@ -141,7 +151,7 @@ class GetAtsUsersRequest(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

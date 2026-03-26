@@ -1,16 +1,25 @@
 # GetHrisEmploymentsPositiveResponsePayFrequency
 
+## Example Usage
+
+```python
+from kombo.models import GetHrisEmploymentsPositiveResponsePayFrequency
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: GetHrisEmploymentsPositiveResponsePayFrequency = "DAILY"
+```
+
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `DAILY`        | DAILY          |
-| `WEEKLY`       | WEEKLY         |
-| `BIWEEKLY`     | BIWEEKLY       |
-| `MONTHLY`      | MONTHLY        |
-| `SEMIMONTHLY`  | SEMIMONTHLY    |
-| `QUARTERLY`    | QUARTERLY      |
-| `SEMIANNUALLY` | SEMIANNUALLY   |
-| `ANNUALLY`     | ANNUALLY       |
-| `PRO_RATA`     | PRO_RATA       |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"DAILY"`
+- `"WEEKLY"`
+- `"BIWEEKLY"`
+- `"MONTHLY"`
+- `"SEMIMONTHLY"`
+- `"QUARTERLY"`
+- `"SEMIANNUALLY"`
+- `"ANNUALLY"`
+- `"PRO_RATA"`

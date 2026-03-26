@@ -33,7 +33,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyTeamtailor(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -66,7 +66,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyPostHeaders(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -108,7 +108,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyGreenhouse(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -143,7 +143,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRecruitee(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -173,7 +173,37 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyBullhorn(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostAtsApplicationsApplicationIDNotesRequestBodyLeverTypedDict(TypedDict):
+    r"""Lever specific remote fields for the note."""
+
+    perform_as: NotRequired[str]
+    r"""ID of the Lever user that will show up as having created the note. If not provided, defaults to the user associated with the OAuth token."""
+
+
+class PostAtsApplicationsApplicationIDNotesRequestBodyLever(BaseModel):
+    r"""Lever specific remote fields for the note."""
+
+    perform_as: Optional[str] = None
+    r"""ID of the Lever user that will show up as having created the note. If not provided, defaults to the user associated with the OAuth token."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["perform_as"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -203,7 +233,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyWorkable(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -231,6 +261,8 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFieldsTypedDict(Type
         PostAtsApplicationsApplicationIDNotesRequestBodyBullhornTypedDict
     ]
     r"""Bullhorn specific remote fields for the note."""
+    lever: NotRequired[PostAtsApplicationsApplicationIDNotesRequestBodyLeverTypedDict]
+    r"""Lever specific remote fields for the note."""
     workable: NotRequired[
         PostAtsApplicationsApplicationIDNotesRequestBodyWorkableTypedDict
     ]
@@ -258,20 +290,23 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
     bullhorn: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyBullhorn] = None
     r"""Bullhorn specific remote fields for the note."""
 
+    lever: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyLever] = None
+    r"""Lever specific remote fields for the note."""
+
     workable: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyWorkable] = None
     r"""Workable specific remote fields for ATS actions."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["teamtailor", "greenhouse", "recruitee", "bullhorn", "workable"]
+            ["teamtailor", "greenhouse", "recruitee", "bullhorn", "lever", "workable"]
         )
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -311,7 +346,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBody(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

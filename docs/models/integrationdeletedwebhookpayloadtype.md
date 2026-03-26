@@ -2,9 +2,14 @@
 
 Type of the webhook event
 
+## Example Usage
+
+```python
+from kombo.models import IntegrationDeletedWebhookPayloadType
+value: IntegrationDeletedWebhookPayloadType = "integration-deleted"
+```
+
 
 ## Values
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `INTEGRATION_DELETED` | integration-deleted   |
+- `"integration-deleted"`

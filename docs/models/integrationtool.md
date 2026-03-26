@@ -2,188 +2,197 @@
 
 Pre-define a tool this integration link can be used for.
 
+## Example Usage
+
+```python
+from kombo.models import IntegrationTool
+value: IntegrationTool = "workday"
+```
+
 
 ## Values
 
-| Name                              | Value                             |
-| --------------------------------- | --------------------------------- |
-| `WORKDAY`                         | workday                           |
-| `SUCCESSFACTORS`                  | successfactors                    |
-| `SMARTRECRUITERS`                 | smartrecruiters                   |
-| `FACTORIAL`                       | factorial                         |
-| `ORACLERECRUITING`                | oraclerecruiting                  |
-| `LEVER`                           | lever                             |
-| `ICIMS`                           | icims                             |
-| `CORNERSTONETALENTLINK`           | cornerstonetalentlink             |
-| `RECRUITEE`                       | recruitee                         |
-| `RECRUITERFLOW`                   | recruiterflow                     |
-| `GREENHOUSE`                      | greenhouse                        |
-| `GREENHOUSEJOBBOARD`              | greenhousejobboard                |
-| `TEAMTAILOR`                      | teamtailor                        |
-| `TEAMTAILORJOBBOARDS`             | teamtailorjobboards               |
-| `ASHBY`                           | ashby                             |
-| `TALENTSOFT`                      | talentsoft                        |
-| `TALENTSOFTCUSTOMER`              | talentsoftcustomer                |
-| `CONCLUDIS`                       | concludis                         |
-| `TALENTION`                       | talention                         |
-| `PILOGA`                          | piloga                            |
-| `ONLYFY`                          | onlyfy                            |
-| `PERSONIO`                        | personio                          |
-| `UKGPRO`                          | ukgpro                            |
-| `UKGREADY`                        | ukgready                          |
-| `ADPWORKFORCENOW`                 | adpworkforcenow                   |
-| `TALEO`                           | taleo                             |
-| `REXX`                            | rexx                              |
-| `AFAS`                            | afas                              |
-| `BAMBOOHR`                        | bamboohr                          |
-| `BULLHORN`                        | bullhorn                          |
-| `BULLHORNLOGIN`                   | bullhornlogin                     |
-| `WORKABLE`                        | workable                          |
-| `JOBVITE`                         | jobvite                           |
-| `FOUNTAIN`                        | fountain                          |
-| `SOFTGARDEN`                      | softgarden                        |
-| `SOFTGARDENPARTNER`               | softgardenpartner                 |
-| `PINPOINT`                        | pinpoint                          |
-| `WELCOMETOTHEJUNGLE`              | welcometothejungle                |
-| `DVINCI`                          | dvinci                            |
-| `DVINCIADMIN`                     | dvinciadmin                       |
-| `JOIN`                            | join                              |
-| `SAGEHR`                          | sagehr                            |
-| `TRAFFIT`                         | traffit                           |
-| `ERECRUITER`                      | erecruiter                        |
-| `ABACUSUMANTIS`                   | abacusumantis                     |
-| `UMANTIS`                         | umantis                           |
-| `JOBYLON`                         | jobylon                           |
-| `TALEEZ`                          | taleez                            |
-| `HRWORKS`                         | hrworks                           |
-| `OTYS`                            | otys                              |
-| `ZOHORECRUIT`                     | zohorecruit                       |
-| `CEIPAL`                          | ceipal                            |
-| `EPLOY`                           | eploy                             |
-| `JOBDIVA`                         | jobdiva                           |
-| `CAREERPLUG`                      | careerplug                        |
-| `PERVIEW`                         | perview                           |
-| `EIGHTFOLD`                       | eightfold                         |
-| `PAYLOCITY`                       | paylocity                         |
-| `PAYCOR`                          | paycor                            |
-| `AVATURE`                         | avature                           |
-| `APPLOI`                          | apploi                            |
-| `PHENOM`                          | phenom                            |
-| `PARADOX`                         | paradox                           |
-| `HEYRECRUIT`                      | heyrecruit                        |
-| `RECRUHR`                         | recruhr                           |
-| `JAZZHR`                          | jazzhr                            |
-| `BITE`                            | bite                              |
-| `HOMERUN`                         | homerun                           |
-| `MYSOLUTION`                      | mysolution                        |
-| `CARERIX`                         | carerix                           |
-| `HROFFICE`                        | hroffice                          |
-| `TALENTCLUE`                      | talentclue                        |
-| `INRECRUITING`                    | inrecruiting                      |
-| `UBEEO`                           | ubeeo                             |
-| `CONNEXYS`                        | connexys                          |
-| `HR4YOU`                          | hr4you                            |
-| `CORNERSTONEONDEMAND`             | cornerstoneondemand               |
-| `ZVOOVERECRUIT`                   | zvooverecruit                     |
-| `ODOO`                            | odoo                              |
-| `COMEET`                          | comeet                            |
-| `COMPLEET`                        | compleet                          |
-| `COMPLEETPITCHER`                 | compleetpitcher                   |
-| `GEM`                             | gem                               |
-| `LAURA`                           | laura                             |
-| `COVETOREST`                      | covetorest                        |
-| `COVETO`                          | coveto                            |
-| `CRELATE`                         | crelate                           |
-| `MANATAL`                         | manatal                           |
-| `AVIONTE`                         | avionte                           |
-| `MHMHR`                           | mhmhr                             |
-| `ASYMBL`                          | asymbl                            |
-| `BREEZYHR`                        | breezyhr                          |
-| `FLATCHR`                         | flatchr                           |
-| `DAYFORCE`                        | dayforce                          |
-| `APPLICANTSTACK`                  | applicantstack                    |
-| `REACHMEE`                        | reachmee                          |
-| `TALENTADORE`                     | talentadore                       |
-| `SANDBOX`                         | sandbox                           |
-| `GUIDECOM`                        | guidecom                          |
-| `SPOTT`                           | spott                             |
-| `LOXO`                            | loxo                              |
-| `WORKDAYCUSTOMREPORT`             | workdaycustomreport               |
-| `WORKDAYCUSTOMREPORTSFTP`         | workdaycustomreportsftp           |
-| `PAYFITCUSTOMER`                  | payfitcustomer                    |
-| `PAYFITPARTNER`                   | payfitpartner                     |
-| `PAYFIT`                          | payfit                            |
-| `EMPLOYMENTHERO`                  | employmenthero                    |
-| `FOURTH`                          | fourth                            |
-| `KENJO`                           | kenjo                             |
-| `HEAVENHR`                        | heavenhr                          |
-| `HIBOB`                           | hibob                             |
-| `CEZANNEHR`                       | cezannehr                         |
-| `ENTRAID`                         | entraid                           |
-| `AZUREAD`                         | azuread                           |
-| `GOOGLEWORKSPACE`                 | googleworkspace                   |
-| `NMBRS`                           | nmbrs                             |
-| `DEEL`                            | deel                              |
-| `REMOTECOM`                       | remotecom                         |
-| `IRISCASCADE`                     | iriscascade                       |
-| `OKTA`                            | okta                              |
-| `SAGEPEOPLE`                      | sagepeople                        |
-| `HUMAANS`                         | humaans                           |
-| `EURECIA`                         | eurecia                           |
-| `ORACLEHCM`                       | oraclehcm                         |
-| `OFFICIENT`                       | officient                         |
-| `SESAMEHR`                        | sesamehr                          |
-| `CHARLIEHR`                       | charliehr                         |
-| `ABACUS`                          | abacus                            |
-| `ZOHOPEOPLE`                      | zohopeople                        |
-| `GUSTO`                           | gusto                             |
-| `BREATHEHR`                       | breathehr                         |
-| `CATALYSTONE`                     | catalystone                       |
-| `MIRUS`                           | mirus                             |
-| `ALEXISHR`                        | alexishr                          |
-| `SIMPLOYER`                       | simployer                         |
-| `PEPLE`                           | peple                             |
-| `YOUSERVE`                        | youserve                          |
-| `HANSALOG`                        | hansalog                          |
-| `LATTICE`                         | lattice                           |
-| `LATTICETALENT`                   | latticetalent                     |
-| `HOORAYHR`                        | hoorayhr                          |
-| `TRINET`                          | trinet                            |
-| `NAMELY`                          | namely                            |
-| `PAYCOM`                          | paycom                            |
-| `INSPERITY`                       | insperity                         |
-| `PAYCHEX`                         | paychex                           |
-| `RIPPLING`                        | rippling                          |
-| `SAPLING`                         | sapling                           |
-| `PEOPLEHR`                        | peoplehr                          |
-| `LUCCA`                           | lucca                             |
-| `ZELT`                            | zelt                              |
-| `PLANDAY`                         | planday                           |
-| `BOONDMANAGER`                    | boondmanager                      |
-| `HAILEYHR`                        | haileyhr                          |
-| `SILAE`                           | silae                             |
-| `OYSTERHR`                        | oysterhr                          |
-| `KIWIHR`                          | kiwihr                            |
-| `SQUARE`                          | square                            |
-| `PERBILITYHELIX`                  | perbilityhelix                    |
-| `LEAPSOME`                        | leapsome                          |
-| `LOKET`                           | loket                             |
-| `WORKFORCECOM`                    | workforcecom                      |
-| `PEOPLEFIRST`                     | peoplefirst                       |
-| `SDWORX`                          | sdworx                            |
-| `ITRENT`                          | itrent                            |
-| `ABSENCEIO`                       | absenceio                         |
-| `A3INNUVANOMINA`                  | a3innuvanomina                    |
-| `SCIM`                            | scim                              |
-| `DATEVHR`                         | datevhr                           |
-| `DATEV`                           | datev                             |
-| `DATEVLUG`                        | datevlug                          |
-| `SYMPA`                           | sympa                             |
-| `YOUFORCE`                        | youforce                          |
-| `NIBELIS`                         | nibelis                           |
-| `PEOPLEXD`                        | peoplexd                          |
-| `SFTP`                            | sftp                              |
-| `SFTPFETCH`                       | sftpfetch                         |
-| `THREE_HUNDRED_AND_SIXTYLEARNING` | 360learning                       |
-| `UDEMY`                           | udemy                             |
-| `LINKEDINLEARNING`                | linkedinlearning                  |
+- `"workday"`
+- `"successfactors"`
+- `"smartrecruiters"`
+- `"factorial"`
+- `"oraclerecruiting"`
+- `"lever"`
+- `"icims"`
+- `"cornerstonetalentlink"`
+- `"recruitee"`
+- `"recruiterflow"`
+- `"greenhouse"`
+- `"greenhousejobboard"`
+- `"teamtailor"`
+- `"teamtailorjobboards"`
+- `"ashby"`
+- `"talentsoft"`
+- `"talentsoftcustomer"`
+- `"concludis"`
+- `"talention"`
+- `"piloga"`
+- `"onlyfy"`
+- `"personio"`
+- `"ukgpro"`
+- `"ukgready"`
+- `"adpworkforcenow"`
+- `"taleo"`
+- `"rexx"`
+- `"afas"`
+- `"bamboohr"`
+- `"bullhorn"`
+- `"bullhornlogin"`
+- `"workable"`
+- `"jobvite"`
+- `"fountain"`
+- `"softgarden"`
+- `"softgardenpartner"`
+- `"pinpoint"`
+- `"welcometothejungle"`
+- `"dvinci"`
+- `"dvinciadmin"`
+- `"join"`
+- `"sagehr"`
+- `"traffit"`
+- `"erecruiter"`
+- `"abacusumantis"`
+- `"umantis"`
+- `"jobylon"`
+- `"taleez"`
+- `"hrworks"`
+- `"otys"`
+- `"zohorecruit"`
+- `"ceipal"`
+- `"eploy"`
+- `"jobdiva"`
+- `"careerplug"`
+- `"perview"`
+- `"eightfold"`
+- `"paylocity"`
+- `"paycor"`
+- `"avature"`
+- `"apploi"`
+- `"phenom"`
+- `"paradox"`
+- `"heyrecruit"`
+- `"recruhr"`
+- `"recruitcrm"`
+- `"jazzhr"`
+- `"bite"`
+- `"homerun"`
+- `"mysolution"`
+- `"carerix"`
+- `"hroffice"`
+- `"talentclue"`
+- `"inrecruiting"`
+- `"ubeeo"`
+- `"connexys"`
+- `"hr4you"`
+- `"cornerstoneondemand"`
+- `"zvooverecruit"`
+- `"odoo"`
+- `"comeet"`
+- `"compleet"`
+- `"compleetpitcher"`
+- `"gem"`
+- `"laura"`
+- `"covetorest"`
+- `"coveto"`
+- `"crelate"`
+- `"manatal"`
+- `"avionte"`
+- `"mhmhr"`
+- `"asymbl"`
+- `"breezyhr"`
+- `"flatchr"`
+- `"dayforce"`
+- `"digitalrecruiters"`
+- `"applicantstack"`
+- `"reachmee"`
+- `"talentadore"`
+- `"sandbox"`
+- `"guidecom"`
+- `"spott"`
+- `"loxo"`
+- `"workdaycustomreport"`
+- `"workdaycustomreportsftp"`
+- `"payfitcustomer"`
+- `"payfitpartner"`
+- `"payfit"`
+- `"employmenthero"`
+- `"fourth"`
+- `"kenjo"`
+- `"heavenhr"`
+- `"hibob"`
+- `"cezannehr"`
+- `"entraid"`
+- `"azuread"`
+- `"googleworkspace"`
+- `"nmbrs"`
+- `"deel"`
+- `"remotecom"`
+- `"iriscascade"`
+- `"okta"`
+- `"sagepeople"`
+- `"humaans"`
+- `"eurecia"`
+- `"oraclehcm"`
+- `"officient"`
+- `"sesamehr"`
+- `"charliehr"`
+- `"abacus"`
+- `"zohopeople"`
+- `"gusto"`
+- `"breathehr"`
+- `"catalystone"`
+- `"mirus"`
+- `"alexishr"`
+- `"simployer"`
+- `"peple"`
+- `"youserve"`
+- `"hansalog"`
+- `"lattice"`
+- `"latticetalent"`
+- `"hoorayhr"`
+- `"trinet"`
+- `"trinetpeo"`
+- `"namely"`
+- `"paycom"`
+- `"insperity"`
+- `"paychex"`
+- `"rippling"`
+- `"sapling"`
+- `"peoplehr"`
+- `"lucca"`
+- `"zelt"`
+- `"planday"`
+- `"boondmanager"`
+- `"haileyhr"`
+- `"silae"`
+- `"oysterhr"`
+- `"kiwihr"`
+- `"square"`
+- `"perbilityhelix"`
+- `"leapsome"`
+- `"loket"`
+- `"workforcecom"`
+- `"peoplefirst"`
+- `"sdworx"`
+- `"itrent"`
+- `"absenceio"`
+- `"a3innuvanomina"`
+- `"scim"`
+- `"datevhr"`
+- `"datev"`
+- `"datevlug"`
+- `"sympa"`
+- `"youforce"`
+- `"nibelis"`
+- `"peoplexd"`
+- `"sftp"`
+- `"sftpfetch"`
+- `"360learning"`
+- `"talentlms"`
+- `"udemy"`
+- `"linkedinlearning"`

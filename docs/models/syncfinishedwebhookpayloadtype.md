@@ -2,9 +2,14 @@
 
 Type of the webhook event
 
+## Example Usage
+
+```python
+from kombo.models import SyncFinishedWebhookPayloadType
+value: SyncFinishedWebhookPayloadType = "sync-finished"
+```
+
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `SYNC_FINISHED` | sync-finished   |
+- `"sync-finished"`

@@ -2,11 +2,16 @@
 
 The current status of an integration that has filtering, field mapping features or required setup steps.
 
+## Example Usage
+
+```python
+from kombo.models import IntegrationStateChangedWebhookPayloadSetupStatus
+value: IntegrationStateChangedWebhookPayloadSetupStatus = "INCOMPLETE"
+```
+
 
 ## Values
 
-| Name                 | Value                |
-| -------------------- | -------------------- |
-| `INCOMPLETE`         | INCOMPLETE           |
-| `FINAL_SYNC_PENDING` | FINAL_SYNC_PENDING   |
-| `COMPLETED`          | COMPLETED            |
+- `"INCOMPLETE"`
+- `"FINAL_SYNC_PENDING"`
+- `"COMPLETED"`

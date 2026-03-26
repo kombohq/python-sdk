@@ -2,13 +2,18 @@
 
 Language of the connection flow UI.
 
+## Example Usage
+
+```python
+from kombo.models import PostConnectCreateLinkRequestBodyLanguage
+value: PostConnectCreateLinkRequestBodyLanguage = "en"
+```
+
 
 ## Values
 
-| Name  | Value |
-| ----- | ----- |
-| `EN`  | en    |
-| `DE`  | de    |
-| `FR`  | fr    |
-| `IT`  | it    |
-| `ES`  | es    |
+- `"en"`
+- `"de"`
+- `"fr"`
+- `"it"`
+- `"es"`

@@ -2,10 +2,15 @@
 
 The type of the triggered sync.
 
+## Example Usage
+
+```python
+from kombo.models import PostForceSyncRequestBodyType
+value: PostForceSyncRequestBodyType = "FULL"
+```
+
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `FULL`  | FULL    |
-| `DELTA` | DELTA   |
+- `"FULL"`
+- `"DELTA"`

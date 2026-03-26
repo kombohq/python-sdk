@@ -13,14 +13,19 @@ Please note that not all systems will expose all statuses. For example, most sys
 - `ABANDONED`: The offer has expired or is no longer valid and should not be considered.
 
 
+## Example Usage
+
+```python
+from kombo.models import GetAtsApplicationsPositiveResponseStatus
+value: GetAtsApplicationsPositiveResponseStatus = "ACCEPTED"
+```
+
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `ACCEPTED`  | ACCEPTED    |
-| `DECLINED`  | DECLINED    |
-| `SENT`      | SENT        |
-| `APPROVED`  | APPROVED    |
-| `DRAFT`     | DRAFT       |
-| `ABANDONED` | ABANDONED   |
+- `"ACCEPTED"`
+- `"DECLINED"`
+- `"SENT"`
+- `"APPROVED"`
+- `"DRAFT"`
+- `"ABANDONED"`

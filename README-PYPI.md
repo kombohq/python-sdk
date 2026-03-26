@@ -197,6 +197,7 @@ with SDK(
 * [get_jobs](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_jobs) - Get jobs
 * [create_application](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#create_application) - Create application
 * [get_users](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_users) - Get users
+* [get_roles](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_roles) - Get roles
 * [get_offers](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_offers) - Get offers
 * [get_rejection_reasons](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_rejection_reasons) - Get rejection reasons
 * [get_interviews](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_interviews) - Get interviews
@@ -241,6 +242,7 @@ with SDK(
 * [get_timesheets](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md#get_timesheets) - Get timesheets
 * [get_performance_review_cycles](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md#get_performance_review_cycles) - Get performance review cycles
 * [get_performance_reviews](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md#get_performance_reviews) - Get performance reviews
+* [get_staffing_entities](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/hris/README.md#get_staffing_entities) - Get staffing entities
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -331,9 +333,9 @@ with Kombo(
 
 
 **Inherit from [`SDKError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/sdkerror.py)**:
-* [`KomboAtsError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 27 of 58 methods.*
-* [`KomboHrisError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 58 methods.*
-* [`KomboGeneralError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 14 of 58 methods.*
+* [`KomboAtsError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 28 of 60 methods.*
+* [`KomboHrisError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 60 methods.*
+* [`KomboGeneralError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 14 of 60 methods.*
 * [`ResponseValidationError`](https://github.com/kombohq/python-sdk/blob/master/./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>

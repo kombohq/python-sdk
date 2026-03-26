@@ -1,10 +1,15 @@
 # GetAtsApplicationsApplicationIDAttachmentsPositiveResponseType
 
+## Example Usage
+
+```python
+from kombo.models import GetAtsApplicationsApplicationIDAttachmentsPositiveResponseType
+value: GetAtsApplicationsApplicationIDAttachmentsPositiveResponseType = "CV"
+```
+
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `CV`           | CV             |
-| `COVER_LETTER` | COVER_LETTER   |
-| `OTHER`        | OTHER          |
+- `"CV"`
+- `"COVER_LETTER"`
+- `"OTHER"`

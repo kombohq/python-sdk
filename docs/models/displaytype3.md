@@ -1,9 +1,14 @@
 # DisplayType3
 
+## Example Usage
+
+```python
+from kombo.models import DisplayType3
+value: DisplayType3 = "DROPDOWN"
+```
+
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `DROPDOWN` | DROPDOWN   |
-| `RADIO`    | RADIO      |
+- `"DROPDOWN"`
+- `"RADIO"`

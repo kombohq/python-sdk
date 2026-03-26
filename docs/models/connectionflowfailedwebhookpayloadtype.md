@@ -2,9 +2,14 @@
 
 Type of the webhook event
 
+## Example Usage
+
+```python
+from kombo.models import ConnectionFlowFailedWebhookPayloadType
+value: ConnectionFlowFailedWebhookPayloadType = "connection-flow-failed"
+```
+
 
 ## Values
 
-| Name                     | Value                    |
-| ------------------------ | ------------------------ |
-| `CONNECTION_FLOW_FAILED` | connection-flow-failed   |
+- `"connection-flow-failed"`
