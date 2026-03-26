@@ -1,9 +1,17 @@
 # GetAtsJobsPositiveResponseHiringTeamRole
 
+## Example Usage
+
+```python
+from kombo.models import GetAtsJobsPositiveResponseHiringTeamRole
+value: GetAtsJobsPositiveResponseHiringTeamRole = "RECRUITER"
+```
+
 
 ## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `RECRUITER`      | RECRUITER        |
-| `HIRING_MANAGER` | HIRING_MANAGER   |
+- `"RECRUITER"`
+- `"HIRING_MANAGER"`
+- `"COORDINATOR"`
+- `"SOURCER"`
+- `"INTERVIEWER"`

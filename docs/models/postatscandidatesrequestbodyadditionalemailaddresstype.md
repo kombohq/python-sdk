@@ -1,10 +1,15 @@
 # PostAtsCandidatesRequestBodyAdditionalEmailAddressType
 
+## Example Usage
+
+```python
+from kombo.models import PostAtsCandidatesRequestBodyAdditionalEmailAddressType
+value: PostAtsCandidatesRequestBodyAdditionalEmailAddressType = "PERSONAL"
+```
+
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `PERSONAL` | PERSONAL   |
-| `WORK`     | WORK       |
-| `OTHER`    | OTHER      |
+- `"PERSONAL"`
+- `"WORK"`
+- `"OTHER"`

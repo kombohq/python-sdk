@@ -2,11 +2,16 @@
 
 Type of the group.
 
+## Example Usage
+
+```python
+from kombo.models import GetHrisGroupsPositiveResponseType
+value: GetHrisGroupsPositiveResponseType = "DEPARTMENT"
+```
+
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `DEPARTMENT`  | DEPARTMENT    |
-| `TEAM`        | TEAM          |
-| `COST_CENTER` | COST_CENTER   |
+- `"DEPARTMENT"`
+- `"TEAM"`
+- `"COST_CENTER"`

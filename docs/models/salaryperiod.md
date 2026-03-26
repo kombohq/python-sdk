@@ -1,13 +1,22 @@
 # SalaryPeriod
 
+## Example Usage
+
+```python
+from kombo.models import SalaryPeriod
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: SalaryPeriod = "YEAR"
+```
+
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `YEAR`      | YEAR        |
-| `MONTH`     | MONTH       |
-| `TWO_WEEKS` | TWO_WEEKS   |
-| `WEEK`      | WEEK        |
-| `DAY`       | DAY         |
-| `HOUR`      | HOUR        |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"YEAR"`
+- `"MONTH"`
+- `"TWO_WEEKS"`
+- `"WEEK"`
+- `"DAY"`
+- `"HOUR"`

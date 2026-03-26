@@ -1,10 +1,15 @@
 # GetAtsCandidatesCandidateIDAttachmentsPositiveResponseType
 
+## Example Usage
+
+```python
+from kombo.models import GetAtsCandidatesCandidateIDAttachmentsPositiveResponseType
+value: GetAtsCandidatesCandidateIDAttachmentsPositiveResponseType = "CV"
+```
+
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `CV`           | CV             |
-| `COVER_LETTER` | COVER_LETTER   |
-| `OTHER`        | OTHER          |
+- `"CV"`
+- `"COVER_LETTER"`
+- `"OTHER"`

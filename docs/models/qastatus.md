@@ -2,11 +2,16 @@
 
 The quality assurance status of the integration.
 
+## Example Usage
+
+```python
+from kombo.models import QaStatus
+value: QaStatus = "PENDING"
+```
+
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `PENDING` | PENDING   |
-| `FAILED`  | FAILED    |
-| `PASSED`  | PASSED    |
+- `"PENDING"`
+- `"FAILED"`
+- `"PASSED"`

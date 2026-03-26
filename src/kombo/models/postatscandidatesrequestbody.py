@@ -84,7 +84,7 @@ class PostAtsCandidatesRequestBodyLocation(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -235,7 +235,7 @@ class PostAtsCandidatesRequestBodyCandidate(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -270,7 +270,7 @@ class PostAtsCandidatesRequestBodyApplication(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -341,7 +341,7 @@ class PostAtsCandidatesRequestBodyAnswer(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -517,7 +517,7 @@ class PostAtsCandidatesRequestBodyAttachment(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -569,7 +569,7 @@ class PostAtsCandidatesRequestBodySource(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -628,7 +628,7 @@ class PostAtsCandidatesRequestBodyGdprConsent(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -687,7 +687,7 @@ class PostAtsCandidatesRequestBodySuccessfactors(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -725,7 +725,7 @@ class PostAtsCandidatesRequestBodyPersonio(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -760,7 +760,7 @@ class PostAtsCandidatesRequestBodyTalentsoft(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -786,7 +786,7 @@ class PostAtsCandidatesRequestBodyTeamtailorApplication(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -815,7 +815,7 @@ class PostAtsCandidatesRequestBodyTeamtailor(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -848,7 +848,7 @@ class PostAtsCandidatesRequestBodyPostHeaders(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -886,7 +886,7 @@ class PostAtsCandidatesRequestBodyGreenhouse(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -916,7 +916,7 @@ class PostAtsCandidatesRequestBodyLever(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -946,7 +946,7 @@ class PostAtsCandidatesRequestBodyWorkable(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -996,7 +996,7 @@ class PostAtsCandidatesRequestBodyNameDetailData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1034,7 +1034,7 @@ class PostAtsCandidatesRequestBodyGlobalPersonalInformationData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1063,7 +1063,7 @@ class PostAtsCandidatesRequestBodyJobAppliedToData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1141,7 +1141,7 @@ class PostAtsCandidatesRequestBodyEducationDatum(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1165,7 +1165,7 @@ class PostAtsCandidatesRequestBodySkillDatum(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1189,7 +1189,7 @@ class PostAtsCandidatesRequestBodyLanguageDatumLanguageReference(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1244,7 +1244,7 @@ class PostAtsCandidatesRequestBodyLanguageAbilityData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1273,7 +1273,7 @@ class PostAtsCandidatesRequestBodyLanguageAbility(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1303,7 +1303,7 @@ class PostAtsCandidatesRequestBodyLanguage(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1337,7 +1337,7 @@ class PostAtsCandidatesRequestBodyLanguageDatum(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1395,7 +1395,7 @@ class PostAtsCandidatesRequestBodyExperienceDatum(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1446,7 +1446,7 @@ class PostAtsCandidatesRequestBodyResumeData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1481,7 +1481,7 @@ class PostAtsCandidatesRequestBodyJobApplicationData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1557,7 +1557,7 @@ class PostAtsCandidatesRequestBodyLocationData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1584,7 +1584,7 @@ class PostAtsCandidatesRequestBodyContactData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1615,7 +1615,7 @@ class PostAtsCandidatesRequestBodyWorkerReference(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1682,7 +1682,7 @@ class PostAtsCandidatesRequestBodyCandidateData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1720,7 +1720,7 @@ class PostAtsCandidatesRequestBodyWorkday(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1750,7 +1750,7 @@ class PostAtsCandidatesRequestBodyZohorecruit(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1785,7 +1785,61 @@ class PostAtsCandidatesRequestBodyBullhorn(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostAtsCandidatesRequestBodyConsentDecisionsTypedDict(TypedDict):
+    r"""The consent decisions for the candidate. SmartRecruiters supports two consent models: 'Single' (use the `SINGLE` key) and 'Separated' (use `SMART_RECRUIT`, `SMART_CRM`, `SMART_MESSAGE_SMS`, and/or `SMART_MESSAGE_WHATSAPP` keys). When this field is provided, it takes precedence over the `gdpr_consent` field for the `consentDecisions` property. See: https://developers.smartrecruiters.com/docs/partners-post-an-application"""
+
+    single: NotRequired[bool]
+    smart_recruit: NotRequired[bool]
+    smart_crm: NotRequired[bool]
+    smart_message_sms: NotRequired[bool]
+    smart_message_whatsapp: NotRequired[bool]
+
+
+class PostAtsCandidatesRequestBodyConsentDecisions(BaseModel):
+    r"""The consent decisions for the candidate. SmartRecruiters supports two consent models: 'Single' (use the `SINGLE` key) and 'Separated' (use `SMART_RECRUIT`, `SMART_CRM`, `SMART_MESSAGE_SMS`, and/or `SMART_MESSAGE_WHATSAPP` keys). When this field is provided, it takes precedence over the `gdpr_consent` field for the `consentDecisions` property. See: https://developers.smartrecruiters.com/docs/partners-post-an-application"""
+
+    single: Annotated[Optional[bool], pydantic.Field(alias="SINGLE")] = None
+
+    smart_recruit: Annotated[Optional[bool], pydantic.Field(alias="SMART_RECRUIT")] = (
+        None
+    )
+
+    smart_crm: Annotated[Optional[bool], pydantic.Field(alias="SMART_CRM")] = None
+
+    smart_message_sms: Annotated[
+        Optional[bool], pydantic.Field(alias="SMART_MESSAGE_SMS")
+    ] = None
+
+    smart_message_whatsapp: Annotated[
+        Optional[bool], pydantic.Field(alias="SMART_MESSAGE_WHATSAPP")
+    ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "SINGLE",
+                "SMART_RECRUIT",
+                "SMART_CRM",
+                "SMART_MESSAGE_SMS",
+                "SMART_MESSAGE_WHATSAPP",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1803,6 +1857,10 @@ class PostAtsCandidatesRequestBodySmartrecruitersTypedDict(TypedDict):
     r"""**(⚠️ Deprecated - Use the `candidate` field instead.)** Fields that we will pass through to the SmartRecruiters's `Candidate` object when created with screening question answers. This API is used: https://developers.smartrecruiters.com/reference/candidatesaddtojob-1"""
     candidate: NotRequired[Dict[str, Any]]
     r"""Fields that we will pass through to the SmartRecruiters's `Candidate` object. This API is used: https://developers.smartrecruiters.com/reference/createcandidate-1"""
+    consent_decisions: NotRequired[
+        PostAtsCandidatesRequestBodyConsentDecisionsTypedDict
+    ]
+    r"""The consent decisions for the candidate. SmartRecruiters supports two consent models: 'Single' (use the `SINGLE` key) and 'Separated' (use `SMART_RECRUIT`, `SMART_CRM`, `SMART_MESSAGE_SMS`, and/or `SMART_MESSAGE_WHATSAPP` keys). When this field is provided, it takes precedence over the `gdpr_consent` field for the `consentDecisions` property. See: https://developers.smartrecruiters.com/docs/partners-post-an-application"""
 
 
 class PostAtsCandidatesRequestBodySmartrecruiters(BaseModel):
@@ -1827,17 +1885,25 @@ class PostAtsCandidatesRequestBodySmartrecruiters(BaseModel):
     candidate: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to the SmartRecruiters's `Candidate` object. This API is used: https://developers.smartrecruiters.com/reference/createcandidate-1"""
 
+    consent_decisions: Optional[PostAtsCandidatesRequestBodyConsentDecisions] = None
+    r"""The consent decisions for the candidate. SmartRecruiters supports two consent models: 'Single' (use the `SINGLE` key) and 'Separated' (use `SMART_RECRUIT`, `SMART_CRM`, `SMART_MESSAGE_SMS`, and/or `SMART_MESSAGE_WHATSAPP` keys). When this field is provided, it takes precedence over the `gdpr_consent` field for the `consentDecisions` property. See: https://developers.smartrecruiters.com/docs/partners-post-an-application"""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["candidate_with_questions", "candidate_without_questions", "candidate"]
+            [
+                "candidate_with_questions",
+                "candidate_without_questions",
+                "candidate",
+                "consent_decisions",
+            ]
         )
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1867,7 +1933,7 @@ class PostAtsCandidatesRequestBodyTalentadore(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1897,7 +1963,7 @@ class PostAtsCandidatesRequestBodyGuidecom(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1911,6 +1977,8 @@ class PostAtsCandidatesRequestBodyDvinciTypedDict(TypedDict):
 
     application: NotRequired[Dict[str, Any]]
     r"""Fields that we will pass through to d.vinci's application object. This API is used: https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html#jobs__id__applyApi_post"""
+    candidate: NotRequired[Dict[str, Any]]
+    r"""Fields that we will pass through to d.vinci's candidate/application payload as top-level fields (e.g., dateOfBirth)."""
 
 
 class PostAtsCandidatesRequestBodyDvinci(BaseModel):
@@ -1919,15 +1987,18 @@ class PostAtsCandidatesRequestBodyDvinci(BaseModel):
     application: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to d.vinci's application object. This API is used: https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html#jobs__id__applyApi_post"""
 
+    candidate: Optional[Dict[str, Any]] = None
+    r"""Fields that we will pass through to d.vinci's candidate/application payload as top-level fields (e.g., dateOfBirth)."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["application"])
+        optional_fields = set(["application", "candidate"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1959,7 +2030,7 @@ class PostAtsCandidatesRequestBodyHrworks(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -1989,7 +2060,7 @@ class PostAtsCandidatesRequestBodyJobylonApplication(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2019,7 +2090,7 @@ class PostAtsCandidatesRequestBodyJobylon(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2053,7 +2124,7 @@ class PostAtsCandidatesRequestBodyWorkflow(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2081,7 +2152,7 @@ class PostAtsCandidatesRequestBodyAvature(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2107,7 +2178,7 @@ class PostAtsCandidatesRequestBodyRecruiteeCandidate(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2135,7 +2206,37 @@ class PostAtsCandidatesRequestBodyRecruitee(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostAtsCandidatesRequestBodyRexxTypedDict(TypedDict):
+    r"""Fields specific to Rexx."""
+
+    candidate: NotRequired[Dict[str, Any]]
+    r"""Fields that we will pass through to Rexx's application form fields."""
+
+
+class PostAtsCandidatesRequestBodyRexx(BaseModel):
+    r"""Fields specific to Rexx."""
+
+    candidate: Optional[Dict[str, Any]] = None
+    r"""Fields that we will pass through to Rexx's application form fields."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2165,7 +2266,7 @@ class PostAtsCandidatesRequestBodyUmantis(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2195,7 +2296,7 @@ class PostAtsCandidatesRequestBodyPilogaCandidate(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2225,7 +2326,7 @@ class PostAtsCandidatesRequestBodyPiloga(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2255,7 +2356,7 @@ class PostAtsCandidatesRequestBodyPinpoint(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2285,7 +2386,7 @@ class PostAtsCandidatesRequestBodyCovetorestCandidate(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2315,7 +2416,7 @@ class PostAtsCandidatesRequestBodyCovetorest(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2362,6 +2463,8 @@ class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to Avature."""
     recruitee: NotRequired[PostAtsCandidatesRequestBodyRecruiteeTypedDict]
     r"""Fields specific to Recruitee."""
+    rexx: NotRequired[PostAtsCandidatesRequestBodyRexxTypedDict]
+    r"""Fields specific to Rexx."""
     umantis: NotRequired[PostAtsCandidatesRequestBodyUmantisTypedDict]
     r"""Fields specific to Abacus Umantis."""
     piloga: NotRequired[PostAtsCandidatesRequestBodyPilogaTypedDict]
@@ -2428,6 +2531,9 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
     recruitee: Optional[PostAtsCandidatesRequestBodyRecruitee] = None
     r"""Fields specific to Recruitee."""
 
+    rexx: Optional[PostAtsCandidatesRequestBodyRexx] = None
+    r"""Fields specific to Rexx."""
+
     umantis: Optional[PostAtsCandidatesRequestBodyUmantis] = None
     r"""Fields specific to Abacus Umantis."""
 
@@ -2462,6 +2568,7 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
                 "jobylon",
                 "avature",
                 "recruitee",
+                "rexx",
                 "umantis",
                 "piloga",
                 "pinpoint",
@@ -2473,7 +2580,7 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2572,7 +2679,7 @@ class PostAtsCandidatesRequestBody(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -2691,6 +2798,10 @@ except NameError:
     pass
 try:
     PostAtsCandidatesRequestBodyWorkday.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsCandidatesRequestBodyConsentDecisions.model_rebuild()
 except NameError:
     pass
 try:

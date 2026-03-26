@@ -2,12 +2,17 @@
 
 Category of the integration you want your customer to create.
 
+## Example Usage
+
+```python
+from kombo.models import PostConnectCreateLinkRequestBodyIntegrationCategory
+value: PostConnectCreateLinkRequestBodyIntegrationCategory = "HRIS"
+```
+
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `HRIS`       | HRIS         |
-| `ATS`        | ATS          |
-| `ASSESSMENT` | ASSESSMENT   |
-| `LMS`        | LMS          |
+- `"HRIS"`
+- `"ATS"`
+- `"ASSESSMENT"`
+- `"LMS"`

@@ -1,15 +1,24 @@
 # EmploymentEmploymentType
 
+## Example Usage
+
+```python
+from kombo.models import EmploymentEmploymentType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: EmploymentEmploymentType = "FULL_TIME"
+```
+
 
 ## Values
 
-| Name              | Value             |
-| ----------------- | ----------------- |
-| `FULL_TIME`       | FULL_TIME         |
-| `PART_TIME`       | PART_TIME         |
-| `CONTRACT`        | CONTRACT          |
-| `INTERNSHIP`      | INTERNSHIP        |
-| `FREELANCE`       | FREELANCE         |
-| `WORKING_STUDENT` | WORKING_STUDENT   |
-| `APPRENTICESHIP`  | APPRENTICESHIP    |
-| `TRAINING`        | TRAINING          |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"FULL_TIME"`
+- `"PART_TIME"`
+- `"CONTRACT"`
+- `"INTERNSHIP"`
+- `"FREELANCE"`
+- `"WORKING_STUDENT"`
+- `"APPRENTICESHIP"`
+- `"TRAINING"`

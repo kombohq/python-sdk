@@ -1,11 +1,16 @@
 # GetIntegrationsIntegrationIDPositiveResponseCategory
 
+## Example Usage
+
+```python
+from kombo.models import GetIntegrationsIntegrationIDPositiveResponseCategory
+value: GetIntegrationsIntegrationIDPositiveResponseCategory = "HRIS"
+```
+
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `HRIS`       | HRIS         |
-| `ATS`        | ATS          |
-| `ASSESSMENT` | ASSESSMENT   |
-| `LMS`        | LMS          |
+- `"HRIS"`
+- `"ATS"`
+- `"ASSESSMENT"`
+- `"LMS"`

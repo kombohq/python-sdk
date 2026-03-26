@@ -2,12 +2,17 @@
 
 The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
 
+## Example Usage
+
+```python
+from kombo.models import ConnectionFlowFailedWebhookPayloadIntegrationCategory
+value: ConnectionFlowFailedWebhookPayloadIntegrationCategory = "HRIS"
+```
+
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `HRIS`       | HRIS         |
-| `ATS`        | ATS          |
-| `ASSESSMENT` | ASSESSMENT   |
-| `LMS`        | LMS          |
+- `"HRIS"`
+- `"ATS"`
+- `"ASSESSMENT"`
+- `"LMS"`

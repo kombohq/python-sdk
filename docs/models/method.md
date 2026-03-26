@@ -2,13 +2,18 @@
 
 The HTTP method (e.g., `GET`) of the request.
 
+## Example Usage
+
+```python
+from kombo.models import Method
+value: Method = "GET"
+```
+
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `GET`    | GET      |
-| `POST`   | POST     |
-| `DELETE` | DELETE   |
-| `PUT`    | PUT      |
-| `PATCH`  | PATCH    |
+- `"GET"`
+- `"POST"`
+- `"DELETE"`
+- `"PUT"`
+- `"PATCH"`

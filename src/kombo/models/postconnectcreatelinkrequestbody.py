@@ -82,6 +82,7 @@ IntegrationTool = Literal[
     "paradox",
     "heyrecruit",
     "recruhr",
+    "recruitcrm",
     "jazzhr",
     "bite",
     "homerun",
@@ -111,6 +112,7 @@ IntegrationTool = Literal[
     "breezyhr",
     "flatchr",
     "dayforce",
+    "digitalrecruiters",
     "applicantstack",
     "reachmee",
     "talentadore",
@@ -159,6 +161,7 @@ IntegrationTool = Literal[
     "latticetalent",
     "hoorayhr",
     "trinet",
+    "trinetpeo",
     "namely",
     "paycom",
     "insperity",
@@ -195,6 +198,7 @@ IntegrationTool = Literal[
     "sftp",
     "sftpfetch",
     "360learning",
+    "talentlms",
     "udemy",
     "linkedinlearning",
 ]
@@ -319,7 +323,7 @@ class PostConnectCreateLinkRequestBody(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member

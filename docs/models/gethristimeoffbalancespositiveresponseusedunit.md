@@ -2,10 +2,15 @@
 
 The time-unit of the used time.
 
+## Example Usage
+
+```python
+from kombo.models import GetHrisTimeOffBalancesPositiveResponseUsedUnit
+value: GetHrisTimeOffBalancesPositiveResponseUsedUnit = "HOURS"
+```
+
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `HOURS` | HOURS   |
-| `DAYS`  | DAYS    |
+- `"HOURS"`
+- `"DAYS"`

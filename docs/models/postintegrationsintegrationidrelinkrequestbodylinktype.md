@@ -4,10 +4,15 @@ The type of link you want to create. `EMBEDDED` is for the [embedded flow](../gu
 
 This defaults to `EMBEDDED`, which is our recommended method of implementing the connection flow for a seamless user experience.
 
+## Example Usage
+
+```python
+from kombo.models import PostIntegrationsIntegrationIDRelinkRequestBodyLinkType
+value: PostIntegrationsIntegrationIDRelinkRequestBodyLinkType = "EMBEDDED"
+```
+
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `EMBEDDED`   | EMBEDDED     |
-| `MAGIC_LINK` | MAGIC_LINK   |
+- `"EMBEDDED"`
+- `"MAGIC_LINK"`

@@ -2,9 +2,14 @@
 
 Type of the webhook event
 
+## Example Usage
+
+```python
+from kombo.models import IntegrationCreatedWebhookPayloadType
+value: IntegrationCreatedWebhookPayloadType = "integration-created"
+```
+
 
 ## Values
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `INTEGRATION_CREATED` | integration-created   |
+- `"integration-created"`

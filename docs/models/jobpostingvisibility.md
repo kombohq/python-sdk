@@ -1,10 +1,15 @@
 # JobPostingVisibility
 
+## Example Usage
+
+```python
+from kombo.models import JobPostingVisibility
+value: JobPostingVisibility = "PUBLIC"
+```
+
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `PUBLIC`   | PUBLIC     |
-| `INTERNAL` | INTERNAL   |
-| `UNLISTED` | UNLISTED   |
+- `"PUBLIC"`
+- `"INTERNAL"`
+- `"UNLISTED"`

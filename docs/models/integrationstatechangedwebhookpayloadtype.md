@@ -2,9 +2,14 @@
 
 Type of the webhook event
 
+## Example Usage
+
+```python
+from kombo.models import IntegrationStateChangedWebhookPayloadType
+value: IntegrationStateChangedWebhookPayloadType = "integration-state-changed"
+```
+
 
 ## Values
 
-| Name                        | Value                       |
-| --------------------------- | --------------------------- |
-| `INTEGRATION_STATE_CHANGED` | integration-state-changed   |
+- `"integration-state-changed"`

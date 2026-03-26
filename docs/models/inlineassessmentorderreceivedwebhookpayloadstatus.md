@@ -2,12 +2,17 @@
 
 The current status of the assessment order.
 
+## Example Usage
+
+```python
+from kombo.models import InlineAssessmentOrderReceivedWebhookPayloadStatus
+value: InlineAssessmentOrderReceivedWebhookPayloadStatus = "OPEN"
+```
+
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `OPEN`      | OPEN        |
-| `COMPLETED` | COMPLETED   |
-| `CANCELLED` | CANCELLED   |
-| `REJECTED`  | REJECTED    |
+- `"OPEN"`
+- `"COMPLETED"`
+- `"CANCELLED"`
+- `"REJECTED"`

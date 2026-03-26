@@ -64,7 +64,7 @@ class InlineAssessmentOrderReceivedWebhookPayloadCandidate(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -103,7 +103,7 @@ class InlineAssessmentOrderReceivedWebhookPayloadApplication(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -168,7 +168,7 @@ class InlineAssessmentOrderReceivedWebhookPayloadLocation(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -188,13 +188,16 @@ class InlineAssessmentOrderReceivedWebhookPayloadLocation(BaseModel):
 InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole = Literal[
     "RECRUITER",
     "HIRING_MANAGER",
+    "COORDINATOR",
+    "SOURCER",
+    "INTERVIEWER",
 ]
 
 
 class InlineAssessmentOrderReceivedWebhookPayloadHiringTeamTypedDict(TypedDict):
     r"""A member of the hiring team."""
 
-    remote_id: str
+    remote_id: Nullable[str]
     r"""The team member's identifier in the integrated system."""
     email: Nullable[str]
     r"""The team member's email address."""
@@ -209,7 +212,7 @@ class InlineAssessmentOrderReceivedWebhookPayloadHiringTeamTypedDict(TypedDict):
 class InlineAssessmentOrderReceivedWebhookPayloadHiringTeam(BaseModel):
     r"""A member of the hiring team."""
 
-    remote_id: str
+    remote_id: Nullable[str]
     r"""The team member's identifier in the integrated system."""
 
     email: Nullable[str]
@@ -231,7 +234,7 @@ class InlineAssessmentOrderReceivedWebhookPayloadHiringTeam(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 m[k] = val
@@ -280,7 +283,7 @@ class InlineAssessmentOrderReceivedWebhookPayloadJob(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member

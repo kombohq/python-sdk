@@ -124,7 +124,7 @@ class GetAtsJobsPositiveResponseLocation(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -174,7 +174,7 @@ class Stage(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -216,7 +216,7 @@ class FormatUnknown(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -268,7 +268,7 @@ class Option2(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -357,7 +357,7 @@ class Option1(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -401,7 +401,7 @@ class FormatSingleSelect(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -443,7 +443,7 @@ class FormatFile(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -494,7 +494,7 @@ class FormatNumber(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -547,7 +547,7 @@ class FormatText(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -682,7 +682,7 @@ class ScreeningQuestion(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -758,7 +758,7 @@ class JobPosting(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 m[k] = val
@@ -769,7 +769,67 @@ class JobPosting(BaseModel):
 GetAtsJobsPositiveResponseHiringTeamRole = Literal[
     "RECRUITER",
     "HIRING_MANAGER",
+    "COORDINATOR",
+    "SOURCER",
+    "INTERVIEWER",
 ]
+
+
+GetAtsJobsPositiveResponseScope = Literal[
+    "SYSTEM",
+    "JOB",
+]
+r"""Whether the role applies globally or is scoped to a specific job."""
+
+
+GetAtsJobsPositiveResponseUnifiedType = Literal[
+    "HIRING_MANAGER",
+    "RECRUITER",
+    "COORDINATOR",
+    "SOURCER",
+    "INTERVIEWER",
+    "ADMIN",
+]
+r"""Unified role type if Kombo can map it."""
+
+
+class JobRoleTypedDict(TypedDict):
+    remote_id: Nullable[str]
+    r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
+    remote_label: Nullable[str]
+    r"""The label of the role."""
+    scope: Nullable[GetAtsJobsPositiveResponseScope]
+    r"""Whether the role applies globally or is scoped to a specific job."""
+    unified_type: Nullable[GetAtsJobsPositiveResponseUnifiedType]
+    r"""Unified role type if Kombo can map it."""
+
+
+class JobRole(BaseModel):
+    remote_id: Nullable[str]
+    r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
+
+    remote_label: Nullable[str]
+    r"""The label of the role."""
+
+    scope: Nullable[GetAtsJobsPositiveResponseScope]
+    r"""Whether the role applies globally or is scoped to a specific job."""
+
+    unified_type: Nullable[GetAtsJobsPositiveResponseUnifiedType]
+    r"""Unified role type if Kombo can map it."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                m[k] = val
+
+        return m
 
 
 class GetAtsJobsPositiveResponseHiringTeamTypedDict(TypedDict):
@@ -782,7 +842,14 @@ class GetAtsJobsPositiveResponseHiringTeamTypedDict(TypedDict):
     last_name: Nullable[str]
     r"""Last name of the user."""
     hiring_team_roles: List[GetAtsJobsPositiveResponseHiringTeamRole]
-    r"""Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+    r"""**(⚠️ Deprecated - Use `job_roles` to access the full list of job roles.)** Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+    job_roles: List[JobRoleTypedDict]
+    r"""Roles assigned to this user for this job.
+
+    Visit our in-depth guide about [roles](/ats/features/roles) to learn more.
+
+    Use `system_roles` on the `/v1/ats/users` endpoint for system-wide roles.
+    """
     email: NotRequired[Nullable[str]]
     r"""Email of the user. If the email address is invalid, it will be set to null."""
 
@@ -800,8 +867,21 @@ class GetAtsJobsPositiveResponseHiringTeam(BaseModel):
     last_name: Nullable[str]
     r"""Last name of the user."""
 
-    hiring_team_roles: List[GetAtsJobsPositiveResponseHiringTeamRole]
-    r"""Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+    hiring_team_roles: Annotated[
+        List[GetAtsJobsPositiveResponseHiringTeamRole],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+    r"""**(⚠️ Deprecated - Use `job_roles` to access the full list of job roles.)** Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+
+    job_roles: List[JobRole]
+    r"""Roles assigned to this user for this job.
+
+    Visit our in-depth guide about [roles](/ats/features/roles) to learn more.
+
+    Use `system_roles` on the `/v1/ats/users` endpoint for system-wide roles.
+    """
 
     email: OptionalNullable[str] = UNSET
     r"""Email of the user. If the email address is invalid, it will be set to null."""
@@ -815,7 +895,7 @@ class GetAtsJobsPositiveResponseHiringTeam(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -1118,7 +1198,7 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -1154,7 +1234,7 @@ class GetAtsJobsPositiveResponseData(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 m[k] = val

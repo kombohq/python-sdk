@@ -2,12 +2,17 @@
 
 The category of the integration.
 
+## Example Usage
+
+```python
+from kombo.models import IntegrationCreatedWebhookPayloadCategory
+value: IntegrationCreatedWebhookPayloadCategory = "HRIS"
+```
+
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `HRIS`       | HRIS         |
-| `ATS`        | ATS          |
-| `ASSESSMENT` | ASSESSMENT   |
-| `LMS`        | LMS          |
+- `"HRIS"`
+- `"ATS"`
+- `"ASSESSMENT"`
+- `"LMS"`

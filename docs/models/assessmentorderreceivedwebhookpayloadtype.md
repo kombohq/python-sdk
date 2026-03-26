@@ -2,9 +2,14 @@
 
 Type of the webhook event
 
+## Example Usage
+
+```python
+from kombo.models import AssessmentOrderReceivedWebhookPayloadType
+value: AssessmentOrderReceivedWebhookPayloadType = "assessment:order-received"
+```
+
 
 ## Values
 
-| Name                        | Value                       |
-| --------------------------- | --------------------------- |
-| `ASSESSMENT_ORDER_RECEIVED` | assessment:order-received   |
+- `"assessment:order-received"`
