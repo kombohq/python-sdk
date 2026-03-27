@@ -251,6 +251,10 @@ class InlineAssessmentOrderReceivedWebhookPayloadJobTypedDict(TypedDict):
     r"""The job's identifier in the integrated system."""
     name: NotRequired[Nullable[str]]
     r"""The job title."""
+    job_code: NotRequired[Nullable[str]]
+    r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
+    description: NotRequired[Nullable[str]]
+    r"""Description of the job. This field is usually returned as HTML."""
     location: NotRequired[
         Nullable[InlineAssessmentOrderReceivedWebhookPayloadLocationTypedDict]
     ]
@@ -269,6 +273,12 @@ class InlineAssessmentOrderReceivedWebhookPayloadJob(BaseModel):
     name: OptionalNullable[str] = UNSET
     r"""The job title."""
 
+    job_code: OptionalNullable[str] = UNSET
+    r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
+
+    description: OptionalNullable[str] = UNSET
+    r"""Description of the job. This field is usually returned as HTML."""
+
     location: OptionalNullable[InlineAssessmentOrderReceivedWebhookPayloadLocation] = (
         UNSET
     )
@@ -276,8 +286,12 @@ class InlineAssessmentOrderReceivedWebhookPayloadJob(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["remote_id", "name", "location"])
-        nullable_fields = set(["remote_id", "name", "location"])
+        optional_fields = set(
+            ["remote_id", "name", "job_code", "description", "location"]
+        )
+        nullable_fields = set(
+            ["remote_id", "name", "job_code", "description", "location"]
+        )
         serialized = handler(self)
         m = {}
 
