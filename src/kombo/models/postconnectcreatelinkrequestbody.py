@@ -188,6 +188,7 @@ IntegrationTool = Literal[
     "absenceio",
     "a3innuvanomina",
     "scim",
+    "datevlauds",
     "datevhr",
     "datev",
     "datevlug",
@@ -201,6 +202,7 @@ IntegrationTool = Literal[
     "talentlms",
     "udemy",
     "linkedinlearning",
+    "moodle",
 ]
 r"""Pre-define a tool this integration link can be used for."""
 

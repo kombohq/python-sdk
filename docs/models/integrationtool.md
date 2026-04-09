@@ -183,6 +183,7 @@ value: IntegrationTool = "workday"
 - `"absenceio"`
 - `"a3innuvanomina"`
 - `"scim"`
+- `"datevlauds"`
 - `"datevhr"`
 - `"datev"`
 - `"datevlug"`
@@ -196,3 +197,4 @@ value: IntegrationTool = "workday"
 - `"talentlms"`
 - `"udemy"`
 - `"linkedinlearning"`
+- `"moodle"`

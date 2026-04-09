@@ -1,0 +1,9 @@
+# GetAssessmentOrdersPositiveResponseData
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `next`                                                                                                           | *Nullable[str]*                                                                                                  | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `results`                                                                                                        | List[[models.GetAssessmentOrdersPositiveResponseResult](../models/getassessmentorderspositiveresponseresult.md)] | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

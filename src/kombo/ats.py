@@ -52,14 +52,18 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `candidate`
-            - ✗ `tags`
-            - ✓ `current_stage`
-            - ✗ `job`
-            - ✓ `interviews`
-            - ✓ `offers`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `candidate` | n/a | ✓ Yes |
+            | `candidate` → `tags` | ✗ No | ✗ No |
+            | `current_stage` | n/a | ✓ Yes |
+            | `job` | ✗ No | ✗ No |
+            | `interviews` | ✓ Yes | ✓ Yes |
+            | `offers` | ✓ Yes | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -172,6 +176,9 @@ class Ats(BaseSDK):
                 current_stage_ids=current_stage_ids,
                 remote_created_after=remote_created_after,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -229,14 +236,18 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `candidate`
-            - ✗ `tags`
-            - ✓ `current_stage`
-            - ✗ `job`
-            - ✓ `interviews`
-            - ✓ `offers`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `candidate` | n/a | ✓ Yes |
+            | `candidate` → `tags` | ✗ No | ✗ No |
+            | `current_stage` | n/a | ✓ Yes |
+            | `job` | ✗ No | ✗ No |
+            | `interviews` | ✓ Yes | ✓ Yes |
+            | `offers` | ✓ Yes | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -352,6 +363,9 @@ class Ats(BaseSDK):
                 current_stage_ids=current_stage_ids,
                 remote_created_after=remote_created_after,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -1945,13 +1959,16 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `applications`
-            - ✗ `current_stage`
-            - ✗ `job`
-            - ✓ `tags`
-            - ✗ `tag`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `applications` | ✓ Yes | ✓ Yes |
+            | `applications` → `current_stage` | ✗ No | ✗ No |
+            | `applications` → `job` | ✗ No | ✗ No |
+            | `tags` | ✓ Yes | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -2055,6 +2072,9 @@ class Ats(BaseSDK):
                 first_name=first_name,
                 last_name=last_name,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2104,13 +2124,16 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `applications`
-            - ✗ `current_stage`
-            - ✗ `job`
-            - ✓ `tags`
-            - ✗ `tag`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `applications` | ✓ Yes | ✓ Yes |
+            | `applications` → `current_stage` | ✗ No | ✗ No |
+            | `applications` → `job` | ✗ No | ✗ No |
+            | `tags` | ✓ Yes | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -2217,6 +2240,9 @@ class Ats(BaseSDK):
                 first_name=first_name,
                 last_name=last_name,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4158,6 +4184,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4298,6 +4327,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4445,6 +4477,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4595,6 +4630,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4655,16 +4693,16 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `application_stages`
-            - ✗ `stage`
-            - ✓ `screening_questions`
-            - ✗ `question`
-            - ✓ `job_postings`
-            - ✓ `hiring_team`
-            - ✗ `user`
-            - ✗ `role_assignments`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `stages` | ✓ Yes | ✗ No |
+            | `screening_questions` | ✓ Yes | ✗ No |
+            | `job_postings` | ✓ Yes | ✓ Yes |
+            | `hiring_team` | ✓ Yes | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -4783,6 +4821,9 @@ class Ats(BaseSDK):
                 remote_created_after=remote_created_after,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4843,16 +4884,16 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `application_stages`
-            - ✗ `stage`
-            - ✓ `screening_questions`
-            - ✗ `question`
-            - ✓ `job_postings`
-            - ✓ `hiring_team`
-            - ✗ `user`
-            - ✗ `role_assignments`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `stages` | ✓ Yes | ✗ No |
+            | `screening_questions` | ✓ Yes | ✗ No |
+            | `job_postings` | ✓ Yes | ✓ Yes |
+            | `hiring_team` | ✓ Yes | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -4974,6 +5015,9 @@ class Ats(BaseSDK):
                 remote_created_after=remote_created_after,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -5528,10 +5572,13 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `system_role_assignment`
-            - ✓ `role`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `system_role_assignment` | ✓ Yes | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -5626,6 +5673,9 @@ class Ats(BaseSDK):
                 remote_ids=remote_ids,
                 emails=emails,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -5672,10 +5722,13 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `system_role_assignment`
-            - ✓ `role`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `system_role_assignment` | ✓ Yes | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -5773,6 +5826,9 @@ class Ats(BaseSDK):
                 remote_ids=remote_ids,
                 emails=emails,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -5921,6 +5977,9 @@ class Ats(BaseSDK):
                 remote_ids=remote_ids,
                 scopes=scopes,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -6072,6 +6131,9 @@ class Ats(BaseSDK):
                 remote_ids=remote_ids,
                 scopes=scopes,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -6117,11 +6179,15 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `application`
-            - ✗ `candidate`
-            - ✗ `job`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `application` | n/a | ✓ Yes |
+            | `application` → `candidate` | ✗ No | ✗ No |
+            | `application` → `job` | ✗ No | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -6213,6 +6279,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -6258,11 +6327,15 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `application`
-            - ✗ `candidate`
-            - ✗ `job`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `application` | n/a | ✓ Yes |
+            | `application` → `candidate` | ✗ No | ✗ No |
+            | `application` → `job` | ✗ No | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -6357,6 +6430,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -6496,6 +6572,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -6638,6 +6717,9 @@ class Ats(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -6684,13 +6766,16 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `interviewers`
-            - ✗ `user`
-            - ✓ `application`
-            - ✗ `candidate`
-            - ✗ `job`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `interviewers` | ✓ Yes | ✗ No |
+            | `application` | n/a | ✓ Yes |
+            | `application` → `candidate` | ✗ No | ✗ No |
+            | `application` → `job` | ✗ No | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -6785,6 +6870,9 @@ class Ats(BaseSDK):
                 remote_ids=remote_ids,
                 job_ids=job_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -6831,13 +6919,16 @@ class Ats(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `interviewers`
-            - ✗ `user`
-            - ✓ `application`
-            - ✗ `candidate`
-            - ✗ `job`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `interviewers` | ✓ Yes | ✗ No |
+            | `application` | n/a | ✓ Yes |
+            | `application` → `candidate` | ✗ No | ✗ No |
+            | `application` → `job` | ✗ No | ✗ No |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -6935,6 +7026,9 @@ class Ats(BaseSDK):
                 remote_ids=remote_ids,
                 job_ids=job_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None

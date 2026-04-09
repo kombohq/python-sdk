@@ -56,16 +56,16 @@ class GetAtsJobsRequestTypedDict(TypedDict):
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-    For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+    For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-    - ✓ `application_stages`
-    - ✗ `stage`
-    - ✓ `screening_questions`
-    - ✗ `question`
-    - ✓ `job_postings`
-    - ✓ `hiring_team`
-    - ✗ `user`
-    - ✗ `role_assignments`
+    | Path | Relationship | Target Record |
+    | --- | --- | --- |
+    | `stages` | ✓ Yes | ✗ No |
+    | `screening_questions` | ✓ Yes | ✗ No |
+    | `job_postings` | ✓ Yes | ✓ Yes |
+    | `hiring_team` | ✓ Yes | ✗ No |
+
+    _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
     """
     include_deleted: NotRequired[bool]
     r"""By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too."""
@@ -123,16 +123,16 @@ class GetAtsJobsRequest(BaseModel):
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-    For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+    For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-    - ✓ `application_stages`
-    - ✗ `stage`
-    - ✓ `screening_questions`
-    - ✗ `question`
-    - ✓ `job_postings`
-    - ✓ `hiring_team`
-    - ✗ `user`
-    - ✗ `role_assignments`
+    | Path | Relationship | Target Record |
+    | --- | --- | --- |
+    | `stages` | ✓ Yes | ✗ No |
+    | `screening_questions` | ✓ Yes | ✗ No |
+    | `job_postings` | ✓ Yes | ✓ Yes |
+    | `hiring_team` | ✓ Yes | ✗ No |
+
+    _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
     """
 
     include_deleted: Annotated[

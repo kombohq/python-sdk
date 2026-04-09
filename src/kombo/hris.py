@@ -49,15 +49,18 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `employments`
-            - ✓ `time_off_balances`
-            - ✓ `manager`
-            - ✓ `group_memberships`
-            - ✗ `group`
-            - ✓ `legal_entity`
-            - ✓ `work_location`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `employments` | ✓ Yes | ✓ Yes |
+            | `time_off_balances` | ✓ Yes | ✓ Yes |
+            | `manager` | n/a | ✓ Yes |
+            | `group_memberships` | ✓ Yes | ✗ No |
+            | `legal_entity` | n/a | ✓ Yes |
+            | `work_location` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -177,6 +180,9 @@ class Hris(BaseSDK):
                 personal_emails=personal_emails,
                 custom_fields=custom_fields,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -231,15 +237,18 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `employments`
-            - ✓ `time_off_balances`
-            - ✓ `manager`
-            - ✓ `group_memberships`
-            - ✗ `group`
-            - ✓ `legal_entity`
-            - ✓ `work_location`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `employments` | ✓ Yes | ✓ Yes |
+            | `time_off_balances` | ✓ Yes | ✓ Yes |
+            | `manager` | n/a | ✓ Yes |
+            | `group_memberships` | ✓ Yes | ✗ No |
+            | `legal_entity` | n/a | ✓ Yes |
+            | `work_location` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -362,6 +371,9 @@ class Hris(BaseSDK):
                 personal_emails=personal_emails,
                 custom_fields=custom_fields,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -1289,6 +1301,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -1431,6 +1446,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -1578,6 +1596,9 @@ class Hris(BaseSDK):
                 types=types,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -1728,6 +1749,9 @@ class Hris(BaseSDK):
                 types=types,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -1865,6 +1889,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2005,6 +2032,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2146,6 +2176,9 @@ class Hris(BaseSDK):
                 remote_ids=remote_ids,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2290,6 +2323,9 @@ class Hris(BaseSDK):
                 remote_ids=remote_ids,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2427,6 +2463,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2567,6 +2606,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2613,9 +2655,13 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `type`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `type` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -2710,6 +2756,9 @@ class Hris(BaseSDK):
                 remote_ids=remote_ids,
                 employee_id=employee_id,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2756,9 +2805,13 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `type`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `type` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -2856,6 +2909,9 @@ class Hris(BaseSDK):
                 remote_ids=remote_ids,
                 employee_id=employee_id,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -2905,9 +2961,13 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `type`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `type` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -3011,6 +3071,9 @@ class Hris(BaseSDK):
                 type_ids=type_ids,
                 employee_id=employee_id,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -3060,9 +3123,13 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `type`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `type` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -3169,6 +3236,9 @@ class Hris(BaseSDK):
                 type_ids=type_ids,
                 employee_id=employee_id,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -3850,6 +3920,9 @@ class Hris(BaseSDK):
                 remote_ids=remote_ids,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -3994,6 +4067,9 @@ class Hris(BaseSDK):
                 remote_ids=remote_ids,
                 name_contains=name_contains,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4157,6 +4233,9 @@ class Hris(BaseSDK):
                 ended_before=ended_before,
                 ended_after=ended_after,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4323,6 +4402,9 @@ class Hris(BaseSDK):
                 ended_before=ended_before,
                 ended_after=ended_after,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4462,6 +4544,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4606,6 +4691,9 @@ class Hris(BaseSDK):
                 ids=ids,
                 remote_ids=remote_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4656,11 +4744,15 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `review_cycle`
-            - ✓ `reviewee`
-            - ✓ `reviewer`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `review_cycle` | n/a | ✓ Yes |
+            | `reviewee` | n/a | ✓ Yes |
+            | `reviewer` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -4763,6 +4855,9 @@ class Hris(BaseSDK):
                 review_cycle_ids=review_cycle_ids,
                 reviewee_ids=reviewee_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4813,11 +4908,15 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `review_cycle`
-            - ✓ `reviewee`
-            - ✓ `reviewer`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `review_cycle` | n/a | ✓ Yes |
+            | `reviewee` | n/a | ✓ Yes |
+            | `reviewer` | n/a | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -4925,6 +5024,9 @@ class Hris(BaseSDK):
                 review_cycle_ids=review_cycle_ids,
                 reviewee_ids=reviewee_ids,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -4982,14 +5084,15 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `locations`
-            - ✓ `location`
-            - ✓ `legal_entities`
-            - ✓ `legal_entity`
-            - ✓ `groups`
-            - ✓ `group`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `locations` | ✓ Yes | ✓ Yes |
+            | `legal_entities` | ✓ Yes | ✓ Yes |
+            | `groups` | ✓ Yes | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -5091,6 +5194,9 @@ class Hris(BaseSDK):
                 model_types=model_types,
                 statuses=statuses,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
@@ -5148,14 +5254,15 @@ class Hris(BaseSDK):
 
             For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-            For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            - ✓ `locations`
-            - ✓ `location`
-            - ✓ `legal_entities`
-            - ✓ `legal_entity`
-            - ✓ `groups`
-            - ✓ `group`
+            | Path | Relationship | Target Record |
+            | --- | --- | --- |
+            | `locations` | ✓ Yes | ✓ Yes |
+            | `legal_entities` | ✓ Yes | ✓ Yes |
+            | `groups` | ✓ Yes | ✓ Yes |
+
+            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -5260,6 +5367,9 @@ class Hris(BaseSDK):
                 model_types=model_types,
                 statuses=statuses,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None

@@ -1,4 +1,4 @@
-# AssessmentOrderReceivedWebhookPayloadLocation
+# GetAssessmentOrdersPositiveResponseLocation
 
 The job location information.
 

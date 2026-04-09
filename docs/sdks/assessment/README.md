@@ -6,7 +6,7 @@
 
 * [get_packages](#get_packages) - Get packages
 * [set_packages](#set_packages) - Set packages
-* [get_open_orders](#get_open_orders) - Get open orders
+* [get_assessment_orders](#get_assessment_orders) - Get orders
 * [update_order_result](#update_order_result) - Update order result
 
 ## get_packages
@@ -167,13 +167,13 @@ with Kombo(
 | errors.KomboAtsError   | default                | application/json       |
 | errors.SDKDefaultError | 4XX, 5XX               | \*/\*                  |
 
-## get_open_orders
+## get_assessment_orders
 
-Get all open assessment and background check orders of an integration.
+Get all assessment and background check orders of an integration.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="GetAssessmentOrdersOpen" method="get" path="/assessment/orders/open" -->
+<!-- UsageSnippet language="python" operationID="GetAssessmentOrders" method="get" path="/assessment/orders" -->
 ```python
 from kombo import Kombo
 
@@ -183,7 +183,7 @@ with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as k_client:
 
-    res = k_client.assessment.get_open_orders(page_size=100)
+    res = k_client.assessment.get_assessment_orders(page_size=100)
 
     while res is not None:
         # Handle items
@@ -198,11 +198,14 @@ with Kombo(
 | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `cursor`                                                                                                                     | *Optional[str]*                                                                                                              | :heavy_minus_sign:                                                                                                           | An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response. |
 | `page_size`                                                                                                                  | *Optional[int]*                                                                                                              | :heavy_minus_sign:                                                                                                           | The number of results to return per page. Maximum is 250.                                                                    |
+| `ids`                                                                                                                        | List[*str*]                                                                                                                  | :heavy_minus_sign:                                                                                                           | Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.                         |
+| `statuses`                                                                                                                   | List[*str*]                                                                                                                  | :heavy_minus_sign:                                                                                                           | Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`.                                                       |
+| `created_after`                                                                                                              | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                         | :heavy_minus_sign:                                                                                                           | Filter orders by their creation date. Only orders created on or after this date will be returned.                            |
 | `retries`                                                                                                                    | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                             | :heavy_minus_sign:                                                                                                           | Configuration to override the default retry behavior of the client.                                                          |
 
 ### Response
 
-**[models.GetAssessmentOrdersOpenResponse](../../models/getassessmentordersopenresponse.md)**
+**[models.GetAssessmentOrdersResponse](../../models/getassessmentordersresponse.md)**
 
 ### Errors
 

@@ -56,11 +56,15 @@ class GetAtsOffersRequestTypedDict(TypedDict):
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-    For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+    For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-    - ✓ `application`
-    - ✗ `candidate`
-    - ✗ `job`
+    | Path | Relationship | Target Record |
+    | --- | --- | --- |
+    | `application` | n/a | ✓ Yes |
+    | `application` → `candidate` | ✗ No | ✗ No |
+    | `application` → `job` | ✗ No | ✗ No |
+
+    _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
     """
     include_deleted: NotRequired[bool]
     r"""By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too."""
@@ -95,11 +99,15 @@ class GetAtsOffersRequest(BaseModel):
 
     For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
 
-    For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+    For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-    - ✓ `application`
-    - ✗ `candidate`
-    - ✗ `job`
+    | Path | Relationship | Target Record |
+    | --- | --- | --- |
+    | `application` | n/a | ✓ Yes |
+    | `application` → `candidate` | ✗ No | ✗ No |
+    | `application` → `job` | ✗ No | ✗ No |
+
+    _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
     """
 
     include_deleted: Annotated[

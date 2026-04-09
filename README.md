@@ -173,7 +173,7 @@ with SDK(
 
 * [get_packages](docs/sdks/assessment/README.md#get_packages) - Get packages
 * [set_packages](docs/sdks/assessment/README.md#set_packages) - Set packages
-* [get_open_orders](docs/sdks/assessment/README.md#get_open_orders) - Get open orders
+* [get_assessment_orders](docs/sdks/assessment/README.md#get_assessment_orders) - Get orders
 * [update_order_result](docs/sdks/assessment/README.md#update_order_result) - Update order result
 
 ### [Ats](docs/sdks/ats/README.md)
