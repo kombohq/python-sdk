@@ -25,58 +25,47 @@ r"""The current status of the assessment order."""
 class InlineAssessmentOrderReceivedWebhookPayloadCandidateTypedDict(TypedDict):
     r"""Information about the candidate taking the assessment."""
 
+    remote_id: Nullable[str]
+    r"""The candidate's identifier in the integrated system."""
     email: str
     r"""The candidate's email address."""
-    remote_id: NotRequired[Nullable[str]]
-    r"""The candidate's identifier in the integrated system."""
-    first_name: NotRequired[Nullable[str]]
+    first_name: Nullable[str]
     r"""The candidate's first name."""
-    last_name: NotRequired[Nullable[str]]
+    last_name: Nullable[str]
     r"""The candidate's last name."""
-    phone: NotRequired[Nullable[str]]
+    phone: Nullable[str]
     r"""The candidate's phone number."""
 
 
 class InlineAssessmentOrderReceivedWebhookPayloadCandidate(BaseModel):
     r"""Information about the candidate taking the assessment."""
 
+    remote_id: Nullable[str]
+    r"""The candidate's identifier in the integrated system."""
+
     email: str
     r"""The candidate's email address."""
 
-    remote_id: OptionalNullable[str] = UNSET
-    r"""The candidate's identifier in the integrated system."""
-
-    first_name: OptionalNullable[str] = UNSET
+    first_name: Nullable[str]
     r"""The candidate's first name."""
 
-    last_name: OptionalNullable[str] = UNSET
+    last_name: Nullable[str]
     r"""The candidate's last name."""
 
-    phone: OptionalNullable[str] = UNSET
+    phone: Nullable[str]
     r"""The candidate's phone number."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["remote_id", "first_name", "last_name", "phone"])
-        nullable_fields = set(["remote_id", "first_name", "last_name", "phone"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k, serialized.get(n))
-            is_nullable_and_explicitly_set = (
-                k in nullable_fields
-                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
-            )
 
             if val != UNSET_SENTINEL:
-                if (
-                    val is not None
-                    or k not in optional_fields
-                    or is_nullable_and_explicitly_set
-                ):
-                    m[k] = val
+                m[k] = val
 
         return m
 
@@ -84,38 +73,27 @@ class InlineAssessmentOrderReceivedWebhookPayloadCandidate(BaseModel):
 class InlineAssessmentOrderReceivedWebhookPayloadApplicationTypedDict(TypedDict):
     r"""Information about the job application."""
 
-    remote_id: NotRequired[Nullable[str]]
+    remote_id: Nullable[str]
     r"""The application's identifier in the integrated system."""
 
 
 class InlineAssessmentOrderReceivedWebhookPayloadApplication(BaseModel):
     r"""Information about the job application."""
 
-    remote_id: OptionalNullable[str] = UNSET
+    remote_id: Nullable[str]
     r"""The application's identifier in the integrated system."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["remote_id"])
-        nullable_fields = set(["remote_id"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k, serialized.get(n))
-            is_nullable_and_explicitly_set = (
-                k in nullable_fields
-                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
-            )
 
             if val != UNSET_SENTINEL:
-                if (
-                    val is not None
-                    or k not in optional_fields
-                    or is_nullable_and_explicitly_set
-                ):
-                    m[k] = val
+                m[k] = val
 
         return m
 
@@ -123,22 +101,31 @@ class InlineAssessmentOrderReceivedWebhookPayloadApplication(BaseModel):
 class InlineAssessmentOrderReceivedWebhookPayloadLocationTypedDict(TypedDict):
     r"""The job location information."""
 
+    street_1: NotRequired[Nullable[str]]
+    r"""If we can parse the address data, this field contains the first part of the street information."""
+    street_2: NotRequired[Nullable[str]]
     city: NotRequired[Nullable[str]]
+    state: NotRequired[Nullable[str]]
+    zip_code: NotRequired[Nullable[str]]
     country: NotRequired[Nullable[str]]
     r"""Contains the ISO2 country code if possible. If not, it contains the original value."""
     raw: NotRequired[Nullable[str]]
     r"""If we have address data, this is filled with the raw address string."""
-    state: NotRequired[Nullable[str]]
-    street_1: NotRequired[Nullable[str]]
-    r"""If we can parse the address data, this field contains the first part of the street information."""
-    street_2: NotRequired[Nullable[str]]
-    zip_code: NotRequired[Nullable[str]]
 
 
 class InlineAssessmentOrderReceivedWebhookPayloadLocation(BaseModel):
     r"""The job location information."""
 
+    street_1: OptionalNullable[str] = UNSET
+    r"""If we can parse the address data, this field contains the first part of the street information."""
+
+    street_2: OptionalNullable[str] = UNSET
+
     city: OptionalNullable[str] = UNSET
+
+    state: OptionalNullable[str] = UNSET
+
+    zip_code: OptionalNullable[str] = UNSET
 
     country: OptionalNullable[str] = UNSET
     r"""Contains the ISO2 country code if possible. If not, it contains the original value."""
@@ -146,22 +133,13 @@ class InlineAssessmentOrderReceivedWebhookPayloadLocation(BaseModel):
     raw: OptionalNullable[str] = UNSET
     r"""If we have address data, this is filled with the raw address string."""
 
-    state: OptionalNullable[str] = UNSET
-
-    street_1: OptionalNullable[str] = UNSET
-    r"""If we can parse the address data, this field contains the first part of the street information."""
-
-    street_2: OptionalNullable[str] = UNSET
-
-    zip_code: OptionalNullable[str] = UNSET
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
+            ["street_1", "street_2", "city", "state", "zip_code", "country", "raw"]
         )
         nullable_fields = set(
-            ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
+            ["street_1", "street_2", "city", "state", "zip_code", "country", "raw"]
         )
         serialized = handler(self)
         m = {}
@@ -245,71 +223,52 @@ class InlineAssessmentOrderReceivedWebhookPayloadHiringTeam(BaseModel):
 class InlineAssessmentOrderReceivedWebhookPayloadJobTypedDict(TypedDict):
     r"""Information about the job posting."""
 
+    remote_id: Nullable[str]
+    r"""The job's identifier in the integrated system."""
+    name: Nullable[str]
+    r"""The job title."""
+    job_code: Nullable[str]
+    r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
+    description: Nullable[str]
+    r"""Description of the job. This field is usually returned as HTML."""
+    location: Nullable[InlineAssessmentOrderReceivedWebhookPayloadLocationTypedDict]
+    r"""The job location information."""
     hiring_team: List[InlineAssessmentOrderReceivedWebhookPayloadHiringTeamTypedDict]
     r"""The hiring team allows you to provision users into your system who can access the job and its applications."""
-    remote_id: NotRequired[Nullable[str]]
-    r"""The job's identifier in the integrated system."""
-    name: NotRequired[Nullable[str]]
-    r"""The job title."""
-    job_code: NotRequired[Nullable[str]]
-    r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
-    description: NotRequired[Nullable[str]]
-    r"""Description of the job. This field is usually returned as HTML."""
-    location: NotRequired[
-        Nullable[InlineAssessmentOrderReceivedWebhookPayloadLocationTypedDict]
-    ]
-    r"""The job location information."""
 
 
 class InlineAssessmentOrderReceivedWebhookPayloadJob(BaseModel):
     r"""Information about the job posting."""
 
+    remote_id: Nullable[str]
+    r"""The job's identifier in the integrated system."""
+
+    name: Nullable[str]
+    r"""The job title."""
+
+    job_code: Nullable[str]
+    r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
+
+    description: Nullable[str]
+    r"""Description of the job. This field is usually returned as HTML."""
+
+    location: Nullable[InlineAssessmentOrderReceivedWebhookPayloadLocation]
+    r"""The job location information."""
+
     hiring_team: List[InlineAssessmentOrderReceivedWebhookPayloadHiringTeam]
     r"""The hiring team allows you to provision users into your system who can access the job and its applications."""
 
-    remote_id: OptionalNullable[str] = UNSET
-    r"""The job's identifier in the integrated system."""
-
-    name: OptionalNullable[str] = UNSET
-    r"""The job title."""
-
-    job_code: OptionalNullable[str] = UNSET
-    r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
-
-    description: OptionalNullable[str] = UNSET
-    r"""Description of the job. This field is usually returned as HTML."""
-
-    location: OptionalNullable[InlineAssessmentOrderReceivedWebhookPayloadLocation] = (
-        UNSET
-    )
-    r"""The job location information."""
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(
-            ["remote_id", "name", "job_code", "description", "location"]
-        )
-        nullable_fields = set(
-            ["remote_id", "name", "job_code", "description", "location"]
-        )
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k, serialized.get(n))
-            is_nullable_and_explicitly_set = (
-                k in nullable_fields
-                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
-            )
 
             if val != UNSET_SENTINEL:
-                if (
-                    val is not None
-                    or k not in optional_fields
-                    or is_nullable_and_explicitly_set
-                ):
-                    m[k] = val
+                m[k] = val
 
         return m
 

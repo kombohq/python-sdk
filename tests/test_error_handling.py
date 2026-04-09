@@ -145,7 +145,7 @@ class TestErrorHandling:
 
             ctx.mock_endpoint(
                 method="GET",
-                path="/v1/assessment/orders/open",
+                path="/v1/assessment/orders",
                 response={
                     "status_code": 400,
                     "body": {
@@ -161,7 +161,7 @@ class TestErrorHandling:
             )
 
             with pytest.raises(KomboAtsError) as exc_info:
-                orders = ctx.kombo.assessment.get_open_orders()
+                orders = ctx.kombo.assessment.get_assessment_orders()
                 if orders is not None:
                     _ = orders.next()  # Consume first page
 

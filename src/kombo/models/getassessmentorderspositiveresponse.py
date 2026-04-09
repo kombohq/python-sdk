@@ -10,123 +10,119 @@ from typing import List, Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class GetAssessmentOrdersOpenPositiveResponseCandidateTypedDict(TypedDict):
+GetAssessmentOrdersPositiveResponseStatus = Literal[
+    "OPEN",
+    "COMPLETED",
+    "CANCELLED",
+    "REJECTED",
+]
+r"""The current status of the assessment order."""
+
+
+class GetAssessmentOrdersPositiveResponseCandidateTypedDict(TypedDict):
     r"""Information about the candidate taking the assessment."""
 
+    remote_id: Nullable[str]
+    r"""The candidate's identifier in the integrated system."""
     email: str
     r"""The candidate's email address."""
-    remote_id: NotRequired[Nullable[str]]
-    r"""The candidate's identifier in the integrated system."""
-    first_name: NotRequired[Nullable[str]]
+    first_name: Nullable[str]
     r"""The candidate's first name."""
-    last_name: NotRequired[Nullable[str]]
+    last_name: Nullable[str]
     r"""The candidate's last name."""
-    phone: NotRequired[Nullable[str]]
+    phone: Nullable[str]
     r"""The candidate's phone number."""
 
 
-class GetAssessmentOrdersOpenPositiveResponseCandidate(BaseModel):
+class GetAssessmentOrdersPositiveResponseCandidate(BaseModel):
     r"""Information about the candidate taking the assessment."""
+
+    remote_id: Nullable[str]
+    r"""The candidate's identifier in the integrated system."""
 
     email: str
     r"""The candidate's email address."""
 
-    remote_id: OptionalNullable[str] = UNSET
-    r"""The candidate's identifier in the integrated system."""
-
-    first_name: OptionalNullable[str] = UNSET
+    first_name: Nullable[str]
     r"""The candidate's first name."""
 
-    last_name: OptionalNullable[str] = UNSET
+    last_name: Nullable[str]
     r"""The candidate's last name."""
 
-    phone: OptionalNullable[str] = UNSET
+    phone: Nullable[str]
     r"""The candidate's phone number."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["remote_id", "first_name", "last_name", "phone"])
-        nullable_fields = set(["remote_id", "first_name", "last_name", "phone"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k, serialized.get(n))
-            is_nullable_and_explicitly_set = (
-                k in nullable_fields
-                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
-            )
 
             if val != UNSET_SENTINEL:
-                if (
-                    val is not None
-                    or k not in optional_fields
-                    or is_nullable_and_explicitly_set
-                ):
-                    m[k] = val
+                m[k] = val
 
         return m
 
 
-class GetAssessmentOrdersOpenPositiveResponseApplicationTypedDict(TypedDict):
+class GetAssessmentOrdersPositiveResponseApplicationTypedDict(TypedDict):
     r"""Information about the job application."""
 
-    remote_id: NotRequired[Nullable[str]]
+    remote_id: Nullable[str]
     r"""The application's identifier in the integrated system."""
 
 
-class GetAssessmentOrdersOpenPositiveResponseApplication(BaseModel):
+class GetAssessmentOrdersPositiveResponseApplication(BaseModel):
     r"""Information about the job application."""
 
-    remote_id: OptionalNullable[str] = UNSET
+    remote_id: Nullable[str]
     r"""The application's identifier in the integrated system."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["remote_id"])
-        nullable_fields = set(["remote_id"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k, serialized.get(n))
-            is_nullable_and_explicitly_set = (
-                k in nullable_fields
-                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
-            )
 
             if val != UNSET_SENTINEL:
-                if (
-                    val is not None
-                    or k not in optional_fields
-                    or is_nullable_and_explicitly_set
-                ):
-                    m[k] = val
+                m[k] = val
 
         return m
 
 
-class GetAssessmentOrdersOpenPositiveResponseLocationTypedDict(TypedDict):
+class GetAssessmentOrdersPositiveResponseLocationTypedDict(TypedDict):
     r"""The job location information."""
 
+    street_1: NotRequired[Nullable[str]]
+    r"""If we can parse the address data, this field contains the first part of the street information."""
+    street_2: NotRequired[Nullable[str]]
     city: NotRequired[Nullable[str]]
+    state: NotRequired[Nullable[str]]
+    zip_code: NotRequired[Nullable[str]]
     country: NotRequired[Nullable[str]]
     r"""Contains the ISO2 country code if possible. If not, it contains the original value."""
     raw: NotRequired[Nullable[str]]
     r"""If we have address data, this is filled with the raw address string."""
-    state: NotRequired[Nullable[str]]
-    street_1: NotRequired[Nullable[str]]
-    r"""If we can parse the address data, this field contains the first part of the street information."""
-    street_2: NotRequired[Nullable[str]]
-    zip_code: NotRequired[Nullable[str]]
 
 
-class GetAssessmentOrdersOpenPositiveResponseLocation(BaseModel):
+class GetAssessmentOrdersPositiveResponseLocation(BaseModel):
     r"""The job location information."""
 
+    street_1: OptionalNullable[str] = UNSET
+    r"""If we can parse the address data, this field contains the first part of the street information."""
+
+    street_2: OptionalNullable[str] = UNSET
+
     city: OptionalNullable[str] = UNSET
+
+    state: OptionalNullable[str] = UNSET
+
+    zip_code: OptionalNullable[str] = UNSET
 
     country: OptionalNullable[str] = UNSET
     r"""Contains the ISO2 country code if possible. If not, it contains the original value."""
@@ -134,22 +130,13 @@ class GetAssessmentOrdersOpenPositiveResponseLocation(BaseModel):
     raw: OptionalNullable[str] = UNSET
     r"""If we have address data, this is filled with the raw address string."""
 
-    state: OptionalNullable[str] = UNSET
-
-    street_1: OptionalNullable[str] = UNSET
-    r"""If we can parse the address data, this field contains the first part of the street information."""
-
-    street_2: OptionalNullable[str] = UNSET
-
-    zip_code: OptionalNullable[str] = UNSET
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
+            ["street_1", "street_2", "city", "state", "zip_code", "country", "raw"]
         )
         nullable_fields = set(
-            ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
+            ["street_1", "street_2", "city", "state", "zip_code", "country", "raw"]
         )
         serialized = handler(self)
         m = {}
@@ -173,7 +160,7 @@ class GetAssessmentOrdersOpenPositiveResponseLocation(BaseModel):
         return m
 
 
-GetAssessmentOrdersOpenPositiveResponseHiringTeamRole = Literal[
+GetAssessmentOrdersPositiveResponseHiringTeamRole = Literal[
     "RECRUITER",
     "HIRING_MANAGER",
     "COORDINATOR",
@@ -182,7 +169,7 @@ GetAssessmentOrdersOpenPositiveResponseHiringTeamRole = Literal[
 ]
 
 
-class GetAssessmentOrdersOpenPositiveResponseHiringTeamTypedDict(TypedDict):
+class GetAssessmentOrdersPositiveResponseHiringTeamTypedDict(TypedDict):
     r"""A member of the hiring team."""
 
     remote_id: Nullable[str]
@@ -193,11 +180,11 @@ class GetAssessmentOrdersOpenPositiveResponseHiringTeamTypedDict(TypedDict):
     r"""The team member's first name."""
     last_name: Nullable[str]
     r"""The team member's last name."""
-    hiring_team_roles: List[GetAssessmentOrdersOpenPositiveResponseHiringTeamRole]
+    hiring_team_roles: List[GetAssessmentOrdersPositiveResponseHiringTeamRole]
     r"""Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
 
 
-class GetAssessmentOrdersOpenPositiveResponseHiringTeam(BaseModel):
+class GetAssessmentOrdersPositiveResponseHiringTeam(BaseModel):
     r"""A member of the hiring team."""
 
     remote_id: Nullable[str]
@@ -212,7 +199,7 @@ class GetAssessmentOrdersOpenPositiveResponseHiringTeam(BaseModel):
     last_name: Nullable[str]
     r"""The team member's last name."""
 
-    hiring_team_roles: List[GetAssessmentOrdersOpenPositiveResponseHiringTeamRole]
+    hiring_team_roles: List[GetAssessmentOrdersPositiveResponseHiringTeamRole]
     r"""Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
 
     @model_serializer(mode="wrap")
@@ -230,115 +217,43 @@ class GetAssessmentOrdersOpenPositiveResponseHiringTeam(BaseModel):
         return m
 
 
-class GetAssessmentOrdersOpenPositiveResponseJobTypedDict(TypedDict):
+class GetAssessmentOrdersPositiveResponseJobTypedDict(TypedDict):
     r"""Information about the job posting."""
 
-    hiring_team: List[GetAssessmentOrdersOpenPositiveResponseHiringTeamTypedDict]
-    r"""The hiring team allows you to provision users into your system who can access the job and its applications."""
-    remote_id: NotRequired[Nullable[str]]
+    remote_id: Nullable[str]
     r"""The job's identifier in the integrated system."""
-    name: NotRequired[Nullable[str]]
+    name: Nullable[str]
     r"""The job title."""
-    job_code: NotRequired[Nullable[str]]
+    job_code: Nullable[str]
     r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
-    description: NotRequired[Nullable[str]]
+    description: Nullable[str]
     r"""Description of the job. This field is usually returned as HTML."""
-    location: NotRequired[
-        Nullable[GetAssessmentOrdersOpenPositiveResponseLocationTypedDict]
-    ]
+    location: Nullable[GetAssessmentOrdersPositiveResponseLocationTypedDict]
     r"""The job location information."""
-
-
-class GetAssessmentOrdersOpenPositiveResponseJob(BaseModel):
-    r"""Information about the job posting."""
-
-    hiring_team: List[GetAssessmentOrdersOpenPositiveResponseHiringTeam]
+    hiring_team: List[GetAssessmentOrdersPositiveResponseHiringTeamTypedDict]
     r"""The hiring team allows you to provision users into your system who can access the job and its applications."""
 
-    remote_id: OptionalNullable[str] = UNSET
+
+class GetAssessmentOrdersPositiveResponseJob(BaseModel):
+    r"""Information about the job posting."""
+
+    remote_id: Nullable[str]
     r"""The job's identifier in the integrated system."""
 
-    name: OptionalNullable[str] = UNSET
+    name: Nullable[str]
     r"""The job title."""
 
-    job_code: OptionalNullable[str] = UNSET
+    job_code: Nullable[str]
     r"""The human readable job code. Some systems expose this as the Requisition Code/ID."""
 
-    description: OptionalNullable[str] = UNSET
+    description: Nullable[str]
     r"""Description of the job. This field is usually returned as HTML."""
 
-    location: OptionalNullable[GetAssessmentOrdersOpenPositiveResponseLocation] = UNSET
+    location: Nullable[GetAssessmentOrdersPositiveResponseLocation]
     r"""The job location information."""
 
-    @model_serializer(mode="wrap")
-    def serialize_model(self, handler):
-        optional_fields = set(
-            ["remote_id", "name", "job_code", "description", "location"]
-        )
-        nullable_fields = set(
-            ["remote_id", "name", "job_code", "description", "location"]
-        )
-        serialized = handler(self)
-        m = {}
-
-        for n, f in type(self).model_fields.items():
-            k = f.alias or n
-            val = serialized.get(k, serialized.get(n))
-            is_nullable_and_explicitly_set = (
-                k in nullable_fields
-                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
-            )
-
-            if val != UNSET_SENTINEL:
-                if (
-                    val is not None
-                    or k not in optional_fields
-                    or is_nullable_and_explicitly_set
-                ):
-                    m[k] = val
-
-        return m
-
-
-class GetAssessmentOrdersOpenPositiveResponseResultTypedDict(TypedDict):
-    id: str
-    r"""The unique identifier of the assessment order."""
-    package_id: str
-    r"""The identifier of the assessment package."""
-    candidate: GetAssessmentOrdersOpenPositiveResponseCandidateTypedDict
-    r"""Information about the candidate taking the assessment."""
-    application: GetAssessmentOrdersOpenPositiveResponseApplicationTypedDict
-    r"""Information about the job application."""
-    job: GetAssessmentOrdersOpenPositiveResponseJobTypedDict
-    r"""Information about the job posting."""
-
-
-class GetAssessmentOrdersOpenPositiveResponseResult(BaseModel):
-    id: str
-    r"""The unique identifier of the assessment order."""
-
-    package_id: str
-    r"""The identifier of the assessment package."""
-
-    candidate: GetAssessmentOrdersOpenPositiveResponseCandidate
-    r"""Information about the candidate taking the assessment."""
-
-    application: GetAssessmentOrdersOpenPositiveResponseApplication
-    r"""Information about the job application."""
-
-    job: GetAssessmentOrdersOpenPositiveResponseJob
-    r"""Information about the job posting."""
-
-
-class GetAssessmentOrdersOpenPositiveResponseDataTypedDict(TypedDict):
-    next: Nullable[str]
-    results: List[GetAssessmentOrdersOpenPositiveResponseResultTypedDict]
-
-
-class GetAssessmentOrdersOpenPositiveResponseData(BaseModel):
-    next: Nullable[str]
-
-    results: List[GetAssessmentOrdersOpenPositiveResponseResult]
+    hiring_team: List[GetAssessmentOrdersPositiveResponseHiringTeam]
+    r"""The hiring team allows you to provision users into your system who can access the job and its applications."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -355,13 +270,73 @@ class GetAssessmentOrdersOpenPositiveResponseData(BaseModel):
         return m
 
 
-class GetAssessmentOrdersOpenPositiveResponseTypedDict(TypedDict):
-    data: GetAssessmentOrdersOpenPositiveResponseDataTypedDict
+class GetAssessmentOrdersPositiveResponseResultTypedDict(TypedDict):
+    id: str
+    r"""The unique identifier of the assessment order."""
+    package_id: str
+    r"""The identifier of the assessment package."""
+    status: GetAssessmentOrdersPositiveResponseStatus
+    r"""The current status of the assessment order."""
+    candidate: GetAssessmentOrdersPositiveResponseCandidateTypedDict
+    r"""Information about the candidate taking the assessment."""
+    application: GetAssessmentOrdersPositiveResponseApplicationTypedDict
+    r"""Information about the job application."""
+    job: GetAssessmentOrdersPositiveResponseJobTypedDict
+    r"""Information about the job posting."""
+
+
+class GetAssessmentOrdersPositiveResponseResult(BaseModel):
+    id: str
+    r"""The unique identifier of the assessment order."""
+
+    package_id: str
+    r"""The identifier of the assessment package."""
+
+    status: GetAssessmentOrdersPositiveResponseStatus
+    r"""The current status of the assessment order."""
+
+    candidate: GetAssessmentOrdersPositiveResponseCandidate
+    r"""Information about the candidate taking the assessment."""
+
+    application: GetAssessmentOrdersPositiveResponseApplication
+    r"""Information about the job application."""
+
+    job: GetAssessmentOrdersPositiveResponseJob
+    r"""Information about the job posting."""
+
+
+class GetAssessmentOrdersPositiveResponseDataTypedDict(TypedDict):
+    next: Nullable[str]
+    results: List[GetAssessmentOrdersPositiveResponseResultTypedDict]
+
+
+class GetAssessmentOrdersPositiveResponseData(BaseModel):
+    next: Nullable[str]
+
+    results: List[GetAssessmentOrdersPositiveResponseResult]
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                m[k] = val
+
+        return m
+
+
+class GetAssessmentOrdersPositiveResponseTypedDict(TypedDict):
+    data: GetAssessmentOrdersPositiveResponseDataTypedDict
     status: Literal["success"]
 
 
-class GetAssessmentOrdersOpenPositiveResponse(BaseModel):
-    data: GetAssessmentOrdersOpenPositiveResponseData
+class GetAssessmentOrdersPositiveResponse(BaseModel):
+    data: GetAssessmentOrdersPositiveResponseData
 
     STATUS: Annotated[
         Annotated[Literal["success"], AfterValidator(validate_const("success"))],
@@ -370,6 +345,6 @@ class GetAssessmentOrdersOpenPositiveResponse(BaseModel):
 
 
 try:
-    GetAssessmentOrdersOpenPositiveResponse.model_rebuild()
+    GetAssessmentOrdersPositiveResponse.model_rebuild()
 except NameError:
     pass

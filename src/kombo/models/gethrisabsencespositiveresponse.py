@@ -138,6 +138,14 @@ class GetHrisAbsencesPositiveResponseResultTypedDict(TypedDict):
     r"""A note the employee has added to this absence."""
     type_id: Nullable[str]
     r"""The Kombo absence type ID of this absence."""
+    remote_created_at: Nullable[datetime]
+    r"""The date and time the object was created in the remote system.
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+    """
+    remote_updated_at: Nullable[datetime]
+    r"""A timestamp retrieved from the remote system, describing when the resource was last updated.
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+    """
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -191,6 +199,16 @@ class GetHrisAbsencesPositiveResponseResult(BaseModel):
     type_id: Nullable[str]
     r"""The Kombo absence type ID of this absence."""
 
+    remote_created_at: Nullable[datetime]
+    r"""The date and time the object was created in the remote system.
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+    """
+
+    remote_updated_at: Nullable[datetime]
+    r"""A timestamp retrieved from the remote system, describing when the resource was last updated.
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+    """
+
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -223,6 +241,8 @@ class GetHrisAbsencesPositiveResponseResult(BaseModel):
                 "status",
                 "employee_note",
                 "type_id",
+                "remote_created_at",
+                "remote_updated_at",
                 "remote_deleted_at",
                 "type",
             ]

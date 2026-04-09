@@ -427,22 +427,28 @@ class Assessment(BaseSDK):
 
         raise errors.SDKDefaultError("Unexpected response received", http_res)
 
-    def get_open_orders(
+    def get_assessment_orders(
         self,
         *,
         cursor: Optional[str] = None,
         page_size: Optional[int] = 100,
+        ids: Optional[List[str]] = None,
+        statuses: Optional[List[str]] = None,
+        created_after: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.GetAssessmentOrdersOpenResponse]:
-        r"""Get open orders
+    ) -> Optional[models.GetAssessmentOrdersResponse]:
+        r"""Get orders
 
-        Get all open assessment and background check orders of an integration.
+        Get all assessment and background check orders of an integration.
 
         :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
         :param page_size: The number of results to return per page. Maximum is 250.
+        :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
+        :param statuses: Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`.
+        :param created_after: Filter orders by their creation date. Only orders created on or after this date will be returned.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -458,14 +464,17 @@ class Assessment(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.GetAssessmentOrdersOpenRequest(
+        request = models.GetAssessmentOrdersRequest(
             cursor=cursor,
             page_size=page_size,
+            ids=ids,
+            statuses=statuses,
+            created_after=created_after,
         )
 
         req = self._build_request(
             method="GET",
-            path="/assessment/orders/open",
+            path="/assessment/orders",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -475,7 +484,7 @@ class Assessment(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            _globals=models.GetAssessmentOrdersOpenGlobals(
+            _globals=models.GetAssessmentOrdersGlobals(
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
@@ -495,7 +504,7 @@ class Assessment(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="GetAssessmentOrdersOpen",
+                operation_id="GetAssessmentOrders",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
@@ -504,7 +513,7 @@ class Assessment(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.GetAssessmentOrdersOpenResponse]:
+        def next_func() -> Optional[models.GetAssessmentOrdersResponse]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
             next_cursor = JSONPath("$.data.next").parse(body)
@@ -516,17 +525,23 @@ class Assessment(BaseSDK):
             if next_cursor is None or str(next_cursor).strip() == "":
                 return None
 
-            return self.get_open_orders(
+            return self.get_assessment_orders(
                 cursor=next_cursor,
                 page_size=page_size,
+                ids=ids,
+                statuses=statuses,
+                created_after=created_after,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.GetAssessmentOrdersOpenResponse(
+            return models.GetAssessmentOrdersResponse(
                 result=unmarshal_json_response(
-                    models.GetAssessmentOrdersOpenPositiveResponse, http_res
+                    models.GetAssessmentOrdersPositiveResponse, http_res
                 ),
                 next=next_func,
             )
@@ -536,22 +551,28 @@ class Assessment(BaseSDK):
 
         raise errors.SDKDefaultError("Unexpected response received", http_res)
 
-    async def get_open_orders_async(
+    async def get_assessment_orders_async(
         self,
         *,
         cursor: Optional[str] = None,
         page_size: Optional[int] = 100,
+        ids: Optional[List[str]] = None,
+        statuses: Optional[List[str]] = None,
+        created_after: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.GetAssessmentOrdersOpenResponse]:
-        r"""Get open orders
+    ) -> Optional[models.GetAssessmentOrdersResponse]:
+        r"""Get orders
 
-        Get all open assessment and background check orders of an integration.
+        Get all assessment and background check orders of an integration.
 
         :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
         :param page_size: The number of results to return per page. Maximum is 250.
+        :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
+        :param statuses: Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`.
+        :param created_after: Filter orders by their creation date. Only orders created on or after this date will be returned.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -567,14 +588,17 @@ class Assessment(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.GetAssessmentOrdersOpenRequest(
+        request = models.GetAssessmentOrdersRequest(
             cursor=cursor,
             page_size=page_size,
+            ids=ids,
+            statuses=statuses,
+            created_after=created_after,
         )
 
         req = self._build_request_async(
             method="GET",
-            path="/assessment/orders/open",
+            path="/assessment/orders",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -584,7 +608,7 @@ class Assessment(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            _globals=models.GetAssessmentOrdersOpenGlobals(
+            _globals=models.GetAssessmentOrdersGlobals(
                 integration_id=self.sdk_configuration.globals.integration_id,
             ),
             security=self.sdk_configuration.security,
@@ -604,7 +628,7 @@ class Assessment(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="GetAssessmentOrdersOpen",
+                operation_id="GetAssessmentOrders",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
@@ -613,7 +637,7 @@ class Assessment(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Awaitable[Optional[models.GetAssessmentOrdersOpenResponse]]:
+        def next_func() -> Awaitable[Optional[models.GetAssessmentOrdersResponse]]:
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
 
             async def empty_result():
@@ -628,17 +652,23 @@ class Assessment(BaseSDK):
             if next_cursor is None or str(next_cursor).strip() == "":
                 return empty_result()
 
-            return self.get_open_orders_async(
+            return self.get_assessment_orders_async(
                 cursor=next_cursor,
                 page_size=page_size,
+                ids=ids,
+                statuses=statuses,
+                created_after=created_after,
                 retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
             )
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.GetAssessmentOrdersOpenResponse(
+            return models.GetAssessmentOrdersResponse(
                 result=unmarshal_json_response(
-                    models.GetAssessmentOrdersOpenPositiveResponse, http_res
+                    models.GetAssessmentOrdersPositiveResponse, http_res
                 ),
                 next=next_func,
             )
