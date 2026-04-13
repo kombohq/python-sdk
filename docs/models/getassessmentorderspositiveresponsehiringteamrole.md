@@ -12,6 +12,3 @@ value: GetAssessmentOrdersPositiveResponseHiringTeamRole = "RECRUITER"
 
 - `"RECRUITER"`
 - `"HIRING_MANAGER"`
-- `"COORDINATOR"`
-- `"SOURCER"`
-- `"INTERVIEWER"`

@@ -99,6 +99,7 @@ value: IntegrationTool = "workday"
 - `"laura"`
 - `"covetorest"`
 - `"coveto"`
+- `"mercury"`
 - `"crelate"`
 - `"manatal"`
 - `"avionte"`

@@ -104,6 +104,7 @@ IntegrationTool = Literal[
     "laura",
     "covetorest",
     "coveto",
+    "mercury",
     "crelate",
     "manatal",
     "avionte",
