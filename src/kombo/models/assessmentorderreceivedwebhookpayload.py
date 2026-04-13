@@ -164,9 +164,6 @@ class AssessmentOrderReceivedWebhookPayloadLocation(BaseModel):
 AssessmentOrderReceivedWebhookPayloadHiringTeamRole = Literal[
     "RECRUITER",
     "HIRING_MANAGER",
-    "COORDINATOR",
-    "SOURCER",
-    "INTERVIEWER",
 ]
 
 
@@ -182,7 +179,7 @@ class AssessmentOrderReceivedWebhookPayloadHiringTeamTypedDict(TypedDict):
     last_name: Nullable[str]
     r"""The team member's last name."""
     hiring_team_roles: List[AssessmentOrderReceivedWebhookPayloadHiringTeamRole]
-    r"""Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+    r"""Array of the roles of the user for this specific job."""
 
 
 class AssessmentOrderReceivedWebhookPayloadHiringTeam(BaseModel):
@@ -201,7 +198,7 @@ class AssessmentOrderReceivedWebhookPayloadHiringTeam(BaseModel):
     r"""The team member's last name."""
 
     hiring_team_roles: List[AssessmentOrderReceivedWebhookPayloadHiringTeamRole]
-    r"""Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+    r"""Array of the roles of the user for this specific job."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

@@ -12,6 +12,3 @@ value: InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole = "RECRUITER"
 
 - `"RECRUITER"`
 - `"HIRING_MANAGER"`
-- `"COORDINATOR"`
-- `"SOURCER"`
-- `"INTERVIEWER"`
