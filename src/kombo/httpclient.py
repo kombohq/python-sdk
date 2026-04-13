@@ -90,6 +90,30 @@ class ClientOwner(Protocol):
     async_client: Union[AsyncHttpClient, None]
 
 
+def close_owned_async_client_sync(
+    async_client: Union[AsyncHttpClient, None],
+    async_client_supplied: bool,
+) -> None:
+    """
+    Close an SDK-owned async HTTP client from synchronous code (no asyncio loop).
+
+    When a running event loop exists, schedules ``aclose`` on that loop; otherwise
+    runs ``asyncio.run(aclose())``. Swallows ``RuntimeError`` as a last resort so
+    cleanup never masks the caller's exception (e.g. from a ``with`` block).
+    """
+    if async_client is None or async_client_supplied:
+        return
+    try:
+        loop = asyncio.get_running_loop()
+        asyncio.run_coroutine_threadsafe(async_client.aclose(), loop)
+    except RuntimeError:
+        try:
+            asyncio.run(async_client.aclose())
+        except RuntimeError:
+            # best effort
+            pass
+
+
 def close_clients(
     owner: ClientOwner,
     sync_client: Union[HttpClient, None],
@@ -113,13 +137,4 @@ def close_clients(
         except Exception:
             pass
 
-    if async_client is not None and not async_client_supplied:
-        try:
-            loop = asyncio.get_running_loop()
-            asyncio.run_coroutine_threadsafe(async_client.aclose(), loop)
-        except RuntimeError:
-            try:
-                asyncio.run(async_client.aclose())
-            except RuntimeError:
-                # best effort
-                pass
+    close_owned_async_client_sync(async_client, async_client_supplied)
