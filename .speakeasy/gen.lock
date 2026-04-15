@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 0c8d1667-2710-4860-aee3-7d221dbc0a60
 management:
-  docChecksum: 546f0c9dad421fd123c520d4832ba7c3
+  docChecksum: e1abd6ed27a822f95bd62e87d1822378
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.3
-  generationVersion: 2.879.11
-  releaseVersion: 1.0.5
-  configChecksum: e9a2c0fb0ed9fd53f72395a69efca85b
+  speakeasyVersion: 1.761.5
+  generationVersion: 2.879.13
+  releaseVersion: 1.1.0
+  configChecksum: ec9224c6dedf1d0681b17baadf0f4da5
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
 persistentEdits:
-  generation_id: 5687a31f-c4a6-43bc-821e-7d0549c01bd3
-  pristine_commit_hash: ae9064d3e0a4948c82dfa40000672876756a17e4
-  pristine_tree_hash: aa37c99639d69b387d753568a0db55af25213566
+  generation_id: f82907b2-cde9-4901-a100-0edcabc73aa3
+  pristine_commit_hash: 0683b589f003b84c6d379ca85f6f363d00ee6092
+  pristine_tree_hash: 584286208da4a33c5757b4d7f83f14a10e17d7bf
 features:
   python:
     additionalDependencies: 1.0.0
@@ -38,6 +38,7 @@ features:
     nameOverrides: 3.0.3
     nullables: 1.0.2
     openEnums: 1.0.4
+    operationTimeout: 0.3.1
     pagination: 3.0.9
     responseFormat: 1.1.0
     retries: 3.0.4
@@ -4136,8 +4137,8 @@ trackedFiles:
     pristine_git_object: f456032107a9387ba6c98afd1c981df2f4b3d636
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:674bdae20ee16dc0d286a9836e91f85c23fe6ab4
-    pristine_git_object: 8decd88f00cda2f4af69fd878262b3df783019c3
+    last_write_checksum: sha1:4e1b8c7de85ee4cb7fda50b19edcb421cc448d61
+    pristine_git_object: 8204722e189e6c1ba7f0dee5690c1b9916fc0793
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:b6ad6f0515a952d7cb052befddb6a117d4f627d8
@@ -4164,24 +4165,24 @@ trackedFiles:
     pristine_git_object: e589e541e5fc70d336de44780721f301d754ed72
   src/kombo/_version.py:
     id: 45cf440ad1df
-    last_write_checksum: sha1:5f86f381a927babce91362390154270274ea9d94
-    pristine_git_object: 92222b268707d6526777ddb6f4e8b55297baa4ba
+    last_write_checksum: sha1:7c43fed088f543549567de72ee6002979b60f4e6
+    pristine_git_object: 38d8b4340e18728398f69fd1dea739734d9bb1c9
   src/kombo/assessment.py:
     id: aec6e8a7589f
     last_write_checksum: sha1:7c35ac0cf46963c280797dc917d0e6a0afc7434c
     pristine_git_object: 623090d7486e2f9297e8e1851886ab7e8b8230f2
   src/kombo/ats.py:
     id: a9839762f5c3
-    last_write_checksum: sha1:64aa3ef7a2e38f2423fa594abca7c42d08c64f5b
-    pristine_git_object: 7d1b8db895268e37c4429262936c330bb152dba7
+    last_write_checksum: sha1:1281e4271281e1766cb3f46461e5088ca6bda230
+    pristine_git_object: 284b4ba426acf030f25cf377cba68cb1b865271f
   src/kombo/basesdk.py:
     id: 8f30a0bd36ff
     last_write_checksum: sha1:b898883000e9cc362628e995d289cf09cfb7a640
     pristine_git_object: a745e5c7b7140d78b0cea6edc69ac0f045dfafc4
   src/kombo/connect.py:
     id: 057799091fa5
-    last_write_checksum: sha1:4eef80e104823cfaf4160fc76f529b4cc6a33c12
-    pristine_git_object: 2872f7b9bdcc88ca6f0256d61bfbb9f064feec51
+    last_write_checksum: sha1:8744b72d30c8471794579f9c778cf8fd430323de
+    pristine_git_object: 7985f693c9e0dc50b0e0faca3c7e848200cde35d
   src/kombo/errors/__init__.py:
     id: bba7abca7635
     last_write_checksum: sha1:e86275cda1b1c87ef6f05fc40834739f333488a2
@@ -4216,12 +4217,12 @@ trackedFiles:
     pristine_git_object: 16ac2977e80b6eabe4020aa8a21dd28e83032f9a
   src/kombo/general.py:
     id: 107ecb9f3651
-    last_write_checksum: sha1:3d6e1d1a75bb76b8b464668e97c36b921928f9f8
-    pristine_git_object: bfdbcbb026f4aab61766acaead2d2c14bdbeae89
+    last_write_checksum: sha1:d9d56b38f0949e284db700462ccd13d680494e19
+    pristine_git_object: c20e0f7b98346719f93f5b5233caf3fb59cee58a
   src/kombo/hris.py:
     id: 9ba1b37ab10a
-    last_write_checksum: sha1:40e5c9e60a1f19918121a1dc4ec2fac0bedbe098
-    pristine_git_object: a1def7f674cc211fe2c8c252feb186911dd5fd28
+    last_write_checksum: sha1:1e75b623534d17e59918e341df6af44fe1654cbe
+    pristine_git_object: 4c095936a7ce5c31928308e712bfd94346697c0c
   src/kombo/httpclient.py:
     id: 4e74c7821304
     last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
@@ -7576,7 +7577,6 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": null, "title": null, "message": "The message is always in the response.", "log_url": null}}
 examplesVersion: 1.0.2
-releaseNotes: "## Python SDK Changes:\n* `kombo.assessment.get_assessment_orders()`:  `response.data.results[].job.hiring_team[].hiring_team_roles[]` **Changed** (Breaking ⚠️)\n* `kombo.connect.create_connection_link()`: \n  *  `request.integration_tool.enum(mercury)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json
