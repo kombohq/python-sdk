@@ -313,6 +313,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Teamtailor|`teamtailor/v1`|We use `https://api.teamtailor.com/v1` as the base URL. Find the official docs [here](https://docs.teamtailor.com/).|
 |TRAFFIT|`traffit/v2`|Traffit's [v2 API](https://api.traffit.com). We authenticate all requests with the Traffit API key and use the base URL `https://yourdomain.traffit.com/api/integration/v2`.|
 |TriNet PEO|`trinetpeo/v1`|We use `https://api.trinet.com` as the base URL. Find the official docs [here](https://developers.trinet.com).|
+|Ubeeo|`ubeeo/api`|Ubeeo ATS API. We automatically authenticate all requests using OAuth client credentials and use `https://api.ats-platform.com` as the base URL (sandbox: `https://api.acc.ats-platform.com`).|
 |Udemy Business|`udemy/learning`|Udemy Business REST API. We automatically handle authentication and use `https://\{account_name\}.udemy.com/api-2.0/organizations/\{account_id\}/` as the base URL.|
 |UKG Pro|`ukgpro/default`|[UKG Pro's HRIS API](https://developer.ukg.com/hcm/reference/get_personnel-v1-person-details). We automatically authenticate all requests and use  `https://\{hostname\}` as the base URL.|
 |UKG Pro|`ukgpro/recruting`|[UKG Pro's Recruiting API](https://developer.ukg.com/hcm/reference/retrieveapplications). We automatically authenticate all requests and use  `https://\{hostname\}/talent/recruiting/v2/\{tenantalias\}/api` as the base URL.|
