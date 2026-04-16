@@ -52,9 +52,12 @@ class GetAssessmentOrdersRequestTypedDict(TypedDict):
     ids: NotRequired[List[str]]
     r"""Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`."""
     statuses: NotRequired[List[str]]
-    r"""Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`."""
+    r"""Filter by a comma-separated list of `OPEN`, `COMPLETED`, `CANCELLED`, `REJECTED`.
+
+    Leave this blank to get results matching all values.
+    """
     created_after: NotRequired[datetime]
-    r"""Filter orders by their creation date. Only orders created on or after this date will be returned."""
+    r"""Filter orders by their creation date-timestamp in the format: `YYYY-MM-DDTHH:mm:ss.sssZ`. Only orders created on or after this date-timestamp will be returned."""
 
 
 class GetAssessmentOrdersRequest(BaseModel):
@@ -80,13 +83,16 @@ class GetAssessmentOrdersRequest(BaseModel):
         Optional[List[str]],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`."""
+    r"""Filter by a comma-separated list of `OPEN`, `COMPLETED`, `CANCELLED`, `REJECTED`.
+
+    Leave this blank to get results matching all values.
+    """
 
     created_after: Annotated[
         Optional[datetime],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
-    r"""Filter orders by their creation date. Only orders created on or after this date will be returned."""
+    r"""Filter orders by their creation date-timestamp in the format: `YYYY-MM-DDTHH:mm:ss.sssZ`. Only orders created on or after this date-timestamp will be returned."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

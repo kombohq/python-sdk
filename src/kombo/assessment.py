@@ -447,8 +447,10 @@ class Assessment(BaseSDK):
         :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
         :param page_size: The number of results to return per page. Maximum is 250.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
-        :param statuses: Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`.
-        :param created_after: Filter orders by their creation date. Only orders created on or after this date will be returned.
+        :param statuses: Filter by a comma-separated list of `OPEN`, `COMPLETED`, `CANCELLED`, `REJECTED`.
+
+            Leave this blank to get results matching all values.
+        :param created_after: Filter orders by their creation date-timestamp in the format: `YYYY-MM-DDTHH:mm:ss.sssZ`. Only orders created on or after this date-timestamp will be returned.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -571,8 +573,10 @@ class Assessment(BaseSDK):
         :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
         :param page_size: The number of results to return per page. Maximum is 250.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
-        :param statuses: Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`.
-        :param created_after: Filter orders by their creation date. Only orders created on or after this date will be returned.
+        :param statuses: Filter by a comma-separated list of `OPEN`, `COMPLETED`, `CANCELLED`, `REJECTED`.
+
+            Leave this blank to get results matching all values.
+        :param created_after: Filter orders by their creation date-timestamp in the format: `YYYY-MM-DDTHH:mm:ss.sssZ`. Only orders created on or after this date-timestamp will be returned.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
