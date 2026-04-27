@@ -80,6 +80,7 @@ value: IntegrationTool = "workday"
 - `"recruitcrm"`
 - `"jazzhr"`
 - `"bite"`
+- `"brassring"`
 - `"homerun"`
 - `"mysolution"`
 - `"carerix"`
@@ -116,6 +117,7 @@ value: IntegrationTool = "workday"
 - `"guidecom"`
 - `"spott"`
 - `"loxo"`
+- `"kula"`
 - `"workdaycustomreport"`
 - `"workdaycustomreportsftp"`
 - `"payfitcustomer"`
