@@ -1939,6 +1939,22 @@ if TYPE_CHECKING:
         PostIntegrationsIntegrationIDRelinkRequestBodyLinkType,
         PostIntegrationsIntegrationIDRelinkRequestBodyTypedDict,
     )
+    from .postintegrationsintegrationidsetuplinkop import (
+        PostIntegrationsIntegrationIDSetupLinkRequest,
+        PostIntegrationsIntegrationIDSetupLinkRequestTypedDict,
+    )
+    from .postintegrationsintegrationidsetuplinkpositiveresponse import (
+        PostIntegrationsIntegrationIDSetupLinkPositiveResponse,
+        PostIntegrationsIntegrationIDSetupLinkPositiveResponseData,
+        PostIntegrationsIntegrationIDSetupLinkPositiveResponseDataTypedDict,
+        PostIntegrationsIntegrationIDSetupLinkPositiveResponseTypedDict,
+    )
+    from .postintegrationsintegrationidsetuplinkrequestbody import (
+        PostIntegrationsIntegrationIDSetupLinkRequestBody,
+        PostIntegrationsIntegrationIDSetupLinkRequestBodyLanguage,
+        PostIntegrationsIntegrationIDSetupLinkRequestBodyLinkType,
+        PostIntegrationsIntegrationIDSetupLinkRequestBodyTypedDict,
+    )
     from .postpassthroughtoolapiop import (
         PostPassthroughToolAPIGlobals,
         PostPassthroughToolAPIGlobalsTypedDict,
@@ -3738,6 +3754,16 @@ __all__ = [
     "PostIntegrationsIntegrationIDRelinkRequestBodyLinkType",
     "PostIntegrationsIntegrationIDRelinkRequestBodyTypedDict",
     "PostIntegrationsIntegrationIDRelinkRequestTypedDict",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponse",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponseData",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponseDataTypedDict",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponseTypedDict",
+    "PostIntegrationsIntegrationIDSetupLinkRequest",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBody",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBodyLanguage",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBodyLinkType",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBodyTypedDict",
+    "PostIntegrationsIntegrationIDSetupLinkRequestTypedDict",
     "PostPassthroughToolAPIGlobals",
     "PostPassthroughToolAPIGlobalsTypedDict",
     "PostPassthroughToolAPIPositiveResponse",
@@ -5633,6 +5659,16 @@ _dynamic_imports: dict[str, str] = {
     "PostIntegrationsIntegrationIDRelinkRequestBodyLanguage": ".postintegrationsintegrationidrelinkrequestbody",
     "PostIntegrationsIntegrationIDRelinkRequestBodyLinkType": ".postintegrationsintegrationidrelinkrequestbody",
     "PostIntegrationsIntegrationIDRelinkRequestBodyTypedDict": ".postintegrationsintegrationidrelinkrequestbody",
+    "PostIntegrationsIntegrationIDSetupLinkRequest": ".postintegrationsintegrationidsetuplinkop",
+    "PostIntegrationsIntegrationIDSetupLinkRequestTypedDict": ".postintegrationsintegrationidsetuplinkop",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponse": ".postintegrationsintegrationidsetuplinkpositiveresponse",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponseData": ".postintegrationsintegrationidsetuplinkpositiveresponse",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponseDataTypedDict": ".postintegrationsintegrationidsetuplinkpositiveresponse",
+    "PostIntegrationsIntegrationIDSetupLinkPositiveResponseTypedDict": ".postintegrationsintegrationidsetuplinkpositiveresponse",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBody": ".postintegrationsintegrationidsetuplinkrequestbody",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBodyLanguage": ".postintegrationsintegrationidsetuplinkrequestbody",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBodyLinkType": ".postintegrationsintegrationidsetuplinkrequestbody",
+    "PostIntegrationsIntegrationIDSetupLinkRequestBodyTypedDict": ".postintegrationsintegrationidsetuplinkrequestbody",
     "PostPassthroughToolAPIGlobals": ".postpassthroughtoolapiop",
     "PostPassthroughToolAPIGlobalsTypedDict": ".postpassthroughtoolapiop",
     "PostPassthroughToolAPIRequest": ".postpassthroughtoolapiop",

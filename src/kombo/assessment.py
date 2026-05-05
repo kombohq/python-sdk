@@ -86,7 +86,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -176,7 +176,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -294,7 +294,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -412,7 +412,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -511,7 +511,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -637,7 +637,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -857,7 +857,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1048,7 +1048,7 @@ class Assessment(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 

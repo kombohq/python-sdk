@@ -7,10 +7,23 @@ from typing_extensions import TypeAliasType
 
 Schema4TypedDict = TypeAliasType(
     "Schema4TypedDict",
-    Union[str, float, bool, Dict[str, "Schema4TypedDict"], List["Schema4TypedDict"]],
+    Union[
+        str,
+        float,
+        bool,
+        Dict[str, "Schema4TypedDict"],  # pyright: ignore[reportInvalidTypeForm]
+        List["Schema4TypedDict"],  # pyright: ignore[reportInvalidTypeForm]
+    ],
 )
 
 
 Schema4 = TypeAliasType(
-    "Schema4", Union[str, float, bool, Dict[str, "Schema4"], List["Schema4"]]
+    "Schema4",
+    Union[
+        str,
+        float,
+        bool,
+        Dict[str, "Schema4"],  # pyright: ignore[reportInvalidTypeForm]
+        List["Schema4"],  # pyright: ignore[reportInvalidTypeForm]
+    ],
 )
