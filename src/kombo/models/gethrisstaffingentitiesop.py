@@ -58,13 +58,13 @@ class GetHrisStaffingEntitiesRequestTypedDict(TypedDict):
 
     For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-    | Path | Relationship | Target Record |
+    | Path | Added/Removed | Linked Record |
     | --- | --- | --- |
     | `locations` | ✓ Yes | ✓ Yes |
     | `legal_entities` | ✓ Yes | ✓ Yes |
     | `groups` | ✓ Yes | ✓ Yes |
 
-    _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+    _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
     """
     include_deleted: NotRequired[bool]
     r"""By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too."""
@@ -111,13 +111,13 @@ class GetHrisStaffingEntitiesRequest(BaseModel):
 
     For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-    | Path | Relationship | Target Record |
+    | Path | Added/Removed | Linked Record |
     | --- | --- | --- |
     | `locations` | ✓ Yes | ✓ Yes |
     | `legal_entities` | ✓ Yes | ✓ Yes |
     | `groups` | ✓ Yes | ✓ Yes |
 
-    _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+    _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
     """
 
     include_deleted: Annotated[

@@ -41,6 +41,7 @@ value: IntegrationTool = "workday"
 - `"rexx"`
 - `"afas"`
 - `"bamboohr"`
+- `"bullhorn4salesforce"`
 - `"bullhorn"`
 - `"bullhornlogin"`
 - `"workable"`
@@ -80,6 +81,7 @@ value: IntegrationTool = "workday"
 - `"recruitcrm"`
 - `"jazzhr"`
 - `"bite"`
+- `"brassring"`
 - `"homerun"`
 - `"mysolution"`
 - `"carerix"`
@@ -115,9 +117,12 @@ value: IntegrationTool = "workday"
 - `"sandbox"`
 - `"guidecom"`
 - `"spott"`
+- `"logicmelon"`
 - `"loxo"`
+- `"kula"`
 - `"workdaycustomreport"`
 - `"workdaycustomreportsftp"`
+- `"ukgprowfm"`
 - `"payfitcustomer"`
 - `"payfitpartner"`
 - `"payfit"`

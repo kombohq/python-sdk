@@ -70,7 +70,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -147,7 +147,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -242,7 +242,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -337,7 +337,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -407,6 +407,7 @@ class General(BaseSDK):
         |BITE|`bite/v1`|[Bite's v1 API](https://api.b-ite.io/docs/#/). We automatically authenticate all requests and use 'https://api.b-ite.io/v1' as base URL.|
         |BoondManager|`boondmanager/api`|BoondManager [REST API](https://ui.boondmanager.com/administrator/developer/apisandbox). We automatically authenticate all requests and use `https://ui.boondmanager.com/api` as the base URL.|
         |Breezy HR|`breezyhr/v3`|[BreezyHR's v3 API](https://developer.breezy.hr/reference/overview). We automatically authenticate all requests and use \"https://api.breezy.hr/v3/\" as the base URL.|
+        |Bullhorn for Salesforce|`bullhorn4salesforce/v66`|We use `https://\{subdomain\}.my.salesforce.com/services/data/v66.0` as the base URL. Find the official docs [here](https://kb.bullhorn.com/bh4sf/Content/BH4SF/Topics/bh4sfRestAPI.htm).|
         |Bullhorn|`bullhorn/default`|[Bullhorn's API](https://bullhorn.github.io/rest-api-docs/index.html). We automatically use the right `https://rest.bullhornstaffing.com/rest-services/\{corpToken\}` base URL.|
         |CareerPlug|`careerplug/api`|We use `https://api.careerplug.com` as the base URL. Find the official docs [here](https://api.careerplug.com/docs#api).|
         |Carerix|`carerix/api`|Carerix [REST API](https://docs.carerix.io/rest/introduction). We automatically authenticate all requests and use `https://api.carerix.com` as the base URL. Please note that Carerix uses XML for request and response bodies.|
@@ -453,7 +454,7 @@ class General(BaseSDK):
         |Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API v1](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
         |GuideCom|`guidecom/api`|GuideCom's API. We automatically authenticate all requests and use the configured API base URL.|
         |Gusto|`gusto/v1`|[Gusto API](https://docs.gusto.com/app-integrations/docs/introduction). We automatically authenticate all requests with OAuth and use `\{api_base_url\}/v1` as the base URL (`https://api.gusto.com/v1` in production, `https://api.gusto-demo.com/v1` in development).|
-        |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
+        |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL. Connections created against the `DEMO` remote environment are routed to `https://api.demo.haileyhr.app` instead.|
         |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
         |Haufe Umantis|`umantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
         |HeavenHR|`heavenhr/v2`|[HeavenHR API](https://api.heavenhr.com/). We automatically authenticate all requests using the provided credentials and use `https://api.heavenhr.com/api/v2` as the base URL.|
@@ -478,6 +479,7 @@ class General(BaseSDK):
         |Jobylon|`jobylon/push`|The [Jobylon Push API](https://developer.jobylon.com/push-api-and-webhooks/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/p1` as the base URL.|
         |JOIN|`join/v2`|Join's [V2 API](https://docs.join.com/reference/getting-started). We automatically authenticate all requests and use `https://api.join.com/v2` as the base URL.|
         |Kenjo|`kenjo/api`|Kenjo's [API](https://kenjo.readme.io/reference/generate-the-api-key). We automatically authenticate all requests using the API key and use `https://api.kenjo.io/` as the base URL.|
+        |Kula|`kula/v1`|Kula's [REST API](https://developers.kula.ai/docs/getting-started/overview). We automatically authenticate all requests with the provided credentials and use `https://api.kula.ai/v1` as the base URL.|
         |Lattice Talent|`latticetalent/talent`|Lattice's [Talent API](https://developers.lattice.com/reference/introduction). We automatically authenticate all requests using API key credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/passthrough`|Lattice's [API](https://developers.lattice.com/v2/docs/base-url-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/talent`|Lattice's [Talent API](https://developers.lattice.com/docs/introduction-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
@@ -486,6 +488,7 @@ class General(BaseSDK):
         |Leapsome|`leapsome/v1`|Leapsome [API](https://api.leapsome.com/v1/api-docs/). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.leapsome.com/v1` as the base URL.|
         |Lever|`lever/v1`|[Lever's v1 API](https://hire.lever.co/developer/documentation). We automatically authenticate all requests using the partner credentials which have been configured in the Lever tool settings (this uses Kombo's partner credentials by default).|
         |LinkedIn Learning|`linkedinlearning/v2`|LinkedIn Learning [API v2](https://learn.microsoft.com/en-us/linkedin/learning/). We automatically handle authentication and use `https://api.linkedin.com/v2` as the base URL.|
+        |Logic Melon|`logicmelon/json`|We use `https://api.logicmelon.co.uk` as the base URL. Find the official docs [here](https://api.logicmelon.com/JSON/Multiposter.asmx).|
         |Loket|`loket/api`|[Loket's REST API](https://developers.loket.nl/). We automatically authenticate all requests and use `https://\{api_domain\}` as the base URL, where `api_domain` is the API domain configured during integration setup (e.g. `api.loket.nl`).|
         |Loxo|`loxo/v1`|[Loxo's API](https://loxo.readme.io/reference/loxo-api). We automatically authenticate all requests and use 'https://app.loxo.co/api/\{agency_slug\}' as base URL.|
         |Lucca|`lucca/api`|[Luccas's API](https://developers.lucca.fr/api-reference/legacy/introduction). We automatically authenticate all requests and use 'https://\{account\}.\{ilucca|ilucca-demo\}.\{region\}/' as the base URL.|
@@ -557,6 +560,7 @@ class General(BaseSDK):
         |TriNet PEO|`trinetpeo/v1`|We use `https://api.trinet.com` as the base URL. Find the official docs [here](https://developers.trinet.com).|
         |Ubeeo|`ubeeo/api`|Ubeeo ATS API. We automatically authenticate all requests using OAuth client credentials and use `https://api.ats-platform.com` as the base URL (sandbox: `https://api.acc.ats-platform.com`).|
         |Udemy Business|`udemy/learning`|Udemy Business REST API. We automatically handle authentication and use `https://\{account_name\}.udemy.com/api-2.0/organizations/\{account_id\}/` as the base URL.|
+        |UKG Pro WFM|`ukgprowfm/api`|UKG Pro WFM's [API](https://developer.ukg.com/wfm/reference/welcome-to-the-ukg-pro-workforce-management-api). We automatically authenticate all requests and use `https://\{hostname\}` as the base URL.|
         |UKG Pro|`ukgpro/default`|[UKG Pro's HRIS API](https://developer.ukg.com/hcm/reference/get_personnel-v1-person-details). We automatically authenticate all requests and use  `https://\{hostname\}` as the base URL.|
         |UKG Pro|`ukgpro/recruting`|[UKG Pro's Recruiting API](https://developer.ukg.com/hcm/reference/retrieveapplications). We automatically authenticate all requests and use  `https://\{hostname\}/talent/recruiting/v2/\{tenantalias\}/api` as the base URL.|
         |UKG Ready|`ukgready/api`|UKG Ready [API](https://secure.saashr.com/ta/docs/rest/public/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}` as the base URL.|
@@ -664,7 +668,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -734,6 +738,7 @@ class General(BaseSDK):
         |BITE|`bite/v1`|[Bite's v1 API](https://api.b-ite.io/docs/#/). We automatically authenticate all requests and use 'https://api.b-ite.io/v1' as base URL.|
         |BoondManager|`boondmanager/api`|BoondManager [REST API](https://ui.boondmanager.com/administrator/developer/apisandbox). We automatically authenticate all requests and use `https://ui.boondmanager.com/api` as the base URL.|
         |Breezy HR|`breezyhr/v3`|[BreezyHR's v3 API](https://developer.breezy.hr/reference/overview). We automatically authenticate all requests and use \"https://api.breezy.hr/v3/\" as the base URL.|
+        |Bullhorn for Salesforce|`bullhorn4salesforce/v66`|We use `https://\{subdomain\}.my.salesforce.com/services/data/v66.0` as the base URL. Find the official docs [here](https://kb.bullhorn.com/bh4sf/Content/BH4SF/Topics/bh4sfRestAPI.htm).|
         |Bullhorn|`bullhorn/default`|[Bullhorn's API](https://bullhorn.github.io/rest-api-docs/index.html). We automatically use the right `https://rest.bullhornstaffing.com/rest-services/\{corpToken\}` base URL.|
         |CareerPlug|`careerplug/api`|We use `https://api.careerplug.com` as the base URL. Find the official docs [here](https://api.careerplug.com/docs#api).|
         |Carerix|`carerix/api`|Carerix [REST API](https://docs.carerix.io/rest/introduction). We automatically authenticate all requests and use `https://api.carerix.com` as the base URL. Please note that Carerix uses XML for request and response bodies.|
@@ -780,7 +785,7 @@ class General(BaseSDK):
         |Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API v1](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
         |GuideCom|`guidecom/api`|GuideCom's API. We automatically authenticate all requests and use the configured API base URL.|
         |Gusto|`gusto/v1`|[Gusto API](https://docs.gusto.com/app-integrations/docs/introduction). We automatically authenticate all requests with OAuth and use `\{api_base_url\}/v1` as the base URL (`https://api.gusto.com/v1` in production, `https://api.gusto-demo.com/v1` in development).|
-        |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
+        |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL. Connections created against the `DEMO` remote environment are routed to `https://api.demo.haileyhr.app` instead.|
         |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
         |Haufe Umantis|`umantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
         |HeavenHR|`heavenhr/v2`|[HeavenHR API](https://api.heavenhr.com/). We automatically authenticate all requests using the provided credentials and use `https://api.heavenhr.com/api/v2` as the base URL.|
@@ -805,6 +810,7 @@ class General(BaseSDK):
         |Jobylon|`jobylon/push`|The [Jobylon Push API](https://developer.jobylon.com/push-api-and-webhooks/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/p1` as the base URL.|
         |JOIN|`join/v2`|Join's [V2 API](https://docs.join.com/reference/getting-started). We automatically authenticate all requests and use `https://api.join.com/v2` as the base URL.|
         |Kenjo|`kenjo/api`|Kenjo's [API](https://kenjo.readme.io/reference/generate-the-api-key). We automatically authenticate all requests using the API key and use `https://api.kenjo.io/` as the base URL.|
+        |Kula|`kula/v1`|Kula's [REST API](https://developers.kula.ai/docs/getting-started/overview). We automatically authenticate all requests with the provided credentials and use `https://api.kula.ai/v1` as the base URL.|
         |Lattice Talent|`latticetalent/talent`|Lattice's [Talent API](https://developers.lattice.com/reference/introduction). We automatically authenticate all requests using API key credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/passthrough`|Lattice's [API](https://developers.lattice.com/v2/docs/base-url-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
         |Lattice|`lattice/talent`|Lattice's [Talent API](https://developers.lattice.com/docs/introduction-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
@@ -813,6 +819,7 @@ class General(BaseSDK):
         |Leapsome|`leapsome/v1`|Leapsome [API](https://api.leapsome.com/v1/api-docs/). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.leapsome.com/v1` as the base URL.|
         |Lever|`lever/v1`|[Lever's v1 API](https://hire.lever.co/developer/documentation). We automatically authenticate all requests using the partner credentials which have been configured in the Lever tool settings (this uses Kombo's partner credentials by default).|
         |LinkedIn Learning|`linkedinlearning/v2`|LinkedIn Learning [API v2](https://learn.microsoft.com/en-us/linkedin/learning/). We automatically handle authentication and use `https://api.linkedin.com/v2` as the base URL.|
+        |Logic Melon|`logicmelon/json`|We use `https://api.logicmelon.co.uk` as the base URL. Find the official docs [here](https://api.logicmelon.com/JSON/Multiposter.asmx).|
         |Loket|`loket/api`|[Loket's REST API](https://developers.loket.nl/). We automatically authenticate all requests and use `https://\{api_domain\}` as the base URL, where `api_domain` is the API domain configured during integration setup (e.g. `api.loket.nl`).|
         |Loxo|`loxo/v1`|[Loxo's API](https://loxo.readme.io/reference/loxo-api). We automatically authenticate all requests and use 'https://app.loxo.co/api/\{agency_slug\}' as base URL.|
         |Lucca|`lucca/api`|[Luccas's API](https://developers.lucca.fr/api-reference/legacy/introduction). We automatically authenticate all requests and use 'https://\{account\}.\{ilucca|ilucca-demo\}.\{region\}/' as the base URL.|
@@ -884,6 +891,7 @@ class General(BaseSDK):
         |TriNet PEO|`trinetpeo/v1`|We use `https://api.trinet.com` as the base URL. Find the official docs [here](https://developers.trinet.com).|
         |Ubeeo|`ubeeo/api`|Ubeeo ATS API. We automatically authenticate all requests using OAuth client credentials and use `https://api.ats-platform.com` as the base URL (sandbox: `https://api.acc.ats-platform.com`).|
         |Udemy Business|`udemy/learning`|Udemy Business REST API. We automatically handle authentication and use `https://\{account_name\}.udemy.com/api-2.0/organizations/\{account_id\}/` as the base URL.|
+        |UKG Pro WFM|`ukgprowfm/api`|UKG Pro WFM's [API](https://developer.ukg.com/wfm/reference/welcome-to-the-ukg-pro-workforce-management-api). We automatically authenticate all requests and use `https://\{hostname\}` as the base URL.|
         |UKG Pro|`ukgpro/default`|[UKG Pro's HRIS API](https://developer.ukg.com/hcm/reference/get_personnel-v1-person-details). We automatically authenticate all requests and use  `https://\{hostname\}` as the base URL.|
         |UKG Pro|`ukgpro/recruting`|[UKG Pro's Recruiting API](https://developer.ukg.com/hcm/reference/retrieveapplications). We automatically authenticate all requests and use  `https://\{hostname\}/talent/recruiting/v2/\{tenantalias\}/api` as the base URL.|
         |UKG Ready|`ukgready/api`|UKG Ready [API](https://secure.saashr.com/ta/docs/rest/public/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}` as the base URL.|
@@ -991,7 +999,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1091,7 +1099,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1191,7 +1199,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1275,7 +1283,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1359,7 +1367,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1459,7 +1467,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1559,7 +1567,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1684,7 +1692,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1809,7 +1817,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1817,6 +1825,218 @@ class General(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(
                 models.PostIntegrationsIntegrationIDRelinkPositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.KomboGeneralErrorData, http_res
+            )
+            raise errors.KomboGeneralError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    def create_setup_link(
+        self,
+        *,
+        integration_id: str,
+        link_type: models.PostIntegrationsIntegrationIDSetupLinkRequestBodyLinkType,
+        language: OptionalNullable[
+            models.PostIntegrationsIntegrationIDSetupLinkRequestBodyLanguage
+        ] = "en",
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.PostIntegrationsIntegrationIDSetupLinkPositiveResponse:
+        r"""Create Setup Flow link
+
+        Create a link that lets your customer run the [Setup Flow](/hris/features/setup-flow/introduction) for an integration. Use this to send customers back into setup steps like field mapping or employee filtering without having to go through the initial connection flow again. Pass the returned URL to `showKomboConnect` from the Kombo Connect SDK, the same way you do with a connection link.
+
+        The integration must have at least one Setup Flow step enabled (e.g. field mapping or employee filtering); otherwise this endpoint returns a `PLATFORM.INPUT_INVALID` error. Steps can be enabled from the Integration Settings tab in the dashboard or via the [Create Connection Link endpoint](./post-connect-create-link).
+
+        :param integration_id: POST /integrations/:integration_id/setup-link Parameter
+        :param link_type: The type of link you want to create. `EMBEDDED` is for the [embedded flow](../guides/connect/embedded-flow) using the Kombo Connect SDK (these links are valid for 1 hour) and `MAGIC_LINK` is for [magic links](../guides/connect/magic-links) which you send out manually to customers (these are valid for 1 year).
+        :param language: Language of the setup flow UI.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if timeout_ms is None:
+            timeout_ms = 300000
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PostIntegrationsIntegrationIDSetupLinkRequest(
+            integration_id=integration_id,
+            body=models.PostIntegrationsIntegrationIDSetupLinkRequestBody(
+                language=language,
+                link_type=link_type,
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/integrations/{integration_id}/setup-link",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.PostIntegrationsIntegrationIDSetupLinkRequestBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="PostIntegrationsIntegrationIdSetupLink",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.PostIntegrationsIntegrationIDSetupLinkPositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(
+                errors.KomboGeneralErrorData, http_res
+            )
+            raise errors.KomboGeneralError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    async def create_setup_link_async(
+        self,
+        *,
+        integration_id: str,
+        link_type: models.PostIntegrationsIntegrationIDSetupLinkRequestBodyLinkType,
+        language: OptionalNullable[
+            models.PostIntegrationsIntegrationIDSetupLinkRequestBodyLanguage
+        ] = "en",
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.PostIntegrationsIntegrationIDSetupLinkPositiveResponse:
+        r"""Create Setup Flow link
+
+        Create a link that lets your customer run the [Setup Flow](/hris/features/setup-flow/introduction) for an integration. Use this to send customers back into setup steps like field mapping or employee filtering without having to go through the initial connection flow again. Pass the returned URL to `showKomboConnect` from the Kombo Connect SDK, the same way you do with a connection link.
+
+        The integration must have at least one Setup Flow step enabled (e.g. field mapping or employee filtering); otherwise this endpoint returns a `PLATFORM.INPUT_INVALID` error. Steps can be enabled from the Integration Settings tab in the dashboard or via the [Create Connection Link endpoint](./post-connect-create-link).
+
+        :param integration_id: POST /integrations/:integration_id/setup-link Parameter
+        :param link_type: The type of link you want to create. `EMBEDDED` is for the [embedded flow](../guides/connect/embedded-flow) using the Kombo Connect SDK (these links are valid for 1 hour) and `MAGIC_LINK` is for [magic links](../guides/connect/magic-links) which you send out manually to customers (these are valid for 1 year).
+        :param language: Language of the setup flow UI.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if timeout_ms is None:
+            timeout_ms = 300000
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PostIntegrationsIntegrationIDSetupLinkRequest(
+            integration_id=integration_id,
+            body=models.PostIntegrationsIntegrationIDSetupLinkRequestBody(
+                language=language,
+                link_type=link_type,
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/integrations/{integration_id}/setup-link",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.PostIntegrationsIntegrationIDSetupLinkRequestBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="PostIntegrationsIntegrationIdSetupLink",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.PostIntegrationsIntegrationIDSetupLinkPositiveResponse, http_res
             )
         if utils.match_response(http_res, "default", "application/json"):
             response_data = unmarshal_json_response(
@@ -1900,7 +2120,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2019,7 +2239,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2151,7 +2371,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2251,7 +2471,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2343,7 +2563,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2462,7 +2682,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2592,7 +2812,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2692,7 +2912,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2778,7 +2998,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2863,7 +3083,7 @@ class General(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
