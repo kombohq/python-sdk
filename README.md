@@ -217,6 +217,7 @@ with SDK(
 * [get_integration_details](docs/sdks/general/README.md#get_integration_details) - Get integration details
 * [set_integration_enabled](docs/sdks/general/README.md#set_integration_enabled) - Set integration enabled
 * [create_reconnection_link](docs/sdks/general/README.md#create_reconnection_link) - Create reconnection link
+* [create_setup_link](docs/sdks/general/README.md#create_setup_link) - Create Setup Flow link
 * [get_integration_fields](docs/sdks/general/README.md#get_integration_fields) - Get integration fields
 * [update_integration_field](docs/sdks/general/README.md#update_integration_field) - Updates an integration fields passthrough setting
 * [get_custom_fields](docs/sdks/general/README.md#get_custom_fields) - Get custom fields with current mappings
@@ -333,9 +334,9 @@ with Kombo(
 
 
 **Inherit from [`SDKError`](./src/kombo/errors/sdkerror.py)**:
-* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 28 of 60 methods.*
-* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 60 methods.*
-* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 14 of 60 methods.*
+* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 28 of 61 methods.*
+* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 61 methods.*
+* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 15 of 61 methods.*
 * [`ResponseValidationError`](./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>

@@ -51,7 +51,7 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `employments` | ✓ Yes | ✓ Yes |
             | `time_off_balances` | ✓ Yes | ✓ Yes |
@@ -60,7 +60,7 @@ class Hris(BaseSDK):
             | `legal_entity` | n/a | ✓ Yes |
             | `work_location` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -148,7 +148,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -239,7 +239,7 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `employments` | ✓ Yes | ✓ Yes |
             | `time_off_balances` | ✓ Yes | ✓ Yes |
@@ -248,7 +248,7 @@ class Hris(BaseSDK):
             | `legal_entity` | n/a | ✓ Yes |
             | `work_location` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -336,7 +336,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -540,7 +540,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -705,7 +705,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -821,7 +821,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -937,7 +937,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1057,7 +1057,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1177,7 +1177,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1288,7 +1288,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1428,7 +1428,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1581,7 +1581,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1731,7 +1731,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -1876,7 +1876,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2016,7 +2016,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2162,7 +2162,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2306,7 +2306,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2450,7 +2450,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2590,7 +2590,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2669,11 +2669,11 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `type` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -2742,7 +2742,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2819,11 +2819,11 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `type` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -2892,7 +2892,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -2975,11 +2975,11 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `type` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -3054,7 +3054,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -3137,11 +3137,11 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `type` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -3216,7 +3216,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -3408,7 +3408,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -3564,7 +3564,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -3681,7 +3681,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -3798,7 +3798,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -3912,7 +3912,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -4056,7 +4056,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -4221,7 +4221,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -4387,7 +4387,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -4537,7 +4537,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -4679,7 +4679,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -4764,13 +4764,13 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `review_cycle` | n/a | ✓ Yes |
             | `reviewee` | n/a | ✓ Yes |
             | `reviewer` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -4845,7 +4845,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -4928,13 +4928,13 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `review_cycle` | n/a | ✓ Yes |
             | `reviewee` | n/a | ✓ Yes |
             | `reviewer` | n/a | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -5009,7 +5009,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -5104,13 +5104,13 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `locations` | ✓ Yes | ✓ Yes |
             | `legal_entities` | ✓ Yes | ✓ Yes |
             | `groups` | ✓ Yes | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -5185,7 +5185,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
@@ -5274,13 +5274,13 @@ class Hris(BaseSDK):
 
             For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
 
-            | Path | Relationship | Target Record |
+            | Path | Added/Removed | Linked Record |
             | --- | --- | --- |
             | `locations` | ✓ Yes | ✓ Yes |
             | `legal_entities` | ✓ Yes | ✓ Yes |
             | `groups` | ✓ Yes | ✓ Yes |
 
-            _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
         :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
         :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
@@ -5355,7 +5355,7 @@ class Hris(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["default"],
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
             retry_config=retry_config,
         )
 
