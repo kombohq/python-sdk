@@ -1,0 +1,10 @@
+# PostAtsApplicationsApplicationIDNotesRequestBodyGreenhousev3
+
+Greenhouse V3 specific remote fields for the note.
+
+
+## Fields
+
+| Field                                                                                                                                                  | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `visibility`                                                                                                                                           | [Optional[models.PostAtsApplicationsApplicationIDNotesRequestBodyVisibility]](../models/postatsapplicationsapplicationidnotesrequestbodyvisibility.md) | :heavy_minus_sign:                                                                                                                                     | Visibility of the created note.                                                                                                                        |

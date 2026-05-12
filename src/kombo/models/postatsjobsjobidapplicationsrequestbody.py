@@ -705,6 +705,41 @@ class PostAtsJobsJobIDApplicationsRequestBodyGreenhouse(BaseModel):
         return m
 
 
+class PostAtsJobsJobIDApplicationsRequestBodyGreenhousev3TypedDict(TypedDict):
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
+
+    candidate: NotRequired[Dict[str, Any]]
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/candidates` request body."""
+    application: NotRequired[Dict[str, Any]]
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/applications` request body."""
+
+
+class PostAtsJobsJobIDApplicationsRequestBodyGreenhousev3(BaseModel):
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
+
+    candidate: Optional[Dict[str, Any]] = None
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/candidates` request body."""
+
+    application: Optional[Dict[str, Any]] = None
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/applications` request body."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate", "application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsJobsJobIDApplicationsRequestBodyLeverTypedDict(TypedDict):
     r"""Fields specific to Lever."""
 
@@ -2292,6 +2327,10 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFieldsTypedDict(TypedDict):
     teamtailor: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyTeamtailorTypedDict]
     greenhouse: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyGreenhouseTypedDict]
     r"""Fields specific to Greenhouse."""
+    greenhousev3: NotRequired[
+        PostAtsJobsJobIDApplicationsRequestBodyGreenhousev3TypedDict
+    ]
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
     lever: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyLeverTypedDict]
     r"""Fields specific to Lever."""
     workable: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyWorkableTypedDict]
@@ -2354,6 +2393,9 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
 
     greenhouse: Optional[PostAtsJobsJobIDApplicationsRequestBodyGreenhouse] = None
     r"""Fields specific to Greenhouse."""
+
+    greenhousev3: Optional[PostAtsJobsJobIDApplicationsRequestBodyGreenhousev3] = None
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
 
     lever: Optional[PostAtsJobsJobIDApplicationsRequestBodyLever] = None
     r"""Fields specific to Lever."""
@@ -2420,6 +2462,7 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
                 "talentsoft",
                 "teamtailor",
                 "greenhouse",
+                "greenhousev3",
                 "lever",
                 "workable",
                 "workday",

@@ -162,6 +162,28 @@ class PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID(Bas
     r"""Uses the `/applications/{id}` endpoint to retrieve the application."""
 
 
+class PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationIDTypedDict(
+    TypedDict
+):
+    application_id: str
+    id_type: Literal["application_id"]
+    r"""Uses the V3 `/v3/applications/{id}` endpoint to retrieve the application."""
+
+
+class PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID(
+    BaseModel
+):
+    application_id: str
+
+    ID_TYPE: Annotated[
+        Annotated[
+            Literal["application_id"], AfterValidator(validate_const("application_id"))
+        ],
+        pydantic.Field(alias="id_type"),
+    ] = "application_id"
+    r"""Uses the V3 `/v3/applications/{id}` endpoint to retrieve the application."""
+
+
 class PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationIDTypedDict(
     TypedDict
 ):
@@ -189,6 +211,16 @@ PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnionTypedDict = (
 
 PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion = (
     PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID
+)
+
+
+PostAtsImportTrackedApplicationPositiveResponseGreenhousev3UnionTypedDict = (
+    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationIDTypedDict
+)
+
+
+PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union = (
+    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID
 )
 
 
@@ -247,6 +279,9 @@ class ImportedIDTypedDict(TypedDict):
     greenhouse: NotRequired[
         PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnionTypedDict
     ]
+    greenhousev3: NotRequired[
+        PostAtsImportTrackedApplicationPositiveResponseGreenhousev3UnionTypedDict
+    ]
     onlyfy: NotRequired[
         PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnionTypedDict
     ]
@@ -272,6 +307,10 @@ class ImportedID(BaseModel):
         PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion
     ] = None
 
+    greenhousev3: Optional[
+        PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union
+    ] = None
+
     onlyfy: Optional[PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion] = None
 
     smartrecruiters: Optional[
@@ -286,6 +325,7 @@ class ImportedID(BaseModel):
                 "successfactors",
                 "recruitee",
                 "greenhouse",
+                "greenhousev3",
                 "onlyfy",
                 "smartrecruiters",
             ]
@@ -383,6 +423,10 @@ except NameError:
     pass
 try:
     PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID.model_rebuild()
 except NameError:
     pass
 try:

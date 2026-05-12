@@ -117,6 +117,46 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyGreenhouse(BaseModel):
         return m
 
 
+PostAtsApplicationsApplicationIDNotesRequestBodyVisibility = Literal[
+    "admin_only",
+    "private",
+    "public",
+]
+r"""Visibility of the created note."""
+
+
+class PostAtsApplicationsApplicationIDNotesRequestBodyGreenhousev3TypedDict(TypedDict):
+    r"""Greenhouse V3 specific remote fields for the note."""
+
+    visibility: NotRequired[PostAtsApplicationsApplicationIDNotesRequestBodyVisibility]
+    r"""Visibility of the created note."""
+
+
+class PostAtsApplicationsApplicationIDNotesRequestBodyGreenhousev3(BaseModel):
+    r"""Greenhouse V3 specific remote fields for the note."""
+
+    visibility: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyVisibility] = (
+        None
+    )
+    r"""Visibility of the created note."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["visibility"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsApplicationsApplicationIDNotesRequestBodyRecruiteeTypedDict(TypedDict):
     r"""Recruitee specific remote fields for the note."""
 
@@ -253,6 +293,10 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFieldsTypedDict(Type
         PostAtsApplicationsApplicationIDNotesRequestBodyGreenhouseTypedDict
     ]
     r"""Fields specific to Greenhouse."""
+    greenhousev3: NotRequired[
+        PostAtsApplicationsApplicationIDNotesRequestBodyGreenhousev3TypedDict
+    ]
+    r"""Greenhouse V3 specific remote fields for the note."""
     recruitee: NotRequired[
         PostAtsApplicationsApplicationIDNotesRequestBodyRecruiteeTypedDict
     ]
@@ -282,6 +326,11 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
     )
     r"""Fields specific to Greenhouse."""
 
+    greenhousev3: Optional[
+        PostAtsApplicationsApplicationIDNotesRequestBodyGreenhousev3
+    ] = None
+    r"""Greenhouse V3 specific remote fields for the note."""
+
     recruitee: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyRecruitee] = (
         None
     )
@@ -299,7 +348,15 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["teamtailor", "greenhouse", "recruitee", "bullhorn", "lever", "workable"]
+            [
+                "teamtailor",
+                "greenhouse",
+                "greenhousev3",
+                "recruitee",
+                "bullhorn",
+                "lever",
+                "workable",
+            ]
         )
         serialized = handler(self)
         m = {}

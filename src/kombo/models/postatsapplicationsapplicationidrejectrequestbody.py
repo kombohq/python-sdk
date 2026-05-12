@@ -4,7 +4,7 @@ from __future__ import annotations
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import Optional
+from typing import Any, Dict, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -69,6 +69,36 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyGreenhouse(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["post_headers"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostAtsApplicationsApplicationIDRejectRequestBodyGreenhousev3TypedDict(TypedDict):
+    r"""Fields specific to Greenhouse V3."""
+
+    rejection_email: NotRequired[Dict[str, Any]]
+    r"""Additional data fields passed through to the `rejection_email` field of Greenhouse V3's reject-application endpoint."""
+
+
+class PostAtsApplicationsApplicationIDRejectRequestBodyGreenhousev3(BaseModel):
+    r"""Fields specific to Greenhouse V3."""
+
+    rejection_email: Optional[Dict[str, Any]] = None
+    r"""Additional data fields passed through to the `rejection_email` field of Greenhouse V3's reject-application endpoint."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["rejection_email"])
         serialized = handler(self)
         m = {}
 
@@ -150,6 +180,10 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFieldsTypedDict(Typ
         PostAtsApplicationsApplicationIDRejectRequestBodyGreenhouseTypedDict
     ]
     r"""Fields specific to Greenhouse."""
+    greenhousev3: NotRequired[
+        PostAtsApplicationsApplicationIDRejectRequestBodyGreenhousev3TypedDict
+    ]
+    r"""Fields specific to Greenhouse V3."""
     teamtailor: NotRequired[
         PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailorTypedDict
     ]
@@ -168,6 +202,11 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFields(BaseModel):
     ] = None
     r"""Fields specific to Greenhouse."""
 
+    greenhousev3: Optional[
+        PostAtsApplicationsApplicationIDRejectRequestBodyGreenhousev3
+    ] = None
+    r"""Fields specific to Greenhouse V3."""
+
     teamtailor: Optional[
         PostAtsApplicationsApplicationIDRejectRequestBodyTeamtailor
     ] = None
@@ -178,7 +217,7 @@ class PostAtsApplicationsApplicationIDRejectRequestBodyRemoteFields(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["greenhouse", "teamtailor", "workable"])
+        optional_fields = set(["greenhouse", "greenhousev3", "teamtailor", "workable"])
         serialized = handler(self)
         m = {}
 
