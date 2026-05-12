@@ -41,7 +41,7 @@ GetAtsJobsPositiveResponseStatus = Union[
 ]
 
 
-Visibility = Union[
+GetAtsJobsPositiveResponseVisibility = Union[
     Literal[
         "PUBLIC",
         "INTERNAL",
@@ -990,7 +990,7 @@ class GetAtsJobsPositiveResponseResultTypedDict(TypedDict):
 
     In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
-    visibility: NotRequired[Nullable[Visibility]]
+    visibility: NotRequired[Nullable[GetAtsJobsPositiveResponseVisibility]]
     r"""Describes the visibility of the job:
 
     - `PUBLIC`: visible to everyone, published on a job board
@@ -1128,7 +1128,7 @@ class GetAtsJobsPositiveResponseResult(BaseModel):
     In rare cases where we can’t find a clear mapping, the original string is passed through.
     """
 
-    visibility: OptionalNullable[Visibility] = UNSET
+    visibility: OptionalNullable[GetAtsJobsPositiveResponseVisibility] = UNSET
     r"""Describes the visibility of the job:
 
     - `PUBLIC`: visible to everyone, published on a job board

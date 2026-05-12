@@ -164,6 +164,26 @@ class PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID(BaseMode
     r"""Uses the `/applications/{id}` endpoint to retrieve the application."""
 
 
+class PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationIDTypedDict(
+    TypedDict
+):
+    application_id: str
+    id_type: Literal["application_id"]
+    r"""Uses the V3 `/v3/applications/{id}` endpoint to retrieve the application."""
+
+
+class PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID(BaseModel):
+    application_id: str
+
+    ID_TYPE: Annotated[
+        Annotated[
+            Literal["application_id"], AfterValidator(validate_const("application_id"))
+        ],
+        pydantic.Field(alias="id_type"),
+    ] = "application_id"
+    r"""Uses the V3 `/v3/applications/{id}` endpoint to retrieve the application."""
+
+
 class PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationIDTypedDict(TypedDict):
     application_id: str
     id_type: Literal["application_id"]
@@ -189,6 +209,16 @@ PostAtsImportTrackedApplicationRequestBodyGreenhouseUnionTypedDict = (
 
 PostAtsImportTrackedApplicationRequestBodyGreenhouseUnion = (
     PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID
+)
+
+
+PostAtsImportTrackedApplicationRequestBodyGreenhousev3UnionTypedDict = (
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationIDTypedDict
+)
+
+
+PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union = (
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID
 )
 
 
@@ -253,6 +283,9 @@ class PostAtsImportTrackedApplicationRequestBodyTypedDict(TypedDict):
     greenhouse: NotRequired[
         PostAtsImportTrackedApplicationRequestBodyGreenhouseUnionTypedDict
     ]
+    greenhousev3: NotRequired[
+        PostAtsImportTrackedApplicationRequestBodyGreenhousev3UnionTypedDict
+    ]
     onlyfy: NotRequired[PostAtsImportTrackedApplicationRequestBodyOnlyfyUnionTypedDict]
     smartrecruiters: NotRequired[
         PostAtsImportTrackedApplicationRequestBodySmartrecruitersUnionTypedDict
@@ -279,6 +312,10 @@ class PostAtsImportTrackedApplicationRequestBody(BaseModel):
         None
     )
 
+    greenhousev3: Optional[
+        PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union
+    ] = None
+
     onlyfy: Optional[PostAtsImportTrackedApplicationRequestBodyOnlyfyUnion] = None
 
     smartrecruiters: Optional[
@@ -293,6 +330,7 @@ class PostAtsImportTrackedApplicationRequestBody(BaseModel):
                 "successfactors",
                 "recruitee",
                 "greenhouse",
+                "greenhousev3",
                 "onlyfy",
                 "smartrecruiters",
             ]
@@ -338,6 +376,10 @@ except NameError:
     pass
 try:
     PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID.model_rebuild()
 except NameError:
     pass
 try:

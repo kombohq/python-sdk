@@ -1,12 +1,12 @@
-# Visibility
+# GetAtsJobsPositiveResponseVisibility
 
 ## Example Usage
 
 ```python
-from kombo.models import Visibility
+from kombo.models import GetAtsJobsPositiveResponseVisibility
 
 # Open enum: unrecognized values are captured as UnrecognizedStr
-value: Visibility = "PUBLIC"
+value: GetAtsJobsPositiveResponseVisibility = "PUBLIC"
 ```
 
 

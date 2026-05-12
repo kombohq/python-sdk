@@ -895,6 +895,41 @@ class PostAtsCandidatesRequestBodyGreenhouse(BaseModel):
         return m
 
 
+class PostAtsCandidatesRequestBodyGreenhousev3TypedDict(TypedDict):
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
+
+    candidate: NotRequired[Dict[str, Any]]
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/candidates` request body."""
+    application: NotRequired[Dict[str, Any]]
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/applications` request body."""
+
+
+class PostAtsCandidatesRequestBodyGreenhousev3(BaseModel):
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
+
+    candidate: Optional[Dict[str, Any]] = None
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/candidates` request body."""
+
+    application: Optional[Dict[str, Any]] = None
+    r"""Additional fields passed through to Greenhouse V3's `POST /v3/applications` request body."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate", "application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsCandidatesRequestBodyLeverTypedDict(TypedDict):
     r"""Fields specific to Lever."""
 
@@ -2437,6 +2472,8 @@ class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     teamtailor: NotRequired[PostAtsCandidatesRequestBodyTeamtailorTypedDict]
     greenhouse: NotRequired[PostAtsCandidatesRequestBodyGreenhouseTypedDict]
     r"""Fields specific to Greenhouse."""
+    greenhousev3: NotRequired[PostAtsCandidatesRequestBodyGreenhousev3TypedDict]
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
     lever: NotRequired[PostAtsCandidatesRequestBodyLeverTypedDict]
     r"""Fields specific to Lever."""
     workable: NotRequired[PostAtsCandidatesRequestBodyWorkableTypedDict]
@@ -2491,6 +2528,9 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
 
     greenhouse: Optional[PostAtsCandidatesRequestBodyGreenhouse] = None
     r"""Fields specific to Greenhouse."""
+
+    greenhousev3: Optional[PostAtsCandidatesRequestBodyGreenhousev3] = None
+    r"""Fields specific to Greenhouse V3 (OAuth-based connector)."""
 
     lever: Optional[PostAtsCandidatesRequestBodyLever] = None
     r"""Fields specific to Lever."""
@@ -2555,6 +2595,7 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
                 "talentsoft",
                 "teamtailor",
                 "greenhouse",
+                "greenhousev3",
                 "lever",
                 "workable",
                 "workday",

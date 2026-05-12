@@ -7127,6 +7127,12 @@ class Ats(BaseSDK):
                 models.PostAtsImportTrackedApplicationRequestBodyGreenhouseUnionTypedDict,
             ]
         ] = None,
+        greenhousev3: Optional[
+            Union[
+                models.PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union,
+                models.PostAtsImportTrackedApplicationRequestBodyGreenhousev3UnionTypedDict,
+            ]
+        ] = None,
         onlyfy: Optional[
             Union[
                 models.PostAtsImportTrackedApplicationRequestBodyOnlyfyUnion,
@@ -7171,6 +7177,7 @@ class Ats(BaseSDK):
         :param successfactors:
         :param recruitee:
         :param greenhouse:
+        :param greenhousev3:
         :param onlyfy:
         :param smartrecruiters:
         :param retries: Override the default retry configuration for this method
@@ -7214,6 +7221,12 @@ class Ats(BaseSDK):
                 greenhouse,
                 Optional[
                     models.PostAtsImportTrackedApplicationRequestBodyGreenhouseUnion
+                ],
+            ),
+            greenhousev3=utils.get_pydantic_model(
+                greenhousev3,
+                Optional[
+                    models.PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union
                 ],
             ),
             onlyfy=utils.get_pydantic_model(
@@ -7316,6 +7329,12 @@ class Ats(BaseSDK):
                 models.PostAtsImportTrackedApplicationRequestBodyGreenhouseUnionTypedDict,
             ]
         ] = None,
+        greenhousev3: Optional[
+            Union[
+                models.PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union,
+                models.PostAtsImportTrackedApplicationRequestBodyGreenhousev3UnionTypedDict,
+            ]
+        ] = None,
         onlyfy: Optional[
             Union[
                 models.PostAtsImportTrackedApplicationRequestBodyOnlyfyUnion,
@@ -7360,6 +7379,7 @@ class Ats(BaseSDK):
         :param successfactors:
         :param recruitee:
         :param greenhouse:
+        :param greenhousev3:
         :param onlyfy:
         :param smartrecruiters:
         :param retries: Override the default retry configuration for this method
@@ -7403,6 +7423,12 @@ class Ats(BaseSDK):
                 greenhouse,
                 Optional[
                     models.PostAtsImportTrackedApplicationRequestBodyGreenhouseUnion
+                ],
+            ),
+            greenhousev3=utils.get_pydantic_model(
+                greenhousev3,
+                Optional[
+                    models.PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union
                 ],
             ),
             onlyfy=utils.get_pydantic_model(
