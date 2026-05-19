@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 0c8d1667-2710-4860-aee3-7d221dbc0a60
 management:
-  docChecksum: 77beda072f763cbbd80a7c8b94251247
+  docChecksum: 84e8108eb3c383be025334c91ac21199
   docVersion: 1.0.0
-  speakeasyVersion: 1.762.0
-  generationVersion: 2.882.0
-  releaseVersion: 1.1.3
-  configChecksum: 11d2b72c8bb9ed9b9feb3a4ab91f2cc7
+  speakeasyVersion: 1.763.1
+  generationVersion: 2.884.4
+  releaseVersion: 1.1.4
+  configChecksum: b23d9ff9c41ed092df24702b0a3e44c8
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
 persistentEdits:
-  generation_id: 68612f19-7653-49de-a956-8dd3e6af9ca0
-  pristine_commit_hash: ab0c638a4fbd1b137477c904fc5ef1aba041834f
-  pristine_tree_hash: 420392bb1821c899e17d46665d2e39917db3c6f3
+  generation_id: dae20ebe-3de2-444d-af8c-24f51e489ede
+  pristine_commit_hash: cb7322c97f0468cd23899700356c65f12d3a5b4f
+  pristine_tree_hash: d211af89e5dbca166dc6f716f227a5ea84e08028
 features:
   python:
     additionalDependencies: 1.0.0
@@ -75,6 +75,14 @@ trackedFiles:
     id: 13c1c70d8b70
     last_write_checksum: sha1:e0c90ec9364b2baab1e00d49c1fda754c2f97f11
     pristine_git_object: 2419c02cddd3e5c8fce427a9002a37f989099f54
+  docs/models/assesscandidatedata.md:
+    id: 1c1434b54a77
+    last_write_checksum: sha1:6d5e02105835f41e8a47df7d4368779a027a9c2a
+    pristine_git_object: 6f0fd131c84bbd6aec7a4a7bc9024c60b825dfb2
+  docs/models/assesscandidatetestresultdata.md:
+    id: 811e93929402
+    last_write_checksum: sha1:2732aaca13c18a513fd0d93bca4cab261a2762ec
+    pristine_git_object: 33b45d3f265a4ced8508700a5ff4c42b3460413c
   docs/models/assessmentorderreceivedwebhookpayload.md:
     id: d92f7141ad1f
     last_write_checksum: sha1:6f4b6e95944b659c83a1f7c858b18325f9759288
@@ -115,6 +123,10 @@ trackedFiles:
     id: 833a9878b21c
     last_write_checksum: sha1:4e722fc59fd957e0b4fca1f74ca3a7651127e7ab
     pristine_git_object: 6687969b976ce7b2267300332eacd1765e9f36ce
+  docs/models/assessmentteststatusreference.md:
+    id: 69e33a64734b
+    last_write_checksum: sha1:46d14c98d897ccc777188b941827134205975371
+    pristine_git_object: 9fef8bd29af6c983601fdd48dcaa7a2c64a7e1ac
   docs/models/assets.md:
     id: 94ece5229687
     last_write_checksum: sha1:26abe2c561ab19fc1c6accc01d6ac9939054d2cb
@@ -147,6 +159,10 @@ trackedFiles:
     id: 1e8af8837c95
     last_write_checksum: sha1:d4ed7a43b316a783d4d804a26f0b6cb09403d7a0
     pristine_git_object: 53a0deb246d0a737066fde5160eec15246ca5f22
+  docs/models/candidateassessmentdata.md:
+    id: e0061a53f9b4
+    last_write_checksum: sha1:fec9d01cc8a32b3fe43b7e139cf0d35371f44cfc
+    pristine_git_object: 126e3d9fb3c7a5ee4d3173cfde05fb2839094c3d
   docs/models/changedmodel.md:
     id: 9670ed10ecd7
     last_write_checksum: sha1:9714af9d05a450e13cdc486f56f9f5711caa8b71
@@ -1233,8 +1249,8 @@ trackedFiles:
     pristine_git_object: a54e18e8ab4774d6aded8d0451eaaef53d82ed76
   docs/models/gethrisemployeesformrequest.md:
     id: f457af7347b4
-    last_write_checksum: sha1:1c8b0c84ec28a278b50b2bc513faafcf72acad4d
-    pristine_git_object: b7e261d4e9a5c34c5b55756daaed34bf40e252f7
+    last_write_checksum: sha1:9f075bd9c410bb262b2d241bc22fae10941652da
+    pristine_git_object: fc05df4ded5f948b8c33a86e0b76ba1ea66154df
   docs/models/gethrisemployeesglobals.md:
     id: d64873057e27
     last_write_checksum: sha1:e378f06ed63f9943273b5384a67ac9ea35e03635
@@ -1921,8 +1937,8 @@ trackedFiles:
     pristine_git_object: 127a25c9a96aea636226a23cb413e0625dea057f
   docs/models/kombohriserrorcode.md:
     id: 9d2d92047e17
-    last_write_checksum: sha1:53cb72e4fc8083ff03c7bfa1839b146cb48de04b
-    pristine_git_object: 119779626df97d3fabb514d4fef957beb1de9532
+    last_write_checksum: sha1:aa8307247b7fa10eed4404f92bf9ec8bc7d2aa0d
+    pristine_git_object: 59d3b9d3428d8e2c84663ec690ebb60d0f9634e3
   docs/models/kombohriserrorerror.md:
     id: d6f64101e2d2
     last_write_checksum: sha1:dfc510521590ac86059158a1c349ff52e8747567
@@ -3473,8 +3489,8 @@ trackedFiles:
     pristine_git_object: f9eb2ba14635b148189beed207494b8151e7b318
   docs/models/posthrisemployeesformrequestbody.md:
     id: 71de56df0d8c
-    last_write_checksum: sha1:a7519f752766e64232cb87172f3c3c35f4f56dbc
-    pristine_git_object: f8549d190f73bbf9936b9d822ebfbdea5d7427e4
+    last_write_checksum: sha1:c64b5471bc43f3fc1c3025eb4cbe7853a8ac8d2e
+    pristine_git_object: 04b13d578db5224b0f1757df22c37979451be8e4
   docs/models/postintegrationsintegrationidrelinkpositiveresponse.md:
     id: e2b532cb50a2
     last_write_checksum: sha1:88daba9945c5d951ab57165699898502a8832943
@@ -3629,8 +3645,8 @@ trackedFiles:
     pristine_git_object: 390541cb4ed8eb384d6bfc785c8e3eb08c8d21d6
   docs/models/putassessmentordersassessmentorderidresultrequestbodyremotefields.md:
     id: 51f8810695e9
-    last_write_checksum: sha1:d55b284a8bccf9a10578c75dbf96c24573414e08
-    pristine_git_object: 39f32cb7718874b6e463664dda47b5857df6d68b
+    last_write_checksum: sha1:5b8b33072d9845ee8547838fa824a6c2bb840a9d
+    pristine_git_object: 68b2a72e2c6ebf02c190eedd87f6af376d3164f0
   docs/models/putassessmentordersassessmentorderidresultrequestbodysmartrecruiters.md:
     id: b2889dbfc3b9
     last_write_checksum: sha1:5022128de544dd45593ca0c88d09533b1657c46c
@@ -3639,6 +3655,10 @@ trackedFiles:
     id: 5851da630cb3
     last_write_checksum: sha1:0e6d31ae034c54681201551fd3c8f8d87dca2a12
     pristine_git_object: 6712182845218e5027054480d533ed4836d9388f
+  docs/models/putassessmentordersassessmentorderidresultrequestbodyworkday.md:
+    id: dea2f94fe9d6
+    last_write_checksum: sha1:f2a05c02f6b54729e5948e669d6c429bc63cc630
+    pristine_git_object: 17f3a387cfb9badf790b8cc561971a195d6057d1
   docs/models/putassessmentpackagesglobals.md:
     id: 52f6f40ddeb0
     last_write_checksum: sha1:3ce2caaf23328f82ea4abb63237a7a8571a6f54e
@@ -4185,8 +4205,8 @@ trackedFiles:
     pristine_git_object: 9240a06113474422a1e0e66b8e43c906418b5205
   docs/sdks/hris/README.md:
     id: 0baa868a038c
-    last_write_checksum: sha1:244152900db6c3aa475b41eea67649508fdff080
-    pristine_git_object: 7fdbdd7a0df3a4236ff59bec259676bb8c6710b4
+    last_write_checksum: sha1:f7f2b3d812a1b1b4097d81977cda0a7384585325
+    pristine_git_object: 4d596ca48d08c86930a36c5dc1a170e507085fbe
   py.typed:
     id: 258c3ed47ae4
     last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
@@ -4197,8 +4217,8 @@ trackedFiles:
     pristine_git_object: f456032107a9387ba6c98afd1c981df2f4b3d636
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:6f25f1c5358d3f321a7dc5b8cf46553f96f931fc
-    pristine_git_object: 65803b5e0e2227abf1f65b1ea211dc0d180d4d58
+    last_write_checksum: sha1:146948563f9afbce85690f7ed0344ff30b5a7f0a
+    pristine_git_object: 20ac3ba7d98cd1e378bdc4800d3e65bb7612e534
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:b6ad6f0515a952d7cb052befddb6a117d4f627d8
@@ -4225,8 +4245,8 @@ trackedFiles:
     pristine_git_object: e589e541e5fc70d336de44780721f301d754ed72
   src/kombo/_version.py:
     id: 45cf440ad1df
-    last_write_checksum: sha1:c8e19a20a137abbd45741e03f79adb07029ad65b
-    pristine_git_object: 55ba83ae9a9c873e5a849988c9ce16c5067f8317
+    last_write_checksum: sha1:7bdfbd4bafc2b2013616dbc2f312d8271c11a61a
+    pristine_git_object: 82dcb41b4d00677bddab27f4789120584fe72035
   src/kombo/assessment.py:
     id: aec6e8a7589f
     last_write_checksum: sha1:8d496d8f3b781a727642d4b4f05b598a2eb73312
@@ -4281,16 +4301,16 @@ trackedFiles:
     pristine_git_object: 4a84a72ea0f090d47b0176fd0e3a1abf623f990b
   src/kombo/hris.py:
     id: 9ba1b37ab10a
-    last_write_checksum: sha1:7d099467a76303112c746f380bdf152c1e18ede3
-    pristine_git_object: 298865d759998da0a3b958aabe7544ffc76052e2
+    last_write_checksum: sha1:d1ca512354d793007457f28726e1328c33f4e07e
+    pristine_git_object: 8cd4b95a3689eaf1bb3a3b722dff73e155bd07e7
   src/kombo/httpclient.py:
     id: 4e74c7821304
     last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/kombo/models/__init__.py:
     id: 45e6e8c7f07f
-    last_write_checksum: sha1:76f02b59cfda4122d7fd70f8b84fca5ee6dbf20f
-    pristine_git_object: 003528255e2734e59a25ef1ee79255ae51da706f
+    last_write_checksum: sha1:dfd0ef20f72098a755ffbba3d6c77a471a80f6e8
+    pristine_git_object: be1fd21d250f0529d6d889f3c80d65d57aaff1ea
   src/kombo/models/assessmentorderreceivedwebhookpayload.py:
     id: 532c2db2ee93
     last_write_checksum: sha1:a89544ec063f76ec1faa875bf51141a32963ef51
@@ -4489,8 +4509,8 @@ trackedFiles:
     pristine_git_object: 3c93ef1ca2595f9fc337348e931f7c0d18e7ccac
   src/kombo/models/gethrisemployeesformop.py:
     id: 72906084d85b
-    last_write_checksum: sha1:bfe4239b190c53e93f3550eec50caa4c907d1cee
-    pristine_git_object: 9db66dbde902ca8c6e235d13004787ee19adcfcb
+    last_write_checksum: sha1:7dab9439f64da84094016ae91b48a592dc316e97
+    pristine_git_object: d77eadaabdf830e1a783d9d917b3ef816b80625a
   src/kombo/models/gethrisemployeesformpositiveresponse.py:
     id: 7f0cb7fe0d3c
     last_write_checksum: sha1:bb9b0d65070561b1bd6398442f5a98d3820e9207
@@ -4645,8 +4665,8 @@ trackedFiles:
     pristine_git_object: 165038ac7ba6bb4f14eccd053064aa88f189846f
   src/kombo/models/kombohriserror.py:
     id: 5e562dfd3678
-    last_write_checksum: sha1:41a4361d65fa1fbb65eb26ddc17020573e1b61c0
-    pristine_git_object: 34f801504c0f3c5ccf38542248b0c720614872c3
+    last_write_checksum: sha1:69ea93be16f8e1d2443fcf975e5a102d27dd1684
+    pristine_git_object: 8c0e6300a11adae05d3962d423710625504692c7
   src/kombo/models/patchintegrationsintegrationidintegrationfieldsintegrationfieldidop.py:
     id: 68196467a356
     last_write_checksum: sha1:56945e8f4f74bd29fae5594c7b138e753dbf32d0
@@ -4833,8 +4853,8 @@ trackedFiles:
     pristine_git_object: 57a43ed974c4d590f164230b14787396494213aa
   src/kombo/models/posthrisemployeesformrequestbody.py:
     id: cea1d0099ef3
-    last_write_checksum: sha1:8e080a50a46cd22639e1bcf579e4fe1d1fe7eb03
-    pristine_git_object: 95471ef13edfdbb4a5c6392ef9f53f8eddbaaa8c
+    last_write_checksum: sha1:a377c94e3ad50a9e9ebb1f0bbb3dbafeb1ddc7f4
+    pristine_git_object: f76e7b7b2f9ec1ffd8dc4ae8f774ebec2945c6ee
   src/kombo/models/postintegrationsintegrationidrelinkop.py:
     id: 53c23a3b15fe
     last_write_checksum: sha1:4fed16acf3b504fd64e18ed10e313c2b9e33418d
@@ -4881,8 +4901,8 @@ trackedFiles:
     pristine_git_object: b34ea0de9602c887e0e0354fe501e917e9ac179e
   src/kombo/models/putassessmentordersassessmentorderidresultrequestbody.py:
     id: 9752de46be3c
-    last_write_checksum: sha1:1f10d9c84fc8a2728d5384fe65334b56ff055c7a
-    pristine_git_object: 128de15e746d68d7ec4346a4732538fb1d4e57d6
+    last_write_checksum: sha1:4790257a538728b6602676729495f14b35033f76
+    pristine_git_object: 66ee80af92a0e82dc24286a43a9f59c8b0e514c0
   src/kombo/models/putassessmentpackagesop.py:
     id: b33421f2efc8
     last_write_checksum: sha1:2946fc1834bc5c093cf71bfc8d1f562439ae4143
@@ -5564,7 +5584,7 @@ examples:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       requestBody:
-        application/json: {"properties": {"firstName": "John", "startDate": "2025-01-01T00:00:00Z", "workLocation": {"site": "8e422bf8cav", "keyNumbers": {"0": 142, "1": 525, "2": 63}}}}
+        application/json: {"staffing_entity_id": "26vafvWSRmbhNcxJYqjCzuJg", "properties": {"firstName": "John", "startDate": "2025-01-01T00:00:00Z", "workLocation": {"site": "8e422bf8cav", "keyNumbers": {"0": 142, "1": 525, "2": 63}}}}
       responses:
         "200":
           application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire": {"remote_id": null}}, "warnings": [{"message": "This is an example warning!"}]}
@@ -7690,7 +7710,7 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": "PLATFORM.RATE_LIMIT_EXCEEDED", "title": null, "message": "<value>", "log_url": "https://married-yin.org/"}}
 examplesVersion: 1.0.2
-releaseNotes: "## Python SDK Changes:\n* `kombo.ats.add_application_note()`: \n  *  `request.remote_fields.greenhousev3` **Added**\n* `kombo.ats.reject_application()`: \n  *  `request.remote_fields.greenhousev3` **Added**\n* `kombo.ats.create_candidate()`: \n  *  `request.remote_fields.greenhousev3` **Added**\n* `kombo.ats.create_application()`: \n  *  `request.remote_fields.greenhousev3` **Added**\n* `kombo.ats.import_tracked_application()`: \n  *  `request.greenhousev3` **Added**\n  *  `response.data.imported_id.greenhousev3` **Added**\n"
+releaseNotes: "## Python SDK Changes:\n* `kombo.hris.get_employees()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_employee_form()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.create_employee_with_form()`: \n  *  `request.staffing_entity_id` **Added**\n  *  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.add_employee_document()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_employee_document_categories()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_groups()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_employments()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_locations()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_absence_types()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_time_off_balances()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_absences()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.create_absence()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.delete_absence()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_legal_entities()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_timesheets()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_performance_review_cycles()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_performance_reviews()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.hris.get_staffing_entities()`:  `error.code.enum(hris.staffing_entity_closed)` **Added** (Breaking ⚠️)\n* `kombo.assessment.update_order_result()`: \n  *  `request.remote_fields.workday` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json

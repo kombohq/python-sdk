@@ -5,9 +5,9 @@ from datetime import datetime
 from jsonpath import JSONPath
 from kombo import errors, models, utils
 from kombo._hooks import HookContext
-from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET
+from kombo.types import Nullable, OptionalNullable, UNSET
 from kombo.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Awaitable, Dict, List, Mapping, Optional, Union, cast
+from typing import Any, Awaitable, Dict, List, Mapping, Optional, Union
 
 
 class Hris(BaseSDK):
@@ -393,10 +393,7 @@ class Hris(BaseSDK):
     def get_employee_form(
         self,
         *,
-        request: Union[
-            models.GetHrisEmployeesFormRequest,
-            models.GetHrisEmployeesFormRequestTypedDict,
-        ] = models.GetHrisEmployeesFormRequest(),
+        staffing_entity_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -407,6 +404,7 @@ class Hris(BaseSDK):
         Get the form for creating an employee. This form can be rendered dynamically on your frontend to allow your customers to create employees in their HRIS.
 
         Follow our [create employee guide here](/hris/features/create-employee) to learn how this form is generated and how you can use it.
+        The usage and impact of the staffing_entity_id parameter is described in the our [Create Employee Form with Staffing Entities guide](/hris/implementation-guide/staffing-entities-in-create-employee).
 
         ### Example Form
         ```json
@@ -483,7 +481,7 @@ class Hris(BaseSDK):
         }
         ```
 
-        :param request: The request object to send.
+        :param staffing_entity_id: GET /hris/employees/form Parameter
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -499,9 +497,9 @@ class Hris(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.GetHrisEmployeesFormRequest)
-        request = cast(models.GetHrisEmployeesFormRequest, request)
+        request = models.GetHrisEmployeesFormRequest(
+            staffing_entity_id=staffing_entity_id,
+        )
 
         req = self._build_request(
             method="GET",
@@ -558,10 +556,7 @@ class Hris(BaseSDK):
     async def get_employee_form_async(
         self,
         *,
-        request: Union[
-            models.GetHrisEmployeesFormRequest,
-            models.GetHrisEmployeesFormRequestTypedDict,
-        ] = models.GetHrisEmployeesFormRequest(),
+        staffing_entity_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -572,6 +567,7 @@ class Hris(BaseSDK):
         Get the form for creating an employee. This form can be rendered dynamically on your frontend to allow your customers to create employees in their HRIS.
 
         Follow our [create employee guide here](/hris/features/create-employee) to learn how this form is generated and how you can use it.
+        The usage and impact of the staffing_entity_id parameter is described in the our [Create Employee Form with Staffing Entities guide](/hris/implementation-guide/staffing-entities-in-create-employee).
 
         ### Example Form
         ```json
@@ -648,7 +644,7 @@ class Hris(BaseSDK):
         }
         ```
 
-        :param request: The request object to send.
+        :param staffing_entity_id: GET /hris/employees/form Parameter
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -664,9 +660,9 @@ class Hris(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.GetHrisEmployeesFormRequest)
-        request = cast(models.GetHrisEmployeesFormRequest, request)
+        request = models.GetHrisEmployeesFormRequest(
+            staffing_entity_id=staffing_entity_id,
+        )
 
         req = self._build_request_async(
             method="GET",
@@ -726,6 +722,7 @@ class Hris(BaseSDK):
         properties: Union[
             Dict[str, models.Schema4], Dict[str, models.Schema4TypedDict]
         ],
+        staffing_entity_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -743,6 +740,7 @@ class Hris(BaseSDK):
 
         ```json
         {
+        \"staffing_entity_id\": \"26vafvWSRmbhNcxJYqjCzuJg\",
         \"properties\": {
         \"firstName\": \"John\",
         \"startDate\": \"2025-01-01\",
@@ -759,6 +757,7 @@ class Hris(BaseSDK):
         ```
 
         :param properties:
+        :param staffing_entity_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -778,6 +777,7 @@ class Hris(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.PostHrisEmployeesFormRequestBody(
+            staffing_entity_id=staffing_entity_id,
             properties=properties,
         )
 
@@ -842,6 +842,7 @@ class Hris(BaseSDK):
         properties: Union[
             Dict[str, models.Schema4], Dict[str, models.Schema4TypedDict]
         ],
+        staffing_entity_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -859,6 +860,7 @@ class Hris(BaseSDK):
 
         ```json
         {
+        \"staffing_entity_id\": \"26vafvWSRmbhNcxJYqjCzuJg\",
         \"properties\": {
         \"firstName\": \"John\",
         \"startDate\": \"2025-01-01\",
@@ -875,6 +877,7 @@ class Hris(BaseSDK):
         ```
 
         :param properties:
+        :param staffing_entity_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -894,6 +897,7 @@ class Hris(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.PostHrisEmployeesFormRequestBody(
+            staffing_entity_id=staffing_entity_id,
             properties=properties,
         )
 
