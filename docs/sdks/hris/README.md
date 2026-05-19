@@ -88,6 +88,7 @@ with Kombo(
 Get the form for creating an employee. This form can be rendered dynamically on your frontend to allow your customers to create employees in their HRIS.
 
 Follow our [create employee guide here](/hris/features/create-employee) to learn how this form is generated and how you can use it.
+The usage and impact of the staffing_entity_id parameter is described in the our [Create Employee Form with Staffing Entities guide](/hris/implementation-guide/staffing-entities-in-create-employee).
 
 ### Example Form
 ```json
@@ -185,10 +186,10 @@ with Kombo(
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [models.GetHrisEmployeesFormRequest](../../models/gethrisemployeesformrequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-| `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `staffing_entity_id`                                                | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | GET /hris/employees/form Parameter                                  |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
@@ -213,6 +214,7 @@ Create an employee, based on the form schema.
 
 ```json
 {
+  "staffing_entity_id": "26vafvWSRmbhNcxJYqjCzuJg",
   "properties": {
     "firstName": "John",
     "startDate": "2025-01-01",
@@ -291,7 +293,7 @@ with Kombo(
                 "2": 63,
             },
         },
-    })
+    }, staffing_entity_id="26vafvWSRmbhNcxJYqjCzuJg")
 
     # Handle response
     print(res)
@@ -303,6 +305,7 @@ with Kombo(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `properties`                                                        | Dict[str, [models.Schema4](../../models/schema4.md)]                | :heavy_check_mark:                                                  | N/A                                                                 |
+| `staffing_entity_id`                                                | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
