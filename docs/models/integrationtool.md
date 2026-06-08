@@ -89,6 +89,7 @@ value: IntegrationTool = "workday"
 - `"hroffice"`
 - `"talentclue"`
 - `"inrecruiting"`
+- `"jobadder"`
 - `"ubeeo"`
 - `"connexys"`
 - `"hr4you"`
@@ -96,8 +97,9 @@ value: IntegrationTool = "workday"
 - `"zvooverecruit"`
 - `"odoo"`
 - `"comeet"`
-- `"compleet"`
 - `"compleetpitcher"`
+- `"compleetpersy"`
+- `"compleet"`
 - `"gem"`
 - `"laura"`
 - `"covetorest"`

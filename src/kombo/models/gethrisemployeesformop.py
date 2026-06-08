@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from kombo.types import BaseModel, UNSET_SENTINEL
-from kombo.utils import FieldMetadata, HeaderMetadata
+from kombo.utils import FieldMetadata, HeaderMetadata, QueryParamMetadata
 import pydantic
 from pydantic import model_serializer
 from typing import Optional
@@ -40,8 +40,29 @@ class GetHrisEmployeesFormGlobals(BaseModel):
 
 
 class GetHrisEmployeesFormRequestTypedDict(TypedDict):
-    pass
+    staffing_entity_id: NotRequired[str]
+    r"""GET /hris/employees/form Parameter"""
 
 
 class GetHrisEmployeesFormRequest(BaseModel):
-    pass
+    staffing_entity_id: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
+    r"""GET /hris/employees/form Parameter"""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["staffing_entity_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
