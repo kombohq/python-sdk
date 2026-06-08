@@ -2,14 +2,34 @@
 
 from __future__ import annotations
 from .schema4 import Schema4, Schema4TypedDict
-from kombo.types import BaseModel
-from typing import Dict
-from typing_extensions import TypedDict
+from kombo.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
+from typing import Dict, Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class PostHrisEmployeesFormRequestBodyTypedDict(TypedDict):
     properties: Dict[str, Schema4TypedDict]
+    staffing_entity_id: NotRequired[str]
 
 
 class PostHrisEmployeesFormRequestBody(BaseModel):
     properties: Dict[str, Schema4]
+
+    staffing_entity_id: Optional[str] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["staffing_entity_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

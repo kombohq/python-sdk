@@ -2405,6 +2405,8 @@ class PostAtsCandidatesRequestBodyCovetorestCandidateTypedDict(TypedDict):
 
     mandant: NotRequired[float]
     r"""The mandant field for the candidate in Coveto."""
+    status: NotRequired[int]
+    r"""The numeric status ID to assign to the candidate on creation in Coveto. Refer to your Coveto `/bewerber-status` endpoint for available IDs."""
 
 
 class PostAtsCandidatesRequestBodyCovetorestCandidate(BaseModel):
@@ -2413,9 +2415,12 @@ class PostAtsCandidatesRequestBodyCovetorestCandidate(BaseModel):
     mandant: Optional[float] = None
     r"""The mandant field for the candidate in Coveto."""
 
+    status: Optional[int] = None
+    r"""The numeric status ID to assign to the candidate on creation in Coveto. Refer to your Coveto `/bewerber-status` endpoint for available IDs."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["mandant"])
+        optional_fields = set(["mandant", "status"])
         serialized = handler(self)
         m = {}
 

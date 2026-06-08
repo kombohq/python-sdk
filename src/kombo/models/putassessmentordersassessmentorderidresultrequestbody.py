@@ -214,6 +214,153 @@ class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRecruitee(BaseModel):
         return m
 
 
+class AssessmentTestStatusReferenceTypedDict(TypedDict):
+    r"""A reference to the tenant supplied status for this Assessment Test Result. For example, if the test outcome was satisfactory or not."""
+
+    assessment_status_id: str
+
+
+class AssessmentTestStatusReference(BaseModel):
+    r"""A reference to the tenant supplied status for this Assessment Test Result. For example, if the test outcome was satisfactory or not."""
+
+    assessment_status_id: Annotated[str, pydantic.Field(alias="Assessment_Status_ID")]
+
+
+class AssessCandidateTestResultDataTypedDict(TypedDict):
+    r"""Information on a set of Assessment Test Results used in concert with the Candidate Assessment."""
+
+    assessment_test_status_reference: NotRequired[
+        AssessmentTestStatusReferenceTypedDict
+    ]
+    r"""A reference to the tenant supplied status for this Assessment Test Result. For example, if the test outcome was satisfactory or not."""
+
+
+class AssessCandidateTestResultData(BaseModel):
+    r"""Information on a set of Assessment Test Results used in concert with the Candidate Assessment."""
+
+    assessment_test_status_reference: Annotated[
+        Optional[AssessmentTestStatusReference],
+        pydantic.Field(alias="Assessment_Test_Status_Reference"),
+    ] = None
+    r"""A reference to the tenant supplied status for this Assessment Test Result. For example, if the test outcome was satisfactory or not."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Assessment_Test_Status_Reference"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class CandidateAssessmentDataTypedDict(TypedDict):
+    r"""The data used to create or modify a Candidate Assessment."""
+
+    assess_candidate_test_result_data: NotRequired[
+        AssessCandidateTestResultDataTypedDict
+    ]
+    r"""Information on a set of Assessment Test Results used in concert with the Candidate Assessment."""
+
+
+class CandidateAssessmentData(BaseModel):
+    r"""The data used to create or modify a Candidate Assessment."""
+
+    assess_candidate_test_result_data: Annotated[
+        Optional[AssessCandidateTestResultData],
+        pydantic.Field(alias="Assess_Candidate_Test_Result_Data"),
+    ] = None
+    r"""Information on a set of Assessment Test Results used in concert with the Candidate Assessment."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Assess_Candidate_Test_Result_Data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class AssessCandidateDataTypedDict(TypedDict):
+    r"""References to the Candidate Assessment to be created or modified along with the data to be used in the creation or modification."""
+
+    candidate_assessment_data: NotRequired[CandidateAssessmentDataTypedDict]
+    r"""The data used to create or modify a Candidate Assessment."""
+
+
+class AssessCandidateData(BaseModel):
+    r"""References to the Candidate Assessment to be created or modified along with the data to be used in the creation or modification."""
+
+    candidate_assessment_data: Annotated[
+        Optional[CandidateAssessmentData],
+        pydantic.Field(alias="Candidate_Assessment_Data"),
+    ] = None
+    r"""The data used to create or modify a Candidate Assessment."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Candidate_Assessment_Data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyWorkdayTypedDict(TypedDict):
+    r"""Fields specific to Workday's `Assess_Candidate` [operation](https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v46.0/Assess_Candidate.html)."""
+
+    assess_candidate_data: NotRequired[AssessCandidateDataTypedDict]
+    r"""References to the Candidate Assessment to be created or modified along with the data to be used in the creation or modification."""
+
+
+class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyWorkday(BaseModel):
+    r"""Fields specific to Workday's `Assess_Candidate` [operation](https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v46.0/Assess_Candidate.html)."""
+
+    assess_candidate_data: Annotated[
+        Optional[AssessCandidateData], pydantic.Field(alias="Assess_Candidate_Data")
+    ] = None
+    r"""References to the Candidate Assessment to be created or modified along with the data to be used in the creation or modification."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Assess_Candidate_Data"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRemoteFieldsTypedDict(
     TypedDict
 ):
@@ -225,6 +372,10 @@ class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRemoteFieldsTypedDict
     recruitee: NotRequired[
         PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRecruiteeTypedDict
     ]
+    workday: NotRequired[
+        PutAssessmentOrdersAssessmentOrderIDResultRequestBodyWorkdayTypedDict
+    ]
+    r"""Fields specific to Workday's `Assess_Candidate` [operation](https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v46.0/Assess_Candidate.html)."""
 
 
 class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRemoteFields(BaseModel):
@@ -238,9 +389,14 @@ class PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRemoteFields(BaseMode
         PutAssessmentOrdersAssessmentOrderIDResultRequestBodyRecruitee
     ] = None
 
+    workday: Optional[PutAssessmentOrdersAssessmentOrderIDResultRequestBodyWorkday] = (
+        None
+    )
+    r"""Fields specific to Workday's `Assess_Candidate` [operation](https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v46.0/Assess_Candidate.html)."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["smartrecruiters", "recruitee"])
+        optional_fields = set(["smartrecruiters", "recruitee", "workday"])
         serialized = handler(self)
         m = {}
 
@@ -357,5 +513,25 @@ except NameError:
     pass
 try:
     PutAssessmentOrdersAssessmentOrderIDResultRequestBodySmartrecruiters.model_rebuild()
+except NameError:
+    pass
+try:
+    AssessmentTestStatusReference.model_rebuild()
+except NameError:
+    pass
+try:
+    AssessCandidateTestResultData.model_rebuild()
+except NameError:
+    pass
+try:
+    CandidateAssessmentData.model_rebuild()
+except NameError:
+    pass
+try:
+    AssessCandidateData.model_rebuild()
+except NameError:
+    pass
+try:
+    PutAssessmentOrdersAssessmentOrderIDResultRequestBodyWorkday.model_rebuild()
 except NameError:
     pass
