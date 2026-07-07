@@ -7,7 +7,7 @@ from kombo import errors, models, utils
 from kombo._hooks import HookContext
 from kombo.types import BaseModel, OptionalNullable, UNSET
 from kombo.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Awaitable, Dict, List, Mapping, Optional, Union, cast
+from typing import Any, Awaitable, Dict, Iterable, List, Mapping, Optional, Union, cast
 
 
 class Assessment(BaseSDK):
@@ -84,6 +84,8 @@ class Assessment(BaseSDK):
                 operation_id="GetAssessmentPackages",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -174,6 +176,8 @@ class Assessment(BaseSDK):
                 operation_id="GetAssessmentPackages",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -195,8 +199,8 @@ class Assessment(BaseSDK):
         self,
         *,
         packages: Union[
-            List[models.PutAssessmentPackagesRequestBodyPackage],
-            List[models.PutAssessmentPackagesRequestBodyPackageTypedDict],
+            Iterable[models.PutAssessmentPackagesRequestBodyPackage],
+            Iterable[models.PutAssessmentPackagesRequestBodyPackageTypedDict],
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -292,6 +296,8 @@ class Assessment(BaseSDK):
                 operation_id="PutAssessmentPackages",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -313,8 +319,8 @@ class Assessment(BaseSDK):
         self,
         *,
         packages: Union[
-            List[models.PutAssessmentPackagesRequestBodyPackage],
-            List[models.PutAssessmentPackagesRequestBodyPackageTypedDict],
+            Iterable[models.PutAssessmentPackagesRequestBodyPackage],
+            Iterable[models.PutAssessmentPackagesRequestBodyPackageTypedDict],
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -410,6 +416,8 @@ class Assessment(BaseSDK):
                 operation_id="PutAssessmentPackages",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -432,8 +440,8 @@ class Assessment(BaseSDK):
         *,
         cursor: Optional[str] = None,
         page_size: Optional[int] = 100,
-        ids: Optional[List[str]] = None,
-        statuses: Optional[List[str]] = None,
+        ids: Optional[Iterable[str]] = None,
+        statuses: Optional[Iterable[str]] = None,
         created_after: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -469,8 +477,8 @@ class Assessment(BaseSDK):
         request = models.GetAssessmentOrdersRequest(
             cursor=cursor,
             page_size=page_size,
-            ids=ids,
-            statuses=statuses,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            statuses=utils.unmarshal(statuses, Optional[List[str]]),
             created_after=created_after,
         )
 
@@ -509,6 +517,8 @@ class Assessment(BaseSDK):
                 operation_id="GetAssessmentOrders",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -558,8 +568,8 @@ class Assessment(BaseSDK):
         *,
         cursor: Optional[str] = None,
         page_size: Optional[int] = 100,
-        ids: Optional[List[str]] = None,
-        statuses: Optional[List[str]] = None,
+        ids: Optional[Iterable[str]] = None,
+        statuses: Optional[Iterable[str]] = None,
         created_after: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -595,8 +605,8 @@ class Assessment(BaseSDK):
         request = models.GetAssessmentOrdersRequest(
             cursor=cursor,
             page_size=page_size,
-            ids=ids,
-            statuses=statuses,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            statuses=utils.unmarshal(statuses, Optional[List[str]]),
             created_after=created_after,
         )
 
@@ -635,6 +645,8 @@ class Assessment(BaseSDK):
                 operation_id="GetAssessmentOrders",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -692,14 +704,14 @@ class Assessment(BaseSDK):
         score: Optional[float] = None,
         max_score: Optional[float] = None,
         attributes: Optional[
-            Union[List[models.Attribute], List[models.AttributeTypedDict]]
+            Union[Iterable[models.Attribute], Iterable[models.AttributeTypedDict]]
         ] = None,
         attachments: Optional[
             Union[
-                List[
+                Iterable[
                     models.PutAssessmentOrdersAssessmentOrderIDResultRequestBodyAttachment
                 ],
-                List[
+                Iterable[
                     models.PutAssessmentOrdersAssessmentOrderIDResultRequestBodyAttachmentTypedDict
                 ],
             ]
@@ -855,6 +867,8 @@ class Assessment(BaseSDK):
                 operation_id="PutAssessmentOrdersAssessmentOrderIdResult",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -883,14 +897,14 @@ class Assessment(BaseSDK):
         score: Optional[float] = None,
         max_score: Optional[float] = None,
         attributes: Optional[
-            Union[List[models.Attribute], List[models.AttributeTypedDict]]
+            Union[Iterable[models.Attribute], Iterable[models.AttributeTypedDict]]
         ] = None,
         attachments: Optional[
             Union[
-                List[
+                Iterable[
                     models.PutAssessmentOrdersAssessmentOrderIDResultRequestBodyAttachment
                 ],
-                List[
+                Iterable[
                     models.PutAssessmentOrdersAssessmentOrderIDResultRequestBodyAttachmentTypedDict
                 ],
             ]
@@ -1046,6 +1060,8 @@ class Assessment(BaseSDK):
                 operation_id="PutAssessmentOrdersAssessmentOrderIdResult",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Unified ATS (Assessment & Background Check) API"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),

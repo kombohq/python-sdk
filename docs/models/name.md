@@ -25,6 +25,10 @@ value: Name = "hris_legal_entities"
 - `"hris_performance_reviews"`
 - `"hris_performance_review_cycles"`
 - `"hris_staffing_entities"`
+- `"hris_skill_proficiency_scales"`
+- `"hris_skills"`
+- `"hris_skill_rating_providers"`
+- `"hris_employee_skill_proficiency_ratings"`
 - `"ats_users"`
 - `"ats_jobs"`
 - `"ats_job_postings"`

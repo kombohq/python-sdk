@@ -4,14 +4,14 @@
 
 ```python
 from kombo.models import GetAtsJobsPositiveResponseHiringTeamRole
-value: GetAtsJobsPositiveResponseHiringTeamRole = "RECRUITER"
+value: GetAtsJobsPositiveResponseHiringTeamRole = "HIRING_MANAGER"
 ```
 
 
 ## Values
 
-- `"RECRUITER"`
 - `"HIRING_MANAGER"`
+- `"RECRUITER"`
 - `"COORDINATOR"`
 - `"SOURCER"`
 - `"INTERVIEWER"`
