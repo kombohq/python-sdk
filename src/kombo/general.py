@@ -6,7 +6,7 @@ from kombo import errors, models, utils
 from kombo._hooks import HookContext
 from kombo.types import Nullable, OptionalNullable, UNSET
 from kombo.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Awaitable, Dict, List, Mapping, Optional, Union
+from typing import Any, Awaitable, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class General(BaseSDK):
@@ -68,6 +68,8 @@ class General(BaseSDK):
                 operation_id="GetCheckApiKey",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -145,6 +147,8 @@ class General(BaseSDK):
                 operation_id="GetCheckApiKey",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -240,6 +244,8 @@ class General(BaseSDK):
                 operation_id="PostForceSync",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -335,6 +341,8 @@ class General(BaseSDK):
                 operation_id="PostForceSync",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -361,17 +369,17 @@ class General(BaseSDK):
         api: str,
         method: models.Method,
         path: str,
-        headers: Optional[Dict[str, str]] = None,
-        params: Optional[Dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
+        params: Optional[Mapping[str, str]] = None,
         data: Optional[Any] = None,
         response_as_base64: Optional[bool] = None,
         multipart_form_data: Optional[
             Union[
-                List[models.MultipartFormDatum],
-                List[models.MultipartFormDatumTypedDict],
+                Iterable[models.MultipartFormDatum],
+                Iterable[models.MultipartFormDatumTypedDict],
             ]
         ] = None,
-        api_options: Optional[Dict[str, str]] = None,
+        api_options: Optional[Mapping[str, str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -394,6 +402,7 @@ class General(BaseSDK):
         |Abacus Umantis|`abacusumantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
         |Abacus|`abacus/api`|Abacus [REST API](https://apihub.abacus.ch/). We automatically authenticate all requests and use `https://\{\{abacusUrl\}\}/api/entity/v1/mandants/\{\{mandantId\}\}` as the base URL.|
         |Absence.io|`absenceio/v2`|Absence.io [API](https://docs.absence.io/). We automatically authenticate all requests and use `https://app.absence.io/api/v2` as the base URL.|
+        |ADP Decidium|`adpdecidium/default`|[ADP Decidium API](https://developers.adp.com/apis/api-explorer/hcm-offrg-dge). We automatically authenticate all requests and use `https://api.eu.adp.com` as the base URL.|
         |ADP Workforce Now|`adpworkforcenow/default`|[ADP Workforce Now API v2](https://developers.adp.com/build/api-explorer/hcm-offrg-wfn). We automatically authenticate all requests and use the correct subdomain.|
         |AFAS Software|`afas/api`|AFAS' [API](https://connect.afas.nl/rest/get). We automatically authenticate all requests and use `https://\{domain\}/ProfitRestServices` as the base URL.|
         |AlexisHR|`alexishr/v1`|[AlexisHR's v1 API](https://docs.alexishr.com/) We automatically authenticate all requests and use `https://\{subdomain\}.alexishr.com` as base URL.|
@@ -423,6 +432,7 @@ class General(BaseSDK):
         |Cornerstone OnDemand|`cornerstoneondemand/recruiting`|Cornerstone's [Recruiting API](https://csod.dev/reference/recruiting/). We automatically authenticate all requests using the client ID and secret and use `https://\{your_domain\}.csod.com/services/api` as the base URL.|
         |Cornerstone TalentLink|`cornerstonetalentlink/apply`|Cornerstone TalentLink's Apply API. We automatically authenticate all requests using the provided credentials and API key, and use `https://apiproxy.shared.lumessetalentlink.com/apply` as the base URL.|
         |Cornerstone TalentLink|`cornerstonetalentlink/rest`|Cornerstone TalentLink's [REST API](https://developer.lumesse-talenthub.com/rest-api-developers-guide/1.21.33/index.html?page=rest-api&subpage=introduction). We automatically authenticate all requests using the provided credentials and API key, and use `https://apiproxy.shared.lumessetalentlink.com/tlk/rest` as the base URL.|
+        |Coursera|`coursera/v1`|We use `https://api.coursera.com/ent` as the base URL. Find the official docs [here](https://dev.coursera.com).|
         |Coveto (legacy SOAP API)|`coveto/public`|We automatically use `https://\{subdomain\}.coveto.de` as the base URL.|
         |Coveto (REST API)|`covetorest/v1`|We automatically use `https://\{subdomain\}.coveto.de/public/api/v1` as the base URL. https://demo.coveto.de/swagger-ui/index.html#/|
         |Crelate|`crelate/api`|Crelate [REST API](https://app.crelate.com/api3/docs/index.html). We automatically authenticate all requests and use `https://app.crelate.com/api3` as the base URL.|
@@ -430,14 +440,16 @@ class General(BaseSDK):
         |d.vinci admin|`dvinciadmin/rest-api`|[DVinci REST API](https://static.dvinci-easy.com/files/d.vinci%20rest-api.html).|
         |d.vinci|`dvinci/apply-api`|The [DVinci Apply API](https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html). All requests are authenticated by Kombo and use `https://\{dvinci_domain\}/p/\{portal_path\}/` as the base URL.|
         |d.vinci|`dvinci/rest-api`|The [DVinci REST API](https://static.dvinci-easy.com/files/d.vinci%20rest-api.html). All requests are authenticated by Kombo and use `https://\{dvinci_domain\}/restApi/` as the base URL.|
-        |DATEV LAUDS|`datevlauds/lauds`|DATEV's [hr-exchange](https://developer.datev.de/de/product-detail/hr-exchange/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exchange.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
+        |Databites|`databites/v1`|We use `https://\{subdomain\}.databites.de` as the base URL. Find the official docs [here](https://\{subdomain\}.databites.de/api-dokumentationen/public-integrations/index).|
         |DATEV LODAS|`datev/eau`|DATEV's [eau](https://developer.datev.de/en/product-detail/eau-api/1.0.0/overview) API. We automatically authenticate all requests and use `https://eau.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
         |DATEV|`datevhr/eau`|DATEV's [eau](https://developer.datev.de/en/product-detail/eau-api/1.0.0/overview) API. We automatically authenticate all requests and use `https://eau.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
         |DATEV|`datevhr/hr-exports`|DATEV's [hr-exports](https://developer.datev.de/en/product-detail/hr-exports/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exports.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
         |DATEV|`datevhr/hr:payrollreports`|DATEV's [hr:payrollreports](https://developer.datev.de/en/product-detail/hr-payrollreports/2.0.0/overview) API. We automatically authenticate all requests and use `https://hr-payrollreports.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
+        |DATEV|`datevlauds/lauds`|DATEV's [hr-exchange](https://developer.datev.de/de/product-detail/hr-exchange/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exchange.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
         |Dayforce|`dayforce/V1`|[Dayforce's API](https://developers.dayforce.com/Build/Home.aspx). We automatically authenticate all requests and use `\{\{baseUrl\}\}/Api/\{\{clientNamespace\}\}/V1` as the base URL|
         |Deel|`deel/api`|Deel's [API](https://developer.deel.com/reference/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}/rest` as the base URL.|
         |Digital Recruiters|`digitalrecruiters/api`|Cegid Digital Recruiters [Talent Acquisition API](https://cegid-hr-developers.talentsoft.net/docs/tutorial-basics/Talent%20Acquisition/Getting%20Started). We automatically authenticate all requests by replacing `:token` in the request URL with your configured access token and use your configured Digital Recruiters domain as the base URL.|
+        |Docebo|`docebo/api`|Docebo [API](https://developer.docebo.com). We automatically handle authentication and use `https://\{subdomain\}.docebosaas.com` as the base URL.|
         |Eightfold|`eightfold/api`|Eightfold's [API](https://apidocs.eightfold.ai/). We automatically authenticate all requests and use  `https://apiv2.\{region\}/api/v2/core/` as the base URL.|
         |Employment Hero|`employmenthero/default`|EmploymentHero [API](https://developer.employmenthero.com/api-references/#icon-book-open-introduction). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.employmenthero.com/api` as the base URL.|
         |Eploy|`eploy/api`|Eploy's [API](https://www.eploy.com/resources/developers/api-documentation/). We automatically authenticate all requests. The base URL is `https://\{hostname\}/api`, where `\{hostname\}` is either `\{subdomain\}.eploy.net` or your full custom hostname when applicable.|
@@ -518,6 +530,8 @@ class General(BaseSDK):
         |Oracle Recruiting Cloud|`oraclerecruiting/rest`|[Oracles's REST API](https://docs.oracle.com/en/cloud/saas/human-resources/24d/farws/rest-endpoints.html). We automatically authenticate all requests and use 'https://\{company_url\}' as the base url.|
         |Oracle Taleo|`taleo/soap`|[Taleo's API](https://docs.oracle.com/en/cloud/saas/taleo-enterprise/23b/otwsu/c-taleoapi.html). We automatically authenticate all requests and use 'https://\{your-subdomain\}.taleo.net/enterprise/soap' as base URL.|
         |OTYS|`otys/json-rpc`|[OTYS JSON-RPC API](https://ows.otys.nl/info/). We authenticate with your stored API key and inject the session token as the first element of the JSON-RPC `params` array on each request (except `loginByUid`, which uses `params` as sent). Requests use `https://ows.otys.nl` as the base URL (for example `POST /jservice.php` with the RPC method in the URL fragment, matching OTYS conventions).|
+        |PageUp People|`pageup/v1`|We use `https://assessment-mock-api.dc0.pageuppeople.com` as the base URL. Find the official docs [here](https://developers.pageuppeople.com/Api/Partners/Assessment).|
+        |PageUp People|`pageup/v3`|We use `https://\<environment\>.\<dataCentreId\>.pageuppeople.com/v3/\<tenantId\>/recruitment` as the base URL. Find the official docs [here](https://developers.pageuppeople.com/Api/Recruitment).|
         |Paradox|`paradox/v1`|We use `\{api_url\}/api/v1` as the base URL. Find the official docs [here](https://paradox.readme.io/).|
         |Paradox|`paradox/v1public`|We use `\{api_url\}/api/v1/public` as the base URL. Find the official docs [here](https://paradox.readme.io/).|
         |Paychex|`paychex/api`|Paychex [REST API](https://developer.paychex.com/documentation). We automatically authenticate all requests and use `https://api.paychex.com` as the base URL.|
@@ -563,6 +577,7 @@ class General(BaseSDK):
         |TalentLMS|`talentlms/v2`|We use `https://\{subdomain\}.talentlms.com/api/v2` as the base URL.|
         |Teamtailor Job Boards|`teamtailorjobboards/direct-apply`|Teamtailor's [Job Board Direct Apply API](https://partner.teamtailor.com/job_boards/direct_apply/#direct-apply). We automatically authenticate all requests and use `https://5qbn6o9x4h.execute-api.eu-west-1.amazonaws.com/production` as the base URL. All requests are automatically signed with HMAC-SHA256 signature.|
         |Teamtailor|`teamtailor/v1`|We use `https://api.teamtailor.com/v1` as the base URL. Find the official docs [here](https://docs.teamtailor.com/).|
+        |TrackerRMS|`trackerrms/v1`|We use `https://evousapi.tracker-rms.com` as the base URL. Find the official docs [here](https://evousapi.tracker-rms.com/swagger/index.html).|
         |TRAFFIT|`traffit/v2`|Traffit's [v2 API](https://api.traffit.com). We authenticate all requests with the Traffit API key and use the base URL `https://yourdomain.traffit.com/api/integration/v2`.|
         |TriNet PEO|`trinetpeo/v1`|We use `https://api.trinet.com` as the base URL. Find the official docs [here](https://developers.trinet.com).|
         |Ubeeo|`ubeeo/api`|Ubeeo ATS API. We automatically authenticate all requests using OAuth client credentials and use `https://api.ats-platform.com` as the base URL (sandbox: `https://api.acc.ats-platform.com`).|
@@ -576,6 +591,7 @@ class General(BaseSDK):
         |Visma YouServe|`youserve/learning`|Visma YouServe [Learning API](https://youserve-domain-api.github.io/SwaggerUI/learning.html). We automatically authenticate all requests using OAuth 2.0 with the provided credentials and use `https://api.youserve.nl/learning/v1.0` as the base URL.|
         |Workable|`workable/v1`|**Deprecated: Use `v3` instead.** Workable's [API](https://workable.readme.io/reference/generate-an-access-token). We automatically authenticate all requests using the client ID and secret and use `https://\{subdomain\}.\{environment\}.com/spi/v3` as the base URL.|
         |Workable|`workable/v3`|Workable's [API](https://workable.readme.io/reference/generate-an-access-token). We automatically authenticate all requests using the client ID and secret and use `https://\{subdomain\}.\{environment\}.com/spi/v3` as the base URL.|
+        |Workday|`workday/custom-report`|[Workday's Custom Reports](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html). We automatically authenticate all requests and use `https://\{domain\}/ccx/service/customreport2/\{tenant\}/` as the base URL. Set your `method` to `GET`. The `path` should be the report path after the tenant, e.g., `/\{report_owner\}/\{report_name\}`. You can include query parameters in the `params` object (e.g., `format=json`).|
         |Workday|`workday/rest`|[Workday's REST API](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html). We automatically authenticate all requests and use the correct Workday REST base URL for your tenant. The base URL follows the format: https://\{domain\}/api/\{service_name\}/\{version\}/\{tenant\}. You can specify any valid REST endpoint and method. See the Workday REST API documentation for available endpoints. You must specify the `api_options` object and set `service_name` to the name of the service you want to call. You can also specify the `version` (e.g., \"v1\", \"v2\"); if omitted, it defaults to \"v1\".|
         |Workday|`workday/soap`|[Workday's SOAP API](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html). We automatically authenticate all requests. Set `data` to your raw xml string. Use `/` as your `path`, as we will always send requests to `https://\{domain\}/ccx/service/\{tenant\}/\{service_name\}`. Set your `method` to `POST`. You need to specify the `api_options` object and set `service_name` to the name of the service you want to call. Find all available services [here](https://community.workday.com/sites/default/files/file-hosting/productionapi/versions/v41.0/index.html). The string that you submit as `data` will be the content of the `soapenv:Body` tag in the request. You can set the `service_version` to any valid Workday service version (the default is `38.2`).|
         |workforce.com|`workforcecom/api`|Workforce.com [API](https://my.workforce.com/api/v2/documentation). We automatically authenticate all requests using the provided credentials and use `https://my.tanda.co` as the base URL.|
@@ -620,14 +636,14 @@ class General(BaseSDK):
             body=models.PostPassthroughToolAPIRequestBody(
                 method=method,
                 path=path,
-                headers=headers,
-                params=params,
+                headers=utils.unmarshal(headers, Optional[Dict[str, str]]),
+                params=utils.unmarshal(params, Optional[Dict[str, str]]),
                 data=data,
                 response_as_base64=response_as_base64,
                 multipart_form_data=utils.get_pydantic_model(
                     multipart_form_data, Optional[List[models.MultipartFormDatum]]
                 ),
-                api_options=api_options,
+                api_options=utils.unmarshal(api_options, Optional[Dict[str, str]]),
             ),
         )
 
@@ -673,6 +689,8 @@ class General(BaseSDK):
                 operation_id="PostPassthroughToolApi",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -699,17 +717,17 @@ class General(BaseSDK):
         api: str,
         method: models.Method,
         path: str,
-        headers: Optional[Dict[str, str]] = None,
-        params: Optional[Dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
+        params: Optional[Mapping[str, str]] = None,
         data: Optional[Any] = None,
         response_as_base64: Optional[bool] = None,
         multipart_form_data: Optional[
             Union[
-                List[models.MultipartFormDatum],
-                List[models.MultipartFormDatumTypedDict],
+                Iterable[models.MultipartFormDatum],
+                Iterable[models.MultipartFormDatumTypedDict],
             ]
         ] = None,
-        api_options: Optional[Dict[str, str]] = None,
+        api_options: Optional[Mapping[str, str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -732,6 +750,7 @@ class General(BaseSDK):
         |Abacus Umantis|`abacusumantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
         |Abacus|`abacus/api`|Abacus [REST API](https://apihub.abacus.ch/). We automatically authenticate all requests and use `https://\{\{abacusUrl\}\}/api/entity/v1/mandants/\{\{mandantId\}\}` as the base URL.|
         |Absence.io|`absenceio/v2`|Absence.io [API](https://docs.absence.io/). We automatically authenticate all requests and use `https://app.absence.io/api/v2` as the base URL.|
+        |ADP Decidium|`adpdecidium/default`|[ADP Decidium API](https://developers.adp.com/apis/api-explorer/hcm-offrg-dge). We automatically authenticate all requests and use `https://api.eu.adp.com` as the base URL.|
         |ADP Workforce Now|`adpworkforcenow/default`|[ADP Workforce Now API v2](https://developers.adp.com/build/api-explorer/hcm-offrg-wfn). We automatically authenticate all requests and use the correct subdomain.|
         |AFAS Software|`afas/api`|AFAS' [API](https://connect.afas.nl/rest/get). We automatically authenticate all requests and use `https://\{domain\}/ProfitRestServices` as the base URL.|
         |AlexisHR|`alexishr/v1`|[AlexisHR's v1 API](https://docs.alexishr.com/) We automatically authenticate all requests and use `https://\{subdomain\}.alexishr.com` as base URL.|
@@ -761,6 +780,7 @@ class General(BaseSDK):
         |Cornerstone OnDemand|`cornerstoneondemand/recruiting`|Cornerstone's [Recruiting API](https://csod.dev/reference/recruiting/). We automatically authenticate all requests using the client ID and secret and use `https://\{your_domain\}.csod.com/services/api` as the base URL.|
         |Cornerstone TalentLink|`cornerstonetalentlink/apply`|Cornerstone TalentLink's Apply API. We automatically authenticate all requests using the provided credentials and API key, and use `https://apiproxy.shared.lumessetalentlink.com/apply` as the base URL.|
         |Cornerstone TalentLink|`cornerstonetalentlink/rest`|Cornerstone TalentLink's [REST API](https://developer.lumesse-talenthub.com/rest-api-developers-guide/1.21.33/index.html?page=rest-api&subpage=introduction). We automatically authenticate all requests using the provided credentials and API key, and use `https://apiproxy.shared.lumessetalentlink.com/tlk/rest` as the base URL.|
+        |Coursera|`coursera/v1`|We use `https://api.coursera.com/ent` as the base URL. Find the official docs [here](https://dev.coursera.com).|
         |Coveto (legacy SOAP API)|`coveto/public`|We automatically use `https://\{subdomain\}.coveto.de` as the base URL.|
         |Coveto (REST API)|`covetorest/v1`|We automatically use `https://\{subdomain\}.coveto.de/public/api/v1` as the base URL. https://demo.coveto.de/swagger-ui/index.html#/|
         |Crelate|`crelate/api`|Crelate [REST API](https://app.crelate.com/api3/docs/index.html). We automatically authenticate all requests and use `https://app.crelate.com/api3` as the base URL.|
@@ -768,14 +788,16 @@ class General(BaseSDK):
         |d.vinci admin|`dvinciadmin/rest-api`|[DVinci REST API](https://static.dvinci-easy.com/files/d.vinci%20rest-api.html).|
         |d.vinci|`dvinci/apply-api`|The [DVinci Apply API](https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html). All requests are authenticated by Kombo and use `https://\{dvinci_domain\}/p/\{portal_path\}/` as the base URL.|
         |d.vinci|`dvinci/rest-api`|The [DVinci REST API](https://static.dvinci-easy.com/files/d.vinci%20rest-api.html). All requests are authenticated by Kombo and use `https://\{dvinci_domain\}/restApi/` as the base URL.|
-        |DATEV LAUDS|`datevlauds/lauds`|DATEV's [hr-exchange](https://developer.datev.de/de/product-detail/hr-exchange/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exchange.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
+        |Databites|`databites/v1`|We use `https://\{subdomain\}.databites.de` as the base URL. Find the official docs [here](https://\{subdomain\}.databites.de/api-dokumentationen/public-integrations/index).|
         |DATEV LODAS|`datev/eau`|DATEV's [eau](https://developer.datev.de/en/product-detail/eau-api/1.0.0/overview) API. We automatically authenticate all requests and use `https://eau.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
         |DATEV|`datevhr/eau`|DATEV's [eau](https://developer.datev.de/en/product-detail/eau-api/1.0.0/overview) API. We automatically authenticate all requests and use `https://eau.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
         |DATEV|`datevhr/hr-exports`|DATEV's [hr-exports](https://developer.datev.de/en/product-detail/hr-exports/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exports.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
         |DATEV|`datevhr/hr:payrollreports`|DATEV's [hr:payrollreports](https://developer.datev.de/en/product-detail/hr-payrollreports/2.0.0/overview) API. We automatically authenticate all requests and use `https://hr-payrollreports.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
+        |DATEV|`datevlauds/lauds`|DATEV's [hr-exchange](https://developer.datev.de/de/product-detail/hr-exchange/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exchange.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
         |Dayforce|`dayforce/V1`|[Dayforce's API](https://developers.dayforce.com/Build/Home.aspx). We automatically authenticate all requests and use `\{\{baseUrl\}\}/Api/\{\{clientNamespace\}\}/V1` as the base URL|
         |Deel|`deel/api`|Deel's [API](https://developer.deel.com/reference/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}/rest` as the base URL.|
         |Digital Recruiters|`digitalrecruiters/api`|Cegid Digital Recruiters [Talent Acquisition API](https://cegid-hr-developers.talentsoft.net/docs/tutorial-basics/Talent%20Acquisition/Getting%20Started). We automatically authenticate all requests by replacing `:token` in the request URL with your configured access token and use your configured Digital Recruiters domain as the base URL.|
+        |Docebo|`docebo/api`|Docebo [API](https://developer.docebo.com). We automatically handle authentication and use `https://\{subdomain\}.docebosaas.com` as the base URL.|
         |Eightfold|`eightfold/api`|Eightfold's [API](https://apidocs.eightfold.ai/). We automatically authenticate all requests and use  `https://apiv2.\{region\}/api/v2/core/` as the base URL.|
         |Employment Hero|`employmenthero/default`|EmploymentHero [API](https://developer.employmenthero.com/api-references/#icon-book-open-introduction). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.employmenthero.com/api` as the base URL.|
         |Eploy|`eploy/api`|Eploy's [API](https://www.eploy.com/resources/developers/api-documentation/). We automatically authenticate all requests. The base URL is `https://\{hostname\}/api`, where `\{hostname\}` is either `\{subdomain\}.eploy.net` or your full custom hostname when applicable.|
@@ -856,6 +878,8 @@ class General(BaseSDK):
         |Oracle Recruiting Cloud|`oraclerecruiting/rest`|[Oracles's REST API](https://docs.oracle.com/en/cloud/saas/human-resources/24d/farws/rest-endpoints.html). We automatically authenticate all requests and use 'https://\{company_url\}' as the base url.|
         |Oracle Taleo|`taleo/soap`|[Taleo's API](https://docs.oracle.com/en/cloud/saas/taleo-enterprise/23b/otwsu/c-taleoapi.html). We automatically authenticate all requests and use 'https://\{your-subdomain\}.taleo.net/enterprise/soap' as base URL.|
         |OTYS|`otys/json-rpc`|[OTYS JSON-RPC API](https://ows.otys.nl/info/). We authenticate with your stored API key and inject the session token as the first element of the JSON-RPC `params` array on each request (except `loginByUid`, which uses `params` as sent). Requests use `https://ows.otys.nl` as the base URL (for example `POST /jservice.php` with the RPC method in the URL fragment, matching OTYS conventions).|
+        |PageUp People|`pageup/v1`|We use `https://assessment-mock-api.dc0.pageuppeople.com` as the base URL. Find the official docs [here](https://developers.pageuppeople.com/Api/Partners/Assessment).|
+        |PageUp People|`pageup/v3`|We use `https://\<environment\>.\<dataCentreId\>.pageuppeople.com/v3/\<tenantId\>/recruitment` as the base URL. Find the official docs [here](https://developers.pageuppeople.com/Api/Recruitment).|
         |Paradox|`paradox/v1`|We use `\{api_url\}/api/v1` as the base URL. Find the official docs [here](https://paradox.readme.io/).|
         |Paradox|`paradox/v1public`|We use `\{api_url\}/api/v1/public` as the base URL. Find the official docs [here](https://paradox.readme.io/).|
         |Paychex|`paychex/api`|Paychex [REST API](https://developer.paychex.com/documentation). We automatically authenticate all requests and use `https://api.paychex.com` as the base URL.|
@@ -901,6 +925,7 @@ class General(BaseSDK):
         |TalentLMS|`talentlms/v2`|We use `https://\{subdomain\}.talentlms.com/api/v2` as the base URL.|
         |Teamtailor Job Boards|`teamtailorjobboards/direct-apply`|Teamtailor's [Job Board Direct Apply API](https://partner.teamtailor.com/job_boards/direct_apply/#direct-apply). We automatically authenticate all requests and use `https://5qbn6o9x4h.execute-api.eu-west-1.amazonaws.com/production` as the base URL. All requests are automatically signed with HMAC-SHA256 signature.|
         |Teamtailor|`teamtailor/v1`|We use `https://api.teamtailor.com/v1` as the base URL. Find the official docs [here](https://docs.teamtailor.com/).|
+        |TrackerRMS|`trackerrms/v1`|We use `https://evousapi.tracker-rms.com` as the base URL. Find the official docs [here](https://evousapi.tracker-rms.com/swagger/index.html).|
         |TRAFFIT|`traffit/v2`|Traffit's [v2 API](https://api.traffit.com). We authenticate all requests with the Traffit API key and use the base URL `https://yourdomain.traffit.com/api/integration/v2`.|
         |TriNet PEO|`trinetpeo/v1`|We use `https://api.trinet.com` as the base URL. Find the official docs [here](https://developers.trinet.com).|
         |Ubeeo|`ubeeo/api`|Ubeeo ATS API. We automatically authenticate all requests using OAuth client credentials and use `https://api.ats-platform.com` as the base URL (sandbox: `https://api.acc.ats-platform.com`).|
@@ -914,6 +939,7 @@ class General(BaseSDK):
         |Visma YouServe|`youserve/learning`|Visma YouServe [Learning API](https://youserve-domain-api.github.io/SwaggerUI/learning.html). We automatically authenticate all requests using OAuth 2.0 with the provided credentials and use `https://api.youserve.nl/learning/v1.0` as the base URL.|
         |Workable|`workable/v1`|**Deprecated: Use `v3` instead.** Workable's [API](https://workable.readme.io/reference/generate-an-access-token). We automatically authenticate all requests using the client ID and secret and use `https://\{subdomain\}.\{environment\}.com/spi/v3` as the base URL.|
         |Workable|`workable/v3`|Workable's [API](https://workable.readme.io/reference/generate-an-access-token). We automatically authenticate all requests using the client ID and secret and use `https://\{subdomain\}.\{environment\}.com/spi/v3` as the base URL.|
+        |Workday|`workday/custom-report`|[Workday's Custom Reports](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html). We automatically authenticate all requests and use `https://\{domain\}/ccx/service/customreport2/\{tenant\}/` as the base URL. Set your `method` to `GET`. The `path` should be the report path after the tenant, e.g., `/\{report_owner\}/\{report_name\}`. You can include query parameters in the `params` object (e.g., `format=json`).|
         |Workday|`workday/rest`|[Workday's REST API](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html). We automatically authenticate all requests and use the correct Workday REST base URL for your tenant. The base URL follows the format: https://\{domain\}/api/\{service_name\}/\{version\}/\{tenant\}. You can specify any valid REST endpoint and method. See the Workday REST API documentation for available endpoints. You must specify the `api_options` object and set `service_name` to the name of the service you want to call. You can also specify the `version` (e.g., \"v1\", \"v2\"); if omitted, it defaults to \"v1\".|
         |Workday|`workday/soap`|[Workday's SOAP API](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html). We automatically authenticate all requests. Set `data` to your raw xml string. Use `/` as your `path`, as we will always send requests to `https://\{domain\}/ccx/service/\{tenant\}/\{service_name\}`. Set your `method` to `POST`. You need to specify the `api_options` object and set `service_name` to the name of the service you want to call. Find all available services [here](https://community.workday.com/sites/default/files/file-hosting/productionapi/versions/v41.0/index.html). The string that you submit as `data` will be the content of the `soapenv:Body` tag in the request. You can set the `service_version` to any valid Workday service version (the default is `38.2`).|
         |workforce.com|`workforcecom/api`|Workforce.com [API](https://my.workforce.com/api/v2/documentation). We automatically authenticate all requests using the provided credentials and use `https://my.tanda.co` as the base URL.|
@@ -958,14 +984,14 @@ class General(BaseSDK):
             body=models.PostPassthroughToolAPIRequestBody(
                 method=method,
                 path=path,
-                headers=headers,
-                params=params,
+                headers=utils.unmarshal(headers, Optional[Dict[str, str]]),
+                params=utils.unmarshal(params, Optional[Dict[str, str]]),
                 data=data,
                 response_as_base64=response_as_base64,
                 multipart_form_data=utils.get_pydantic_model(
                     multipart_form_data, Optional[List[models.MultipartFormDatum]]
                 ),
-                api_options=api_options,
+                api_options=utils.unmarshal(api_options, Optional[Dict[str, str]]),
             ),
         )
 
@@ -1011,6 +1037,8 @@ class General(BaseSDK):
                 operation_id="PostPassthroughToolApi",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1111,6 +1139,8 @@ class General(BaseSDK):
                 operation_id="DeleteIntegrationsIntegrationId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1211,6 +1241,8 @@ class General(BaseSDK):
                 operation_id="DeleteIntegrationsIntegrationId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1295,6 +1327,8 @@ class General(BaseSDK):
                 operation_id="GetIntegrationsIntegrationId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1379,6 +1413,8 @@ class General(BaseSDK):
                 operation_id="GetIntegrationsIntegrationId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1479,6 +1515,8 @@ class General(BaseSDK):
                 operation_id="PutIntegrationsIntegrationIdEnabled",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1579,6 +1617,8 @@ class General(BaseSDK):
                 operation_id="PutIntegrationsIntegrationIdEnabled",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1704,6 +1744,8 @@ class General(BaseSDK):
                 operation_id="PostIntegrationsIntegrationIdRelink",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1829,6 +1871,8 @@ class General(BaseSDK):
                 operation_id="PostIntegrationsIntegrationIdRelink",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -1935,6 +1979,8 @@ class General(BaseSDK):
                 operation_id="PostIntegrationsIntegrationIdSetupLink",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2041,6 +2087,8 @@ class General(BaseSDK):
                 operation_id="PostIntegrationsIntegrationIdSetupLink",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2132,6 +2180,8 @@ class General(BaseSDK):
                 operation_id="GetIntegrationsIntegrationIdIntegrationFields",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2251,6 +2301,8 @@ class General(BaseSDK):
                 operation_id="GetIntegrationsIntegrationIdIntegrationFields",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2383,6 +2435,8 @@ class General(BaseSDK):
                 operation_id="PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2483,6 +2537,8 @@ class General(BaseSDK):
                 operation_id="PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2575,6 +2631,8 @@ class General(BaseSDK):
                 operation_id="GetIntegrationsIntegrationIdCustomFields",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2694,6 +2752,8 @@ class General(BaseSDK):
                 operation_id="GetIntegrationsIntegrationIdCustomFields",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2824,6 +2884,8 @@ class General(BaseSDK):
                 operation_id="PutIntegrationsIntegrationIdCustomFieldsCustomFieldId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -2924,6 +2986,8 @@ class General(BaseSDK):
                 operation_id="PutIntegrationsIntegrationIdCustomFieldsCustomFieldId",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -3010,6 +3074,8 @@ class General(BaseSDK):
                 operation_id="GetToolsCategory",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
@@ -3095,6 +3161,8 @@ class General(BaseSDK):
                 operation_id="GetToolsCategory",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["General"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),

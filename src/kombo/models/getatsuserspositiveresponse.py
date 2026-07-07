@@ -18,13 +18,6 @@ GetAtsUsersPositiveResponseStatus = Literal[
 r"""Whether the user is active or inactive. Consider this field when provisioning users from the ATS."""
 
 
-GetAtsUsersPositiveResponseScope = Literal[
-    "SYSTEM",
-    "JOB",
-]
-r"""Whether the role applies globally or is scoped to a specific job."""
-
-
 GetAtsUsersPositiveResponseUnifiedType = Literal[
     "HIRING_MANAGER",
     "RECRUITER",
@@ -36,15 +29,19 @@ GetAtsUsersPositiveResponseUnifiedType = Literal[
 r"""Unified role type if Kombo can map it."""
 
 
+GetAtsUsersPositiveResponseScope = Literal["SYSTEM",]
+r"""Roles that apply at the system level."""
+
+
 class SystemRoleTypedDict(TypedDict):
     remote_id: Nullable[str]
     r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
     remote_label: Nullable[str]
     r"""The label of the role."""
-    scope: Nullable[GetAtsUsersPositiveResponseScope]
-    r"""Whether the role applies globally or is scoped to a specific job."""
     unified_type: Nullable[GetAtsUsersPositiveResponseUnifiedType]
     r"""Unified role type if Kombo can map it."""
+    scope: GetAtsUsersPositiveResponseScope
+    r"""Roles that apply at the system level."""
 
 
 class SystemRole(BaseModel):
@@ -54,11 +51,11 @@ class SystemRole(BaseModel):
     remote_label: Nullable[str]
     r"""The label of the role."""
 
-    scope: Nullable[GetAtsUsersPositiveResponseScope]
-    r"""Whether the role applies globally or is scoped to a specific job."""
-
     unified_type: Nullable[GetAtsUsersPositiveResponseUnifiedType]
     r"""Unified role type if Kombo can map it."""
+
+    scope: GetAtsUsersPositiveResponseScope
+    r"""Roles that apply at the system level."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

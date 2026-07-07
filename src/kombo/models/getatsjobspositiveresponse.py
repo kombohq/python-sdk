@@ -767,19 +767,12 @@ class JobPosting(BaseModel):
 
 
 GetAtsJobsPositiveResponseHiringTeamRole = Literal[
-    "RECRUITER",
     "HIRING_MANAGER",
+    "RECRUITER",
     "COORDINATOR",
     "SOURCER",
     "INTERVIEWER",
 ]
-
-
-GetAtsJobsPositiveResponseScope = Literal[
-    "SYSTEM",
-    "JOB",
-]
-r"""Whether the role applies globally or is scoped to a specific job."""
 
 
 GetAtsJobsPositiveResponseUnifiedType = Literal[
@@ -793,15 +786,19 @@ GetAtsJobsPositiveResponseUnifiedType = Literal[
 r"""Unified role type if Kombo can map it."""
 
 
+GetAtsJobsPositiveResponseScope = Literal["JOB",]
+r"""Roles that apply at the job level."""
+
+
 class JobRoleTypedDict(TypedDict):
     remote_id: Nullable[str]
     r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
     remote_label: Nullable[str]
     r"""The label of the role."""
-    scope: Nullable[GetAtsJobsPositiveResponseScope]
-    r"""Whether the role applies globally or is scoped to a specific job."""
     unified_type: Nullable[GetAtsJobsPositiveResponseUnifiedType]
     r"""Unified role type if Kombo can map it."""
+    scope: GetAtsJobsPositiveResponseScope
+    r"""Roles that apply at the job level."""
 
 
 class JobRole(BaseModel):
@@ -811,11 +808,11 @@ class JobRole(BaseModel):
     remote_label: Nullable[str]
     r"""The label of the role."""
 
-    scope: Nullable[GetAtsJobsPositiveResponseScope]
-    r"""Whether the role applies globally or is scoped to a specific job."""
-
     unified_type: Nullable[GetAtsJobsPositiveResponseUnifiedType]
     r"""Unified role type if Kombo can map it."""
+
+    scope: GetAtsJobsPositiveResponseScope
+    r"""Roles that apply at the job level."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -842,7 +839,7 @@ class GetAtsJobsPositiveResponseHiringTeamTypedDict(TypedDict):
     last_name: Nullable[str]
     r"""Last name of the user."""
     hiring_team_roles: List[GetAtsJobsPositiveResponseHiringTeamRole]
-    r"""**(⚠️ Deprecated - Use `job_roles` to access the full list of job roles.)** Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+    r"""**(⚠️ Deprecated - Use `job_roles` to access the full list of job roles (including custom labels and unmapped roles).)** Array of the roles of the user for this specific job. Example: [\"RECRUITER\", \"HIRING_MANAGER\"]."""
     job_roles: List[JobRoleTypedDict]
     r"""Roles assigned to this user for this job.
 
@@ -873,7 +870,7 @@ class GetAtsJobsPositiveResponseHiringTeam(BaseModel):
             deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
         ),
     ]
-    r"""**(⚠️ Deprecated - Use `job_roles` to access the full list of job roles.)** Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema."""
+    r"""**(⚠️ Deprecated - Use `job_roles` to access the full list of job roles (including custom labels and unmapped roles).)** Array of the roles of the user for this specific job. Example: [\"RECRUITER\", \"HIRING_MANAGER\"]."""
 
     job_roles: List[JobRole]
     r"""Roles assigned to this user for this job.

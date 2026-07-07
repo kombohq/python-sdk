@@ -1,6 +1,6 @@
 # GetAtsUsersPositiveResponseScope
 
-Whether the role applies globally or is scoped to a specific job.
+Roles that apply at the system level.
 
 ## Example Usage
 
@@ -13,4 +13,3 @@ value: GetAtsUsersPositiveResponseScope = "SYSTEM"
 ## Values
 
 - `"SYSTEM"`
-- `"JOB"`

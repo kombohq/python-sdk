@@ -123,9 +123,13 @@ value: IntegrationTool = "workday"
 - `"logicmelon"`
 - `"loxo"`
 - `"kula"`
+- `"trackerrms"`
+- `"databites"`
+- `"pageup"`
 - `"workdaycustomreport"`
 - `"workdaycustomreportsftp"`
 - `"ukgprowfm"`
+- `"adpdecidium"`
 - `"payfitcustomer"`
 - `"payfitpartner"`
 - `"payfit"`
@@ -204,6 +208,8 @@ value: IntegrationTool = "workday"
 - `"sftpfetch"`
 - `"360learning"`
 - `"talentlms"`
+- `"docebo"`
+- `"coursera"`
 - `"udemy"`
 - `"linkedinlearning"`
 - `"moodle"`
