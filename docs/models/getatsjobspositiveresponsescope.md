@@ -1,16 +1,15 @@
 # GetAtsJobsPositiveResponseScope
 
-Whether the role applies globally or is scoped to a specific job.
+Roles that apply at the job level.
 
 ## Example Usage
 
 ```python
 from kombo.models import GetAtsJobsPositiveResponseScope
-value: GetAtsJobsPositiveResponseScope = "SYSTEM"
+value: GetAtsJobsPositiveResponseScope = "JOB"
 ```
 
 
 ## Values
 
-- `"SYSTEM"`
 - `"JOB"`

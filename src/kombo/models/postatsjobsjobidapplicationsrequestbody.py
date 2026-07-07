@@ -2249,6 +2249,13 @@ class PostAtsJobsJobIDApplicationsRequestBodyPinpoint(BaseModel):
         return m
 
 
+PostAtsJobsJobIDApplicationsRequestBodyAktiv = Literal[
+    "Ja",
+    "Nein",
+]
+r"""Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active)."""
+
+
 class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidateTypedDict(TypedDict):
     r"""Additional candidate fields that will be passed to the Coveto candidate creation."""
 
@@ -2256,6 +2263,8 @@ class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidateTypedDict(TypedD
     r"""The mandant field for the candidate in Coveto."""
     status: NotRequired[int]
     r"""The numeric status ID to assign to the candidate on creation in Coveto. Refer to your Coveto `/bewerber-status` endpoint for available IDs."""
+    aktiv: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyAktiv]
+    r"""Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active)."""
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidate(BaseModel):
@@ -2267,9 +2276,12 @@ class PostAtsJobsJobIDApplicationsRequestBodyCovetorestCandidate(BaseModel):
     status: Optional[int] = None
     r"""The numeric status ID to assign to the candidate on creation in Coveto. Refer to your Coveto `/bewerber-status` endpoint for available IDs."""
 
+    aktiv: Optional[PostAtsJobsJobIDApplicationsRequestBodyAktiv] = None
+    r"""Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active)."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["mandant", "status"])
+        optional_fields = set(["mandant", "status", "aktiv"])
         serialized = handler(self)
         m = {}
 
