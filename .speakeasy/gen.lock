@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.790.2
   generationVersion: 2.918.3
-  releaseVersion: 1.3.1
-  configChecksum: 0a294dc2518abe48ecf00908d1ae9c16
+  releaseVersion: 1.3.2
+  configChecksum: f49bb82033e240d38427f2594e29e8bd
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
 persistentEdits:
-  generation_id: 00017a38-56fa-4f24-9a98-aff336bb3555
-  pristine_commit_hash: 10b7c42553ccb56944257cb5aef2b47b102ce8f3
-  pristine_tree_hash: 1d8b9ffb6fa7acd870d0123bbae773ff99d83e3f
+  generation_id: dd2c7290-23cc-42a8-af9a-a53e54fa1c28
+  pristine_commit_hash: a5cf1eb00c7b034db0f692fcf60389877eb2f2d3
+  pristine_tree_hash: af64af4c0ae183a520da88fd9d32741718b89ecb
 features:
   python:
     additionalDependencies: 1.1.0
@@ -4205,8 +4205,8 @@ trackedFiles:
     pristine_git_object: f456032107a9387ba6c98afd1c981df2f4b3d636
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:03a5c8aa626b841e4ce4371d3881fefe806397eb
-    pristine_git_object: be3a6313dca332034f8b25e41a1aec73a1624df4
+    last_write_checksum: sha1:2d498a18b8d2ab2cfe7e13a0ef5541f5bf550710
+    pristine_git_object: 7d9270916583e5a5d2da4bc5538b8bf0d525e8bb
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:b6ad6f0515a952d7cb052befddb6a117d4f627d8
@@ -4233,8 +4233,8 @@ trackedFiles:
     pristine_git_object: 460080ad13f20f8eac822635c7778a371e892c5d
   src/kombo/_version.py:
     id: 45cf440ad1df
-    last_write_checksum: sha1:d21c8100c98849de920e816fae6b81ee4ca2c487
-    pristine_git_object: 8e7c3bdd0daeeeefaf9d0f51c29dd8095caf855d
+    last_write_checksum: sha1:10e00192345d8cc2aa1bab0e30cf41dbcb49ec01
+    pristine_git_object: 6ac1866bab6846687d47eb94048286fbca798e0b
   src/kombo/assessment.py:
     id: aec6e8a7589f
     last_write_checksum: sha1:4d155741d6e52c6b6fcb93cccb6dd2efd191cfb5
@@ -7690,7 +7690,6 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": "PLATFORM.RATE_LIMIT_EXCEEDED", "title": null, "message": "<value>", "log_url": "https://married-yin.org/"}}
 examplesVersion: 1.0.2
-releaseNotes: "## Python SDK Changes:\n* `kombo.ats.get_applications()`:  `response.data.results[].current_stage.custom_fields` **Added**\n* `kombo.ats.move_application_to_stage()`: \n  *  `request.remote_fields.successfactors` **Added**\n* `kombo.ats.create_candidate()`: \n  *  `request.remote_fields.workday.candidate_data.contact_data.location_data.postal_code` **Added**\n* `kombo.ats.get_application_stages()`:  `response.data.results[].custom_fields` **Added**\n* `kombo.ats.get_jobs()`:  `response.data.results[].stages[].custom_fields` **Added**\n* `kombo.ats.create_application()`: \n  *  `request.remote_fields.workday.candidate_data.contact_data.location_data.postal_code` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json

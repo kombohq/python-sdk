@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:a0d104795f5c7f029938b4b51c436f2ebe209f77e0d50e9756797e2258c2ffb5
         sourceBlobDigest: sha256:bdad16c9ef7a81f95ed1c1bb7ddff70e69d9c657a41381bef3d3076f66cc3a56
         codeSamplesNamespace: kombo-api-python-code-samples
-        codeSamplesRevisionDigest: sha256:b8cddbf0fdda9d27395ba70711227d7046acbac4025483975f7e1b87dbf85fad
+        codeSamplesRevisionDigest: sha256:ba06cec9630b040ba1831914d1849632b72d813250204612f93ef775ebc17ae6
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
