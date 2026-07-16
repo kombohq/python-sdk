@@ -1,4 +1,4 @@
-# Schema1Object
+# Schema1Object1
 
 
 ## Fields
@@ -10,4 +10,4 @@
 | `description`                                                                  | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `unified_key`                                                                  | [OptionalNullable[models.Schema1UnifiedKey6]](../models/schema1unifiedkey6.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `type`                                                                         | *Literal["object"]*                                                            | :heavy_check_mark:                                                             | N/A                                                                            |
-| `properties`                                                                   | [models.Schema1](../models/schema1.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `properties`                                                                   | Dict[str, [models.Schema1Union1](../models/schema1union1.md)]                  | :heavy_check_mark:                                                             | N/A                                                                            |

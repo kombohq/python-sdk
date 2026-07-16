@@ -7,7 +7,7 @@ from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Literal
+from typing import Any, Dict, List, Literal
 from typing_extensions import Annotated, TypedDict
 
 
@@ -18,6 +18,8 @@ class GetAtsApplicationStagesPositiveResponseResultTypedDict(TypedDict):
     r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
     name: Nullable[str]
     r"""The application stage name. For example, \"Initial Screening\"."""
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -37,6 +39,9 @@ class GetAtsApplicationStagesPositiveResponseResult(BaseModel):
 
     name: Nullable[str]
     r"""The application stage name. For example, \"Initial Screening\"."""
+
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.

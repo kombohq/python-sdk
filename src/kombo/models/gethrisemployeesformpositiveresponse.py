@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .schema1_union_1 import Schema1Union1, Schema1Union1TypedDict
-from .schema2_union_2 import Schema2Union2, Schema2Union2TypedDict
+from .schema2 import Schema2, Schema2TypedDict
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
@@ -152,7 +152,7 @@ GetHrisEmployeesFormPositiveResponseUnifiedKey7 = Literal[
 class PropertiesArrayTypedDict(TypedDict):
     label: str
     required: bool
-    item_type: Schema2Union2TypedDict
+    item_type: Schema2TypedDict
     description: NotRequired[Nullable[str]]
     unified_key: NotRequired[Nullable[GetHrisEmployeesFormPositiveResponseUnifiedKey7]]
     type: Literal["array"]
@@ -165,7 +165,7 @@ class PropertiesArray(BaseModel):
 
     required: bool
 
-    item_type: Schema2Union2
+    item_type: Schema2
 
     description: OptionalNullable[str] = UNSET
 

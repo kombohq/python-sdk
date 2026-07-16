@@ -4,7 +4,7 @@ from __future__ import annotations
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import Literal, Optional
+from typing import Any, Dict, Literal, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -38,6 +38,38 @@ class PutAtsApplicationsApplicationIDStageRequestBodyWorkday(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["Workflow_Step_ID", "Step_Type"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PutAtsApplicationsApplicationIDStageRequestBodySuccessfactorsTypedDict(TypedDict):
+    r"""Fields specific to SAP SuccessFactors."""
+
+    job_application: NotRequired[Dict[str, Any]]
+    r"""Fields that we will pass through to SuccessFactor's `JobApplication` object when moving the application to a new stage. Useful for instance-specific fields that SAP requires on certain status transitions (e.g. `custEventReason`)."""
+
+
+class PutAtsApplicationsApplicationIDStageRequestBodySuccessfactors(BaseModel):
+    r"""Fields specific to SAP SuccessFactors."""
+
+    job_application: Annotated[
+        Optional[Dict[str, Any]], pydantic.Field(alias="JobApplication")
+    ] = None
+    r"""Fields that we will pass through to SuccessFactor's `JobApplication` object when moving the application to a new stage. Useful for instance-specific fields that SAP requires on certain status transitions (e.g. `custEventReason`)."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["JobApplication"])
         serialized = handler(self)
         m = {}
 
@@ -164,6 +196,10 @@ class PutAtsApplicationsApplicationIDStageRequestBodyRemoteFieldsTypedDict(Typed
         PutAtsApplicationsApplicationIDStageRequestBodyWorkdayTypedDict
     ]
     r"""Fields specific to Workday."""
+    successfactors: NotRequired[
+        PutAtsApplicationsApplicationIDStageRequestBodySuccessfactorsTypedDict
+    ]
+    r"""Fields specific to SAP SuccessFactors."""
     greenhouse: NotRequired[
         PutAtsApplicationsApplicationIDStageRequestBodyGreenhouseTypedDict
     ]
@@ -180,6 +216,11 @@ class PutAtsApplicationsApplicationIDStageRequestBodyRemoteFields(BaseModel):
     workday: Optional[PutAtsApplicationsApplicationIDStageRequestBodyWorkday] = None
     r"""Fields specific to Workday."""
 
+    successfactors: Optional[
+        PutAtsApplicationsApplicationIDStageRequestBodySuccessfactors
+    ] = None
+    r"""Fields specific to SAP SuccessFactors."""
+
     greenhouse: Optional[PutAtsApplicationsApplicationIDStageRequestBodyGreenhouse] = (
         None
     )
@@ -190,7 +231,7 @@ class PutAtsApplicationsApplicationIDStageRequestBodyRemoteFields(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["workday", "greenhouse", "workable"])
+        optional_fields = set(["workday", "successfactors", "greenhouse", "workable"])
         serialized = handler(self)
         m = {}
 
@@ -242,6 +283,10 @@ class PutAtsApplicationsApplicationIDStageRequestBody(BaseModel):
 
 try:
     PutAtsApplicationsApplicationIDStageRequestBodyWorkday.model_rebuild()
+except NameError:
+    pass
+try:
+    PutAtsApplicationsApplicationIDStageRequestBodySuccessfactors.model_rebuild()
 except NameError:
     pass
 try:

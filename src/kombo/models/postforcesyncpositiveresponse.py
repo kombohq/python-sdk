@@ -18,7 +18,7 @@ r"""The type of the triggered sync. May differ from request, if the integration 
 
 class PostForceSyncPositiveResponseDataTypedDict(TypedDict):
     already_queued: bool
-    r"""We only allow 1 concurrent sync to be running or queued."""
+    r"""We only allow 1 concurrent sync of the same type to be running or queued."""
     sync_id: str
     r"""ID of the newly-created or already-queued-or-running sync."""
     type: PostForceSyncPositiveResponseType
@@ -27,7 +27,7 @@ class PostForceSyncPositiveResponseDataTypedDict(TypedDict):
 
 class PostForceSyncPositiveResponseData(BaseModel):
     already_queued: bool
-    r"""We only allow 1 concurrent sync to be running or queued."""
+    r"""We only allow 1 concurrent sync of the same type to be running or queued."""
 
     sync_id: str
     r"""ID of the newly-created or already-queued-or-running sync."""
