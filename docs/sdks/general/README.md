@@ -303,8 +303,6 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Pinpoint|`pinpoint/v1`|Pinpoint's [JSON:API](https://developers.pinpointhq.com/docs). We automatically authenticate all requests using the `X-API-KEY` header and use `https://\{subdomain\}.pinpointhq.com/api/v1` as the base URL.|
 |Planday|`planday/api`|Planday's [HR API v1.0](https://openapi.planday.com/api/hr?version=v1.0). We automatically authenticate all requests and use `https://openapi.planday.com` as the base URL.|
 |Recruit CRM|`recruitcrm/api`|We use `https://api.recruitcrm.io` as the base URL. Find the official docs [here](https://docs.recruitcrm.io/docs/rcrm-api-reference/ZG9jOjMyNzk0NA-getting-started).|
-|Recruitee|`recruitee/default`|The [Recruitee API](https://api.recruitee.com/docs/index.html). We automatically authenticate all requests and use `https://api.recruitee.com/c/\{company_id\}` as the base URL.|
-|Recruitee|`recruitee/v1`|We use `https://api.recruitee.com/c/\{company_id\}` as the base URL. Find the official docs [here](https://docs.recruitee.com/reference).|
 |RecruiterFlow|`recruiterflow/v1`|RecruiterFlow API [docs](https://docs.recruiterflow.com/). We automatically authenticate all requests using the RF-Api-Key header and use `https://api.recruiterflow.com` as the base URL.|
 |Remote|`remotecom/default`|Remote's [API](https://remote.com/resources/api/getting-started). We automatically authenticate all requests using provided credentials.|
 |rexx systems|`rexx/default`|Rexx's HRIS export API. There is only one endpoint: `Get /`|
@@ -328,6 +326,8 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |TalentLMS|`talentlms/v2`|We use `https://\{subdomain\}.talentlms.com/api/v2` as the base URL.|
 |Teamtailor Job Boards|`teamtailorjobboards/direct-apply`|Teamtailor's [Job Board Direct Apply API](https://partner.teamtailor.com/job_boards/direct_apply/#direct-apply). We automatically authenticate all requests and use `https://5qbn6o9x4h.execute-api.eu-west-1.amazonaws.com/production` as the base URL. All requests are automatically signed with HMAC-SHA256 signature.|
 |Teamtailor|`teamtailor/v1`|We use `https://api.teamtailor.com/v1` as the base URL. Find the official docs [here](https://docs.teamtailor.com/).|
+|Tellent Recruitee|`recruitee/default`|The [Recruitee API](https://api.recruitee.com/docs/index.html). We automatically authenticate all requests and use `https://api.recruitee.com/c/\{company_id\}` as the base URL.|
+|Tellent Recruitee|`recruitee/v1`|We use `https://api.recruitee.com/c/\{company_id\}` as the base URL. Find the official docs [here](https://docs.recruitee.com/reference).|
 |TrackerRMS|`trackerrms/v1`|We use `https://evousapi.tracker-rms.com` as the base URL. Find the official docs [here](https://evousapi.tracker-rms.com/swagger/index.html).|
 |TRAFFIT|`traffit/v2`|Traffit's [v2 API](https://api.traffit.com). We authenticate all requests with the Traffit API key and use the base URL `https://yourdomain.traffit.com/api/integration/v2`.|
 |TriNet PEO|`trinetpeo/v1`|We use `https://api.trinet.com` as the base URL. Find the official docs [here](https://developers.trinet.com).|

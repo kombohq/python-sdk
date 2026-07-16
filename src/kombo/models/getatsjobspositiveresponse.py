@@ -148,6 +148,8 @@ class StageTypedDict(TypedDict):
     r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
     name: Nullable[str]
     r"""The application stage name. For example, \"Initial Screening\"."""
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     index: NotRequired[Nullable[int]]
     r"""Numeric index following the order of the stages if they are ordered in the underlying tool."""
 
@@ -162,13 +164,16 @@ class Stage(BaseModel):
     name: Nullable[str]
     r"""The application stage name. For example, \"Initial Screening\"."""
 
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
+
     index: OptionalNullable[int] = UNSET
     r"""Numeric index following the order of the stages if they are ordered in the underlying tool."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["index"])
-        nullable_fields = set(["remote_id", "name", "index"])
+        nullable_fields = set(["remote_id", "name", "custom_fields", "index"])
         serialized = handler(self)
         m = {}
 

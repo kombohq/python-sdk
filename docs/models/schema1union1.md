@@ -39,10 +39,10 @@ value: models.Schema1MultiSelect = /* values here */
 value: models.Schema1Checkbox = /* values here */
 ```
 
-### `models.Schema1Object`
+### `models.Schema1Object1`
 
 ```python
-value: models.Schema1Object = /* values here */
+value: models.Schema1Object1 = /* values here */
 ```
 
 ### `models.Schema1Array1`

@@ -1,4 +1,4 @@
-# Schema2Union2
+# Schema2
 
 
 ## Supported Types
@@ -39,16 +39,16 @@ value: models.Schema2MultiSelect = /* values here */
 value: models.Schema2Checkbox = /* values here */
 ```
 
-### `models.Schema2Object2`
+### `models.Schema2Object1`
 
 ```python
-value: models.Schema2Object2 = /* values here */
+value: models.Schema2Object1 = /* values here */
 ```
 
-### `models.Schema2Array2`
+### `models.Schema2Array1`
 
 ```python
-value: models.Schema2Array2 = /* values here */
+value: models.Schema2Array1 = /* values here */
 ```
 
 ### `models.Schema2File`

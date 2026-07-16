@@ -1371,6 +1371,7 @@ class PostAtsJobsJobIDApplicationsRequestBodyCountryCityReference(BaseModel):
 class PostAtsJobsJobIDApplicationsRequestBodyLocationDataTypedDict(TypedDict):
     address_line_1: NotRequired[str]
     address_line_2: NotRequired[str]
+    postal_code: NotRequired[str]
     region_subdivision_1: NotRequired[str]
     country_region_reference: NotRequired[
         PostAtsJobsJobIDApplicationsRequestBodyCountryRegionReferenceTypedDict
@@ -1388,6 +1389,8 @@ class PostAtsJobsJobIDApplicationsRequestBodyLocationData(BaseModel):
     address_line_2: Annotated[Optional[str], pydantic.Field(alias="Address_Line_2")] = (
         None
     )
+
+    postal_code: Annotated[Optional[str], pydantic.Field(alias="Postal_Code")] = None
 
     region_subdivision_1: Annotated[
         Optional[str], pydantic.Field(alias="Region_Subdivision_1")
@@ -1409,6 +1412,7 @@ class PostAtsJobsJobIDApplicationsRequestBodyLocationData(BaseModel):
             [
                 "Address_Line_1",
                 "Address_Line_2",
+                "Postal_Code",
                 "Region_Subdivision_1",
                 "Country_Region_Reference",
                 "Country_City_Reference",
