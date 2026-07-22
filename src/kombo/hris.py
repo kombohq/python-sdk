@@ -4198,6 +4198,10 @@ class Hris(BaseSDK):
 
         For a detailed explanation of the data model, validation rules, time zones, payable hours, approvals, and break patterns, see the [Time & Attendance guide](/hris/features/time-and-attendance).
 
+        <Note>
+        By default, only the last 2 months of timesheets are kept up to date during sync (configurable via the \"Historical timesheet months to sync\" setting). Kombo only deletion-tracks timesheets inside that window — timesheets that age out are kept and are not marked as deleted just because they were not re-fetched. Within the window, timesheets that disappear from the remote HRIS are marked with `remote_deleted_at` as usual. See the [Time & Attendance guide](/hris/features/time-and-attendance) for details.
+        </Note>
+
         Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
 
         :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
@@ -4365,6 +4369,10 @@ class Hris(BaseSDK):
         <Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
 
         For a detailed explanation of the data model, validation rules, time zones, payable hours, approvals, and break patterns, see the [Time & Attendance guide](/hris/features/time-and-attendance).
+
+        <Note>
+        By default, only the last 2 months of timesheets are kept up to date during sync (configurable via the \"Historical timesheet months to sync\" setting). Kombo only deletion-tracks timesheets inside that window — timesheets that age out are kept and are not marked as deleted just because they were not re-fetched. Within the window, timesheets that disappear from the remote HRIS are marked with `remote_deleted_at` as usual. See the [Time & Attendance guide](/hris/features/time-and-attendance) for details.
+        </Note>
 
         Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
 
@@ -5185,6 +5193,7 @@ class Hris(BaseSDK):
             | `locations` | ✓ Yes | ✓ Yes |
             | `legal_entities` | ✓ Yes | ✓ Yes |
             | `groups` | ✓ Yes | ✓ Yes |
+            | `skills` | ✓ Yes | ✓ Yes |
 
             _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
@@ -5357,6 +5366,7 @@ class Hris(BaseSDK):
             | `locations` | ✓ Yes | ✓ Yes |
             | `legal_entities` | ✓ Yes | ✓ Yes |
             | `groups` | ✓ Yes | ✓ Yes |
+            | `skills` | ✓ Yes | ✓ Yes |
 
             _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
         :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
