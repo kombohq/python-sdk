@@ -63,6 +63,7 @@ class GetHrisStaffingEntitiesRequestTypedDict(TypedDict):
     | `locations` | ✓ Yes | ✓ Yes |
     | `legal_entities` | ✓ Yes | ✓ Yes |
     | `groups` | ✓ Yes | ✓ Yes |
+    | `skills` | ✓ Yes | ✓ Yes |
 
     _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
     """
@@ -116,6 +117,7 @@ class GetHrisStaffingEntitiesRequest(BaseModel):
     | `locations` | ✓ Yes | ✓ Yes |
     | `legal_entities` | ✓ Yes | ✓ Yes |
     | `groups` | ✓ Yes | ✓ Yes |
+    | `skills` | ✓ Yes | ✓ Yes |
 
     _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
     """

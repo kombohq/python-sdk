@@ -51,6 +51,7 @@ value: Name = "hris_legal_entities"
 - `"hris_join_staffing_entities_locations"`
 - `"hris_join_staffing_entities_legal_entities"`
 - `"hris_join_staffing_entities_groups"`
+- `"hris_join_staffing_entities_skills"`
 - `"ats_join_candidates_tags"`
 - `"ats_join_jobs_application_stages"`
 - `"ats_join_jobs_screening_questions"`

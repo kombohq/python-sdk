@@ -86,6 +86,7 @@ value: IntegrationTool = "workday"
 - `"homerun"`
 - `"mysolution"`
 - `"carerix"`
+- `"carerixgraphql"`
 - `"hroffice"`
 - `"talentclue"`
 - `"inrecruiting"`

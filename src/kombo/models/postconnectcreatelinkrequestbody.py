@@ -91,6 +91,7 @@ IntegrationTool = Literal[
     "homerun",
     "mysolution",
     "carerix",
+    "carerixgraphql",
     "hroffice",
     "talentclue",
     "inrecruiting",
