@@ -305,7 +305,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Planday|`planday/api`|Planday's [HR API v1.0](https://openapi.planday.com/api/hr?version=v1.0). We automatically authenticate all requests and use `https://openapi.planday.com` as the base URL.|
 |Recruit CRM|`recruitcrm/api`|We use `https://api.recruitcrm.io` as the base URL. Find the official docs [here](https://docs.recruitcrm.io/docs/rcrm-api-reference/ZG9jOjMyNzk0NA-getting-started).|
 |RecruiterFlow|`recruiterflow/v1`|RecruiterFlow API [docs](https://docs.recruiterflow.com/). We automatically authenticate all requests using the RF-Api-Key header and use `https://api.recruiterflow.com` as the base URL.|
-|Remote|`remotecom/default`|Remote's [API](https://remote.com/resources/api/getting-started). We automatically authenticate all requests using provided credentials.|
+|Remote|`remotecom/default`|Remote's [API](https://remote.com/resources/api/getting-started). We automatically authenticate all requests using provided credentials. The base URL is `https://gateway.remote.com/v1` for production API keys (prefixed `ra_live_`), or `https://gateway.remote-sandbox.com/v1` for sandbox API keys.|
 |rexx systems|`rexx/default`|Rexx's HRIS export API. There is only one endpoint: `Get /`|
 |Rippling|`rippling/api`|Rippling's [API](https://developer.rippling.com/documentation). We automatically authenticate all requests and use `https://api.rippling.com/platform/api` or`https://rest.ripplingapis.com` as the base URL.|
 |Sage HR|`sagehr/api`|Sage HR's [API](https://developer.sage.com/hr/reference/api-ref). We automatically authenticate all requests and use `https://\{subdomain\}.sage.hr/api` as the base URL.|
