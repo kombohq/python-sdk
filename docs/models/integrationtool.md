@@ -31,6 +31,7 @@ value: IntegrationTool = "workday"
 - `"talentsoft"`
 - `"talentsoftcustomer"`
 - `"concludis"`
+- `"perbilityhelix"`
 - `"talention"`
 - `"piloga"`
 - `"onlyfy"`
@@ -187,7 +188,6 @@ value: IntegrationTool = "workday"
 - `"oysterhr"`
 - `"kiwihr"`
 - `"square"`
-- `"perbilityhelix"`
 - `"leapsome"`
 - `"loket"`
 - `"workforcecom"`
