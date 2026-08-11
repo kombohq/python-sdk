@@ -12,7 +12,7 @@ from kombo.types import (
 )
 from kombo.utils import validate_const
 import pydantic
-from pydantic import Field, model_serializer
+from pydantic import Field, SerializeAsAny, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Any, Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -666,7 +666,9 @@ class ScreeningQuestion(BaseModel):
 
     required: Nullable[bool]
 
-    format_: Annotated[OptionalNullable[Format], pydantic.Field(alias="format")] = UNSET
+    format_: Annotated[
+        SerializeAsAny[OptionalNullable[Format]], pydantic.Field(alias="format")
+    ] = UNSET
 
     index: OptionalNullable[int] = UNSET
 

@@ -5,7 +5,7 @@ from datetime import datetime
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
-from pydantic import Field, model_serializer
+from pydantic import Field, SerializeAsAny, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -390,7 +390,7 @@ class GetHrisPerformanceReviewsPositiveResponseResult(BaseModel):
 
     review_cycle: Nullable[ReviewCycle]
 
-    summary_rating: OptionalNullable[SummaryRating] = UNSET
+    summary_rating: SerializeAsAny[OptionalNullable[SummaryRating]] = UNSET
     r"""The summary rating of the performance review."""
 
     @model_serializer(mode="wrap")

@@ -201,6 +201,7 @@ with SDK(
 * [get_offers](docs/sdks/ats/README.md#get_offers) - Get offers
 * [get_rejection_reasons](docs/sdks/ats/README.md#get_rejection_reasons) - Get rejection reasons
 * [get_interviews](docs/sdks/ats/README.md#get_interviews) - Get interviews
+* [get_ats_notes](docs/sdks/ats/README.md#get_ats_notes) - Get notes
 * [import_tracked_application](docs/sdks/ats/README.md#import_tracked_application) - Import tracked application
 
 ### [Connect](docs/sdks/connect/README.md)
@@ -334,9 +335,9 @@ with Kombo(
 
 
 **Inherit from [`SDKError`](./src/kombo/errors/sdkerror.py)**:
-* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 28 of 61 methods.*
-* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 61 methods.*
-* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 15 of 61 methods.*
+* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 29 of 62 methods.*
+* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 62 methods.*
+* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 15 of 62 methods.*
 * [`ResponseValidationError`](./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>

@@ -1642,6 +1642,8 @@ class PostAtsJobsJobIDApplicationsRequestBodyBullhornTypedDict(TypedDict):
     r"""Fields that we will pass through to Bullhorn's `Candidate` object."""
     job_submission: NotRequired[Dict[str, Any]]
     r"""Fields that we will pass through to Bullhorn's `JobSubmission` object."""
+    existing_candidate_remote_id: NotRequired[str]
+    r"""The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn."""
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyBullhorn(BaseModel):
@@ -1653,9 +1655,14 @@ class PostAtsJobsJobIDApplicationsRequestBodyBullhorn(BaseModel):
     job_submission: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to Bullhorn's `JobSubmission` object."""
 
+    existing_candidate_remote_id: Optional[str] = None
+    r"""The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["candidate", "job_submission"])
+        optional_fields = set(
+            ["candidate", "job_submission", "existing_candidate_remote_id"]
+        )
         serialized = handler(self)
         m = {}
 
@@ -2166,6 +2173,10 @@ class PostAtsJobsJobIDApplicationsRequestBodyPilogaCandidateTypedDict(TypedDict)
 
     street: NotRequired[str]
     r"""The street address of the candidate."""
+    geburtsdatum: NotRequired[datetime]
+    r"""The birth date of the candidate, written into the \"Geburtsdatum\" field of the application form. Format: `YYYY-MM-DD`
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+    """
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyPilogaCandidate(BaseModel):
@@ -2174,9 +2185,14 @@ class PostAtsJobsJobIDApplicationsRequestBodyPilogaCandidate(BaseModel):
     street: Optional[str] = None
     r"""The street address of the candidate."""
 
+    geburtsdatum: Optional[datetime] = None
+    r"""The birth date of the candidate, written into the \"Geburtsdatum\" field of the application form. Format: `YYYY-MM-DD`
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+    """
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["street"])
+        optional_fields = set(["street", "geburtsdatum"])
         serialized = handler(self)
         m = {}
 
