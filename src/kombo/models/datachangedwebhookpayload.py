@@ -49,6 +49,7 @@ Name = Literal[
     "ats_offers",
     "ats_rejection_reasons",
     "ats_roles",
+    "ats_notes",
     "lms_users",
     "lms_course_providers",
     "lms_skills",

@@ -5,7 +5,7 @@ from datetime import datetime
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from kombo.utils import validate_const
 import pydantic
-from pydantic import Field, model_serializer
+from pydantic import Field, SerializeAsAny, model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Any, Dict, List, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -434,7 +434,7 @@ class Skill(BaseModel):
     skill: SkillSkill
     r"""The skill expected for this staffing entity."""
 
-    expected_proficiency: OptionalNullable[ExpectedProficiency] = UNSET
+    expected_proficiency: SerializeAsAny[OptionalNullable[ExpectedProficiency]] = UNSET
     r"""The expected proficiency for this role. `null` when the source system carries no proficiency on the role side."""
 
     @model_serializer(mode="wrap")
