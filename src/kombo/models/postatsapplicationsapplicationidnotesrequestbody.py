@@ -252,6 +252,20 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyLever(BaseModel):
         return m
 
 
+class PostAtsApplicationsApplicationIDNotesRequestBodyTalent360TypedDict(TypedDict):
+    r"""Talent360 specific remote fields for the note."""
+
+    user_id: str
+    r"""Talent360 user ID the note is attributed to. Required because every Talent360 communication must be attributed to a user."""
+
+
+class PostAtsApplicationsApplicationIDNotesRequestBodyTalent360(BaseModel):
+    r"""Talent360 specific remote fields for the note."""
+
+    user_id: str
+    r"""Talent360 user ID the note is attributed to. Required because every Talent360 communication must be attributed to a user."""
+
+
 class PostAtsApplicationsApplicationIDNotesRequestBodyWorkableTypedDict(TypedDict):
     r"""Workable specific remote fields for ATS actions."""
 
@@ -307,6 +321,10 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFieldsTypedDict(Type
     r"""Bullhorn specific remote fields for the note."""
     lever: NotRequired[PostAtsApplicationsApplicationIDNotesRequestBodyLeverTypedDict]
     r"""Lever specific remote fields for the note."""
+    talent360: NotRequired[
+        PostAtsApplicationsApplicationIDNotesRequestBodyTalent360TypedDict
+    ]
+    r"""Talent360 specific remote fields for the note."""
     workable: NotRequired[
         PostAtsApplicationsApplicationIDNotesRequestBodyWorkableTypedDict
     ]
@@ -342,6 +360,11 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
     lever: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyLever] = None
     r"""Lever specific remote fields for the note."""
 
+    talent360: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyTalent360] = (
+        None
+    )
+    r"""Talent360 specific remote fields for the note."""
+
     workable: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyWorkable] = None
     r"""Workable specific remote fields for ATS actions."""
 
@@ -355,6 +378,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
                 "recruitee",
                 "bullhorn",
                 "lever",
+                "talent360",
                 "workable",
             ]
         )

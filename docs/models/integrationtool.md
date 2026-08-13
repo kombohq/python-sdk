@@ -128,6 +128,7 @@ value: IntegrationTool = "workday"
 - `"trackerrms"`
 - `"databites"`
 - `"pageup"`
+- `"talent360"`
 - `"workdaycustomreport"`
 - `"workdaycustomreportsftp"`
 - `"ukgprowfm"`

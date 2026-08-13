@@ -201,7 +201,7 @@ with SDK(
 * [get_offers](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_offers) - Get offers
 * [get_rejection_reasons](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_rejection_reasons) - Get rejection reasons
 * [get_interviews](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_interviews) - Get interviews
-* [get_ats_notes](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_ats_notes) - Get notes
+* [get_notes](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#get_notes) - Get notes
 * [import_tracked_application](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/ats/README.md#import_tracked_application) - Import tracked application
 
 ### [Connect](https://github.com/kombohq/python-sdk/blob/master/docs/sdks/connect/README.md)

@@ -27,7 +27,7 @@
 * [get_offers](#get_offers) - Get offers
 * [get_rejection_reasons](#get_rejection_reasons) - Get rejection reasons
 * [get_interviews](#get_interviews) - Get interviews
-* [get_ats_notes](#get_ats_notes) - Get notes
+* [get_notes](#get_notes) - Get notes
 * [import_tracked_application](#import_tracked_application) - Import tracked application
 
 ## get_applications
@@ -2079,7 +2079,7 @@ with Kombo(
 | errors.KomboAtsError   | default                | application/json       |
 | errors.SDKDefaultError | 4XX, 5XX               | \*/\*                  |
 
-## get_ats_notes
+## get_notes
 
 Retrieve all notes.
 
@@ -2097,7 +2097,7 @@ with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as k_client:
 
-    res = k_client.ats.get_ats_notes(page_size=100, include_deleted=False, ignore_unsupported_filters=False)
+    res = k_client.ats.get_notes(page_size=100, include_deleted=False, ignore_unsupported_filters=False)
 
     while res is not None:
         # Handle items

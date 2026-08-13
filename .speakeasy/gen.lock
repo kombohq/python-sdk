@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 0c8d1667-2710-4860-aee3-7d221dbc0a60
 management:
-  docChecksum: 045d3f9432784414152310e79ba300d4
+  docChecksum: a92c8129cc9dc835368c0511c699c112
   docVersion: 1.0.0
-  speakeasyVersion: 1.793.0
+  speakeasyVersion: 1.793.1
   generationVersion: 2.928.0
-  releaseVersion: 1.3.6
-  configChecksum: 771db236c4d7f114538a6ec02c65e559
+  releaseVersion: 1.3.7
+  configChecksum: e7ddadc6b2a7007e0dc5569bc806aab0
   repoURL: https://github.com/kombohq/python-sdk.git
   installationURL: https://github.com/kombohq/python-sdk.git
   published: true
 persistentEdits:
-  generation_id: 0c52aa41-1790-4b2b-b5aa-f587177910e5
-  pristine_commit_hash: 5b1321a612d96b705e8019dcc73d955588b2bb91
-  pristine_tree_hash: 7fd772c6a3d277a3cf7e77ec83ec83131e500b42
+  generation_id: 0a63e49b-ea39-4950-9204-261fbf91e9c2
+  pristine_commit_hash: ef3c5cf12f06c2fa41900f69e6c59dc943c07b62
+  pristine_tree_hash: 227baccc839b2d2a3e6d732653677f19262af85c
 features:
   python:
     additionalDependencies: 1.1.0
@@ -75,6 +75,10 @@ trackedFiles:
     id: 13c1c70d8b70
     last_write_checksum: sha1:e0c90ec9364b2baab1e00d49c1fda754c2f97f11
     pristine_git_object: 2419c02cddd3e5c8fce427a9002a37f989099f54
+  docs/models/afas.md:
+    id: b1fb484d1483
+    last_write_checksum: sha1:81e83a7b945cf4f3d8167d86bbc2bab5927cec6a
+    pristine_git_object: 74377fdc0f33bd591de50242fff6db7ba9fba1a9
   docs/models/assesscandidatedata.md:
     id: 1c1434b54a77
     last_write_checksum: sha1:6d5e02105835f41e8a47df7d4368779a027a9c2a
@@ -1113,24 +1117,24 @@ trackedFiles:
     pristine_git_object: 2c9149c1fb24df499c187cd0785c0ce62f8e3d1b
   docs/models/gethrisabsencespositiveresponse.md:
     id: 8a1301739c85
-    last_write_checksum: sha1:df7e20cd328934f667221ce2d16e50ec6c82d91b
-    pristine_git_object: 7b7323d32bd7977c01bfa3dfd25ddb2fd1ada913
+    last_write_checksum: sha1:6ba511dcaa9e86d63b51a36bbef6e3e79171cc5d
+    pristine_git_object: ea54c42c838981482cf8ad128f05526272c866e8
   docs/models/gethrisabsencespositiveresponsedata.md:
     id: d2c7fc402f5e
     last_write_checksum: sha1:5e6edd6950888928acc0e953a9ac268cf0e56a55
     pristine_git_object: 1a4d4e5c2d00b4ad955d75dce91627673ee7e138
   docs/models/gethrisabsencespositiveresponseresult.md:
     id: 6fce3e4ce2eb
-    last_write_checksum: sha1:5eb195b75bf5a0839eef2779209f7b1237adc846
-    pristine_git_object: 4b27053100dcb2313b97c287a69a732e9db5b4ea
+    last_write_checksum: sha1:a6c8adb47a14744099ab1017dba0584136d5bdd4
+    pristine_git_object: fc8d3dec3f56ab69ee516b2f65a1c8b6f8bd0499
   docs/models/gethrisabsencespositiveresponsestatus.md:
     id: 2b70b55c830f
     last_write_checksum: sha1:0dd349ea24fce793f85ec8da3bed40bb5e50f318
     pristine_git_object: f9390d41d8d12c470223624c242d1015b96da85a
   docs/models/gethrisabsencespositiveresponsetype.md:
     id: eb4601d76033
-    last_write_checksum: sha1:29cfd8524960558ccb7656492c7861d8e6784b47
-    pristine_git_object: cc35b856a17448c4850f240d53a3aac0be54717e
+    last_write_checksum: sha1:0e55e7955e864188e24baf0ae0cc39e129d0aff1
+    pristine_git_object: 6dc58a3b5f3cbb7441c16895d8e0e83e0b96500c
   docs/models/gethrisabsencespositiveresponsetypeunit.md:
     id: ea16d833c775
     last_write_checksum: sha1:34c4987d02d1135ad0bcb71ec720e22af2db15b1
@@ -1153,16 +1157,16 @@ trackedFiles:
     pristine_git_object: 163da7d9a2a8076ac34f8a5d00fc2b57cc542402
   docs/models/gethrisabsencetypespositiveresponse.md:
     id: 89f8f4cacd3f
-    last_write_checksum: sha1:f75937a2c36db0b9f839b71ed69df429a84836b9
-    pristine_git_object: fbf32cabc80339b70a3c2841ee4759a81d37028a
+    last_write_checksum: sha1:b61a20892e0385ada3cd6dae5967e490e298a6d4
+    pristine_git_object: 954b6ff8537aa149d7838a014c5fe0bf8ecd5856
   docs/models/gethrisabsencetypespositiveresponsedata.md:
     id: 441f4fb25d11
     last_write_checksum: sha1:9547cff50330ef4499456e1cfe0f650d8ae28423
     pristine_git_object: 151c8a41238cf90e117c454dbc176fd89a9cef69
   docs/models/gethrisabsencetypespositiveresponseresult.md:
     id: b88e82fef4ac
-    last_write_checksum: sha1:3a774fc17a2e5934ba9a645da7adc9c579da2bb9
-    pristine_git_object: 621d62e438b5b76b50df498f22edbec694026582
+    last_write_checksum: sha1:d7653dde8652f697490ee3bef0e94b40ec867d47
+    pristine_git_object: 9a0ad076c8340c98db25dc3fa1b2e53883f6dd23
   docs/models/gethrisabsencetypespositiveresponseunit.md:
     id: 06e512a921c3
     last_write_checksum: sha1:1def60c4c93767f274896c0e72d7a80c28cd76ad
@@ -1585,8 +1589,8 @@ trackedFiles:
     pristine_git_object: fc397f787b8382fcc8e7f5772aa5982c49c22d54
   docs/models/gethristimeoffbalancespositiveresponse.md:
     id: 88360b8c9bb0
-    last_write_checksum: sha1:02751463a9d6b76a39f061f4ddf5e77d64a03aba
-    pristine_git_object: f604fb0b7589f885dc9d0c5e120a5b8ff222080e
+    last_write_checksum: sha1:03a248e8dcbfdd2e4e9fca779251e7e4337b4795
+    pristine_git_object: e7d16939c90dce09e1d2b058a292bbc7f2a09ed6
   docs/models/gethristimeoffbalancespositiveresponsebalanceunit.md:
     id: 9461f944c47f
     last_write_checksum: sha1:a1d8924472913d9b99235044aaf0c5af8ca0b76f
@@ -1597,12 +1601,12 @@ trackedFiles:
     pristine_git_object: 06f2878f92fa8125ccb299b4df989efa9f717a3e
   docs/models/gethristimeoffbalancespositiveresponseresult.md:
     id: 77368d16d31c
-    last_write_checksum: sha1:f49b06d3f99f1d0f194e082d598a9c3dbc02e005
-    pristine_git_object: 749cd84582ebad130b2d7cae23682fbc4e8615e2
+    last_write_checksum: sha1:c275bfc9d6fd035faca3a6a999486aab66455e98
+    pristine_git_object: c868665a2672e12627e9e4fbc9036e8e02008da8
   docs/models/gethristimeoffbalancespositiveresponsetype.md:
     id: 36df5b3056d2
-    last_write_checksum: sha1:50126b0ce2b6582e79aeb863ed370e81605f58b0
-    pristine_git_object: 056eb97924a0d3a5bae6ae5043c6afbc73c626ec
+    last_write_checksum: sha1:f4251bab416ce970a679db564b7ee62e87c9a11f
+    pristine_git_object: a9a4b93999d761301e0c87a0b6cc735a5643527a
   docs/models/gethristimeoffbalancespositiveresponseunit.md:
     id: 542103f4e38b
     last_write_checksum: sha1:8df5352741e733e0db997340e7468db5eb1241f0
@@ -1929,8 +1933,8 @@ trackedFiles:
     pristine_git_object: 95d7af043b98494373f18f3ceae6a530e7e4af71
   docs/models/integrationtool.md:
     id: 59f82e2d180c
-    last_write_checksum: sha1:dcf7ecbc53aab19288d5ac2e7c7c679e6f2ef217
-    pristine_git_object: 8584f9f2bf062c085805b6ba0b279f26fd130d13
+    last_write_checksum: sha1:040bc72fc0c85deec7c4b9c260535385294cb5f1
+    pristine_git_object: 5239d66ec7ca53962c8b00599903e91a115df482
   docs/models/internal/globals.md:
     id: 9c173b87f41f
     last_write_checksum: sha1:3969d44e1ad9258f466c40b241681eb82c1ac29a
@@ -2169,8 +2173,12 @@ trackedFiles:
     pristine_git_object: faccd5145a094d401fb9ae53efbe7812a6c999a6
   docs/models/postatsapplicationsapplicationidnotesrequestbodyremotefields.md:
     id: e4c7348ebf91
-    last_write_checksum: sha1:89abdc31459b8fe7c047041730e84b878671f0f7
-    pristine_git_object: 32639083746378f23ab2433a9fabeb7649be8fda
+    last_write_checksum: sha1:12cdb7d4e1051828cfc736aa857e0db78715cc86
+    pristine_git_object: 52cc6f1594fb5f36e71563edcda9b496f8cc6f23
+  docs/models/postatsapplicationsapplicationidnotesrequestbodytalent360.md:
+    id: dbb3fd77b987
+    last_write_checksum: sha1:bc90b4d2e22b19d68b7c3d7da4b12aa0a7a0f6ee
+    pristine_git_object: 53b1e26ae1c3f0984e59e3792caf1e3fbc972770
   docs/models/postatsapplicationsapplicationidnotesrequestbodyteamtailor.md:
     id: 7e3573ed835f
     last_write_checksum: sha1:2ca8afeeb6be1871f6eed6f5cde8f704620dca56
@@ -2285,8 +2293,12 @@ trackedFiles:
     pristine_git_object: 045abe6d1f9a6a5894d6e29d24f1aadf8939f28c
   docs/models/postatsapplicationsapplicationidresultlinksrequestbodyremotefields.md:
     id: 7e534f22fffc
-    last_write_checksum: sha1:863fb4bb2969de48e8c34275407fe5335f1f856e
-    pristine_git_object: 0cfdeb987dffcc2c57de7e3195bba98a8e541a97
+    last_write_checksum: sha1:82b4be48cd6911d920469c4ef6ee4ad17b6bf0a8
+    pristine_git_object: 47b7f291ca7ff2e5686f550d37f649905c2772c0
+  docs/models/postatsapplicationsapplicationidresultlinksrequestbodytalent360.md:
+    id: 9c568f846661
+    last_write_checksum: sha1:72e7a79b18c5a25d30a22e7b4d7cd3c93ef4cf13
+    pristine_git_object: ad530a809f44edc467e77cc62626020bd37c71fb
   docs/models/postatsapplicationsapplicationidresultlinksrequestbodyworkable.md:
     id: 236d17f5f9fa
     last_write_checksum: sha1:55973ba4fdda1f6e82dc56a4ec5f9c496c5387f3
@@ -2393,8 +2405,12 @@ trackedFiles:
     pristine_git_object: 5f694039f10342499682ce35717702fd9cc348be
   docs/models/postatscandidatescandidateidresultlinksrequestbodyremotefields.md:
     id: 43488809128f
-    last_write_checksum: sha1:2c1720f34a23c8e14596d7c0ab1c078335b8379d
-    pristine_git_object: 58410ce2f146a92d8c5e9d883c88e3372a70c051
+    last_write_checksum: sha1:a570f2a452aea6fe0a0afbc555a650ef42bdf160
+    pristine_git_object: 830b0e000514ecb635a217655c65dd21ccfd2299
+  docs/models/postatscandidatescandidateidresultlinksrequestbodytalent360.md:
+    id: 97e7c9de0a61
+    last_write_checksum: sha1:f926e7232dedeceb37f4a720e8e115a8d6e2a0f4
+    pristine_git_object: 2e6d5253f13a9258b269e06cc8636e58c0b56883
   docs/models/postatscandidatescandidateidresultlinksrequestbodyworkable.md:
     id: 065b12bfc4ab
     last_write_checksum: sha1:d423a6b5147d6a03744a5d6f9b67fba96cc33dad
@@ -3529,8 +3545,12 @@ trackedFiles:
     pristine_git_object: 3b85b86ff551a8ffa3279118b695b8ec215c8369
   docs/models/posthrisemployeesemployeeiddocumentsrequestbody.md:
     id: d5578bdf17e6
-    last_write_checksum: sha1:fe73ae106a0619e538a828661b92fa2da8545d84
-    pristine_git_object: 8fc754933adf99d70304c65cda0d57dba84438c7
+    last_write_checksum: sha1:a23214ecf42b2dc5ddf7489f6bf0eda789978887
+    pristine_git_object: 0950a0e98f3a72f0b16c71bf98ffaea0d7103db2
+  docs/models/posthrisemployeesemployeeiddocumentsrequestbodyremotefields.md:
+    id: 137d09d17b84
+    last_write_checksum: sha1:ac7c51f39e66bd7420fec7b0e616a086cd68d5c3
+    pristine_git_object: 4755186cd0f7d7ba3f656f417c714fb7eb02cc95
   docs/models/posthrisemployeesformglobals.md:
     id: 74a020215b08
     last_write_checksum: sha1:f1917cfb1fcc20c1f3f0325163b44d49bd488850
@@ -4257,8 +4277,8 @@ trackedFiles:
     pristine_git_object: 4c4d8d825ac4d8a2c1f9fa6276ed9dc4911b3517
   docs/sdks/ats/README.md:
     id: 24fafa267f6c
-    last_write_checksum: sha1:efd80d0c4b2b68a7a9b09eb85e14e4f3b263bcb6
-    pristine_git_object: cded38d2bc18eeaf6fe885e6bf21ed6ff40717f3
+    last_write_checksum: sha1:79436ec58bad4581d5e5469245ee4a74348243cd
+    pristine_git_object: 3a9eaf442d1dd6097498dedacedb567dc1ba25d5
   docs/sdks/connect/README.md:
     id: 074a4658c86b
     last_write_checksum: sha1:bd6fbc64f979f12a97cfffa056093f5b27fada0c
@@ -4269,8 +4289,8 @@ trackedFiles:
     pristine_git_object: 20c84302a69aafe7482c2d1efa3e224366091242
   docs/sdks/hris/README.md:
     id: 0baa868a038c
-    last_write_checksum: sha1:0a49511150ae7bd964a574a7079d5f868850e71a
-    pristine_git_object: a8b1181fb70a97c822ede28f5a2a446f35924414
+    last_write_checksum: sha1:665a575148e6fbba603b2662b20ebe842575922f
+    pristine_git_object: 49bdc16d152d68e32adf180d2762230c2213a2ac
   py.typed:
     id: 258c3ed47ae4
     last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
@@ -4281,8 +4301,8 @@ trackedFiles:
     pristine_git_object: f456032107a9387ba6c98afd1c981df2f4b3d636
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:0601544f49e5752c3b6b1daf2f081336357d7772
-    pristine_git_object: d59a888f02607075120711f932a32ec95cc51dba
+    last_write_checksum: sha1:6ec5c6702ea1d11f6d2d4222ae055b5c95ebce0b
+    pristine_git_object: 4f115ab7b67c637c648d9d146a6145f46412b9a6
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:b6ad6f0515a952d7cb052befddb6a117d4f627d8
@@ -4309,16 +4329,16 @@ trackedFiles:
     pristine_git_object: 460080ad13f20f8eac822635c7778a371e892c5d
   src/kombo/_version.py:
     id: 45cf440ad1df
-    last_write_checksum: sha1:d0fa493b8257553eee57ff09be151ea922e1a679
-    pristine_git_object: ce593e537d3950dbf271be457768c2a1735ac4d6
+    last_write_checksum: sha1:3fb42e2d127f194a41382c274bdada49923432b3
+    pristine_git_object: 70412efa95be522102d7560b2e0792ae7ed50e39
   src/kombo/assessment.py:
     id: aec6e8a7589f
     last_write_checksum: sha1:4d155741d6e52c6b6fcb93cccb6dd2efd191cfb5
     pristine_git_object: b2c845ee7e48489c5dcccb8893d7ca6c8ad123bf
   src/kombo/ats.py:
     id: a9839762f5c3
-    last_write_checksum: sha1:441234bdd66c58aedc12f097a534e1a061546467
-    pristine_git_object: f66ff43a6e355a9b2796ff35e7d2514259eac295
+    last_write_checksum: sha1:0e321bab6398f4a329770563d00cd11b0eedb49a
+    pristine_git_object: c69e997f402dac63afbf56a04a62f922660ac9a2
   src/kombo/basesdk.py:
     id: 8f30a0bd36ff
     last_write_checksum: sha1:f7cceecb507a387fd50740b9f4cd3cfe5cb3451b
@@ -4365,16 +4385,16 @@ trackedFiles:
     pristine_git_object: 7bbf279e18849e7a25e75d6cb49fc500d1396838
   src/kombo/hris.py:
     id: 9ba1b37ab10a
-    last_write_checksum: sha1:a0a359be90bce58531f39091897e14a75f6c582f
-    pristine_git_object: 5425d7055c90effc2a14a2e6f5fb233efdaaf2dc
+    last_write_checksum: sha1:065fedaabedc7b3d359198cc3268d20d8cd3fb37
+    pristine_git_object: 62e8579555cc9aea896b8d564fcc991e62b4296e
   src/kombo/httpclient.py:
     id: 4e74c7821304
     last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/kombo/models/__init__.py:
     id: 45e6e8c7f07f
-    last_write_checksum: sha1:5aeabf6a8e334e3411ff3412a2b30d1577dfb784
-    pristine_git_object: 036179de73830f384c53ea50467f75237ec47f37
+    last_write_checksum: sha1:784806c6e4f3742c62651f875b714475eb76844e
+    pristine_git_object: 766586df7c4efea2df41e01168407a51430abe69
   src/kombo/models/assessmentorderreceivedwebhookpayload.py:
     id: 532c2db2ee93
     last_write_checksum: sha1:a89544ec063f76ec1faa875bf51141a32963ef51
@@ -4561,16 +4581,16 @@ trackedFiles:
     pristine_git_object: 9b894a600374a7289296f5cbf681dc16b416efb6
   src/kombo/models/gethrisabsencespositiveresponse.py:
     id: 7976db3c6ae3
-    last_write_checksum: sha1:c2870a1533c69608ad7d34c80e5857df2442267f
-    pristine_git_object: c6321cb169656aee0fc52e4bcbf4af16b494dd4a
+    last_write_checksum: sha1:39623587a22fede5364458e42d6e2d339a5c9c85
+    pristine_git_object: 14b82df97d1ea837779ec26463d29bda8ce12994
   src/kombo/models/gethrisabsencetypesop.py:
     id: 79cfb4ccaf3e
     last_write_checksum: sha1:ee5d29c2f41e2bb5c051f4e4653767f53fa2b967
     pristine_git_object: dd5a93661f83f49b01b69c855d50705181ff5e50
   src/kombo/models/gethrisabsencetypespositiveresponse.py:
     id: 7297a0379493
-    last_write_checksum: sha1:5258ecfba0ccf1aac8ddd3ea2978c74d038299be
-    pristine_git_object: c238a0242725f1d7e2d21ef9be1212ac423a27f7
+    last_write_checksum: sha1:e3095969781914179dc22ce5e5b0bb5bbf3b8b74
+    pristine_git_object: 68c16b87a10aaf3c57cf746ebe6233abe9cc35c2
   src/kombo/models/gethrisemployeedocumentcategoriesop.py:
     id: "576619816e15"
     last_write_checksum: sha1:65acd6563a11cdc4e0c15475f0796f18d5da203b
@@ -4657,8 +4677,8 @@ trackedFiles:
     pristine_git_object: 859e2d064adc68eebce6a57a643ac333c01691cd
   src/kombo/models/gethristimeoffbalancespositiveresponse.py:
     id: 3d3404082bef
-    last_write_checksum: sha1:9768783a3c63a7dcc3b373ef37196bc153e0c030
-    pristine_git_object: 0407adfedc4bb53143e8d78bcca4dbfed698bd46
+    last_write_checksum: sha1:09de60be6433bac7d967f0314b0f7a7a6658c285
+    pristine_git_object: 54688838fd428f294b5f258b94449c0125f111ac
   src/kombo/models/gethristimesheetsop.py:
     id: 52b574c1096b
     last_write_checksum: sha1:5e25a922056b86aeb77d5cd03d1318bd9d4cf2cb
@@ -4773,8 +4793,8 @@ trackedFiles:
     pristine_git_object: 5a56d68268d640ec3f8f2f9003c111979fa83642
   src/kombo/models/postatsapplicationsapplicationidnotesrequestbody.py:
     id: 44497b08cf43
-    last_write_checksum: sha1:b6a02d9e59d91faf92924a6c8191548f46795d27
-    pristine_git_object: c634f535fa400abf6ca01190f048ad0a8a44f8a5
+    last_write_checksum: sha1:f0eed646553eebb2e7dcae130254e605e289c513
+    pristine_git_object: 3571cbddaf7a470dafb6a957212cde5cffbbfd14
   src/kombo/models/postatsapplicationsapplicationidrejectop.py:
     id: 53d6e1ff7e85
     last_write_checksum: sha1:ea87c41f6ca5319550810062c6e790d4da60b6f8
@@ -4797,8 +4817,8 @@ trackedFiles:
     pristine_git_object: 03be529dc77e6da68aaac5403f4491f25229a8f1
   src/kombo/models/postatsapplicationsapplicationidresultlinksrequestbody.py:
     id: 15e34c668fd7
-    last_write_checksum: sha1:1288b3bd630c8fe10b0c72417174aee492fadb1b
-    pristine_git_object: b609e2b4ad048cc5223b4ea88b2c7f31d1e72a26
+    last_write_checksum: sha1:4553166fd24e50d5736bd38741aba71865717b8c
+    pristine_git_object: 43d46424b64a02afc006bd2e59e02a8db5427dbf
   src/kombo/models/postatscandidatescandidateidattachmentsop.py:
     id: 7c6984e982a3
     last_write_checksum: sha1:9c7d3e830a010ede5599ec784d12ab1ff98cf176
@@ -4821,8 +4841,8 @@ trackedFiles:
     pristine_git_object: 1910122477d1088243d2c088ca1e0fd03346c6cb
   src/kombo/models/postatscandidatescandidateidresultlinksrequestbody.py:
     id: 872b369e52c5
-    last_write_checksum: sha1:ba5533c5cd0c76bb5363d260b0ab2005adc5353c
-    pristine_git_object: d9740f10cb5ca69c535a4fa020c3fc87352e8045
+    last_write_checksum: sha1:1fe95feb727b3cfc8f8a126779ce8db25314f004
+    pristine_git_object: f803c99ba5e059c91c37500057509c9032e4f8b7
   src/kombo/models/postatscandidatescandidateidtagsop.py:
     id: 2fea2f5a65f9
     last_write_checksum: sha1:e6f1e9adece4a90ed6219598d006fdf284bf1012
@@ -4877,8 +4897,8 @@ trackedFiles:
     pristine_git_object: 91e8d75513c8015aeb3f8dd2e38e2ec090b0770c
   src/kombo/models/postconnectcreatelinkrequestbody.py:
     id: 8ae6871fd392
-    last_write_checksum: sha1:810551163b423fe262dbcfe1b8577f59ca483b86
-    pristine_git_object: ff5cde83d801e4664cf4e1ab4a0878355d616408
+    last_write_checksum: sha1:76ae90970f244cc9fb3657e1736f9c971f3bbaa4
+    pristine_git_object: 67f43abbe3cf668ed23099d8af9d2210dd1b2538
   src/kombo/models/postforcesyncop.py:
     id: 695738b0e4fb
     last_write_checksum: sha1:4288d66c5efda40419ee3602e124d5186662a99e
@@ -4913,8 +4933,8 @@ trackedFiles:
     pristine_git_object: 520fce8b64b787c7105b78cfa557e181df2307a9
   src/kombo/models/posthrisemployeesemployeeiddocumentsrequestbody.py:
     id: 86f398f647ff
-    last_write_checksum: sha1:a8f445e01032e4e51c4270a779817659c8afa913
-    pristine_git_object: eb4ba80d03e8237da1be9d3a00f8a3f948c60bb6
+    last_write_checksum: sha1:b2f7ac54b3edbb7e82b3e6a19aeaf1760a3700a4
+    pristine_git_object: b048c2a80fdce3e6249cd4cdd1aee7e5c466bfcd
   src/kombo/models/posthrisemployeesformop.py:
     id: 03b363d3974d
     last_write_checksum: sha1:f9fc9f9005aafc0e5a85d76748a9b562d2de947b
@@ -5929,7 +5949,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
         default:
           application/json: {"status": "error", "error": {"code": "HRIS.EMPLOYEE_ALREADY_EXISTS", "title": "<value>", "message": "<value>", "log_url": "https://deserted-mountain.org/"}}
     example1:
@@ -5942,7 +5962,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
     Error Response:
       parameters:
         query:
@@ -5976,7 +5996,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
         default:
           application/json: {"status": "error", "error": {"code": "HRIS.EMPLOYEE_ALREADY_EXISTS", "title": "<value>", "message": "<value>", "log_url": "https://dazzling-coal.biz/"}}
     example1:
@@ -5989,7 +6009,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
     Error Response:
       parameters:
         query:
@@ -6023,7 +6043,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
         default:
           application/json: {"status": "error", "error": {"code": "HRIS.EMPLOYEE_ALREADY_EXISTS", "title": "<value>", "message": "<value>", "log_url": "https://soft-rosemary.net"}}
     example1:
@@ -6036,7 +6056,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
     Error Response:
       parameters:
         query:
@@ -7821,11 +7841,7 @@ examples:
         default:
           application/json: {"status": "error", "error": {"code": null, "title": null, "message": "The message is always in the response.", "log_url": null}}
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Python SDK Changes:
-  * `kombo.ats.get_ats_notes()`: **Added**
-  * `kombo.ats.create_candidate()`:  `request.remote_fields` **Changed**
-  * `kombo.ats.create_application()`:  `request.remote_fields` **Changed**
+releaseNotes: "## Python SDK Changes:\n* `kombo.ats.get_notes()`: **Added**\n* `kombo.ats.get_ats_notes()`: **Removed** (Breaking ⚠️)\n* `kombo.hris.add_employee_document()`:  `request.remote_fields` **Added**\n* `kombo.hris.get_absence_types()`:  `response.data.results[].custom_fields` **Added**\n* `kombo.hris.get_time_off_balances()`:  `response.data.results[].type.custom_fields` **Added**\n* `kombo.hris.get_absences()`:  `response.data.results[].type.custom_fields` **Added**\n* `kombo.ats.add_application_result_link()`: \n  *  `request.remote_fields.talent360` **Added**\n* `kombo.ats.add_application_note()`: \n  *  `request.remote_fields.talent360` **Added**\n* `kombo.ats.add_candidate_result_link()`: \n  *  `request.remote_fields.talent360` **Added**\n* `kombo.connect.create_connection_link()`: \n  *  `request.integration_tool.enum(talent360)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json
