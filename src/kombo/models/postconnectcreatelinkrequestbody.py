@@ -133,6 +133,7 @@ IntegrationTool = Literal[
     "trackerrms",
     "databites",
     "pageup",
+    "talent360",
     "workdaycustomreport",
     "workdaycustomreportsftp",
     "ukgprowfm",

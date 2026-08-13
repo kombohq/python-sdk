@@ -978,6 +978,12 @@ class Hris(BaseSDK):
         employee_id: str,
         category_id: str,
         document: Union[models.Document, models.DocumentTypedDict],
+        remote_fields: Optional[
+            Union[
+                models.PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFields,
+                models.PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFieldsTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1007,6 +1013,7 @@ class Hris(BaseSDK):
         :param employee_id: POST /hris/employees/:employee_id/documents Parameter
         :param category_id:
         :param document:
+        :param remote_fields: Additional fields that we will pass through to specific HRIS systems.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1030,6 +1037,12 @@ class Hris(BaseSDK):
             body=models.PostHrisEmployeesEmployeeIDDocumentsRequestBody(
                 category_id=category_id,
                 document=utils.get_pydantic_model(document, models.Document),
+                remote_fields=utils.get_pydantic_model(
+                    remote_fields,
+                    Optional[
+                        models.PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFields
+                    ],
+                ),
             ),
         )
 
@@ -1100,6 +1113,12 @@ class Hris(BaseSDK):
         employee_id: str,
         category_id: str,
         document: Union[models.Document, models.DocumentTypedDict],
+        remote_fields: Optional[
+            Union[
+                models.PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFields,
+                models.PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFieldsTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1129,6 +1148,7 @@ class Hris(BaseSDK):
         :param employee_id: POST /hris/employees/:employee_id/documents Parameter
         :param category_id:
         :param document:
+        :param remote_fields: Additional fields that we will pass through to specific HRIS systems.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1152,6 +1172,12 @@ class Hris(BaseSDK):
             body=models.PostHrisEmployeesEmployeeIDDocumentsRequestBody(
                 category_id=category_id,
                 document=utils.get_pydantic_model(document, models.Document),
+                remote_fields=utils.get_pydantic_model(
+                    remote_fields,
+                    Optional[
+                        models.PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFields
+                    ],
+                ),
             ),
         )
 

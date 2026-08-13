@@ -128,6 +128,20 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyOracle(BaseModel):
         return m
 
 
+class PostAtsCandidatesCandidateIDResultLinksRequestBodyTalent360TypedDict(TypedDict):
+    r"""Talent360 specific remote fields for the result link."""
+
+    user_id: str
+    r"""Talent360 user ID the result-link note is attributed to. Required because every Talent360 communication must be attributed to a user."""
+
+
+class PostAtsCandidatesCandidateIDResultLinksRequestBodyTalent360(BaseModel):
+    r"""Talent360 specific remote fields for the result link."""
+
+    user_id: str
+    r"""Talent360 user ID the result-link note is attributed to. Required because every Talent360 communication must be attributed to a user."""
+
+
 class PostAtsCandidatesCandidateIDResultLinksRequestBodyPostHeadersTypedDict(TypedDict):
     r"""Headers we will pass with `POST` requests to Greenhouse."""
 
@@ -244,6 +258,10 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyRemoteFieldsTypedDict(
         PostAtsCandidatesCandidateIDResultLinksRequestBodyOracleTypedDict
     ]
     r"""Fields specific to Oracle."""
+    talent360: NotRequired[
+        PostAtsCandidatesCandidateIDResultLinksRequestBodyTalent360TypedDict
+    ]
+    r"""Talent360 specific remote fields for the result link."""
     greenhouse: NotRequired[
         PostAtsCandidatesCandidateIDResultLinksRequestBodyGreenhouseTypedDict
     ]
@@ -263,6 +281,11 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyRemoteFields(BaseModel):
     oracle: Optional[PostAtsCandidatesCandidateIDResultLinksRequestBodyOracle] = None
     r"""Fields specific to Oracle."""
 
+    talent360: Optional[PostAtsCandidatesCandidateIDResultLinksRequestBodyTalent360] = (
+        None
+    )
+    r"""Talent360 specific remote fields for the result link."""
+
     greenhouse: Optional[
         PostAtsCandidatesCandidateIDResultLinksRequestBodyGreenhouse
     ] = None
@@ -275,7 +298,9 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyRemoteFields(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["icims", "oracle", "greenhouse", "workable"])
+        optional_fields = set(
+            ["icims", "oracle", "talent360", "greenhouse", "workable"]
+        )
         serialized = handler(self)
         m = {}
 

@@ -7195,7 +7195,7 @@ class Ats(BaseSDK):
 
         raise errors.SDKDefaultError("Unexpected response received", http_res)
 
-    def get_ats_notes(
+    def get_notes(
         self,
         *,
         cursor: Optional[str] = None,
@@ -7323,7 +7323,7 @@ class Ats(BaseSDK):
             if next_cursor is None or str(next_cursor).strip() == "":
                 return None
 
-            return self.get_ats_notes(
+            return self.get_notes(
                 cursor=next_cursor,
                 page_size=page_size,
                 updated_after=updated_after,
@@ -7353,7 +7353,7 @@ class Ats(BaseSDK):
 
         raise errors.SDKDefaultError("Unexpected response received", http_res)
 
-    async def get_ats_notes_async(
+    async def get_notes_async(
         self,
         *,
         cursor: Optional[str] = None,
@@ -7484,7 +7484,7 @@ class Ats(BaseSDK):
             if next_cursor is None or str(next_cursor).strip() == "":
                 return empty_result()
 
-            return self.get_ats_notes_async(
+            return self.get_notes_async(
                 cursor=next_cursor,
                 page_size=page_size,
                 updated_after=updated_after,

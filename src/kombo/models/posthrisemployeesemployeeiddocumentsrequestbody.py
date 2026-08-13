@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 from kombo.types import BaseModel, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
-from typing import Optional
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Dict, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class DocumentTypedDict(TypedDict):
@@ -74,12 +75,103 @@ class Document(BaseModel):
         return m
 
 
+class AfasTypedDict(TypedDict):
+    r"""Fields specific to AFAS."""
+
+    fields: NotRequired[Dict[str, Any]]
+    r"""Additional fields that we will pass through to the AFAS `KnSubject` `Fields` object. These are merged on top of the default fields (`StId`, `Ds`, and `FvF1`)."""
+
+
+class Afas(BaseModel):
+    r"""Fields specific to AFAS."""
+
+    fields: Annotated[Optional[Dict[str, Any]], pydantic.Field(alias="Fields")] = None
+    r"""Additional fields that we will pass through to the AFAS `KnSubject` `Fields` object. These are merged on top of the default fields (`StId`, `Ds`, and `FvF1`)."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFieldsTypedDict(TypedDict):
+    r"""Additional fields that we will pass through to specific HRIS systems."""
+
+    afas: NotRequired[AfasTypedDict]
+    r"""Fields specific to AFAS."""
+
+
+class PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFields(BaseModel):
+    r"""Additional fields that we will pass through to specific HRIS systems."""
+
+    afas: Optional[Afas] = None
+    r"""Fields specific to AFAS."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["afas"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostHrisEmployeesEmployeeIDDocumentsRequestBodyTypedDict(TypedDict):
     category_id: str
     document: DocumentTypedDict
+    remote_fields: NotRequired[
+        PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFieldsTypedDict
+    ]
+    r"""Additional fields that we will pass through to specific HRIS systems."""
 
 
 class PostHrisEmployeesEmployeeIDDocumentsRequestBody(BaseModel):
     category_id: str
 
     document: Document
+
+    remote_fields: Optional[
+        PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFields
+    ] = None
+    r"""Additional fields that we will pass through to specific HRIS systems."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["remote_fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+try:
+    Afas.model_rebuild()
+except NameError:
+    pass

@@ -7,7 +7,7 @@ from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Literal
+from typing import Any, Dict, List, Literal
 from typing_extensions import Annotated, TypedDict
 
 
@@ -31,6 +31,8 @@ class GetHrisAbsenceTypesPositiveResponseResultTypedDict(TypedDict):
     r"""Whether the integration supports half-day absences (represented through `start_half_day` and `end_half_day`) for this absence type."""
     exact_times_supported: Nullable[bool]
     r"""`true` if the system supports exact times (absences with a `start_time` and an `end_time`) for this absence, `false` if not."""
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -59,6 +61,9 @@ class GetHrisAbsenceTypesPositiveResponseResult(BaseModel):
 
     exact_times_supported: Nullable[bool]
     r"""`true` if the system supports exact times (absences with a `start_time` and an `end_time`) for this absence, `false` if not."""
+
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
