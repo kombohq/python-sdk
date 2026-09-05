@@ -257,7 +257,7 @@ class FormatInformation(BaseModel):
     r"""This is just a text block."""
 
 
-class Option2TypedDict(TypedDict):
+class GetAtsJobsPositiveResponseOption2TypedDict(TypedDict):
     id: str
     r"""The Kombo ID of this question option. Use this ID to specify the answer to this question."""
     name: str
@@ -266,7 +266,7 @@ class Option2TypedDict(TypedDict):
     r"""ID in the connected ATS. This might be null as some systems only use the name to identify the option."""
 
 
-class Option2(BaseModel):
+class GetAtsJobsPositiveResponseOption2(BaseModel):
     id: str
     r"""The Kombo ID of this question option. Use this ID to specify the answer to this question."""
 
@@ -303,12 +303,12 @@ class Option2(BaseModel):
 
 
 class FormatMultiSelectTypedDict(TypedDict):
-    options: List[Option2TypedDict]
+    options: List[GetAtsJobsPositiveResponseOption2TypedDict]
     type: Literal["MULTI_SELECT"]
 
 
 class FormatMultiSelect(BaseModel):
-    options: List[Option2]
+    options: List[GetAtsJobsPositiveResponseOption2]
 
     TYPE: Annotated[
         Annotated[
@@ -346,7 +346,7 @@ DisplayType3 = Literal[
 ]
 
 
-class Option1TypedDict(TypedDict):
+class GetAtsJobsPositiveResponseOption1TypedDict(TypedDict):
     id: str
     r"""The Kombo ID of this question option. Use this ID to specify the answer to this question."""
     name: str
@@ -355,7 +355,7 @@ class Option1TypedDict(TypedDict):
     r"""ID in the connected ATS. This might be null as some systems only use the name to identify the option."""
 
 
-class Option1(BaseModel):
+class GetAtsJobsPositiveResponseOption1(BaseModel):
     id: str
     r"""The Kombo ID of this question option. Use this ID to specify the answer to this question."""
 
@@ -392,13 +392,13 @@ class Option1(BaseModel):
 
 
 class FormatSingleSelectTypedDict(TypedDict):
-    options: List[Option1TypedDict]
+    options: List[GetAtsJobsPositiveResponseOption1TypedDict]
     display_type: NotRequired[Nullable[DisplayType3]]
     type: Literal["SINGLE_SELECT"]
 
 
 class FormatSingleSelect(BaseModel):
-    options: List[Option1]
+    options: List[GetAtsJobsPositiveResponseOption1]
 
     display_type: OptionalNullable[DisplayType3] = UNSET
 
