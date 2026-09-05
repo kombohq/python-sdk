@@ -202,6 +202,7 @@ with SDK(
 * [get_rejection_reasons](docs/sdks/ats/README.md#get_rejection_reasons) - Get rejection reasons
 * [get_interviews](docs/sdks/ats/README.md#get_interviews) - Get interviews
 * [get_notes](docs/sdks/ats/README.md#get_notes) - Get notes
+* [get_ats_scorecards](docs/sdks/ats/README.md#get_ats_scorecards) - Get scorecards
 * [import_tracked_application](docs/sdks/ats/README.md#import_tracked_application) - Import tracked application
 
 ### [Connect](docs/sdks/connect/README.md)
@@ -245,6 +246,8 @@ with SDK(
 * [get_performance_review_cycles](docs/sdks/hris/README.md#get_performance_review_cycles) - Get performance review cycles
 * [get_performance_reviews](docs/sdks/hris/README.md#get_performance_reviews) - Get performance reviews
 * [get_staffing_entities](docs/sdks/hris/README.md#get_staffing_entities) - Get staffing entities
+* [get_hris_pay_runs](docs/sdks/hris/README.md#get_hris_pay_runs) - Pay Runs
+* [get_hris_payslips](docs/sdks/hris/README.md#get_hris_payslips) - Payslips
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -335,9 +338,9 @@ with Kombo(
 
 
 **Inherit from [`SDKError`](./src/kombo/errors/sdkerror.py)**:
-* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 29 of 62 methods.*
-* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 62 methods.*
-* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 15 of 62 methods.*
+* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 30 of 65 methods.*
+* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 20 of 65 methods.*
+* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 15 of 65 methods.*
 * [`ResponseValidationError`](./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
@@ -466,6 +469,20 @@ class CustomClient(AsyncHttpClient):
 
 s = Kombo(async_client=CustomClient(httpx.AsyncClient()))
 ```
+### httpx2 (Pydantic's httpx fork)
+
+[httpx2](https://httpx2.pydantic.dev/) is Pydantic's maintained fork of `httpx`. To run this SDK on httpx2, call `alias_httpx()` at your program's entry point, before importing the SDK, so every `import httpx` — including the ones inside the SDK — resolves to `httpx2`:
+```python
+import httpx2
+
+httpx2.alias_httpx()
+
+from kombo import Kombo
+
+s = Kombo()
+```
+
+An SDK can also be generated against httpx2 directly, so it depends on the fork instead of `httpx`, by setting `python.httpClientLibrary: httpx2` in `gen.yaml`.
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Resource Management [resource-management] -->

@@ -5519,3 +5519,635 @@ class Hris(BaseSDK):
             raise errors.KomboHrisError(response_data, http_res)
 
         raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    def get_hris_pay_runs(
+        self,
+        *,
+        cursor: Optional[str] = None,
+        page_size: Optional[int] = 100,
+        updated_after: Optional[datetime] = None,
+        include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
+        ids: Optional[Iterable[str]] = None,
+        remote_ids: Optional[Iterable[str]] = None,
+        legal_entity_ids: Optional[Iterable[str]] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.GetHrisPayRunsResponse]:
+        r"""Pay Runs
+
+        Retrieve all pay runs for all legal entities, across all time.
+
+        A pay run represents one payroll cycle for a legal entity, covering a single pay period and grouping the payslips paid out through it. Use this endpoint to reconcile payroll periods and read the totals paid out across each run. Filter by `legal_entity_ids` to scope the results to specific legal entities.
+
+        Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+        :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
+        :param page_size: The number of results to return per page. Maximum is 250.
+        :param updated_after: Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+
+            If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+
+            For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+            For this endpoint, only changes to the returned record itself are considered.
+        :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
+        :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
+        :param remote_ids: Filter by a comma-separated list of remote IDs.
+        :param legal_entity_ids: Filter by a comma-separated list of legal entity IDs.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.GetHrisPayRunsRequest(
+            cursor=cursor,
+            page_size=page_size,
+            updated_after=updated_after,
+            include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            remote_ids=utils.unmarshal(remote_ids, Optional[List[str]]),
+            legal_entity_ids=utils.unmarshal(legal_entity_ids, Optional[List[str]]),
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/hris/pay-runs",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.GetHrisPayRunsGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="GetHrisPayRuns",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.GetHrisPayRunsResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+
+            next_cursor = JSONPath("$.data.next").parse(body)
+
+            if len(next_cursor) == 0:
+                return None
+
+            next_cursor = next_cursor[0]
+            if next_cursor is None or str(next_cursor).strip() == "":
+                return None
+
+            return self.get_hris_pay_runs(
+                cursor=next_cursor,
+                page_size=page_size,
+                updated_after=updated_after,
+                include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
+                ids=ids,
+                remote_ids=remote_ids,
+                legal_entity_ids=legal_entity_ids,
+                retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.GetHrisPayRunsResponse(
+                result=unmarshal_json_response(
+                    models.GetHrisPayRunsPositiveResponse, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    async def get_hris_pay_runs_async(
+        self,
+        *,
+        cursor: Optional[str] = None,
+        page_size: Optional[int] = 100,
+        updated_after: Optional[datetime] = None,
+        include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
+        ids: Optional[Iterable[str]] = None,
+        remote_ids: Optional[Iterable[str]] = None,
+        legal_entity_ids: Optional[Iterable[str]] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.GetHrisPayRunsResponse]:
+        r"""Pay Runs
+
+        Retrieve all pay runs for all legal entities, across all time.
+
+        A pay run represents one payroll cycle for a legal entity, covering a single pay period and grouping the payslips paid out through it. Use this endpoint to reconcile payroll periods and read the totals paid out across each run. Filter by `legal_entity_ids` to scope the results to specific legal entities.
+
+        Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+        :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
+        :param page_size: The number of results to return per page. Maximum is 250.
+        :param updated_after: Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+
+            If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+
+            For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+            For this endpoint, only changes to the returned record itself are considered.
+        :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
+        :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
+        :param remote_ids: Filter by a comma-separated list of remote IDs.
+        :param legal_entity_ids: Filter by a comma-separated list of legal entity IDs.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.GetHrisPayRunsRequest(
+            cursor=cursor,
+            page_size=page_size,
+            updated_after=updated_after,
+            include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            remote_ids=utils.unmarshal(remote_ids, Optional[List[str]]),
+            legal_entity_ids=utils.unmarshal(legal_entity_ids, Optional[List[str]]),
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/hris/pay-runs",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.GetHrisPayRunsGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="GetHrisPayRuns",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Awaitable[Optional[models.GetHrisPayRunsResponse]]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+
+            async def empty_result():
+                return None
+
+            next_cursor = JSONPath("$.data.next").parse(body)
+
+            if len(next_cursor) == 0:
+                return empty_result()
+
+            next_cursor = next_cursor[0]
+            if next_cursor is None or str(next_cursor).strip() == "":
+                return empty_result()
+
+            return self.get_hris_pay_runs_async(
+                cursor=next_cursor,
+                page_size=page_size,
+                updated_after=updated_after,
+                include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
+                ids=ids,
+                remote_ids=remote_ids,
+                legal_entity_ids=legal_entity_ids,
+                retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.GetHrisPayRunsResponse(
+                result=unmarshal_json_response(
+                    models.GetHrisPayRunsPositiveResponse, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    def get_hris_payslips(
+        self,
+        *,
+        cursor: Optional[str] = None,
+        page_size: Optional[int] = 100,
+        updated_after: Optional[datetime] = None,
+        include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
+        ids: Optional[Iterable[str]] = None,
+        remote_ids: Optional[Iterable[str]] = None,
+        legal_entity_ids: Optional[Iterable[str]] = None,
+        employee_ids: Optional[Iterable[str]] = None,
+        payrun_ids: Optional[Iterable[str]] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.GetHrisPayslipsResponse]:
+        r"""Payslips
+
+        Retrieve all payslips for all employees, across all time.
+
+        A payslip is the individual pay statement an employee receives for one pay run, detailing what they were paid. Each payslip embeds the `employee` it belongs to and the `pay_run` it was paid out through, its `totals`, and the `line_items` that make it up (earnings, deductions, and contributions). Filter by `employee_ids`, `payrun_ids`, or `legal_entity_ids` to narrow the results.
+
+        Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+        :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
+        :param page_size: The number of results to return per page. Maximum is 250.
+        :param updated_after: Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+
+            If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+
+            For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
+
+            | Path | Added/Removed | Linked Record |
+            | --- | --- | --- |
+            | `employee` | ✗ No | ✗ No |
+            | `pay_run` | ✗ No | ✗ No |
+            | `line_items` | ✓ Yes | ✓ Yes |
+            | `line_items` → `salary_type` | ✗ No | ✗ No |
+
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
+        :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
+        :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
+        :param remote_ids: Filter by a comma-separated list of remote IDs.
+        :param legal_entity_ids: Filter by a comma-separated list of legal entity IDs.
+        :param employee_ids: Filter by a comma-separated list of employee IDs.
+        :param payrun_ids: Filter by a comma-separated list of payrun IDs.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.GetHrisPayslipsRequest(
+            cursor=cursor,
+            page_size=page_size,
+            updated_after=updated_after,
+            include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            remote_ids=utils.unmarshal(remote_ids, Optional[List[str]]),
+            legal_entity_ids=utils.unmarshal(legal_entity_ids, Optional[List[str]]),
+            employee_ids=utils.unmarshal(employee_ids, Optional[List[str]]),
+            payrun_ids=utils.unmarshal(payrun_ids, Optional[List[str]]),
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/hris/payslips",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.GetHrisPayslipsGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="GetHrisPayslips",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.GetHrisPayslipsResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+
+            next_cursor = JSONPath("$.data.next").parse(body)
+
+            if len(next_cursor) == 0:
+                return None
+
+            next_cursor = next_cursor[0]
+            if next_cursor is None or str(next_cursor).strip() == "":
+                return None
+
+            return self.get_hris_payslips(
+                cursor=next_cursor,
+                page_size=page_size,
+                updated_after=updated_after,
+                include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
+                ids=ids,
+                remote_ids=remote_ids,
+                legal_entity_ids=legal_entity_ids,
+                employee_ids=employee_ids,
+                payrun_ids=payrun_ids,
+                retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.GetHrisPayslipsResponse(
+                result=unmarshal_json_response(
+                    models.GetHrisPayslipsPositiveResponse, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    async def get_hris_payslips_async(
+        self,
+        *,
+        cursor: Optional[str] = None,
+        page_size: Optional[int] = 100,
+        updated_after: Optional[datetime] = None,
+        include_deleted: Optional[bool] = False,
+        ignore_unsupported_filters: Optional[bool] = False,
+        ids: Optional[Iterable[str]] = None,
+        remote_ids: Optional[Iterable[str]] = None,
+        legal_entity_ids: Optional[Iterable[str]] = None,
+        employee_ids: Optional[Iterable[str]] = None,
+        payrun_ids: Optional[Iterable[str]] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.GetHrisPayslipsResponse]:
+        r"""Payslips
+
+        Retrieve all payslips for all employees, across all time.
+
+        A payslip is the individual pay statement an employee receives for one pay run, detailing what they were paid. Each payslip embeds the `employee` it belongs to and the `pay_run` it was paid out through, its `totals`, and the `line_items` that make it up (earnings, deductions, and contributions). Filter by `employee_ids`, `payrun_ids`, or `legal_entity_ids` to narrow the results.
+
+        Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+        :param cursor: An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
+        :param page_size: The number of results to return per page. Maximum is 250.
+        :param updated_after: Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+
+            If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+
+            For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+
+            For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
+
+            | Path | Added/Removed | Linked Record |
+            | --- | --- | --- |
+            | `employee` | ✗ No | ✗ No |
+            | `pay_run` | ✗ No | ✗ No |
+            | `line_items` | ✓ Yes | ✓ Yes |
+            | `line_items` → `salary_type` | ✗ No | ✗ No |
+
+            _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
+        :param include_deleted: By default, deleted entries are not returned. Use the `include_deleted` query param to include deleted entries too.
+        :param ignore_unsupported_filters: When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
+        :param ids: Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
+        :param remote_ids: Filter by a comma-separated list of remote IDs.
+        :param legal_entity_ids: Filter by a comma-separated list of legal entity IDs.
+        :param employee_ids: Filter by a comma-separated list of employee IDs.
+        :param payrun_ids: Filter by a comma-separated list of payrun IDs.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.GetHrisPayslipsRequest(
+            cursor=cursor,
+            page_size=page_size,
+            updated_after=updated_after,
+            include_deleted=include_deleted,
+            ignore_unsupported_filters=ignore_unsupported_filters,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            remote_ids=utils.unmarshal(remote_ids, Optional[List[str]]),
+            legal_entity_ids=utils.unmarshal(legal_entity_ids, Optional[List[str]]),
+            employee_ids=utils.unmarshal(employee_ids, Optional[List[str]]),
+            payrun_ids=utils.unmarshal(payrun_ids, Optional[List[str]]),
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/hris/payslips",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.GetHrisPayslipsGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="GetHrisPayslips",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Awaitable[Optional[models.GetHrisPayslipsResponse]]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+
+            async def empty_result():
+                return None
+
+            next_cursor = JSONPath("$.data.next").parse(body)
+
+            if len(next_cursor) == 0:
+                return empty_result()
+
+            next_cursor = next_cursor[0]
+            if next_cursor is None or str(next_cursor).strip() == "":
+                return empty_result()
+
+            return self.get_hris_payslips_async(
+                cursor=next_cursor,
+                page_size=page_size,
+                updated_after=updated_after,
+                include_deleted=include_deleted,
+                ignore_unsupported_filters=ignore_unsupported_filters,
+                ids=ids,
+                remote_ids=remote_ids,
+                legal_entity_ids=legal_entity_ids,
+                employee_ids=employee_ids,
+                payrun_ids=payrun_ids,
+                retries=retries,
+                server_url=server_url,
+                timeout_ms=timeout_ms,
+                http_headers=http_headers,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.GetHrisPayslipsResponse(
+                result=unmarshal_json_response(
+                    models.GetHrisPayslipsPositiveResponse, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)

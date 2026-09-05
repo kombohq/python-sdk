@@ -29,6 +29,10 @@ value: Name = "hris_legal_entities"
 - `"hris_skills"`
 - `"hris_skill_rating_providers"`
 - `"hris_employee_skill_proficiency_ratings"`
+- `"hris_pay_runs"`
+- `"hris_payslips"`
+- `"hris_salary_types"`
+- `"hris_payslip_line_items"`
 - `"ats_users"`
 - `"ats_jobs"`
 - `"ats_job_postings"`
@@ -42,6 +46,7 @@ value: Name = "hris_legal_entities"
 - `"ats_rejection_reasons"`
 - `"ats_roles"`
 - `"ats_notes"`
+- `"ats_scorecards"`
 - `"lms_users"`
 - `"lms_course_providers"`
 - `"lms_skills"`
