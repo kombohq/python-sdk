@@ -2350,6 +2350,36 @@ class PostAtsJobsJobIDApplicationsRequestBodyCovetorest(BaseModel):
         return m
 
 
+class PostAtsJobsJobIDApplicationsRequestBodyAfasTypedDict(TypedDict):
+    r"""Fields specific to AFAS."""
+
+    fields: NotRequired[Dict[str, Any]]
+    r"""Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`."""
+
+
+class PostAtsJobsJobIDApplicationsRequestBodyAfas(BaseModel):
+    r"""Fields specific to AFAS."""
+
+    fields: Annotated[Optional[Dict[str, Any]], pydantic.Field(alias="Fields")] = None
+    r"""Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsJobsJobIDApplicationsRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
@@ -2410,6 +2440,8 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to Pinpoint."""
     covetorest: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyCovetorestTypedDict]
     r"""Fields specific to Coveto REST."""
+    afas: NotRequired[PostAtsJobsJobIDApplicationsRequestBodyAfasTypedDict]
+    r"""Fields specific to AFAS."""
 
 
 class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
@@ -2490,6 +2522,9 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
     covetorest: Optional[PostAtsJobsJobIDApplicationsRequestBodyCovetorest] = None
     r"""Fields specific to Coveto REST."""
 
+    afas: Optional[PostAtsJobsJobIDApplicationsRequestBodyAfas] = None
+    r"""Fields specific to AFAS."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
@@ -2518,6 +2553,7 @@ class PostAtsJobsJobIDApplicationsRequestBodyRemoteFields(BaseModel):
                 "piloga",
                 "pinpoint",
                 "covetorest",
+                "afas",
             ]
         )
         serialized = handler(self)
@@ -2936,5 +2972,9 @@ except NameError:
     pass
 try:
     PostAtsJobsJobIDApplicationsRequestBodyHrworks.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsJobsJobIDApplicationsRequestBodyAfas.model_rebuild()
 except NameError:
     pass

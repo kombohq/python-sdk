@@ -1,0 +1,13 @@
+# Integration
+
+The integration this issue belongs to. `null` for environment-wide issues.
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                     | *str*                                                                                                    | :heavy_check_mark:                                                                                       | The unique identifier of the integration.                                                                |
+| `tool`                                                                                                   | *str*                                                                                                    | :heavy_check_mark:                                                                                       | The name of the integrated tool (e.g., "personio", "greenhouse").                                        |
+| `category`                                                                                               | [models.IssueStatusChangedWebhookPayloadCategory](../models/issuestatuschangedwebhookpayloadcategory.md) | :heavy_check_mark:                                                                                       | The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).                                         |
+| `end_user`                                                                                               | [models.IssueStatusChangedWebhookPayloadEndUser](../models/issuestatuschangedwebhookpayloadenduser.md)   | :heavy_check_mark:                                                                                       | Information about the end user who created the integration.                                              |
