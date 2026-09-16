@@ -22,6 +22,7 @@ value: IntegrationTool = "workday"
 - `"cornerstonetalentlink"`
 - `"recruitee"`
 - `"recruiterflow"`
+- `"atlas"`
 - `"greenhouse"`
 - `"greenhousev3"`
 - `"greenhousejobboard"`
@@ -129,6 +130,7 @@ value: IntegrationTool = "workday"
 - `"databites"`
 - `"pageup"`
 - `"talent360"`
+- `"emplypeople"`
 - `"workdaycustomreport"`
 - `"workdaycustomreportsftp"`
 - `"ukgprowfm"`
@@ -186,6 +188,7 @@ value: IntegrationTool = "workday"
 - `"boondmanager"`
 - `"haileyhr"`
 - `"silae"`
+- `"skello"`
 - `"oysterhr"`
 - `"kiwihr"`
 - `"square"`
@@ -206,6 +209,7 @@ value: IntegrationTool = "workday"
 - `"youforce"`
 - `"nibelis"`
 - `"peoplexd"`
+- `"zellis"`
 - `"sftp"`
 - `"sftpfetch"`
 - `"360learning"`
