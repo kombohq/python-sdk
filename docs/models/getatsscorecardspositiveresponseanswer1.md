@@ -1,0 +1,11 @@
+# GetAtsScorecardsPositiveResponseAnswer1
+
+The id and label of the selected option.
+
+
+## Fields
+
+| Field                                                                                                                           | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `remote_id`                                                                                                                     | *Nullable[str]*                                                                                                                 | :heavy_check_mark:                                                                                                              | The ID of this option in the remote system, e.g. `strong_hire`. `null` when the system identifies the option only by its label. |
+| `label`                                                                                                                         | *str*                                                                                                                           | :heavy_check_mark:                                                                                                              | The option as the interviewer sees it, e.g. "Strong Hire".                                                                      |

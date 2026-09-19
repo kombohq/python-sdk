@@ -2497,6 +2497,36 @@ class PostAtsCandidatesRequestBodyCovetorest(BaseModel):
         return m
 
 
+class PostAtsCandidatesRequestBodyAfasTypedDict(TypedDict):
+    r"""Fields specific to AFAS."""
+
+    fields: NotRequired[Dict[str, Any]]
+    r"""Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`."""
+
+
+class PostAtsCandidatesRequestBodyAfas(BaseModel):
+    r"""Fields specific to AFAS."""
+
+    fields: Annotated[Optional[Dict[str, Any]], pydantic.Field(alias="Fields")] = None
+    r"""Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
@@ -2547,6 +2577,8 @@ class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to Pinpoint."""
     covetorest: NotRequired[PostAtsCandidatesRequestBodyCovetorestTypedDict]
     r"""Fields specific to Coveto REST."""
+    afas: NotRequired[PostAtsCandidatesRequestBodyAfasTypedDict]
+    r"""Fields specific to AFAS."""
 
 
 class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
@@ -2623,6 +2655,9 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
     covetorest: Optional[PostAtsCandidatesRequestBodyCovetorest] = None
     r"""Fields specific to Coveto REST."""
 
+    afas: Optional[PostAtsCandidatesRequestBodyAfas] = None
+    r"""Fields specific to AFAS."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
@@ -2651,6 +2686,7 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
                 "piloga",
                 "pinpoint",
                 "covetorest",
+                "afas",
             ]
         )
         serialized = handler(self)
@@ -2884,5 +2920,9 @@ except NameError:
     pass
 try:
     PostAtsCandidatesRequestBodyHrworks.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsCandidatesRequestBodyAfas.model_rebuild()
 except NameError:
     pass

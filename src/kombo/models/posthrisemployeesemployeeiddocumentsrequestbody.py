@@ -75,14 +75,14 @@ class Document(BaseModel):
         return m
 
 
-class AfasTypedDict(TypedDict):
+class PostHrisEmployeesEmployeeIDDocumentsRequestBodyAfasTypedDict(TypedDict):
     r"""Fields specific to AFAS."""
 
     fields: NotRequired[Dict[str, Any]]
     r"""Additional fields that we will pass through to the AFAS `KnSubject` `Fields` object. These are merged on top of the default fields (`StId`, `Ds`, and `FvF1`)."""
 
 
-class Afas(BaseModel):
+class PostHrisEmployeesEmployeeIDDocumentsRequestBodyAfas(BaseModel):
     r"""Fields specific to AFAS."""
 
     fields: Annotated[Optional[Dict[str, Any]], pydantic.Field(alias="Fields")] = None
@@ -108,14 +108,14 @@ class Afas(BaseModel):
 class PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific HRIS systems."""
 
-    afas: NotRequired[AfasTypedDict]
+    afas: NotRequired[PostHrisEmployeesEmployeeIDDocumentsRequestBodyAfasTypedDict]
     r"""Fields specific to AFAS."""
 
 
 class PostHrisEmployeesEmployeeIDDocumentsRequestBodyRemoteFields(BaseModel):
     r"""Additional fields that we will pass through to specific HRIS systems."""
 
-    afas: Optional[Afas] = None
+    afas: Optional[PostHrisEmployeesEmployeeIDDocumentsRequestBodyAfas] = None
     r"""Fields specific to AFAS."""
 
     @model_serializer(mode="wrap")
@@ -172,6 +172,6 @@ class PostHrisEmployeesEmployeeIDDocumentsRequestBody(BaseModel):
 
 
 try:
-    Afas.model_rebuild()
+    PostHrisEmployeesEmployeeIDDocumentsRequestBodyAfas.model_rebuild()
 except NameError:
     pass
