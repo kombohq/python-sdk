@@ -27,6 +27,7 @@ IntegrationTool = Literal[
     "cornerstonetalentlink",
     "recruitee",
     "recruiterflow",
+    "atlas",
     "greenhouse",
     "greenhousev3",
     "greenhousejobboard",
@@ -134,6 +135,7 @@ IntegrationTool = Literal[
     "databites",
     "pageup",
     "talent360",
+    "emplypeople",
     "workdaycustomreport",
     "workdaycustomreportsftp",
     "ukgprowfm",
@@ -191,6 +193,7 @@ IntegrationTool = Literal[
     "boondmanager",
     "haileyhr",
     "silae",
+    "skello",
     "oysterhr",
     "kiwihr",
     "square",
@@ -211,6 +214,7 @@ IntegrationTool = Literal[
     "youforce",
     "nibelis",
     "peoplexd",
+    "zellis",
     "sftp",
     "sftpfetch",
     "360learning",
@@ -267,6 +271,8 @@ class PostConnectCreateLinkRequestBodyTypedDict(TypedDict):
     r"""Enable the [filtering feature](https://docs.kombo.dev/other/filtering) for the integration. HRIS only."""
     enable_field_mapping: NotRequired[bool]
     r"""Enable the [field mapping feature](https://docs.kombo.dev/hris/features/setup-flow/introduction#field-mapping) for this integration."""
+    enable_static_ips: NotRequired[bool]
+    r"""Enable [Static IPs](https://docs.kombo.dev/hris/guides/static-ips) for this integration so all API calls originate from a fixed, allowlistable set of IPs."""
     link_type: NotRequired[PostConnectCreateLinkRequestBodyLinkType]
     r"""The type of link you want to create. `EMBEDDED` is for the [embedded flow](../guides/connect/embedded-flow) using the Kombo Connect SDK (these links are valid for 1 hour) and `MAGIC_LINK` is for [magic links](../guides/connect/magic-links) which you send out manually to customers (there are valid for 1 year).
 
@@ -307,6 +313,9 @@ class PostConnectCreateLinkRequestBody(BaseModel):
     enable_field_mapping: Optional[bool] = False
     r"""Enable the [field mapping feature](https://docs.kombo.dev/hris/features/setup-flow/introduction#field-mapping) for this integration."""
 
+    enable_static_ips: Optional[bool] = False
+    r"""Enable [Static IPs](https://docs.kombo.dev/hris/guides/static-ips) for this integration so all API calls originate from a fixed, allowlistable set of IPs."""
+
     link_type: Optional[PostConnectCreateLinkRequestBodyLinkType] = "EMBEDDED"
     r"""The type of link you want to create. `EMBEDDED` is for the [embedded flow](../guides/connect/embedded-flow) using the Kombo Connect SDK (these links are valid for 1 hour) and `MAGIC_LINK` is for [magic links](../guides/connect/magic-links) which you send out manually to customers (there are valid for 1 year).
 
@@ -325,6 +334,7 @@ class PostConnectCreateLinkRequestBody(BaseModel):
                 "scope_config_id",
                 "enable_filtering",
                 "enable_field_mapping",
+                "enable_static_ips",
                 "link_type",
             ]
         )
