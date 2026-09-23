@@ -303,7 +303,7 @@ with Kombo(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as k_client:
 
-    res = k_client.assessment.update_order_result(assessment_order_id="GRKdd9dibYKKCrmGRSMJf3wu", status="COMPLETED", result_url="https://example.com", completed_at=parse_datetime("2023-04-04T00:00:00Z"), score=90, max_score=100, attributes=[
+    res = k_client.assessment.update_order_result(assessment_order_id="GRKdd9dibYKKCrmGRSMJf3wu", status="COMPLETED", result_url="https://example.com", completed_at=parse_datetime("2023-04-04T00:00:00Z"), score=90.0, max_score=100.0, attributes=[
         {
             "type": "TEXT",
             "label": "Role fit",
@@ -314,8 +314,8 @@ with Kombo(
             "id": "<YOUR_INTERNAL_ID_OF_THE_TEST>",
             "label": "Personality test",
             "score": {
-                "value": 97,
-                "max": 100,
+                "value": 97.0,
+                "max": 100.0,
             },
             "status": "COMPLETED",
         },

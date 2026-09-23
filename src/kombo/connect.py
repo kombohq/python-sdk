@@ -26,6 +26,7 @@ class Connect(BaseSDK):
         scope_config_id: OptionalNullable[str] = UNSET,
         enable_filtering: Optional[bool] = False,
         enable_field_mapping: Optional[bool] = False,
+        enable_static_ips: Optional[bool] = False,
         link_type: Optional[
             models.PostConnectCreateLinkRequestBodyLinkType
         ] = "EMBEDDED",
@@ -52,7 +53,8 @@ class Connect(BaseSDK):
         \"integration_tool\": \"personio\",
         \"end_user_origin_id\": \"123\",
         \"language\": \"en\",
-        \"link_type\": \"EMBEDDED\"
+        \"link_type\": \"EMBEDDED\",
+        \"enable_static_ips\": true
         }
         ```
 
@@ -66,6 +68,7 @@ class Connect(BaseSDK):
         :param scope_config_id: Specify a scope config that should be used for this integration. This is an advanced feature, only use it if you know what you're doing!
         :param enable_filtering: Enable the [filtering feature](https://docs.kombo.dev/other/filtering) for the integration. HRIS only.
         :param enable_field_mapping: Enable the [field mapping feature](https://docs.kombo.dev/hris/features/setup-flow/introduction#field-mapping) for this integration.
+        :param enable_static_ips: Enable [Static IPs](https://docs.kombo.dev/hris/guides/static-ips) for this integration so all API calls originate from a fixed, allowlistable set of IPs.
         :param link_type: The type of link you want to create. `EMBEDDED` is for the [embedded flow](../guides/connect/embedded-flow) using the Kombo Connect SDK (these links are valid for 1 hour) and `MAGIC_LINK` is for [magic links](../guides/connect/magic-links) which you send out manually to customers (there are valid for 1 year).
 
             This defaults to `EMBEDDED`, which is our recommended method of implementing the connection flow for a seamless user experience.
@@ -98,6 +101,7 @@ class Connect(BaseSDK):
             scope_config_id=scope_config_id,
             enable_filtering=enable_filtering,
             enable_field_mapping=enable_field_mapping,
+            enable_static_ips=enable_static_ips,
             link_type=link_type,
         )
 
@@ -174,6 +178,7 @@ class Connect(BaseSDK):
         scope_config_id: OptionalNullable[str] = UNSET,
         enable_filtering: Optional[bool] = False,
         enable_field_mapping: Optional[bool] = False,
+        enable_static_ips: Optional[bool] = False,
         link_type: Optional[
             models.PostConnectCreateLinkRequestBodyLinkType
         ] = "EMBEDDED",
@@ -200,7 +205,8 @@ class Connect(BaseSDK):
         \"integration_tool\": \"personio\",
         \"end_user_origin_id\": \"123\",
         \"language\": \"en\",
-        \"link_type\": \"EMBEDDED\"
+        \"link_type\": \"EMBEDDED\",
+        \"enable_static_ips\": true
         }
         ```
 
@@ -214,6 +220,7 @@ class Connect(BaseSDK):
         :param scope_config_id: Specify a scope config that should be used for this integration. This is an advanced feature, only use it if you know what you're doing!
         :param enable_filtering: Enable the [filtering feature](https://docs.kombo.dev/other/filtering) for the integration. HRIS only.
         :param enable_field_mapping: Enable the [field mapping feature](https://docs.kombo.dev/hris/features/setup-flow/introduction#field-mapping) for this integration.
+        :param enable_static_ips: Enable [Static IPs](https://docs.kombo.dev/hris/guides/static-ips) for this integration so all API calls originate from a fixed, allowlistable set of IPs.
         :param link_type: The type of link you want to create. `EMBEDDED` is for the [embedded flow](../guides/connect/embedded-flow) using the Kombo Connect SDK (these links are valid for 1 hour) and `MAGIC_LINK` is for [magic links](../guides/connect/magic-links) which you send out manually to customers (there are valid for 1 year).
 
             This defaults to `EMBEDDED`, which is our recommended method of implementing the connection flow for a seamless user experience.
@@ -246,6 +253,7 @@ class Connect(BaseSDK):
             scope_config_id=scope_config_id,
             enable_filtering=enable_filtering,
             enable_field_mapping=enable_field_mapping,
+            enable_static_ips=enable_static_ips,
             link_type=link_type,
         )
 

@@ -1,4 +1,4 @@
-# Afas
+# PostHrisEmployeesEmployeeIDDocumentsRequestBodyAfas
 
 Fields specific to AFAS.
 
