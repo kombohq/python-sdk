@@ -2182,17 +2182,22 @@ class PostAtsCandidatesRequestBodyWorkflow(BaseModel):
 class PostAtsCandidatesRequestBodyAvatureTypedDict(TypedDict):
     r"""Fields specific to Avature."""
 
+    candidate: NotRequired[Dict[str, Any]]
+    r"""Fields that we will pass through to Avature's create person form (`POST /people`). Available fields depend on your Avature instance's People write configuration."""
     workflow: NotRequired[PostAtsCandidatesRequestBodyWorkflowTypedDict]
 
 
 class PostAtsCandidatesRequestBodyAvature(BaseModel):
     r"""Fields specific to Avature."""
 
+    candidate: Optional[Dict[str, Any]] = None
+    r"""Fields that we will pass through to Avature's create person form (`POST /people`). Available fields depend on your Avature instance's People write configuration."""
+
     workflow: Optional[PostAtsCandidatesRequestBodyWorkflow] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["workflow"])
+        optional_fields = set(["candidate", "workflow"])
         serialized = handler(self)
         m = {}
 
@@ -2497,6 +2502,112 @@ class PostAtsCandidatesRequestBodyCovetorest(BaseModel):
         return m
 
 
+class PostAtsCandidatesRequestBodyAfasTypedDict(TypedDict):
+    r"""Fields specific to AFAS."""
+
+    fields: NotRequired[Dict[str, Any]]
+    r"""Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`."""
+
+
+class PostAtsCandidatesRequestBodyAfas(BaseModel):
+    r"""Fields specific to AFAS."""
+
+    fields: Annotated[Optional[Dict[str, Any]], pydantic.Field(alias="Fields")] = None
+    r"""Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["Fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostAtsCandidatesRequestBodyCustomFieldTypedDict(TypedDict):
+    field_id: int
+    r"""ID of the Recruit CRM candidate custom field (`GET /v1/custom-fields/candidates`)."""
+    value: str
+    r"""Value to write. Dropdown and multiselect values must match a configured option. File fields take a direct download URL."""
+    entity_type: NotRequired[str]
+    r"""Entity the custom field belongs to, usually `candidate`."""
+    field_name: NotRequired[str]
+    r"""Custom field name."""
+    field_type: NotRequired[str]
+    r"""Custom field type, for example `text`."""
+
+
+class PostAtsCandidatesRequestBodyCustomField(BaseModel):
+    field_id: int
+    r"""ID of the Recruit CRM candidate custom field (`GET /v1/custom-fields/candidates`)."""
+
+    value: str
+    r"""Value to write. Dropdown and multiselect values must match a configured option. File fields take a direct download URL."""
+
+    entity_type: Optional[str] = None
+    r"""Entity the custom field belongs to, usually `candidate`."""
+
+    field_name: Optional[str] = None
+    r"""Custom field name."""
+
+    field_type: Optional[str] = None
+    r"""Custom field type, for example `text`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["entity_type", "field_name", "field_type"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostAtsCandidatesRequestBodyRecruitcrmTypedDict(TypedDict):
+    r"""Fields specific to Recruit CRM."""
+
+    custom_fields: NotRequired[List[PostAtsCandidatesRequestBodyCustomFieldTypedDict]]
+    r"""Candidate custom fields passed through to Recruit CRM's `custom_fields` array. A child field also needs its parent field in this array. See https://docs.recruitcrm.io/docs/rcrm-api-reference/ba451e2a3bd63-creates-a-new-candidate."""
+
+
+class PostAtsCandidatesRequestBodyRecruitcrm(BaseModel):
+    r"""Fields specific to Recruit CRM."""
+
+    custom_fields: Optional[List[PostAtsCandidatesRequestBodyCustomField]] = None
+    r"""Candidate custom fields passed through to Recruit CRM's `custom_fields` array. A child field also needs its parent field in this array. See https://docs.recruitcrm.io/docs/rcrm-api-reference/ba451e2a3bd63-creates-a-new-candidate."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["custom_fields"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
@@ -2547,6 +2658,10 @@ class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to Pinpoint."""
     covetorest: NotRequired[PostAtsCandidatesRequestBodyCovetorestTypedDict]
     r"""Fields specific to Coveto REST."""
+    afas: NotRequired[PostAtsCandidatesRequestBodyAfasTypedDict]
+    r"""Fields specific to AFAS."""
+    recruitcrm: NotRequired[PostAtsCandidatesRequestBodyRecruitcrmTypedDict]
+    r"""Fields specific to Recruit CRM."""
 
 
 class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
@@ -2623,6 +2738,12 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
     covetorest: Optional[PostAtsCandidatesRequestBodyCovetorest] = None
     r"""Fields specific to Coveto REST."""
 
+    afas: Optional[PostAtsCandidatesRequestBodyAfas] = None
+    r"""Fields specific to AFAS."""
+
+    recruitcrm: Optional[PostAtsCandidatesRequestBodyRecruitcrm] = None
+    r"""Fields specific to Recruit CRM."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
@@ -2651,6 +2772,8 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
                 "piloga",
                 "pinpoint",
                 "covetorest",
+                "afas",
+                "recruitcrm",
             ]
         )
         serialized = handler(self)
@@ -2884,5 +3007,9 @@ except NameError:
     pass
 try:
     PostAtsCandidatesRequestBodyHrworks.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsCandidatesRequestBodyAfas.model_rebuild()
 except NameError:
     pass

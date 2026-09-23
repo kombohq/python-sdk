@@ -20,9 +20,12 @@ SERVER_EU = "eu"
 r"""Kombo EU Region"""
 SERVER_US = "us"
 r"""Kombo US Region"""
+SERVER_CA = "ca"
+r"""Kombo CA Region"""
 SERVERS = {
     SERVER_EU: "https://api.kombo.dev/v1",
     SERVER_US: "https://api.us.kombo.dev/v1",
+    SERVER_CA: "https://api.ca.kombo.dev/v1",
 }
 """Contains the list of servers available to the SDK"""
 
