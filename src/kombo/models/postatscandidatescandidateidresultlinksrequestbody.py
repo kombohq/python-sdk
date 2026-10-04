@@ -4,7 +4,7 @@ from __future__ import annotations
 from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -142,6 +142,36 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyTalent360(BaseModel):
     r"""Talent360 user ID the result-link note is attributed to. Required because every Talent360 communication must be attributed to a user."""
 
 
+class PostAtsCandidatesCandidateIDResultLinksRequestBodyTraffitTypedDict(TypedDict):
+    r"""Fields specific to Traffit."""
+
+    candidate: NotRequired[Dict[str, Any]]
+    r"""Fields that we will write to the Traffit candidate before adding the result note. Custom fields are keyed by their SID with a `_` prefix, for example `{ \"_Assessment_Score\": \"5\" }`. The field must be available via integration in Traffit."""
+
+
+class PostAtsCandidatesCandidateIDResultLinksRequestBodyTraffit(BaseModel):
+    r"""Fields specific to Traffit."""
+
+    candidate: Optional[Dict[str, Any]] = None
+    r"""Fields that we will write to the Traffit candidate before adding the result note. Custom fields are keyed by their SID with a `_` prefix, for example `{ \"_Assessment_Score\": \"5\" }`. The field must be available via integration in Traffit."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["candidate"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsCandidatesCandidateIDResultLinksRequestBodyPostHeadersTypedDict(TypedDict):
     r"""Headers we will pass with `POST` requests to Greenhouse."""
 
@@ -262,6 +292,10 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyRemoteFieldsTypedDict(
         PostAtsCandidatesCandidateIDResultLinksRequestBodyTalent360TypedDict
     ]
     r"""Talent360 specific remote fields for the result link."""
+    traffit: NotRequired[
+        PostAtsCandidatesCandidateIDResultLinksRequestBodyTraffitTypedDict
+    ]
+    r"""Fields specific to Traffit."""
     greenhouse: NotRequired[
         PostAtsCandidatesCandidateIDResultLinksRequestBodyGreenhouseTypedDict
     ]
@@ -286,6 +320,9 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyRemoteFields(BaseModel):
     )
     r"""Talent360 specific remote fields for the result link."""
 
+    traffit: Optional[PostAtsCandidatesCandidateIDResultLinksRequestBodyTraffit] = None
+    r"""Fields specific to Traffit."""
+
     greenhouse: Optional[
         PostAtsCandidatesCandidateIDResultLinksRequestBodyGreenhouse
     ] = None
@@ -299,7 +336,7 @@ class PostAtsCandidatesCandidateIDResultLinksRequestBodyRemoteFields(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["icims", "oracle", "talent360", "greenhouse", "workable"]
+            ["icims", "oracle", "talent360", "traffit", "greenhouse", "workable"]
         )
         serialized = handler(self)
         m = {}

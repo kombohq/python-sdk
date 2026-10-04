@@ -970,6 +970,7 @@ class Ats(BaseSDK):
         application_id: str,
         content: str,
         content_type: models.ContentType,
+        title: Optional[str] = None,
         remote_fields: Optional[
             Union[
                 models.PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields,
@@ -1004,6 +1005,7 @@ class Ats(BaseSDK):
         :param application_id: The Kombo ID of the application you want to create the note for.
         :param content: UTF-8 content of the note.
         :param content_type: Content type of the note. Currently only `PLAIN_TEXT` is supported.
+        :param title: Title of the note, often called \"subject\" in the ATS. Only some ATSs support note titles, and the others ignore this field.
         :param remote_fields: Tool specific remote fields for the note.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1026,6 +1028,7 @@ class Ats(BaseSDK):
         request = models.PostAtsApplicationsApplicationIDNotesRequest(
             application_id=application_id,
             body=models.PostAtsApplicationsApplicationIDNotesRequestBody(
+                title=title,
                 content=content,
                 content_type=content_type,
                 remote_fields=utils.get_pydantic_model(
@@ -1104,6 +1107,7 @@ class Ats(BaseSDK):
         application_id: str,
         content: str,
         content_type: models.ContentType,
+        title: Optional[str] = None,
         remote_fields: Optional[
             Union[
                 models.PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields,
@@ -1138,6 +1142,7 @@ class Ats(BaseSDK):
         :param application_id: The Kombo ID of the application you want to create the note for.
         :param content: UTF-8 content of the note.
         :param content_type: Content type of the note. Currently only `PLAIN_TEXT` is supported.
+        :param title: Title of the note, often called \"subject\" in the ATS. Only some ATSs support note titles, and the others ignore this field.
         :param remote_fields: Tool specific remote fields for the note.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1160,6 +1165,7 @@ class Ats(BaseSDK):
         request = models.PostAtsApplicationsApplicationIDNotesRequest(
             application_id=application_id,
             body=models.PostAtsApplicationsApplicationIDNotesRequestBody(
+                title=title,
                 content=content,
                 content_type=content_type,
                 remote_fields=utils.get_pydantic_model(
