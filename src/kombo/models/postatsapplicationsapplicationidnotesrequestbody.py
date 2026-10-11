@@ -401,6 +401,8 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyTypedDict(TypedDict):
     r"""UTF-8 content of the note."""
     content_type: ContentType
     r"""Content type of the note. Currently only `PLAIN_TEXT` is supported."""
+    title: NotRequired[str]
+    r"""Title of the note, often called \"subject\" in the ATS. If the ATS has no note title, the title becomes the first line of the content instead."""
     remote_fields: NotRequired[
         PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFieldsTypedDict
     ]
@@ -414,6 +416,9 @@ class PostAtsApplicationsApplicationIDNotesRequestBody(BaseModel):
     content_type: ContentType
     r"""Content type of the note. Currently only `PLAIN_TEXT` is supported."""
 
+    title: Optional[str] = None
+    r"""Title of the note, often called \"subject\" in the ATS. If the ATS has no note title, the title becomes the first line of the content instead."""
+
     remote_fields: Optional[
         PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields
     ] = None
@@ -421,7 +426,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBody(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["remote_fields"])
+        optional_fields = set(["title", "remote_fields"])
         serialized = handler(self)
         m = {}
 
