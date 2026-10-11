@@ -1,6 +1,6 @@
-# GetHrisPayslipsPositiveResponsePaidAmount
+# NetPayYtd
 
-The amount of the payslip that was actually paid out to the employee. This value accounts for net earnings and deductions.
+The year-to-date net pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
 
 
 ## Fields

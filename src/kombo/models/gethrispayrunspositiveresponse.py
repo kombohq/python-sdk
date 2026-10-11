@@ -17,7 +17,7 @@ class GetHrisPayRunsPositiveResponseGrossPayTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseGrossPay(BaseModel):
@@ -27,7 +27,7 @@ class GetHrisPayRunsPositiveResponseGrossPay(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseNetPayTypedDict(TypedDict):
@@ -36,7 +36,7 @@ class GetHrisPayRunsPositiveResponseNetPayTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseNetPay(BaseModel):
@@ -46,7 +46,7 @@ class GetHrisPayRunsPositiveResponseNetPay(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponsePaidAmountTypedDict(TypedDict):
@@ -55,7 +55,7 @@ class GetHrisPayRunsPositiveResponsePaidAmountTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponsePaidAmount(BaseModel):
@@ -65,7 +65,7 @@ class GetHrisPayRunsPositiveResponsePaidAmount(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseTotalsTypedDict(TypedDict):
