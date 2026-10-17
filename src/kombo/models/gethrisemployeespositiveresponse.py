@@ -156,20 +156,21 @@ DomesticBankRoutingType = Literal[
     "CA_ROUTING_NUMBER",
     "AU_BSB_CODE",
     "FR_RIB",
+    "SG_BANK_BRANCH_CODE",
 ]
 r"""Enum of the routing type, prefixed with the iso-3166-1-alpha-2 banks origin country. If there is uncertainty about the type, it will be set to null."""
 
 
 class DomesticBankRoutingTypedDict(TypedDict):
     number: str
-    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
+    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code, SG bank and branch code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
     type: Nullable[DomesticBankRoutingType]
     r"""Enum of the routing type, prefixed with the iso-3166-1-alpha-2 banks origin country. If there is uncertainty about the type, it will be set to null."""
 
 
 class DomesticBankRouting(BaseModel):
     number: str
-    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
+    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code, SG bank and branch code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
 
     type: Nullable[DomesticBankRoutingType]
     r"""Enum of the routing type, prefixed with the iso-3166-1-alpha-2 banks origin country. If there is uncertainty about the type, it will be set to null."""
@@ -920,6 +921,8 @@ class WorkLocationTypedDict(TypedDict):
     r"""The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     address: NotRequired[Nullable[WorkLocationAddressTypedDict]]
     r"""The work location’s address"""
 
@@ -947,6 +950,9 @@ class WorkLocation(BaseModel):
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
 
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
+
     address: OptionalNullable[WorkLocationAddress] = UNSET
     r"""The work location’s address"""
 
@@ -954,7 +960,14 @@ class WorkLocation(BaseModel):
     def serialize_model(self, handler):
         optional_fields = set(["address"])
         nullable_fields = set(
-            ["remote_id", "name", "address", "type", "remote_deleted_at"]
+            [
+                "remote_id",
+                "name",
+                "address",
+                "type",
+                "remote_deleted_at",
+                "custom_fields",
+            ]
         )
         serialized = handler(self)
         m = {}
