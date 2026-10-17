@@ -7,7 +7,7 @@ from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Literal
+from typing import Any, Dict, List, Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -91,6 +91,8 @@ class GetHrisLegalEntitiesPositiveResponseResultTypedDict(TypedDict):
     r"""The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     address: NotRequired[Nullable[GetHrisLegalEntitiesPositiveResponseAddressTypedDict]]
     r"""The legal entity’s address."""
 
@@ -115,13 +117,18 @@ class GetHrisLegalEntitiesPositiveResponseResult(BaseModel):
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
 
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
+
     address: OptionalNullable[GetHrisLegalEntitiesPositiveResponseAddress] = UNSET
     r"""The legal entity’s address."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["address"])
-        nullable_fields = set(["remote_id", "name", "address", "remote_deleted_at"])
+        nullable_fields = set(
+            ["remote_id", "name", "address", "remote_deleted_at", "custom_fields"]
+        )
         serialized = handler(self)
         m = {}
 
