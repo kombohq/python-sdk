@@ -7,7 +7,7 @@ from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Literal
+from typing import Any, Dict, List, Literal
 from typing_extensions import Annotated, TypedDict
 
 
@@ -38,6 +38,8 @@ class GetHrisGroupsPositiveResponseResultTypedDict(TypedDict):
     r"""Type of the group."""
     parent_id: Nullable[str]
     r"""The Kombo ID of the group’s parent group in the organizational structure. The ID can be used to retrieve the group from the `get groups` endpoint."""
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
 
 class GetHrisGroupsPositiveResponseResult(BaseModel):
@@ -65,6 +67,9 @@ class GetHrisGroupsPositiveResponseResult(BaseModel):
 
     parent_id: Nullable[str]
     r"""The Kombo ID of the group’s parent group in the organizational structure. The ID can be used to retrieve the group from the `get groups` endpoint."""
+
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

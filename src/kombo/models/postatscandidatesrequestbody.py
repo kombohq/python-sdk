@@ -741,6 +741,8 @@ class PostAtsCandidatesRequestBodyTalentsoftTypedDict(TypedDict):
     r"""Fields that we will pass through to TalentSoft's `applicant` object."""
     application: NotRequired[Dict[str, Any]]
     r"""Fields that we will pass through to TalentSoft's `application` object."""
+    custom_fields: NotRequired[Dict[str, Any]]
+    r"""Fields that we will pass through to TalentSoft's top-level `customFields` object when creating applications without an account. For account-based application creation, pass custom fields in `applicant.customFields` instead."""
 
 
 class PostAtsCandidatesRequestBodyTalentsoft(BaseModel):
@@ -752,9 +754,14 @@ class PostAtsCandidatesRequestBodyTalentsoft(BaseModel):
     application: Optional[Dict[str, Any]] = None
     r"""Fields that we will pass through to TalentSoft's `application` object."""
 
+    custom_fields: Annotated[
+        Optional[Dict[str, Any]], pydantic.Field(alias="customFields")
+    ] = None
+    r"""Fields that we will pass through to TalentSoft's top-level `customFields` object when creating applications without an account. For account-based application creation, pass custom fields in `applicant.customFields` instead."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["applicant", "application"])
+        optional_fields = set(["applicant", "application", "customFields"])
         serialized = handler(self)
         m = {}
 
@@ -2532,6 +2539,58 @@ class PostAtsCandidatesRequestBodyAfas(BaseModel):
         return m
 
 
+class PostAtsCandidatesRequestBodyFountainTypedDict(TypedDict):
+    r"""Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants."""
+
+    consent_sms_transactional: NotRequired[bool]
+    r"""Whether the applicant consented to transactional SMS about their current application. Fountain requires this on create from November 17, 2026."""
+    consent_sms_marketing: NotRequired[bool]
+    r"""Whether the applicant consented to marketing SMS about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional SMS consent."""
+    consent_calls_transactional: NotRequired[bool]
+    r"""Whether the applicant consented to transactional calls about their current application. Fountain requires this on create from November 17, 2026."""
+    consent_calls_marketing: NotRequired[bool]
+    r"""Whether the applicant consented to marketing calls about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional call consent."""
+
+
+class PostAtsCandidatesRequestBodyFountain(BaseModel):
+    r"""Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants."""
+
+    consent_sms_transactional: Optional[bool] = None
+    r"""Whether the applicant consented to transactional SMS about their current application. Fountain requires this on create from November 17, 2026."""
+
+    consent_sms_marketing: Optional[bool] = None
+    r"""Whether the applicant consented to marketing SMS about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional SMS consent."""
+
+    consent_calls_transactional: Optional[bool] = None
+    r"""Whether the applicant consented to transactional calls about their current application. Fountain requires this on create from November 17, 2026."""
+
+    consent_calls_marketing: Optional[bool] = None
+    r"""Whether the applicant consented to marketing calls about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional call consent."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "consent_sms_transactional",
+                "consent_sms_marketing",
+                "consent_calls_transactional",
+                "consent_calls_marketing",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsCandidatesRequestBodyCustomFieldTypedDict(TypedDict):
     field_id: int
     r"""ID of the Recruit CRM candidate custom field (`GET /v1/custom-fields/candidates`)."""
@@ -2608,6 +2667,36 @@ class PostAtsCandidatesRequestBodyRecruitcrm(BaseModel):
         return m
 
 
+class PostAtsCandidatesRequestBodyIcimsTypedDict(TypedDict):
+    r"""Fields specific to iCIMS."""
+
+    application: NotRequired[Dict[str, Any]]
+    r"""Fields that we will pass through to the iCIMS applicant workflow when it is created. For example `sourcechannel` or custom `fieldNNNN` IDs."""
+
+
+class PostAtsCandidatesRequestBodyIcims(BaseModel):
+    r"""Fields specific to iCIMS."""
+
+    application: Optional[Dict[str, Any]] = None
+    r"""Fields that we will pass through to the iCIMS applicant workflow when it is created. For example `sourcechannel` or custom `fieldNNNN` IDs."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["application"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Additional fields that we will pass through to specific ATS systems."""
 
@@ -2660,8 +2749,12 @@ class PostAtsCandidatesRequestBodyRemoteFieldsTypedDict(TypedDict):
     r"""Fields specific to Coveto REST."""
     afas: NotRequired[PostAtsCandidatesRequestBodyAfasTypedDict]
     r"""Fields specific to AFAS."""
+    fountain: NotRequired[PostAtsCandidatesRequestBodyFountainTypedDict]
+    r"""Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants."""
     recruitcrm: NotRequired[PostAtsCandidatesRequestBodyRecruitcrmTypedDict]
     r"""Fields specific to Recruit CRM."""
+    icims: NotRequired[PostAtsCandidatesRequestBodyIcimsTypedDict]
+    r"""Fields specific to iCIMS."""
 
 
 class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
@@ -2741,8 +2834,14 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
     afas: Optional[PostAtsCandidatesRequestBodyAfas] = None
     r"""Fields specific to AFAS."""
 
+    fountain: Optional[PostAtsCandidatesRequestBodyFountain] = None
+    r"""Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants."""
+
     recruitcrm: Optional[PostAtsCandidatesRequestBodyRecruitcrm] = None
     r"""Fields specific to Recruit CRM."""
+
+    icims: Optional[PostAtsCandidatesRequestBodyIcims] = None
+    r"""Fields specific to iCIMS."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -2773,7 +2872,9 @@ class PostAtsCandidatesRequestBodyRemoteFields(BaseModel):
                 "pinpoint",
                 "covetorest",
                 "afas",
+                "fountain",
                 "recruitcrm",
+                "icims",
             ]
         )
         serialized = handler(self)
@@ -2891,6 +2992,10 @@ class PostAtsCandidatesRequestBody(BaseModel):
 
 try:
     PostAtsCandidatesRequestBodySuccessfactors.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsCandidatesRequestBodyTalentsoft.model_rebuild()
 except NameError:
     pass
 try:
