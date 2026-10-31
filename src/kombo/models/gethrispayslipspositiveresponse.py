@@ -2,12 +2,20 @@
 
 from __future__ import annotations
 from datetime import date, datetime
-from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from kombo.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+    current_exclude_none,
+    serialize_with_info,
+)
 from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Literal
+from typing import Any, Dict, List, Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -17,7 +25,7 @@ class GetHrisPayslipsPositiveResponseGrossPayTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayslipsPositiveResponseGrossPay(BaseModel):
@@ -27,7 +35,7 @@ class GetHrisPayslipsPositiveResponseGrossPay(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayslipsPositiveResponseNetPayTypedDict(TypedDict):
@@ -36,7 +44,7 @@ class GetHrisPayslipsPositiveResponseNetPayTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayslipsPositiveResponseNetPay(BaseModel):
@@ -46,7 +54,7 @@ class GetHrisPayslipsPositiveResponseNetPay(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayslipsPositiveResponsePaidAmountTypedDict(TypedDict):
@@ -55,7 +63,7 @@ class GetHrisPayslipsPositiveResponsePaidAmountTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayslipsPositiveResponsePaidAmount(BaseModel):
@@ -65,7 +73,64 @@ class GetHrisPayslipsPositiveResponsePaidAmount(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class GrossPayYtdTypedDict(TypedDict):
+    r"""The year-to-date gross pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class GrossPayYtd(BaseModel):
+    r"""The year-to-date gross pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class NetPayYtdTypedDict(TypedDict):
+    r"""The year-to-date net pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class NetPayYtd(BaseModel):
+    r"""The year-to-date net pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class PaidAmountYtdTypedDict(TypedDict):
+    r"""The year-to-date paid amount as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class PaidAmountYtd(BaseModel):
+    r"""The year-to-date paid amount as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayslipsPositiveResponseTotalsTypedDict(TypedDict):
@@ -77,6 +142,12 @@ class GetHrisPayslipsPositiveResponseTotalsTypedDict(TypedDict):
         Nullable[GetHrisPayslipsPositiveResponsePaidAmountTypedDict]
     ]
     r"""The amount of the payslip that was actually paid out to the employee. This value accounts for net earnings and deductions."""
+    gross_pay_ytd: NotRequired[Nullable[GrossPayYtdTypedDict]]
+    r"""The year-to-date gross pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+    net_pay_ytd: NotRequired[Nullable[NetPayYtdTypedDict]]
+    r"""The year-to-date net pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+    paid_amount_ytd: NotRequired[Nullable[PaidAmountYtdTypedDict]]
+    r"""The year-to-date paid amount as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
 
 
 class GetHrisPayslipsPositiveResponseTotals(BaseModel):
@@ -89,15 +160,48 @@ class GetHrisPayslipsPositiveResponseTotals(BaseModel):
     paid_amount: OptionalNullable[GetHrisPayslipsPositiveResponsePaidAmount] = UNSET
     r"""The amount of the payslip that was actually paid out to the employee. This value accounts for net earnings and deductions."""
 
+    gross_pay_ytd: OptionalNullable[GrossPayYtd] = UNSET
+    r"""The year-to-date gross pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    net_pay_ytd: OptionalNullable[NetPayYtd] = UNSET
+    r"""The year-to-date net pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    paid_amount_ytd: OptionalNullable[PaidAmountYtd] = UNSET
+    r"""The year-to-date paid amount as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
-        optional_fields = set(["gross_pay", "net_pay", "paid_amount"])
-        nullable_fields = set(["gross_pay", "net_pay", "paid_amount"])
+        optional_fields = set(
+            [
+                "gross_pay",
+                "net_pay",
+                "paid_amount",
+                "gross_pay_ytd",
+                "net_pay_ytd",
+                "paid_amount_ytd",
+            ]
+        )
+        nullable_fields = set(
+            [
+                "gross_pay",
+                "net_pay",
+                "paid_amount",
+                "gross_pay_ytd",
+                "net_pay_ytd",
+                "paid_amount_ytd",
+            ]
+        )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -163,6 +267,9 @@ class Employee(BaseModel):
     r"""The employee’s work email address. If the email address is invalid, we will set this to `null`."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["work_email"])
         nullable_fields = set(
@@ -174,11 +281,14 @@ class Employee(BaseModel):
                 "remote_deleted_at",
             ]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -230,12 +340,57 @@ class PayRun(BaseModel):
     r"""The Kombo ID of the pay run’s legal entity. The ID can be used to retrieve the legal entity from the `get legal entities` endpoint."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                m[k] = val
+
+        return m
+
+
+class PayCodeTypedDict(TypedDict):
+    r"""The pay code (salary type) this line item belongs to in the remote system."""
+
+    remote_id: str
+    r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
+    remote_label: Nullable[str]
+    r"""The name of the salary type as it appears in the remote system."""
+
+
+class PayCode(BaseModel):
+    r"""The pay code (salary type) this line item belongs to in the remote system."""
+
+    remote_id: str
+    r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
+
+    remote_label: Nullable[str]
+    r"""The name of the salary type as it appears in the remote system."""
+
+    @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
+    def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -250,7 +405,7 @@ class AmountTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class Amount(BaseModel):
@@ -260,7 +415,26 @@ class Amount(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class AmountYtdTypedDict(TypedDict):
+    r"""The year-to-date amount of the line item as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
+
+
+class AmountYtd(BaseModel):
+    r"""The year-to-date amount of the line item as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
+    currency: str
+    r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
+
+    value: float
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class LineItemTypedDict(TypedDict):
@@ -270,8 +444,14 @@ class LineItemTypedDict(TypedDict):
     r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key. This value may include the item's position on the payslip, which can change if the payslip is edited."""
     name: Nullable[str]
     r"""The name of the salary type."""
+    pay_code: PayCodeTypedDict
+    r"""The pay code (salary type) this line item belongs to in the remote system."""
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     amount: NotRequired[Nullable[AmountTypedDict]]
     r"""The amount of the line item."""
+    amount_ytd: NotRequired[Nullable[AmountYtdTypedDict]]
+    r"""The year-to-date amount of the line item as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
 
 
 class LineItem(BaseModel):
@@ -284,18 +464,33 @@ class LineItem(BaseModel):
     name: Nullable[str]
     r"""The name of the salary type."""
 
+    pay_code: PayCode
+    r"""The pay code (salary type) this line item belongs to in the remote system."""
+
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
+
     amount: OptionalNullable[Amount] = UNSET
     r"""The amount of the line item."""
 
+    amount_ytd: OptionalNullable[AmountYtd] = UNSET
+    r"""The year-to-date amount of the line item as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount."""
+
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
-        optional_fields = set(["amount"])
-        nullable_fields = set(["name", "amount"])
+        optional_fields = set(["amount", "amount_ytd"])
+        nullable_fields = set(["name", "amount", "amount_ytd", "custom_fields"])
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -318,6 +513,8 @@ class GetHrisPayslipsPositiveResponseResultTypedDict(TypedDict):
     r"""The globally unique ID of this object generated by Kombo. We recommend using this as a stable primary key for syncing."""
     remote_id: str
     r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -342,6 +539,9 @@ class GetHrisPayslipsPositiveResponseResult(BaseModel):
     remote_id: str
     r"""The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key."""
 
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
+
     changed_at: datetime
     r"""The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -364,12 +564,18 @@ class GetHrisPayslipsPositiveResponseResult(BaseModel):
     r"""The individual earnings, deductions, and contributions that make up the payslip."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -391,12 +597,18 @@ class GetHrisPayslipsPositiveResponseData(BaseModel):
     results: List[GetHrisPayslipsPositiveResponseResult]
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
