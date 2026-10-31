@@ -9,6 +9,8 @@ from kombo.types import (
     UNSET,
     UNSET_SENTINEL,
     UnrecognizedStr,
+    current_exclude_none,
+    serialize_with_info,
 )
 from kombo.utils import validate_const
 import pydantic
@@ -120,6 +122,9 @@ class HomeAddress(BaseModel):
     zip_code: OptionalNullable[str] = UNSET
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(
             ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
@@ -127,11 +132,14 @@ class HomeAddress(BaseModel):
         nullable_fields = set(
             ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -156,31 +164,38 @@ DomesticBankRoutingType = Literal[
     "CA_ROUTING_NUMBER",
     "AU_BSB_CODE",
     "FR_RIB",
+    "SG_BANK_BRANCH_CODE",
 ]
 r"""Enum of the routing type, prefixed with the iso-3166-1-alpha-2 banks origin country. If there is uncertainty about the type, it will be set to null."""
 
 
 class DomesticBankRoutingTypedDict(TypedDict):
     number: str
-    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
+    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code, SG bank and branch code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
     type: Nullable[DomesticBankRoutingType]
     r"""Enum of the routing type, prefixed with the iso-3166-1-alpha-2 banks origin country. If there is uncertainty about the type, it will be set to null."""
 
 
 class DomesticBankRouting(BaseModel):
     number: str
-    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
+    r"""Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code, SG bank and branch code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45)."""
 
     type: Nullable[DomesticBankRoutingType]
     r"""Enum of the routing type, prefixed with the iso-3166-1-alpha-2 banks origin country. If there is uncertainty about the type, it will be set to null."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -222,6 +237,9 @@ class BankAccount(BaseModel):
     domestic_bank_routing: OptionalNullable[DomesticBankRouting] = UNSET
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(
             [
@@ -243,11 +261,14 @@ class BankAccount(BaseModel):
                 "domestic_bank_routing",
             ]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -433,6 +454,9 @@ class Employment(BaseModel):
     """
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["pay_period", "pay_frequency", "employment_type"])
         nullable_fields = set(
@@ -449,11 +473,14 @@ class Employment(BaseModel):
                 "custom_fields",
             ]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -546,12 +573,18 @@ class TimeOffBalance(BaseModel):
     r"""The time-unit of the used time."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -641,6 +674,9 @@ class Manager(BaseModel):
     """
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["work_email", "employment_status"])
         nullable_fields = set(
@@ -654,11 +690,14 @@ class Manager(BaseModel):
                 "termination_date",
             ]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -709,12 +748,18 @@ class GetHrisEmployeesPositiveResponseGroup(BaseModel):
     r"""Type of the group."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -759,6 +804,9 @@ class LegalEntityAddress(BaseModel):
     zip_code: OptionalNullable[str] = UNSET
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(
             ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
@@ -766,11 +814,14 @@ class LegalEntityAddress(BaseModel):
         nullable_fields = set(
             ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -813,14 +864,20 @@ class GetHrisEmployeesPositiveResponseLegalEntity(BaseModel):
     r"""The legal entity’s address."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["address"])
         nullable_fields = set(["remote_id", "name", "address"])
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -874,6 +931,9 @@ class WorkLocationAddress(BaseModel):
     zip_code: OptionalNullable[str] = UNSET
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(
             ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
@@ -881,11 +941,14 @@ class WorkLocationAddress(BaseModel):
         nullable_fields = set(
             ["city", "country", "raw", "state", "street_1", "street_2", "zip_code"]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -920,6 +983,8 @@ class WorkLocationTypedDict(TypedDict):
     r"""The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     address: NotRequired[Nullable[WorkLocationAddressTypedDict]]
     r"""The work location’s address"""
 
@@ -947,20 +1012,36 @@ class WorkLocation(BaseModel):
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
 
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
+
     address: OptionalNullable[WorkLocationAddress] = UNSET
     r"""The work location’s address"""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["address"])
         nullable_fields = set(
-            ["remote_id", "name", "address", "type", "remote_deleted_at"]
+            [
+                "remote_id",
+                "name",
+                "address",
+                "type",
+                "remote_deleted_at",
+                "custom_fields",
+            ]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -1229,6 +1310,9 @@ class GetHrisEmployeesPositiveResponseResult(BaseModel):
     r"""The employee’s bank accounts."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(
             [
@@ -1279,11 +1363,14 @@ class GetHrisEmployeesPositiveResponseResult(BaseModel):
                 "work_location",
             ]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -1314,12 +1401,18 @@ class GetHrisEmployeesPositiveResponseData(BaseModel):
     results: List[GetHrisEmployeesPositiveResponseResult]
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:

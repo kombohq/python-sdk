@@ -2,7 +2,15 @@
 
 from __future__ import annotations
 from datetime import date, datetime
-from kombo.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from kombo.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+    current_exclude_none,
+    serialize_with_info,
+)
 from kombo.utils import validate_const
 import pydantic
 from pydantic import model_serializer
@@ -17,7 +25,7 @@ class GetHrisPayRunsPositiveResponseGrossPayTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseGrossPay(BaseModel):
@@ -27,7 +35,7 @@ class GetHrisPayRunsPositiveResponseGrossPay(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseNetPayTypedDict(TypedDict):
@@ -36,7 +44,7 @@ class GetHrisPayRunsPositiveResponseNetPayTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseNetPay(BaseModel):
@@ -46,7 +54,7 @@ class GetHrisPayRunsPositiveResponseNetPay(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponsePaidAmountTypedDict(TypedDict):
@@ -55,7 +63,7 @@ class GetHrisPayRunsPositiveResponsePaidAmountTypedDict(TypedDict):
     currency: str
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponsePaidAmount(BaseModel):
@@ -65,7 +73,7 @@ class GetHrisPayRunsPositiveResponsePaidAmount(BaseModel):
     r"""The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in."""
 
     value: float
-    r"""The monetary value."""
+    r"""The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero)."""
 
 
 class GetHrisPayRunsPositiveResponseTotalsTypedDict(TypedDict):
@@ -90,14 +98,20 @@ class GetHrisPayRunsPositiveResponseTotals(BaseModel):
     r"""The total amount paid out through the pay run. This value accounts for net earnings and deductions."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["gross_pay", "net_pay", "paid_amount"])
         nullable_fields = set(["gross_pay", "net_pay", "paid_amount"])
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
@@ -166,12 +180,18 @@ class GetHrisPayRunsPositiveResponseResult(BaseModel):
     totals: GetHrisPayRunsPositiveResponseTotals
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -193,12 +213,18 @@ class GetHrisPayRunsPositiveResponseData(BaseModel):
     results: List[GetHrisPayRunsPositiveResponseResult]
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:

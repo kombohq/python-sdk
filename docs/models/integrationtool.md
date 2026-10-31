@@ -93,6 +93,7 @@ value: IntegrationTool = "workday"
 - `"talentclue"`
 - `"inrecruiting"`
 - `"jobadder"`
+- `"jobadderjobboard"`
 - `"ubeeo"`
 - `"connexys"`
 - `"hr4you"`
@@ -123,6 +124,7 @@ value: IntegrationTool = "workday"
 - `"sandbox"`
 - `"guidecom"`
 - `"spott"`
+- `"stardex"`
 - `"logicmelon"`
 - `"loxo"`
 - `"kula"`
@@ -131,10 +133,12 @@ value: IntegrationTool = "workday"
 - `"pageup"`
 - `"talent360"`
 - `"emplypeople"`
+- `"hibob"`
 - `"workdaycustomreport"`
 - `"workdaycustomreportsftp"`
 - `"ukgprowfm"`
 - `"adpdecidium"`
+- `"adplink"`
 - `"payfitcustomer"`
 - `"payfitpartner"`
 - `"payfit"`
@@ -142,7 +146,6 @@ value: IntegrationTool = "workday"
 - `"fourth"`
 - `"kenjo"`
 - `"heavenhr"`
-- `"hibob"`
 - `"cezannehr"`
 - `"entraid"`
 - `"azuread"`
@@ -210,6 +213,7 @@ value: IntegrationTool = "workday"
 - `"nibelis"`
 - `"peoplexd"`
 - `"zellis"`
+- `"veda"`
 - `"sftp"`
 - `"sftpfetch"`
 - `"360learning"`

@@ -501,6 +501,7 @@ def main():
         api_key="<YOUR_BEARER_TOKEN_HERE>",
     ) as k_client:
         # Rest of application here...
+        pass
 
 
 # Or when using async:
@@ -510,6 +511,7 @@ async def amain():
         api_key="<YOUR_BEARER_TOKEN_HERE>",
     ) as k_client:
         # Rest of application here...
+        pass
 ```
 <!-- End Resource Management [resource-management] -->
 
