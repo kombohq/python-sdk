@@ -970,6 +970,7 @@ class Ats(BaseSDK):
         application_id: str,
         content: str,
         content_type: models.ContentType,
+        title: Optional[str] = None,
         remote_fields: Optional[
             Union[
                 models.PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields,
@@ -1004,6 +1005,7 @@ class Ats(BaseSDK):
         :param application_id: The Kombo ID of the application you want to create the note for.
         :param content: UTF-8 content of the note.
         :param content_type: Content type of the note. Currently only `PLAIN_TEXT` is supported.
+        :param title: Title of the note, often called \"subject\" in the ATS. If the ATS has no note title, the title becomes the first line of the content instead.
         :param remote_fields: Tool specific remote fields for the note.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1026,6 +1028,7 @@ class Ats(BaseSDK):
         request = models.PostAtsApplicationsApplicationIDNotesRequest(
             application_id=application_id,
             body=models.PostAtsApplicationsApplicationIDNotesRequestBody(
+                title=title,
                 content=content,
                 content_type=content_type,
                 remote_fields=utils.get_pydantic_model(
@@ -1104,6 +1107,7 @@ class Ats(BaseSDK):
         application_id: str,
         content: str,
         content_type: models.ContentType,
+        title: Optional[str] = None,
         remote_fields: Optional[
             Union[
                 models.PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields,
@@ -1138,6 +1142,7 @@ class Ats(BaseSDK):
         :param application_id: The Kombo ID of the application you want to create the note for.
         :param content: UTF-8 content of the note.
         :param content_type: Content type of the note. Currently only `PLAIN_TEXT` is supported.
+        :param title: Title of the note, often called \"subject\" in the ATS. If the ATS has no note title, the title becomes the first line of the content instead.
         :param remote_fields: Tool specific remote fields for the note.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1160,6 +1165,7 @@ class Ats(BaseSDK):
         request = models.PostAtsApplicationsApplicationIDNotesRequest(
             application_id=application_id,
             body=models.PostAtsApplicationsApplicationIDNotesRequestBody(
+                title=title,
                 content=content,
                 content_type=content_type,
                 remote_fields=utils.get_pydantic_model(
@@ -1246,6 +1252,8 @@ class Ats(BaseSDK):
         Get attachments from a candidate or application.
 
         Get attachments from an application. If the ATS stores the attachments on the candidate, it will get the attachments from the corresponding candidate instead.
+
+        This endpoint calls the ATS on every request. To get the files of all candidates without a request per application, use [synced attachments](/ats/features/attachments).
 
         <Note>
         This endpoint requires the permission **Read document attachments** to be enabled in [your scope config](/scopes).
@@ -1340,6 +1348,8 @@ class Ats(BaseSDK):
         Get attachments from a candidate or application.
 
         Get attachments from an application. If the ATS stores the attachments on the candidate, it will get the attachments from the corresponding candidate instead.
+
+        This endpoint calls the ATS on every request. To get the files of all candidates without a request per application, use [synced attachments](/ats/features/attachments).
 
         <Note>
         This endpoint requires the permission **Read document attachments** to be enabled in [your scope config](/scopes).
@@ -2834,6 +2844,8 @@ class Ats(BaseSDK):
 
         Get attachments from a candidate, including all attachments of all of their applications.
 
+        This endpoint calls the ATS on every request. To get the files of all candidates without a request per candidate, use [synced attachments](/ats/features/attachments).
+
         <Note>
         This endpoint requires the permission **Read document attachments** to be enabled in [your scope config](/scopes).
         </Note>
@@ -2924,6 +2936,8 @@ class Ats(BaseSDK):
         r"""Get candidate attachments
 
         Get attachments from a candidate, including all attachments of all of their applications.
+
+        This endpoint calls the ATS on every request. To get the files of all candidates without a request per candidate, use [synced attachments](/ats/features/attachments).
 
         <Note>
         This endpoint requires the permission **Read document attachments** to be enabled in [your scope config](/scopes).
@@ -7856,9 +7870,9 @@ class Ats(BaseSDK):
 
         Retrieve all attachments.
 
-        These attachments are already synced, so this endpoint never calls the ATS and the files sit in the destination you configured.
+        Returns the attachments Kombo synced into your file destination.
 
-        The on-demand alternatives call the ATS and return a `data_url` we host: [get candidate attachments](/ats/v1/get-candidates-candidate-id-attachments) for every file of one candidate, [get application attachments](/ats/v1/get-applications-application-id-attachments) for the files of one application.
+        [Attachments](/ats/features/attachments) compares synced attachments with reading files on demand.
 
         Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
 
@@ -8010,9 +8024,9 @@ class Ats(BaseSDK):
 
         Retrieve all attachments.
 
-        These attachments are already synced, so this endpoint never calls the ATS and the files sit in the destination you configured.
+        Returns the attachments Kombo synced into your file destination.
 
-        The on-demand alternatives call the ATS and return a `data_url` we host: [get candidate attachments](/ats/v1/get-candidates-candidate-id-attachments) for every file of one candidate, [get application attachments](/ats/v1/get-applications-application-id-attachments) for the files of one application.
+        [Attachments](/ats/features/attachments) compares synced attachments with reading files on demand.
 
         Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
 
