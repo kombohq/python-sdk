@@ -18,3 +18,4 @@ value: DomesticBankRoutingType = "GB_SORT_CODE"
 - `"CA_ROUTING_NUMBER"`
 - `"AU_BSB_CODE"`
 - `"FR_RIB"`
+- `"SG_BANK_BRANCH_CODE"`

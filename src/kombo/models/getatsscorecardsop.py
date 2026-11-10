@@ -6,7 +6,13 @@ from .getatsscorecardspositiveresponse import (
     GetAtsScorecardsPositiveResponseTypedDict,
 )
 from datetime import datetime
-from kombo.types import BaseModel, UNSET_SENTINEL
+from kombo.types import (
+    BaseModel,
+    UNSET_SENTINEL,
+    current_exclude_none,
+    serialize_with_info,
+)
+from kombo.types.basemodel import current_filtered_dump
 from kombo.utils import FieldMetadata, HeaderMetadata, QueryParamMetadata
 import pydantic
 from pydantic import model_serializer
@@ -28,13 +34,20 @@ class GetAtsScorecardsGlobals(BaseModel):
     r"""ID of the integration you want to interact with."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["integration_id"])
+        exclude_none = current_exclude_none()
+        skip_filtered = exclude_none is False or current_filtered_dump()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and skip_filtered:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -153,6 +166,9 @@ class GetAtsScorecardsRequest(BaseModel):
     r"""Filter by a comma-separated list of application IDs. We will only return scorecards that belong to _any_ of these applications."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(
             [
@@ -167,11 +183,15 @@ class GetAtsScorecardsRequest(BaseModel):
                 "application_ids",
             ]
         )
+        exclude_none = current_exclude_none()
+        skip_filtered = exclude_none is False or current_filtered_dump()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and skip_filtered:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
