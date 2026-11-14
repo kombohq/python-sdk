@@ -582,6 +582,7 @@ class General(BaseSDK):
         |SmartRecruiters|`smartrecruiters/default`|Smartrecruiters [API](https://developers.smartrecruiters.com/reference/apply-api). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.smartrecruiters.com` as the base URL.|
         |Softgarden|`softgarden/apply-api`|[Softgarden's Apply API](https://dev.softgarden.de/apply-api/). We automatically authenticate all requests and use 'https://jobdb.softgarden.de/jobdb/public' as base URL.|
         |Softgarden|`softgarden/frontend-v3`|[Softgarden's Frontend API v3](https://dev.softgarden.de/frontend-v3/. We automatically authenticate all requests and use 'https://api.softgarden.io/api/rest' as base URL.|
+        |Sona|`sona/api`|Sona's [API](https://api.sona.is/api/docs/v1/index.html). We automatically authenticate all requests and use `https://api.sona.is/api` as the base URL.|
         |Spark Hire Recruit|`comeet/api`|[Spark Hire Recruit's API.](https://developers.comeet.com/reference/recruiting-api-overview)We automatically authenticate all requests and use `https://api.comeet.com` as the base URL.|
         |Spott|`spott/protected`|The [Spott API](https://docs.gospott.com). We automatically authenticate all requests and use `https://api.gospott.com` as the base URL.|
         |Stardex|`stardex/v1`|We use `https://api.stardex.ai` as the base URL. Find the official docs [here](https://docs.stardex.com/api-reference/introduction-v1).|
@@ -951,6 +952,7 @@ class General(BaseSDK):
         |SmartRecruiters|`smartrecruiters/default`|Smartrecruiters [API](https://developers.smartrecruiters.com/reference/apply-api). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.smartrecruiters.com` as the base URL.|
         |Softgarden|`softgarden/apply-api`|[Softgarden's Apply API](https://dev.softgarden.de/apply-api/). We automatically authenticate all requests and use 'https://jobdb.softgarden.de/jobdb/public' as base URL.|
         |Softgarden|`softgarden/frontend-v3`|[Softgarden's Frontend API v3](https://dev.softgarden.de/frontend-v3/. We automatically authenticate all requests and use 'https://api.softgarden.io/api/rest' as base URL.|
+        |Sona|`sona/api`|Sona's [API](https://api.sona.is/api/docs/v1/index.html). We automatically authenticate all requests and use `https://api.sona.is/api` as the base URL.|
         |Spark Hire Recruit|`comeet/api`|[Spark Hire Recruit's API.](https://developers.comeet.com/reference/recruiting-api-overview)We automatically authenticate all requests and use `https://api.comeet.com` as the base URL.|
         |Spott|`spott/protected`|The [Spott API](https://docs.gospott.com). We automatically authenticate all requests and use `https://api.gospott.com` as the base URL.|
         |Stardex|`stardex/v1`|We use `https://api.stardex.ai` as the base URL. Find the official docs [here](https://docs.stardex.com/api-reference/introduction-v1).|

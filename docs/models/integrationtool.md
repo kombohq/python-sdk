@@ -214,6 +214,7 @@ value: IntegrationTool = "workday"
 - `"peoplexd"`
 - `"zellis"`
 - `"veda"`
+- `"sona"`
 - `"sftp"`
 - `"sftpfetch"`
 - `"360learning"`

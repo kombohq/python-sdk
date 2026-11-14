@@ -1194,8 +1194,24 @@ class PostAtsCandidatesRequestBodyLanguageReference(BaseModel):
     wid: Annotated[str, pydantic.Field(alias="WID")]
 
 
+class PostAtsCandidatesRequestBodyGenderReferenceTypedDict(TypedDict):
+    r"""Gender reference written to Person Biographic and Demographic Information Data."""
+
+    gender_code: str
+    r"""Tenant Gender_Code for the gender, such as Feminin. Not the Kombo gender enum and not the display label."""
+
+
+class PostAtsCandidatesRequestBodyGenderReference(BaseModel):
+    r"""Gender reference written to Person Biographic and Demographic Information Data."""
+
+    gender_code: Annotated[str, pydantic.Field(alias="Gender_Code")]
+    r"""Tenant Gender_Code for the gender, such as Feminin. Not the Kombo gender enum and not the display label."""
+
+
 class PostAtsCandidatesRequestBodyGlobalPersonalInformationDataTypedDict(TypedDict):
     date_of_birth: NotRequired[str]
+    gender_reference: NotRequired[PostAtsCandidatesRequestBodyGenderReferenceTypedDict]
+    r"""Gender reference written to Person Biographic and Demographic Information Data."""
 
 
 class PostAtsCandidatesRequestBodyGlobalPersonalInformationData(BaseModel):
@@ -1203,12 +1219,18 @@ class PostAtsCandidatesRequestBodyGlobalPersonalInformationData(BaseModel):
         None
     )
 
+    gender_reference: Annotated[
+        Optional[PostAtsCandidatesRequestBodyGenderReference],
+        pydantic.Field(alias="Gender_Reference"),
+    ] = None
+    r"""Gender reference written to Person Biographic and Demographic Information Data."""
+
     @model_serializer(mode="wrap")
     def _serialize_model_with_info(self, handler, info):
         return serialize_with_info(self.serialize_model, handler, info)
 
     def serialize_model(self, handler):
-        optional_fields = set(["Date_of_Birth"])
+        optional_fields = set(["Date_of_Birth", "Gender_Reference"])
         exclude_none = current_exclude_none()
         skip_filtered = exclude_none is False or current_filtered_dump()
         serialized = handler(self)
@@ -2075,6 +2097,8 @@ class PostAtsCandidatesRequestBodyBullhornTypedDict(TypedDict):
     r"""Fields that we will pass through to Bullhorn's `JobSubmission` object."""
     existing_candidate_remote_id: NotRequired[str]
     r"""The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn."""
+    candidate_specialty_remote_ids: NotRequired[List[str]]
+    r"""The remote IDs of Bullhorn `Specialty` records to add to the candidate. You can list the available specialties with `GET options/Specialty` through our passthrough API. Only applied when we create a new candidate, not when we file the application on an existing one. Bullhorn silently ignores IDs that do not exist, so make sure they are valid. If Bullhorn returns an error, the application is still created and the response includes a warning."""
 
 
 class PostAtsCandidatesRequestBodyBullhorn(BaseModel):
@@ -2089,13 +2113,21 @@ class PostAtsCandidatesRequestBodyBullhorn(BaseModel):
     existing_candidate_remote_id: Optional[str] = None
     r"""The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn."""
 
+    candidate_specialty_remote_ids: Optional[List[str]] = None
+    r"""The remote IDs of Bullhorn `Specialty` records to add to the candidate. You can list the available specialties with `GET options/Specialty` through our passthrough API. Only applied when we create a new candidate, not when we file the application on an existing one. Bullhorn silently ignores IDs that do not exist, so make sure they are valid. If Bullhorn returns an error, the application is still created and the response includes a warning."""
+
     @model_serializer(mode="wrap")
     def _serialize_model_with_info(self, handler, info):
         return serialize_with_info(self.serialize_model, handler, info)
 
     def serialize_model(self, handler):
         optional_fields = set(
-            ["candidate", "job_submission", "existing_candidate_remote_id"]
+            [
+                "candidate",
+                "job_submission",
+                "existing_candidate_remote_id",
+                "candidate_specialty_remote_ids",
+            ]
         )
         exclude_none = current_exclude_none()
         skip_filtered = exclude_none is False or current_filtered_dump()
@@ -3505,6 +3537,10 @@ except NameError:
     pass
 try:
     PostAtsCandidatesRequestBodyLanguageReference.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsCandidatesRequestBodyGenderReference.model_rebuild()
 except NameError:
     pass
 try:
