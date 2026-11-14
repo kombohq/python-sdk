@@ -32,7 +32,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 python:
-  version: 1.4.1
+  version: 1.4.2
   additionalDependencies:
     dev:
       inline-snapshot: '>=0.13.0'
