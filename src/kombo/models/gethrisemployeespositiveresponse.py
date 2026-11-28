@@ -1116,6 +1116,8 @@ class GetHrisEmployeesPositiveResponseResultTypedDict(TypedDict):
     r"""The date when the employment ends. Can be in the past or future.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
+    eligible_for_rehire: Nullable[bool]
+    r"""Whether the HRIS marks the employee as eligible for rehire. `null` if the HRIS doesn’t say."""
     remote_created_at: Nullable[datetime]
     r"""The date and time the object was created in the remote system.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -1242,6 +1244,9 @@ class GetHrisEmployeesPositiveResponseResult(BaseModel):
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
 
+    eligible_for_rehire: Nullable[bool]
+    r"""Whether the HRIS marks the employee as eligible for rehire. `null` if the HRIS doesn’t say."""
+
     remote_created_at: Nullable[datetime]
     r"""The date and time the object was created in the remote system.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
@@ -1367,6 +1372,7 @@ class GetHrisEmployeesPositiveResponseResult(BaseModel):
                 "date_of_birth",
                 "start_date",
                 "termination_date",
+                "eligible_for_rehire",
                 "remote_created_at",
                 "remote_deleted_at",
                 "custom_fields",

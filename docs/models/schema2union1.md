@@ -1,4 +1,4 @@
-# Schema2
+# Schema2Union1
 
 
 ## Supported Types

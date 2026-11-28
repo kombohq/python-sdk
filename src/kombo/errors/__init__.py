@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .komboatserror import KomboAtsError, KomboAtsErrorData
     from .kombogeneralerror import KomboGeneralError, KomboGeneralErrorData
     from .kombohriserror import KomboHrisError, KomboHrisErrorData
+    from .kombopassthrougherror import KomboPassthroughError, KomboPassthroughErrorData
     from .no_response_error import NoResponseError
     from .responsevalidationerror import ResponseValidationError
     from .sdkdefaulterror import SDKDefaultError
@@ -20,6 +21,8 @@ __all__ = [
     "KomboGeneralErrorData",
     "KomboHrisError",
     "KomboHrisErrorData",
+    "KomboPassthroughError",
+    "KomboPassthroughErrorData",
     "NoResponseError",
     "ResponseValidationError",
     "SDKDefaultError",
@@ -33,6 +36,8 @@ _dynamic_imports: dict[str, str] = {
     "KomboGeneralErrorData": ".kombogeneralerror",
     "KomboHrisError": ".kombohriserror",
     "KomboHrisErrorData": ".kombohriserror",
+    "KomboPassthroughError": ".kombopassthrougherror",
+    "KomboPassthroughErrorData": ".kombopassthrougherror",
     "NoResponseError": ".no_response_error",
     "ResponseValidationError": ".responsevalidationerror",
     "SDKDefaultError": ".sdkdefaulterror",

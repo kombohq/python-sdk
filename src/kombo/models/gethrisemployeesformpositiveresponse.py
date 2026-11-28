@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .schema1_union_1 import Schema1Union1, Schema1Union1TypedDict
-from .schema2 import Schema2, Schema2TypedDict
+from .schema2_union_1 import Schema2Union1, Schema2Union1TypedDict
 from kombo.types import (
     BaseModel,
     Nullable,
@@ -88,7 +88,7 @@ class GetHrisEmployeesFormPositiveResponseFileRestrictions(BaseModel):
         return m
 
 
-class PropertiesFileTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesFileTypedDict(TypedDict):
     label: str
     required: bool
     file_restrictions: GetHrisEmployeesFormPositiveResponseFileRestrictionsTypedDict
@@ -97,7 +97,7 @@ class PropertiesFileTypedDict(TypedDict):
     type: Literal["file"]
 
 
-class PropertiesFile(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesFile(BaseModel):
     label: str
 
     required: bool
@@ -172,10 +172,10 @@ GetHrisEmployeesFormPositiveResponseUnifiedKey7 = Literal[
 ]
 
 
-class PropertiesArrayTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesArrayTypedDict(TypedDict):
     label: str
     required: bool
-    item_type: Schema2TypedDict
+    item_type: Schema2Union1TypedDict
     description: NotRequired[Nullable[str]]
     unified_key: NotRequired[Nullable[GetHrisEmployeesFormPositiveResponseUnifiedKey7]]
     type: Literal["array"]
@@ -183,12 +183,12 @@ class PropertiesArrayTypedDict(TypedDict):
     max_items: NotRequired[Nullable[float]]
 
 
-class PropertiesArray(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesArray(BaseModel):
     label: str
 
     required: bool
 
-    item_type: Schema2
+    item_type: Schema2Union1
 
     description: OptionalNullable[str] = UNSET
 
@@ -262,7 +262,7 @@ GetHrisEmployeesFormPositiveResponseUnifiedKey6 = Literal[
 ]
 
 
-class PropertiesObjectTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesObjectTypedDict(TypedDict):
     label: str
     required: bool
     properties: Dict[str, Schema1Union1TypedDict]
@@ -271,7 +271,7 @@ class PropertiesObjectTypedDict(TypedDict):
     type: Literal["object"]
 
 
-class PropertiesObject(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesObject(BaseModel):
     label: str
 
     required: bool
@@ -346,7 +346,7 @@ GetHrisEmployeesFormPositiveResponseUnifiedKey5 = Literal[
 ]
 
 
-class PropertiesCheckboxTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesCheckboxTypedDict(TypedDict):
     label: str
     required: bool
     description: NotRequired[Nullable[str]]
@@ -354,7 +354,7 @@ class PropertiesCheckboxTypedDict(TypedDict):
     type: Literal["checkbox"]
 
 
-class PropertiesCheckbox(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesCheckbox(BaseModel):
     label: str
 
     required: bool
@@ -499,7 +499,7 @@ GetHrisEmployeesFormPositiveResponseOptionsUnion2 = Annotated[
 ]
 
 
-class PropertiesMultiSelectTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesMultiSelectTypedDict(TypedDict):
     label: str
     required: bool
     options: GetHrisEmployeesFormPositiveResponseOptionsUnion2TypedDict
@@ -510,7 +510,7 @@ class PropertiesMultiSelectTypedDict(TypedDict):
     max_items: NotRequired[Nullable[float]]
 
 
-class PropertiesMultiSelect(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesMultiSelect(BaseModel):
     label: str
 
     required: bool
@@ -685,7 +685,7 @@ GetHrisEmployeesFormPositiveResponseOptionsUnion1 = Annotated[
 ]
 
 
-class PropertiesSingleSelectTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesSingleSelectTypedDict(TypedDict):
     label: str
     required: bool
     options: GetHrisEmployeesFormPositiveResponseOptionsUnion1TypedDict
@@ -694,7 +694,7 @@ class PropertiesSingleSelectTypedDict(TypedDict):
     type: Literal["single_select"]
 
 
-class PropertiesSingleSelect(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesSingleSelect(BaseModel):
     label: str
 
     required: bool
@@ -771,7 +771,7 @@ GetHrisEmployeesFormPositiveResponseUnifiedKey3 = Literal[
 ]
 
 
-class PropertiesDateTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesDateTypedDict(TypedDict):
     label: str
     required: bool
     description: NotRequired[Nullable[str]]
@@ -779,7 +779,7 @@ class PropertiesDateTypedDict(TypedDict):
     type: Literal["date"]
 
 
-class PropertiesDate(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesDate(BaseModel):
     label: str
 
     required: bool
@@ -852,7 +852,7 @@ GetHrisEmployeesFormPositiveResponseUnifiedKey2 = Literal[
 ]
 
 
-class PropertiesNumberTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesNumberTypedDict(TypedDict):
     label: str
     required: bool
     description: NotRequired[Nullable[str]]
@@ -862,7 +862,7 @@ class PropertiesNumberTypedDict(TypedDict):
     max: NotRequired[Nullable[float]]
 
 
-class PropertiesNumber(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesNumber(BaseModel):
     label: str
 
     required: bool
@@ -939,7 +939,7 @@ GetHrisEmployeesFormPositiveResponseUnifiedKey1 = Literal[
 ]
 
 
-class PropertiesTextTypedDict(TypedDict):
+class GetHrisEmployeesFormPositiveResponsePropertiesTextTypedDict(TypedDict):
     label: str
     required: bool
     description: NotRequired[Nullable[str]]
@@ -950,7 +950,7 @@ class PropertiesTextTypedDict(TypedDict):
     reg_exp: NotRequired[Nullable[str]]
 
 
-class PropertiesText(BaseModel):
+class GetHrisEmployeesFormPositiveResponsePropertiesText(BaseModel):
     label: str
 
     required: bool
@@ -1009,44 +1009,44 @@ class PropertiesText(BaseModel):
         return m
 
 
-PropertiesTypedDict = TypeAliasType(
-    "PropertiesTypedDict",
+GetHrisEmployeesFormPositiveResponsePropertiesUnionTypedDict = TypeAliasType(
+    "GetHrisEmployeesFormPositiveResponsePropertiesUnionTypedDict",
     Union[
-        PropertiesDateTypedDict,
-        PropertiesCheckboxTypedDict,
-        PropertiesSingleSelectTypedDict,
-        PropertiesObjectTypedDict,
-        PropertiesFileTypedDict,
-        PropertiesNumberTypedDict,
-        PropertiesTextTypedDict,
-        PropertiesMultiSelectTypedDict,
-        PropertiesArrayTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesDateTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesCheckboxTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesSingleSelectTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesObjectTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesFileTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesNumberTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesTextTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesMultiSelectTypedDict,
+        GetHrisEmployeesFormPositiveResponsePropertiesArrayTypedDict,
     ],
 )
 
 
-Properties = Annotated[
+GetHrisEmployeesFormPositiveResponsePropertiesUnion = Annotated[
     Union[
-        PropertiesText,
-        PropertiesNumber,
-        PropertiesDate,
-        PropertiesSingleSelect,
-        PropertiesMultiSelect,
-        PropertiesCheckbox,
-        PropertiesObject,
-        PropertiesArray,
-        PropertiesFile,
+        GetHrisEmployeesFormPositiveResponsePropertiesText,
+        GetHrisEmployeesFormPositiveResponsePropertiesNumber,
+        GetHrisEmployeesFormPositiveResponsePropertiesDate,
+        GetHrisEmployeesFormPositiveResponsePropertiesSingleSelect,
+        GetHrisEmployeesFormPositiveResponsePropertiesMultiSelect,
+        GetHrisEmployeesFormPositiveResponsePropertiesCheckbox,
+        GetHrisEmployeesFormPositiveResponsePropertiesObject,
+        GetHrisEmployeesFormPositiveResponsePropertiesArray,
+        GetHrisEmployeesFormPositiveResponsePropertiesFile,
     ],
     Field(discriminator="TYPE"),
 ]
 
 
 class GetHrisEmployeesFormPositiveResponseDataTypedDict(TypedDict):
-    properties: Dict[str, PropertiesTypedDict]
+    properties: Dict[str, GetHrisEmployeesFormPositiveResponsePropertiesUnionTypedDict]
 
 
 class GetHrisEmployeesFormPositiveResponseData(BaseModel):
-    properties: Dict[str, Properties]
+    properties: Dict[str, GetHrisEmployeesFormPositiveResponsePropertiesUnion]
 
 
 class GetHrisEmployeesFormPositiveResponseWarningTypedDict(TypedDict):
@@ -1077,19 +1077,19 @@ class GetHrisEmployeesFormPositiveResponse(BaseModel):
 
 
 try:
-    PropertiesFile.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesFile.model_rebuild()
 except NameError:
     pass
 try:
-    PropertiesArray.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesArray.model_rebuild()
 except NameError:
     pass
 try:
-    PropertiesObject.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesObject.model_rebuild()
 except NameError:
     pass
 try:
-    PropertiesCheckbox.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesCheckbox.model_rebuild()
 except NameError:
     pass
 try:
@@ -1101,7 +1101,7 @@ try:
 except NameError:
     pass
 try:
-    PropertiesMultiSelect.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesMultiSelect.model_rebuild()
 except NameError:
     pass
 try:
@@ -1113,19 +1113,19 @@ try:
 except NameError:
     pass
 try:
-    PropertiesSingleSelect.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesSingleSelect.model_rebuild()
 except NameError:
     pass
 try:
-    PropertiesDate.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesDate.model_rebuild()
 except NameError:
     pass
 try:
-    PropertiesNumber.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesNumber.model_rebuild()
 except NameError:
     pass
 try:
-    PropertiesText.model_rebuild()
+    GetHrisEmployeesFormPositiveResponsePropertiesText.model_rebuild()
 except NameError:
     pass
 try:
