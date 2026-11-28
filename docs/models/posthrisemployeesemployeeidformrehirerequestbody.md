@@ -1,0 +1,9 @@
+# PostHrisEmployeesEmployeeIDFormRehireRequestBody
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `staffing_entity_id`                                                                                       | *Optional[str]*                                                                                            | :heavy_minus_sign:                                                                                         | The Kombo ID of the position or requisition to rehire into. If provided, use the same ID for GET and POST. |
+| `properties`                                                                                               | Dict[str, [models.Schema4](../models/schema4.md)]                                                          | :heavy_check_mark:                                                                                         | Use the field keys returned by GET and include all required fields.                                        |

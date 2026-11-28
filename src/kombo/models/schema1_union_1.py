@@ -19,7 +19,7 @@ from typing import Dict, List, Literal, Optional, TYPE_CHECKING, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 if TYPE_CHECKING:
-    from .schema2 import Schema2, Schema2TypedDict
+    from .schema2_union_1 import Schema2Union1, Schema2Union1TypedDict
 
 
 Schema1UnifiedKey8 = Literal[
@@ -915,7 +915,7 @@ class Schema1Object1(BaseModel):
 class Schema1Array1TypedDict(TypedDict):
     label: str
     required: bool
-    item_type: "Schema2TypedDict"
+    item_type: "Schema2Union1TypedDict"
     description: NotRequired[Nullable[str]]
     unified_key: NotRequired[Nullable[Schema1UnifiedKey7]]
     type: Literal["array"]
@@ -928,7 +928,7 @@ class Schema1Array1(BaseModel):
 
     required: bool
 
-    item_type: "Schema2"
+    item_type: "Schema2Union1"
 
     description: OptionalNullable[str] = UNSET
 

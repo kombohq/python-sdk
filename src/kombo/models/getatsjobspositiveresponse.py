@@ -820,6 +820,8 @@ class JobPostingTypedDict(TypedDict):
     visibility: Nullable[JobPostingVisibility]
     url: Nullable[str]
     r"""The public URL to the job posting on the ATS platform."""
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
 
 class JobPosting(BaseModel):
@@ -842,6 +844,9 @@ class JobPosting(BaseModel):
 
     url: Nullable[str]
     r"""The public URL to the job posting on the ATS platform."""
+
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
 
     @model_serializer(mode="wrap")
     def _serialize_model_with_info(self, handler, info):

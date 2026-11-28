@@ -228,6 +228,8 @@ IntegrationTool = Literal[
     "peoplexd",
     "zellis",
     "veda",
+    "sona",
+    "daywize",
     "sftp",
     "sftpfetch",
     "360learning",

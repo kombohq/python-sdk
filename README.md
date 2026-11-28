@@ -233,6 +233,8 @@ with SDK(
 * [get_employee_form](docs/sdks/hris/README.md#get_employee_form) - Get employee form
 * [create_employee_with_form](docs/sdks/hris/README.md#create_employee_with_form) - Create employee with form
 * [add_employee_document](docs/sdks/hris/README.md#add_employee_document) - Add document to employee
+* [get_hris_employees_employee_id_form_rehire](docs/sdks/hris/README.md#get_hris_employees_employee_id_form_rehire) - Get rehire form
+* [post_hris_employees_employee_id_form_rehire](docs/sdks/hris/README.md#post_hris_employees_employee_id_form_rehire) - Rehire employee
 * [get_employee_document_categories](docs/sdks/hris/README.md#get_employee_document_categories) - Get employee document categories
 * [get_groups](docs/sdks/hris/README.md#get_groups) - Get groups
 * [get_employments](docs/sdks/hris/README.md#get_employments) - Get employments
@@ -328,7 +330,7 @@ with Kombo(
 **Primary error:**
 * [`SDKError`](./src/kombo/errors/sdkerror.py): The base class for HTTP error responses.
 
-<details><summary>Less common errors (8)</summary>
+<details><summary>Less common errors (9)</summary>
 
 <br />
 
@@ -339,9 +341,10 @@ with Kombo(
 
 
 **Inherit from [`SDKError`](./src/kombo/errors/sdkerror.py)**:
-* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 31 of 66 methods.*
-* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 20 of 66 methods.*
-* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 15 of 66 methods.*
+* [`KomboAtsError`](./src/kombo/errors/komboatserror.py): The standard error response with the error codes for the ATS use case. Applicable to 31 of 68 methods.*
+* [`KomboHrisError`](./src/kombo/errors/kombohriserror.py): The standard error response with the error codes for the HRIS use case. Applicable to 22 of 68 methods.*
+* [`KomboGeneralError`](./src/kombo/errors/kombogeneralerror.py): The standard error response with just the platform error codes. Applicable to 14 of 68 methods.*
+* [`KomboPassthroughError`](./src/kombo/errors/kombopassthrougherror.py): The standard error response with the error codes for the passthrough API. Applicable to 1 of 68 methods.*
 * [`ResponseValidationError`](./src/kombo/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>

@@ -177,7 +177,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Carerix|`carerixgraphql/graphql`|Carerix [GraphQL API](https://docs.carerix.io/graphql/welcome). We automatically authenticate all requests (OAuth2 client credentials) and use `https://api.carerix.io/graphql/v1` as the base URL. Send GraphQL requests as `POST /graphql` with a JSON body of `\{ "query": "...", "variables": \{ ... \} \}`.|
 |CEGID TalentSoft Customer|`talentsoftcustomer/v1`|Cegid Talentsoft Recruiting FrontOffice API: [API Documentation](https://developers.cegid.com/api-details#api=cegid-talentsoft-recruiting-frontoffice) We automatically authenticate all requests and use `https://\{customer_subdomain\}.talent-soft.com/api/v1` as the base URL.|
 |CEGID TalentSoft FrontOffice|`talentsoft/v2`|Cegid Talentsoft Recruiting FrontOffice [API](https://cegid-hr-developers.talentsoft.net/docs/Talentsoft%20Recrutement/frontoffice/). We automatically authenticate all requests using the provided credentials and use `https://\{domain\}/api/v2` as the base URL.|
-|Ceipal|`ceipal/v1`|We use `https://api.ceipal.com/v1` as the base URL. Find the official docs [here](https://developer.ceipal.com/ceipal-ats-version-one/ceipal-ats-v1-api-reference).|
+|Ceipal|`ceipal/v2`|We use `https://api.ceipal.com/v2` as the base URL. Find the official docs [here](https://developer.ceipal.com/ceipal-ats-v2).|
 |Cezanne HR|`cezannehr/dataservice`|[CezanneHR's v7 dataservice API](https://api.cezannehr.com/).We automatically authenticate all requests and use the base URL `https://\{subdomain\}.cezanneondemand.com/cezanneondemand/v7/dataservice.svc`|
 |Compleet (Persy)|`compleetpersy/api`|Compleet Persy [REST API](https://persy-api.refined.site/space/PAPI/450166808/Requirements+Jobfeed+%2F+Anforderungen+f%C3%BCr+Jobfeeds). We automatically authenticate all requests and use `https://www.germanpersonnel.de/persy/api/v1` as the base URL.|
 |Compleet|`compleetpitcher/pitcher`|Compleet's Pitcher API. We automatically authenticate all requests and use the configured base URL.|
@@ -202,6 +202,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |DATEV|`datevhr/hr:payrollreports`|DATEV's [hr:payrollreports](https://developer.datev.de/en/product-detail/hr-payrollreports/2.0.0/overview) API. We automatically authenticate all requests and use `https://hr-payrollreports.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}/` as the base URL.|
 |DATEV|`datevlauds/lauds`|DATEV's [hr-exchange](https://developer.datev.de/de/product-detail/hr-exchange/1.0.0/overview). We automatically authenticate all requests and use `https://hr-exchange.api.datev.de/\{platform|platform-sandbox\}/v1/clients/\{client-id\}` as the base URL.|
 |Dayforce|`dayforce/V1`|[Dayforce's API](https://developers.dayforce.com/Build/Home.aspx). We automatically authenticate all requests and use `\{\{baseUrl\}\}/Api/\{\{clientNamespace\}\}/V1` as the base URL|
+|Daywize|`daywize/odata`|Daywize's OData API, documented at `https://\{domain\}/odata-doc/` on each Daywize environment. We automatically authenticate all requests and use `https://\{domain\}/odata` as the base URL.|
 |Deel|`deel/api`|Deel's [API](https://developer.deel.com/reference/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}/rest` as the base URL.|
 |Digital Recruiters|`digitalrecruiters/api`|Cegid Digital Recruiters [Talent Acquisition API](https://cegid-hr-developers.talentsoft.net/docs/tutorial-basics/Talent%20Acquisition/Getting%20Started). We automatically authenticate all requests by replacing `:token` in the request URL with your configured access token and use your configured Digital Recruiters domain as the base URL.|
 |Docebo|`docebo/api`|Docebo [API](https://developer.docebo.com). We automatically handle authentication via OAuth and use `https://\{subdomain\}.docebosaas.com` as the base URL.|
@@ -211,7 +212,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Eploy|`eploy/api`|Eploy's [API](https://www.eploy.com/resources/developers/api-documentation/). We automatically authenticate all requests. The base URL is `https://\{hostname\}/api`, where `\{hostname\}` is either `\{subdomain\}.eploy.net` or your full custom hostname when applicable.|
 |eRecruiter|`erecruiter/api`|[eRecruiter's API](https://api.erecruiter.net/swagger/ui/index). We automatically authenticate all requests and use `https://\{domain\}/Api` as the base URL.|
 |Eurécia|`eurecia/api`|Eurécia [REST API](https://api.eurecia.com/eurecia/fw/swagger/index.html#/) We automatically authenticate all requests and use `https://\{domain\}/eurecia/rest` as the base URL.|
-|Factorial|`factorial/api`|Factorial's [API](https://apidoc.factorialhr.com/). We automatically authenticate all requests and use `https://api.factorialhr.com/api` or `https://api.demo.factorial.dev/api` as the base URL, depending on the connected instance.|
+|Factorial|`factorial/api`|Factorial's [API](https://apidoc.factorialhr.com/). We automatically authenticate all requests and use `https://api.factorialhr.com/api`, `https://api.demo.factorial.dev/api`, or `https://api.eu2.demo.factorial.dev/api` as the base URL, depending on the connected instance.|
 |Flatchr|`flatchr/api`|Flatchr's [API](https://developers.flatchr.io/docs/getting_started). We automatically authenticate all requests and use `https://api.flatchr.io` as the base URL.|
 |Flatchr|`flatchr/career`|Flatchr's [Career API](https://developers.flatchr.io/docs/QuickStart/Candidats/Creer_un_candidat). We automatically authenticate all requests and use `https://career.flatchr.io` as the base URL.|
 |Fountain|`fountain/v2`|Fountain's [Hire API](https://developer.fountain.com/reference/get_v2-applicants). We automatically authenticate all requests. The base URL depends on how the integration is connected: Fountain One (OAuth) requests go to `https://services.fountain.com/api/servicehire/v2`, while legacy API-key requests go to `https://\{subdomain\}.fountain.com/api/v2`.|
@@ -333,6 +334,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |SmartRecruiters|`smartrecruiters/default`|Smartrecruiters [API](https://developers.smartrecruiters.com/reference/apply-api). We automatically authenticate all requests using the credentials supplied by the customer and use `https://api.smartrecruiters.com` as the base URL.|
 |Softgarden|`softgarden/apply-api`|[Softgarden's Apply API](https://dev.softgarden.de/apply-api/). We automatically authenticate all requests and use 'https://jobdb.softgarden.de/jobdb/public' as base URL.|
 |Softgarden|`softgarden/frontend-v3`|[Softgarden's Frontend API v3](https://dev.softgarden.de/frontend-v3/. We automatically authenticate all requests and use 'https://api.softgarden.io/api/rest' as base URL.|
+|Sona|`sona/api`|Sona's [API](https://api.sona.is/api/docs/v1/index.html). We automatically authenticate all requests and use `https://api.sona.is/api` as the base URL.|
 |Spark Hire Recruit|`comeet/api`|[Spark Hire Recruit's API.](https://developers.comeet.com/reference/recruiting-api-overview)We automatically authenticate all requests and use `https://api.comeet.com` as the base URL.|
 |Spott|`spott/protected`|The [Spott API](https://docs.gospott.com). We automatically authenticate all requests and use `https://api.gospott.com` as the base URL.|
 |Stardex|`stardex/v1`|We use `https://api.stardex.ai` as the base URL. Find the official docs [here](https://docs.stardex.com/api-reference/introduction-v1).|
@@ -451,10 +453,10 @@ with Kombo(
 
 ### Errors
 
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| errors.KomboGeneralError | default                  | application/json         |
-| errors.SDKDefaultError   | 4XX, 5XX                 | \*/\*                    |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.KomboPassthroughError | default                      | application/json             |
+| errors.SDKDefaultError       | 4XX, 5XX                     | \*/\*                        |
 
 ## delete_integration
 

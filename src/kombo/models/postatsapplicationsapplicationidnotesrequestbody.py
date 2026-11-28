@@ -13,7 +13,7 @@ from kombo.types import (
 from kombo.types.basemodel import current_filtered_dump
 import pydantic
 from pydantic import model_serializer
-from typing import Any, Literal, Optional
+from typing import Any, List, Literal, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -324,6 +324,99 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyTalent360(BaseModel):
     r"""Talent360 user ID the note is attributed to. Required because every Talent360 communication must be attributed to a user."""
 
 
+class ShareWithTypedDict(TypedDict):
+    r"""Sharing and visibility options passed through to SmartRecruiters' `POST /messages/shares` `shareWith` field. Defaults to `{ openNote: true }` when not provided."""
+
+    users: NotRequired[List[str]]
+    r"""Array of SmartRecruiters user remote IDs to share the note with."""
+    hiring_team_of: NotRequired[List[str]]
+    r"""Array of SmartRecruiters job remote IDs whose hiring teams the note will be shared with."""
+    everyone: NotRequired[bool]
+    r"""Whether to share the note with everyone in the company. Cannot be `true` at the same time as `openNote`."""
+    open_note: NotRequired[bool]
+    r"""Whether the note is visible to everyone in the company who has access to the candidate. Defaults to `false` when `shareWith` is provided."""
+
+
+class ShareWith(BaseModel):
+    r"""Sharing and visibility options passed through to SmartRecruiters' `POST /messages/shares` `shareWith` field. Defaults to `{ openNote: true }` when not provided."""
+
+    users: Optional[List[str]] = None
+    r"""Array of SmartRecruiters user remote IDs to share the note with."""
+
+    hiring_team_of: Annotated[
+        Optional[List[str]], pydantic.Field(alias="hiringTeamOf")
+    ] = None
+    r"""Array of SmartRecruiters job remote IDs whose hiring teams the note will be shared with."""
+
+    everyone: Optional[bool] = None
+    r"""Whether to share the note with everyone in the company. Cannot be `true` at the same time as `openNote`."""
+
+    open_note: Annotated[Optional[bool], pydantic.Field(alias="openNote")] = None
+    r"""Whether the note is visible to everyone in the company who has access to the candidate. Defaults to `false` when `shareWith` is provided."""
+
+    @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
+    def serialize_model(self, handler):
+        optional_fields = set(["users", "hiringTeamOf", "everyone", "openNote"])
+        exclude_none = current_exclude_none()
+        skip_filtered = exclude_none is False or current_filtered_dump()
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and skip_filtered:
+                continue
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
+class PostAtsApplicationsApplicationIDNotesRequestBodySmartrecruitersTypedDict(
+    TypedDict
+):
+    r"""SmartRecruiters specific remote fields for the note."""
+
+    share_with: NotRequired[ShareWithTypedDict]
+    r"""Sharing and visibility options passed through to SmartRecruiters' `POST /messages/shares` `shareWith` field. Defaults to `{ openNote: true }` when not provided."""
+
+
+class PostAtsApplicationsApplicationIDNotesRequestBodySmartrecruiters(BaseModel):
+    r"""SmartRecruiters specific remote fields for the note."""
+
+    share_with: Annotated[Optional[ShareWith], pydantic.Field(alias="shareWith")] = None
+    r"""Sharing and visibility options passed through to SmartRecruiters' `POST /messages/shares` `shareWith` field. Defaults to `{ openNote: true }` when not provided."""
+
+    @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
+    def serialize_model(self, handler):
+        optional_fields = set(["shareWith"])
+        exclude_none = current_exclude_none()
+        skip_filtered = exclude_none is False or current_filtered_dump()
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and skip_filtered:
+                continue
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
+
 class PostAtsApplicationsApplicationIDNotesRequestBodyWorkableTypedDict(TypedDict):
     r"""Workable specific remote fields for ATS actions."""
 
@@ -390,6 +483,10 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFieldsTypedDict(Type
         PostAtsApplicationsApplicationIDNotesRequestBodyTalent360TypedDict
     ]
     r"""Talent360 specific remote fields for the note."""
+    smartrecruiters: NotRequired[
+        PostAtsApplicationsApplicationIDNotesRequestBodySmartrecruitersTypedDict
+    ]
+    r"""SmartRecruiters specific remote fields for the note."""
     workable: NotRequired[
         PostAtsApplicationsApplicationIDNotesRequestBodyWorkableTypedDict
     ]
@@ -430,6 +527,11 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
     )
     r"""Talent360 specific remote fields for the note."""
 
+    smartrecruiters: Optional[
+        PostAtsApplicationsApplicationIDNotesRequestBodySmartrecruiters
+    ] = None
+    r"""SmartRecruiters specific remote fields for the note."""
+
     workable: Optional[PostAtsApplicationsApplicationIDNotesRequestBodyWorkable] = None
     r"""Workable specific remote fields for ATS actions."""
 
@@ -447,6 +549,7 @@ class PostAtsApplicationsApplicationIDNotesRequestBodyRemoteFields(BaseModel):
                 "bullhorn",
                 "lever",
                 "talent360",
+                "smartrecruiters",
                 "workable",
             ]
         )
@@ -522,5 +625,13 @@ class PostAtsApplicationsApplicationIDNotesRequestBody(BaseModel):
 
 try:
     PostAtsApplicationsApplicationIDNotesRequestBodyPostHeaders.model_rebuild()
+except NameError:
+    pass
+try:
+    ShareWith.model_rebuild()
+except NameError:
+    pass
+try:
+    PostAtsApplicationsApplicationIDNotesRequestBodySmartrecruiters.model_rebuild()
 except NameError:
     pass

@@ -1242,6 +1242,486 @@ class Hris(BaseSDK):
 
         raise errors.SDKDefaultError("Unexpected response received", http_res)
 
+    def get_hris_employees_employee_id_form_rehire(
+        self,
+        *,
+        employee_id: str,
+        staffing_entity_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.GetHrisEmployeesEmployeeIDFormRehirePositiveResponse:
+        r"""Get rehire form
+
+        Get the form for rehiring a former employee. Display the returned fields in your app, then submit the values to [Rehire employee](/hris/v1/post-employees-employee-id-form-rehire).
+
+        See [Rehire Employee](/hris/features/rehire-employee) for the workflow.
+
+        ### Example Form
+        ```json
+        {
+        \"properties\": {
+        \"startDate\": {
+        \"type\": \"date\",
+        \"label\": \"Start Date\",
+        \"required\": true,
+        \"description\": \"The first day of the new job\",
+        \"unified_key\": \"start_date\"
+        },
+        \"jobTitle\": {
+        \"type\": \"text\",
+        \"label\": \"Job Title\",
+        \"required\": false,
+        \"description\": \"The job title of the new job\",
+        \"unified_key\": \"job_title\",
+        \"min_length\": null,
+        \"max_length\": null,
+        \"reg_exp\": null
+        }
+        }
+        }
+        ```
+
+        :param employee_id: The Kombo ID or the HRIS ID of the employee.
+        :param staffing_entity_id: The Kombo ID of the position or requisition to rehire into. If provided, use the same ID for GET and POST. See [staffing entities](/hris/implementation-guide/staffing-entities-in-create-employee).
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.GetHrisEmployeesEmployeeIDFormRehireRequest(
+            employee_id=employee_id,
+            staffing_entity_id=staffing_entity_id,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/hris/employees/{employee_id}/form/rehire",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.GetHrisEmployeesEmployeeIDFormRehireGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="GetHrisEmployeesEmployeeIdFormRehire",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.GetHrisEmployeesEmployeeIDFormRehirePositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    async def get_hris_employees_employee_id_form_rehire_async(
+        self,
+        *,
+        employee_id: str,
+        staffing_entity_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.GetHrisEmployeesEmployeeIDFormRehirePositiveResponse:
+        r"""Get rehire form
+
+        Get the form for rehiring a former employee. Display the returned fields in your app, then submit the values to [Rehire employee](/hris/v1/post-employees-employee-id-form-rehire).
+
+        See [Rehire Employee](/hris/features/rehire-employee) for the workflow.
+
+        ### Example Form
+        ```json
+        {
+        \"properties\": {
+        \"startDate\": {
+        \"type\": \"date\",
+        \"label\": \"Start Date\",
+        \"required\": true,
+        \"description\": \"The first day of the new job\",
+        \"unified_key\": \"start_date\"
+        },
+        \"jobTitle\": {
+        \"type\": \"text\",
+        \"label\": \"Job Title\",
+        \"required\": false,
+        \"description\": \"The job title of the new job\",
+        \"unified_key\": \"job_title\",
+        \"min_length\": null,
+        \"max_length\": null,
+        \"reg_exp\": null
+        }
+        }
+        }
+        ```
+
+        :param employee_id: The Kombo ID or the HRIS ID of the employee.
+        :param staffing_entity_id: The Kombo ID of the position or requisition to rehire into. If provided, use the same ID for GET and POST. See [staffing entities](/hris/implementation-guide/staffing-entities-in-create-employee).
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.GetHrisEmployeesEmployeeIDFormRehireRequest(
+            employee_id=employee_id,
+            staffing_entity_id=staffing_entity_id,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/hris/employees/{employee_id}/form/rehire",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.GetHrisEmployeesEmployeeIDFormRehireGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="GetHrisEmployeesEmployeeIdFormRehire",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.GetHrisEmployeesEmployeeIDFormRehirePositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    def post_hris_employees_employee_id_form_rehire(
+        self,
+        *,
+        employee_id: str,
+        properties: Union[
+            Mapping[str, models.Schema4], Mapping[str, models.Schema4TypedDict]
+        ],
+        staffing_entity_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.PostHrisEmployeesEmployeeIDFormRehirePositiveResponse:
+        r"""Rehire employee
+
+        Rehire a former employee using values from the rehire form.
+
+        <Note>
+        This endpoint requires the permission **Create and manage employees** to be enabled in [your scope config](/scopes).
+        </Note>
+
+        ### Example Request Body
+
+        ```json
+        {
+        \"staffing_entity_id\": \"4wPdBNLfMYBeXjNiQ5zKbStR\",
+        \"properties\": {
+        \"startDate\": \"2026-11-01\",
+        \"jobTitle\": \"Lifeguard\"
+        }
+        }
+        ```
+
+        :param employee_id: The Kombo ID or the HRIS ID of the employee.
+        :param properties: Use the field keys returned by GET and include all required fields.
+        :param staffing_entity_id: The Kombo ID of the position or requisition to rehire into. If provided, use the same ID for GET and POST.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if timeout_ms is None:
+            timeout_ms = 300000
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PostHrisEmployeesEmployeeIDFormRehireRequest(
+            employee_id=employee_id,
+            body=models.PostHrisEmployeesEmployeeIDFormRehireRequestBody(
+                staffing_entity_id=staffing_entity_id,
+                properties=utils.unmarshal(properties, Dict[str, models.Schema4]),
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/hris/employees/{employee_id}/form/rehire",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.PostHrisEmployeesEmployeeIDFormRehireGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.PostHrisEmployeesEmployeeIDFormRehireRequestBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="PostHrisEmployeesEmployeeIdFormRehire",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.PostHrisEmployeesEmployeeIDFormRehirePositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
+    async def post_hris_employees_employee_id_form_rehire_async(
+        self,
+        *,
+        employee_id: str,
+        properties: Union[
+            Mapping[str, models.Schema4], Mapping[str, models.Schema4TypedDict]
+        ],
+        staffing_entity_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.PostHrisEmployeesEmployeeIDFormRehirePositiveResponse:
+        r"""Rehire employee
+
+        Rehire a former employee using values from the rehire form.
+
+        <Note>
+        This endpoint requires the permission **Create and manage employees** to be enabled in [your scope config](/scopes).
+        </Note>
+
+        ### Example Request Body
+
+        ```json
+        {
+        \"staffing_entity_id\": \"4wPdBNLfMYBeXjNiQ5zKbStR\",
+        \"properties\": {
+        \"startDate\": \"2026-11-01\",
+        \"jobTitle\": \"Lifeguard\"
+        }
+        }
+        ```
+
+        :param employee_id: The Kombo ID or the HRIS ID of the employee.
+        :param properties: Use the field keys returned by GET and include all required fields.
+        :param staffing_entity_id: The Kombo ID of the position or requisition to rehire into. If provided, use the same ID for GET and POST.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if timeout_ms is None:
+            timeout_ms = 300000
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PostHrisEmployeesEmployeeIDFormRehireRequest(
+            employee_id=employee_id,
+            body=models.PostHrisEmployeesEmployeeIDFormRehireRequestBody(
+                staffing_entity_id=staffing_entity_id,
+                properties=utils.unmarshal(properties, Dict[str, models.Schema4]),
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/hris/employees/{employee_id}/form/rehire",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.PostHrisEmployeesEmployeeIDFormRehireGlobals(
+                integration_id=self.sdk_configuration.globals.integration_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.PostHrisEmployeesEmployeeIDFormRehireRequestBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="PostHrisEmployeesEmployeeIdFormRehire",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Unified HRIS API"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: not utils.match_status_codes(["200"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.PostHrisEmployeesEmployeeIDFormRehirePositiveResponse, http_res
+            )
+        if utils.match_response(http_res, "default", "application/json"):
+            response_data = unmarshal_json_response(errors.KomboHrisErrorData, http_res)
+            raise errors.KomboHrisError(response_data, http_res)
+
+        raise errors.SDKDefaultError("Unexpected response received", http_res)
+
     def get_employee_document_categories(
         self,
         *,

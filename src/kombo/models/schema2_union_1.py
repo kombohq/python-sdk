@@ -915,7 +915,7 @@ class Schema2Object1(BaseModel):
 class Schema2Array1TypedDict(TypedDict):
     label: str
     required: bool
-    item_type: Schema2TypedDict
+    item_type: Schema2Union1TypedDict
     description: NotRequired[Nullable[str]]
     unified_key: NotRequired[Nullable[Schema2UnifiedKey7]]
     type: Literal["array"]
@@ -928,7 +928,7 @@ class Schema2Array1(BaseModel):
 
     required: bool
 
-    item_type: Schema2
+    item_type: Schema2Union1
 
     description: OptionalNullable[str] = UNSET
 
@@ -976,8 +976,8 @@ class Schema2Array1(BaseModel):
         return m
 
 
-Schema2TypedDict = TypeAliasType(
-    "Schema2TypedDict",
+Schema2Union1TypedDict = TypeAliasType(
+    "Schema2Union1TypedDict",
     Union[
         Schema2DateTypedDict,
         Schema2CheckboxTypedDict,
@@ -992,7 +992,7 @@ Schema2TypedDict = TypeAliasType(
 )
 
 
-Schema2 = Annotated[
+Schema2Union1 = Annotated[
     Union[
         Schema2Text,
         Schema2Number,

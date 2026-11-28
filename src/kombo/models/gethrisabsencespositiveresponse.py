@@ -169,6 +169,8 @@ class GetHrisAbsencesPositiveResponseResultTypedDict(TypedDict):
     r"""The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
     type: Nullable[GetHrisAbsencesPositiveResponseTypeTypedDict]
     status: NotRequired[Nullable[GetHrisAbsencesPositiveResponseStatus]]
     r"""The absence’s current status. In rare cases where we can’t find a clear mapping, the original string is passed through."""
@@ -234,6 +236,9 @@ class GetHrisAbsencesPositiveResponseResult(BaseModel):
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
     """
 
+    custom_fields: Nullable[Dict[str, Any]]
+    r"""A key-value store of fields not covered by the schema. [Read more](/custom-fields)"""
+
     type: Nullable[GetHrisAbsencesPositiveResponseType]
 
     status: OptionalNullable[GetHrisAbsencesPositiveResponseStatus] = UNSET
@@ -262,6 +267,7 @@ class GetHrisAbsencesPositiveResponseResult(BaseModel):
                 "remote_created_at",
                 "remote_updated_at",
                 "remote_deleted_at",
+                "custom_fields",
                 "type",
             ]
         )

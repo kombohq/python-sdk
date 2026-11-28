@@ -8,6 +8,8 @@
 * [get_employee_form](#get_employee_form) - Get employee form
 * [create_employee_with_form](#create_employee_with_form) - Create employee with form
 * [add_employee_document](#add_employee_document) - Add document to employee
+* [get_hris_employees_employee_id_form_rehire](#get_hris_employees_employee_id_form_rehire) - Get rehire form
+* [post_hris_employees_employee_id_form_rehire](#post_hris_employees_employee_id_form_rehire) - Rehire employee
 * [get_employee_document_categories](#get_employee_document_categories) - Get employee document categories
 * [get_groups](#get_groups) - Get groups
 * [get_employments](#get_employments) - Get employments
@@ -418,6 +420,177 @@ with Kombo(
 ### Response
 
 **[models.PostHrisEmployeesEmployeeIDDocumentsPositiveResponse](../../models/posthrisemployeesemployeeiddocumentspositiveresponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| errors.KomboHrisError  | default                | application/json       |
+| errors.SDKDefaultError | 4XX, 5XX               | \*/\*                  |
+
+## get_hris_employees_employee_id_form_rehire
+
+Get the form for rehiring a former employee. Display the returned fields in your app, then submit the values to [Rehire employee](/hris/v1/post-employees-employee-id-form-rehire).
+
+See [Rehire Employee](/hris/features/rehire-employee) for the workflow.
+
+### Example Form
+```json
+{
+  "properties": {
+    "startDate": {
+      "type": "date",
+      "label": "Start Date",
+      "required": true,
+      "description": "The first day of the new job",
+      "unified_key": "start_date"
+    },
+    "jobTitle": {
+      "type": "text",
+      "label": "Job Title",
+      "required": false,
+      "description": "The job title of the new job",
+      "unified_key": "job_title",
+      "min_length": null,
+      "max_length": null,
+      "reg_exp": null
+    }
+  }
+}
+```
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="GetHrisEmployeesEmployeeIdFormRehire" method="get" path="/hris/employees/{employee_id}/form/rehire" example="example1" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.get_hris_employees_employee_id_form_rehire(employee_id="remote:12345")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                            | Type                                                                                                                                                                                                 | Required                                                                                                                                                                                             | Description                                                                                                                                                                                          | Example                                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `employee_id`                                                                                                                                                                                        | *str*                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                   | The Kombo ID or the HRIS ID of the employee.                                                                                                                                                         | remote:12345                                                                                                                                                                                         |
+| `staffing_entity_id`                                                                                                                                                                                 | *Optional[str]*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                   | The Kombo ID of the position or requisition to rehire into. If provided, use the same ID for GET and POST. See [staffing entities](/hris/implementation-guide/staffing-entities-in-create-employee). |                                                                                                                                                                                                      |
+| `retries`                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                  |                                                                                                                                                                                                      |
+
+### Response
+
+**[models.GetHrisEmployeesEmployeeIDFormRehirePositiveResponse](../../models/gethrisemployeesemployeeidformrehirepositiveresponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| errors.KomboHrisError  | default                | application/json       |
+| errors.SDKDefaultError | 4XX, 5XX               | \*/\*                  |
+
+## post_hris_employees_employee_id_form_rehire
+
+Rehire a former employee using values from the rehire form.
+
+<Note>
+  This endpoint requires the permission **Create and manage employees** to be enabled in [your scope config](/scopes).
+</Note>
+
+### Example Request Body
+
+```json
+{
+  "staffing_entity_id": "4wPdBNLfMYBeXjNiQ5zKbStR",
+  "properties": {
+    "startDate": "2026-11-01",
+    "jobTitle": "Lifeguard"
+  }
+}
+```
+
+### Example Usage: Error Response
+
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdFormRehire" method="post" path="/hris/employees/{employee_id}/form/rehire" example="Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.post_hris_employees_employee_id_form_rehire(employee_id="<id>", properties={
+        "key": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdFormRehire" method="post" path="/hris/employees/{employee_id}/form/rehire" example="Minimal Error Response" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.post_hris_employees_employee_id_form_rehire(employee_id="<id>", properties={
+        "key": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="python" operationID="PostHrisEmployeesEmployeeIdFormRehire" method="post" path="/hris/employees/{employee_id}/form/rehire" example="example1" -->
+```python
+from kombo import Kombo
+
+
+with Kombo(
+    integration_id="workday:HWUTwvyx2wLoSUHphiWVrp28",
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as k_client:
+
+    res = k_client.hris.post_hris_employees_employee_id_form_rehire(employee_id="26vafvWSRmbhNcxJYqjCzuJg", properties={
+        "startDate": "2026-11-01T00:00:00Z",
+        "jobTitle": "Lifeguard",
+    }, staffing_entity_id="4wPdBNLfMYBeXjNiQ5zKbStR")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `employee_id`                                                                                              | *str*                                                                                                      | :heavy_check_mark:                                                                                         | The Kombo ID or the HRIS ID of the employee.                                                               |
+| `properties`                                                                                               | Dict[str, [models.Schema4](../../models/schema4.md)]                                                       | :heavy_check_mark:                                                                                         | Use the field keys returned by GET and include all required fields.                                        |
+| `staffing_entity_id`                                                                                       | *Optional[str]*                                                                                            | :heavy_minus_sign:                                                                                         | The Kombo ID of the position or requisition to rehire into. If provided, use the same ID for GET and POST. |
+| `retries`                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                           | :heavy_minus_sign:                                                                                         | Configuration to override the default retry behavior of the client.                                        |
+
+### Response
+
+**[models.PostHrisEmployeesEmployeeIDFormRehirePositiveResponse](../../models/posthrisemployeesemployeeidformrehirepositiveresponse.md)**
 
 ### Errors
 
